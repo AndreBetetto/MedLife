@@ -1,7 +1,6 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +8,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "prisma": "^5.0.0"
-  }
+    "prisma": "^5.0.0",
+    "typescript": "^5.1.6"
+  },
+  "description": ""
 }
