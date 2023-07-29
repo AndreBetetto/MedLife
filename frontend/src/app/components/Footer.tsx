@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="absolute bg-green-400 w-full pt-8 pb-6 bottom-0 left-0 h-[250] ">
-      <div className="footer-container w-full">
+      <div className="footer-container w-full flex space-x-16">
         <div className="footer-logo">
           {/* <img src={logo} alt="logo" /> */}
         </div>
