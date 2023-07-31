@@ -1,6 +1,6 @@
-import { BrowserRouter, Router, Route } from 'react-router-dom'
-import AddUser from './components/User/AddUser.jsx'
-import UserList from './components/User/UserList.jsx'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import AddUser from './components/User/AddUser'
+import UserList from './components/User/UserList'
 
 export default function App() {
     return (
