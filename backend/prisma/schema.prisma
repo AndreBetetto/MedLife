@@ -13,7 +13,15 @@ model User {
   name  String
   email String
   password String
+  role Role @default(USER)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+}
+
+enum Role {
+  USER
+  ADMIN
+  DOCTOR
+  LOCALADMIN
 }
 
