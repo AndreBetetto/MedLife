@@ -1,3 +1,6 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -25,3 +28,9 @@ enum Role {
   LOCALADMIN
 }
 
+model product {
+  id Int @id @default(autoincrement())
+  name String
+  price Int
+  createdAt DateTime @default(now())
+}

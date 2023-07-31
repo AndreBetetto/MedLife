@@ -1,14 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import AddUser from './components/User/AddUser'
-import UserList from './components/User/UserList'
+import AddProduct from './components/AddProduct'
+import EditProduct from './components/EditProduct'
+import ProductList from './components/ProductList'
 
 export default function App() {
     return (
         <div className="container max-w-2xl">
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<UserList />}></Route>
-                    <Route path="/add" element={<AddUser />}></Route>
+                    <Route path="/" element={<ProductList />}></Route>
+                    <Route path="/add" element={<AddProduct />}></Route>
+                    <Route path="/edit/:id" element={<EditProduct />}></Route>
                 </Routes>
             </BrowserRouter>
         </div>
