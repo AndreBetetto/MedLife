@@ -8,7 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@next-auth/prisma-adapter": "^0.4.4-canary.81",
+    "@next-auth/prisma-adapter": "^0.4.4",
     "@prisma/client": "^5.0.0",
     "next-auth": "^4.22.3",
     "prisma": "^5.0.0",

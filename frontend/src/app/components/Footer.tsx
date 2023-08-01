@@ -1,9 +1,16 @@
+import Image from 'next/image'
+
 export default function Footer() {
   return (
-    <footer className="absolute bg-green-400 w-full pt-8 pb-6 bottom-0 left-0 h-[250] ">
+    <footer className="absolute w-full pt-8 pb-6 h-[250] bg-slate-50 dark:bg-slate-800">
       <div className="footer-container w-full flex space-x-16">
         <div className="footer-logo">
-          {/* <img src={logo} alt="logo" /> */}
+          <Image
+            src="/icone.png"
+            width={150}
+            height={150}
+            alt="logo"
+          />
         </div>
         <div className="footer-topics">
           <ul>
