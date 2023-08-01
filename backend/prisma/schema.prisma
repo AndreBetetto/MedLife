@@ -40,17 +40,19 @@ model Paciente {
   idPerfil Int @unique
   endereco Endereco @relation(fields: [codEndereco], references: [id])
   codEndereco Int
-  dataNasc DateTime
+  dataNasc DateTime @db.Date
   sexo Sexo
-  cpf String
-  rg String
+  cpf String @unique
+  rg String @unique
   fone String
   estadoCivil EstadoCivil
   Profissao String
   primeiraConsulta DateTime
   ultimaConsulta DateTime
   createdAt DateTime @default(now())
-  frequentaMedicos PacienteMedico[]
+  frequentaMedicos PacienteMedico[] //FK n-n
+  exame Exame[] //FK n-n
+  laudo ExameLaudo[] //FK n-n
 }
 
 model Medico {
@@ -61,7 +63,7 @@ model Medico {
   idPerfil Int @unique
   endereco Endereco @relation(fields: [codEndereco], references: [id])
   codEndereco Int
-  dataNasc DateTime
+  dataNasc DateTime @db.Date
   sexo Sexo
   cpf String
   rg String
@@ -72,8 +74,9 @@ model Medico {
   primeiraConsulta DateTime
   ultimaConsulta DateTime
   createdAt DateTime @default(now())
-  gerenciadoPor FuncionarioMedico[]
-  atendePacientes PacienteMedico[]
+  gerenciadoPor FuncionarioMedico[] //FK n-n
+  atendePacientes PacienteMedico[] //FK n-n
+  exame Exame[] //FK n-n
 }
 
 model Funcionario {
@@ -86,7 +89,7 @@ model Funcionario {
   fone String
   gerencia FuncionarioMedico[]
   createdAt DateTime @default(now())
-  updatedAT DateTime
+  updatedAT DateTime @updatedAt
 }
 
 model FuncionarioMedico {
@@ -141,7 +144,40 @@ model Convenio {
   id    Int @id @default(autoincrement())
   codigoConvenio Int
   descricaoConvenio String @db.VarChar(40)
-  vencimentoConvenio DateTime
+  vencimentoConvenio DateTime @db.Date
 }
 
+model Exame {
+  id    Int @id @default(autoincrement())
+  idPac Paciente @relation(fields: [idPaciente], references: [id])
+  idPaciente Int
+  idMed Medico @relation(fields: [idMedico], references: [id])
+  idMedico Int
+  DescricaoExame String @db.VarChar(120)
+  Grupo String //Grupo em que o exame se qualifica (otorrino, oftalmo, pediatra...)
+  dataDoExame DateTime @db.Date 
+  convenio Boolean
+  duracaoPadrao DateTime @db.Time()
+  descricaoConvenio String @db.VarChar(40)
+  arquivoLaudo ExameLaudo? //FK 1-1
+}
+
+model ExameLaudo {
+  id    Int @id @default(autoincrement())
+  codigo Exame? @relation(fields: [idExame], references: [id])
+  cpfPac Paciente @relation(fields: [cpfPaciente], references: [cpf])
+  cpfPaciente String
+  idExame Int @unique
+  dataExame DateTime @db.Date
+  nomeArquivo String 
+}
+
+
+enum StatusConsulta {
+  Agendado
+  Cancelado
+  FinalizadoSucesso
+  Faltou
+
+}
 
