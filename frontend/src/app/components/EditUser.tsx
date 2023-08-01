@@ -1,21 +1,33 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+'use client'
 
-const AddProduct = () => {
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+
+const EditUser = () => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const navigate = useNavigate()
+    const { id } = useParams()
 
-    const saveProduct = async e => {
+    useEffect(() => {
+        const getProductById = async () => {
+            const response = await axios.get(`http://localhost:5000/products/${id}`)
+            setName(response.data.name)
+            setPrice(response.data.price)
+        }
+        getProductById()
+    }, [id])
+
+    const updateProduct = async (e: any) => {
         e.preventDefault()
-        await axios.post('http://localhost:5000/products', { name: name, price: parseInt(price) })
+        await axios.patch(`http://localhost:5000/products/${id}`, { name: name, price: parseInt(price) })
         navigate('/')
     }
 
     return (
         <div className="max-w-lg mx-auto my-10 bg-white p-8 rounded-lg sm:shadow sm:border">
-            <form onSubmit={saveProduct}>
+            <form onSubmit={updateProduct}>
                 <div className="mb-6">
                     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Name
@@ -47,7 +59,7 @@ const AddProduct = () => {
                 <button
                     type="submit"
                     className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
-                    Save
+                    Update
                 </button>
                 <Link to="/">
                     <button
@@ -61,4 +73,4 @@ const AddProduct = () => {
     )
 }
 
-export default AddProduct
+export default EditUser

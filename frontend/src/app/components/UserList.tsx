@@ -1,22 +1,24 @@
+'use client'
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import useSWR, { mutate } from 'swr'
 
-const ProductList = () => {
+const UserList = () => {
     const fetcher = async () => {
-        const response = await axios.get('http://localhost:5000/products')
+        const response = await axios.get('http://localhost:5000/users')
         return response.data
     }
 
-    const { data } = useSWR('products', fetcher)
+    const { data } = useSWR('users', fetcher)
     if (!data) {
         return <h2>Loading...</h2>
     }
 
-    const deleteProduct = async productId => {
-        await axios.delete(`http://localhost:5000/products/${productId}`)
-        mutate('products')
+    const deleteUser = async (userId: number) => {
+        await axios.delete(`http://localhost:5000/users/${userId}`)
+        mutate('users')
     }
 
     return (
@@ -49,15 +51,15 @@ const ProductList = () => {
                         </thead>
                         <tbody>
                             {data.length !== 0 ? (
-                                data.map((product, index) => (
-                                    <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700" key={product.id}>
+                                data.map((user: any, index: any) => (
+                                    <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700" key={user.id}>
                                         <td className="py-4 px-6">{index + 1}</td>
                                         <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {product.name}
+                                            {user.name}
                                         </th>
-                                        <td className="py-4 px-6">{product.price}</td>
+                                        <td className="py-4 px-6">{user.price}</td>
                                         <td className="py-4 px-6">
-                                            <Link to={`/edit/${product.id}`}>
+                                            <Link to={`/edit/${user.id}`}>
                                                 <button
                                                     type="button"
                                                     className="mr-2 py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -66,7 +68,7 @@ const ProductList = () => {
                                             </Link>
                                             <button
                                                 type="button"
-                                                onClick={() => deleteProduct(product.id)}
+                                                onClick={() => deleteUser(user.id)}
                                                 className="py-2 px-3 text-sm font-medium ocus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 rounded-lg mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
                                                 Delete
                                             </button>
@@ -75,7 +77,7 @@ const ProductList = () => {
                                 ))
                             ) : (
                                 <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                    <td colSpan="4" className="py-4 px-6 text-center">
+                                    <td className="py-4 px-6 text-center">
                                         Tidak Ada Data
                                     </td>
                                 </tr>
@@ -88,4 +90,4 @@ const ProductList = () => {
     )
 }
 
-export default ProductList
+export default UserList
