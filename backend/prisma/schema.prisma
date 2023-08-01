@@ -13,12 +13,16 @@ datasource db {
 
 model User {
   id    Int @id @default(autoincrement())
-  name  String
-  email String
-  password String
+  nome  String
+  email String @unique
+  senha String
   role Role @default(USER)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+  enderecos Endereco[] //FK para Endereco 1-n
+  paciente Paciente? //FK para Paciente 1-1
+  medico Medico? //FK para medico 1-1
+  funcionario Funcionario? //FK para funcionario 1-1
 }
 
 enum Role {
@@ -28,9 +32,116 @@ enum Role {
   LOCALADMIN
 }
 
-model product {
+model Paciente {
   id Int @id @default(autoincrement())
-  name String
-  price Int
+  nome String
+  sobrenome String
+  user User @relation(fields: [idPerfil], references: [id])
+  idPerfil Int @unique
+  endereco Endereco @relation(fields: [codEndereco], references: [id])
+  codEndereco Int
+  dataNasc DateTime
+  sexo Sexo
+  cpf String
+  rg String
+  fone String
+  estadoCivil EstadoCivil
+  Profissao String
+  primeiraConsulta DateTime
+  ultimaConsulta DateTime
   createdAt DateTime @default(now())
+  frequentaMedicos PacienteMedico[]
 }
+
+model Medico {
+  id Int @id @default(autoincrement())
+  nome String
+  sobrenome String
+  user User @relation(fields: [idPerfil], references: [id])
+  idPerfil Int @unique
+  endereco Endereco @relation(fields: [codEndereco], references: [id])
+  codEndereco Int
+  dataNasc DateTime
+  sexo Sexo
+  cpf String
+  rg String
+  fone String
+  estadoCivil EstadoCivil
+  Especialidade String
+  CRM String
+  primeiraConsulta DateTime
+  ultimaConsulta DateTime
+  createdAt DateTime @default(now())
+  gerenciadoPor FuncionarioMedico[]
+  atendePacientes PacienteMedico[]
+}
+
+model Funcionario {
+  id Int @id @default(autoincrement())
+  nome String
+  sobrenome String
+  user User @relation(fields: [idPerfil], references: [id])
+  idPerfil Int @unique
+  cpf String
+  fone String
+  gerencia FuncionarioMedico[]
+  createdAt DateTime @default(now())
+  updatedAT DateTime
+}
+
+model FuncionarioMedico {
+  id Int @id @default(autoincrement())
+  idMed Medico @relation(fields: [idMedico], references: [id])
+  idMedico Int 
+  idFun Funcionario @relation(fields: [id], references: [id])
+  idFuncionario Int 
+}
+
+model PacienteMedico {
+  id Int @id @default(autoincrement())
+  idMed Medico @relation(fields: [idMedico], references: [id])
+  idMedico Int 
+  idPac Paciente @relation(fields: [id], references: [id])
+  idPaciente Int 
+}
+
+enum EstadoCivil {
+  Solteiro
+  Casado
+  Separado
+  Divorciado
+  Viuvo
+}
+
+enum Sexo {
+  Fem
+  Masc
+  PrefereNaoResponder
+  Outro
+}
+
+model Endereco {
+  id Int @id @default(autoincrement())
+  idFK User @relation(fields: [idUser], references: [id])
+  idUser Int //relacao com o campo idUser da tabela User
+  cep BigInt
+  tipoCep String
+  subtipocep String
+  uf String
+  cidade String
+  bairro String
+  endereco String
+  complemento String
+  codigoIBGE String
+  paciente Paciente[] //FK para paciente 1-n
+  medico Medico[] //FK para medico 1-n
+}
+
+model Convenio {
+  id    Int @id @default(autoincrement())
+  codigoConvenio Int
+  descricaoConvenio String @db.VarChar(40)
+  vencimentoConvenio DateTime
+}
+
+
