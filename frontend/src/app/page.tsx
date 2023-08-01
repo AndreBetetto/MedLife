@@ -19,11 +19,11 @@ export default function Home() {
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse consectetur voluptate iste. Saepe quaerat doloribus deserunt mollitia temporibus quidem ea unde? Eius velit iure labore temporibus ad perferendis nulla cum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse consectetur voluptate iste. Saepe quaerat doloribus deserunt mollitia temporibus quidem ea unde? Eius velit iure labore temporibus ad perferendis nulla cum!</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse consectetur voluptate iste. Saepe quaerat doloribus deserunt mollitia temporibus quidem ea unde? Eius velit iure labore temporibus ad perferendis nulla cum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse consectetur voluptate iste. Saepe quaerat doloribus deserunt mollitia temporibus quidem ea unde? Eius velit iure labore temporibus ad perferendis nulla cum!</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse consectetur voluptate iste. Saepe quaerat doloribus deserunt mollitia temporibus quidem ea unde? Eius velit iure labore temporibus ad perferendis nulla cum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse consectetur voluptate iste. Saepe quaerat doloribus deserunt mollitia temporibus quidem ea unde? Eius velit iure labore temporibus ad perferendis nulla cum!</p>
             <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<ProductList />}></Route>
-                    <Route path="/add" element={<AddProduct />}></Route>
-                    <Route path="/edit/:id" element={<EditProduct />}></Route>
-                </Routes>
+              <Routes>
+                <Route path="/" element={<ProductList />}></Route>
+                <Route path="/add" element={<AddProduct />}></Route>
+                <Route path="/edit/:id" element={<EditProduct />}></Route>
+              </Routes>
             </BrowserRouter>
           </section>
         </main>
