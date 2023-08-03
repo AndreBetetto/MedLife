@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class FuncionarioMedico extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'medico_id',
+        'funcionario_id'
+    ];
 }

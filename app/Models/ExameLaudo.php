@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class ExameLaudo extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'exame_id',
+        'paciente_id',
+        'dataLaudo',
+        'nomearquivo',
+        'random'
+    ];
 }
+
+

@@ -11,18 +11,20 @@ class Medico extends Model
 
     protected $fillable = [
         'nome',
+        'sobrenome',
+        'user_id',
+        'dataNasc',
+        'sexo',
         'cpf',
         'rg',
-        'data_nasc',
-        'telefone',
-        'crm',
+        'fone',
+        'estadoCivil',
         'especialidade',
-        'sexo',
-        'id_medico',
+        'crm'
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class , 'id_medico');
+        return $this->belongsTo(User::class , 'user_id');
     }
 }
