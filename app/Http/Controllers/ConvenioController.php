@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\agendamento;
+use App\Models\Convenio;
 use Illuminate\Http\Request;
 
-class AgendamentoController extends Controller
+class ConvenioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class AgendamentoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(agendamento $agendamento)
+    public function show(Convenio $convenio)
     {
         //
     }
@@ -42,7 +42,7 @@ class AgendamentoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(agendamento $agendamento)
+    public function edit(Convenio $convenio)
     {
         //
     }
@@ -50,7 +50,7 @@ class AgendamentoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, agendamento $agendamento)
+    public function update(Request $request, Convenio $convenio)
     {
         //
     }
@@ -58,7 +58,7 @@ class AgendamentoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(agendamento $agendamento)
+    public function destroy(Convenio $convenio)
     {
         //
     }

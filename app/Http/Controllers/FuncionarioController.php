@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\laudo;
+use App\Models\Funcionario;
 use Illuminate\Http\Request;
 
-class LaudoController extends Controller
+class FuncionarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class LaudoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(laudo $laudo)
+    public function show(Funcionario $funcionario)
     {
         //
     }
@@ -42,7 +42,7 @@ class LaudoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(laudo $laudo)
+    public function edit(Funcionario $funcionario)
     {
         //
     }
@@ -50,7 +50,7 @@ class LaudoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, laudo $laudo)
+    public function update(Request $request, Funcionario $funcionario)
     {
         //
     }
@@ -58,7 +58,7 @@ class LaudoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(laudo $laudo)
+    public function destroy(Funcionario $funcionario)
     {
         //
     }
