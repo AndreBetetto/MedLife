@@ -37,8 +37,8 @@ return new class extends Migration
                     ]);
             $table->string('especialidade');
             $table->string('crm');
-            $table->date('primeiraConsulta');
-            $table->date('ultimaConsulta');
+            $table->date('primeiraConsulta'); //n precisa ser not null
+            $table->date('ultimaConsulta'); //n precisa ser not null
             $table->timestamps();
         });
     }

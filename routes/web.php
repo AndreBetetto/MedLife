@@ -46,8 +46,10 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/medico', [MedicoController::class, 'index'])->name('medico.index');
-    Route::patch('/medico', [MedicoRegistro::class, 'update'])->name('medico.update');
-    Route::delete('/medico', [MedicoRegistro::class, 'destroy'])->name('medico.destroy');
+    Route::get('/medico/create', [MedicoController::class, 'create'])->name('medico.create');
+    Route::post('/medico/create', [MedicoController::class, 'store']);
+    Route::patch('/medico', [MedicoController::class, 'update'])->name('medico.update');
+    Route::delete('/medico', [MedicoController::class, 'destroy'])->name('medico.destroy');
     Route::get('/medicovisual', [MedicoController::class, 'visual'])->name('medico.visual');
 });
 

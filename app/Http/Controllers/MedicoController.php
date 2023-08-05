@@ -41,7 +41,7 @@ class MedicoController extends Controller
      */
     public function create()
     {
-        //
+        return view(('livewire.medico.registro.index'));
     }
 
     /**
@@ -49,7 +49,55 @@ class MedicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nome' => 'required',
+            'sobrenome' => 'required',
+            'dataNasc' => 'required',
+            'sexo' => 'required',
+            'cpf' => 'required',
+            'rg' => 'required',
+            'fone' => 'required',
+            'estadoCivil' => 'required', //
+            'especialidade' => 'required',
+            'crm' => 'required',
+            'cep' => 'required',
+            'logradouro' => 'required',
+            'numero' => 'required',
+            'complemento' => 'required',
+            'bairro' => 'required',
+            'cidade' => 'required',
+            'estado' => 'required',
+        ]);
+
+        // dd($request->all());
+        $medico = Medico::create([
+            'nome' => $request->nome,
+            'sobrenome' => $request->sobrenome,
+            'user_id' => auth()->user()->id,
+            'dataNasc' => $request->dataNasc,
+            'sexo' => $request->sexo,
+            'cpf' => $request->cpf,
+            'rg' => $request->rg,
+            'fone' => $request->fone,
+            'estadoCivil' => $request->estadoCivil,
+            'especialidade' => $request->especialidade,
+            'crm' => $request->crm,
+            'primeiraConsulta' => Carbon::now(),
+            'ultimaConsulta' => Carbon::now(),
+        ]);
+
+        $endereco = UserEndereco::create([
+            'user_id' => auth()->user()->id,
+            'cep' => $request->cep,
+            'logradouro' => $request->logradouro,
+            'numero' => $request->numero,
+            'complemento' => $request->complemento,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            'estado' => $request->estado,
+        ]);
+
+        return redirect()->route('livewire.medico.registro.index');
     }
 
     /**
@@ -66,6 +114,7 @@ class MedicoController extends Controller
     public function edit(Medico $medico)
     {
         //
+
     }
 
     /**
@@ -74,6 +123,7 @@ class MedicoController extends Controller
     public function update(Request $request, Medico $medico)
     {
         //
+
     }
 
     /**
@@ -82,5 +132,6 @@ class MedicoController extends Controller
     public function destroy(Medico $medico)
     {
         //
+
     }
 }

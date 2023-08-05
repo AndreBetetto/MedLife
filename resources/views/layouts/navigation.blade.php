@@ -18,11 +18,10 @@
                     <x-nav-link :href="route('paciente.index')" :active="request()->routeIs('paciente.index')">
                         {{ __('Registro paciente') }}
                     </x-nav-link>
-                    @if([MedicoController::class] == false) 
-                        <x-nav-link :href="route('medico.index')" :active="request()->routeIs('medico.index')">
+                        <x-nav-link :href="route('medico.create')" :active="request()->routeIs('medico.create')">
                             {{ __('Registro médico') }}
                         </x-nav-link>
-                    @endif
+                    
                     @if([AdminIndex::class] == false)
                         <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                             {{ __('Admin') }}
