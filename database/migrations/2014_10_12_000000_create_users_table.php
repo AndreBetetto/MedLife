@@ -26,7 +26,7 @@ return new class extends Migration
                     'medico',
                     'funcionario'
                 ]
-            )->default('paciente');
+            )->default('user');
             $table->rememberToken();
             $table->timestamps();
         });

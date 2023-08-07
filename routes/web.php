@@ -7,7 +7,7 @@ use App\Http\Livewire\Paciente\Registro\Show as PacienteRegistro;
 use App\Http\Controllers\RegistropacienteController as RegistropacienteController;
 use App\Http\Controllers\MedicoController as MedicoController;
 use App\Http\Livewire\Admin\Index as AdminIndex;
-use App\Http\Controllers\ProfilePacienteController as ProfilePacienteController;
+use App\Http\Livewire\Paciente\Profile\Index as ProfilePacienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/profile', [ProfilePacienteController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfilePacienteController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfilePacienteController::class, 'destroy'])->name('profile.destroy');
  
 });
 
