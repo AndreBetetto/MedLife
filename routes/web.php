@@ -8,6 +8,7 @@ use App\Http\Controllers\RegistropacienteController as RegistropacienteControlle
 use App\Http\Controllers\MedicoController as MedicoController;
 use App\Http\Livewire\Admin\Index as AdminIndex;
 use App\Http\Livewire\Paciente\Profile\Index as ProfilePacienteController;
+use App\Http\Controllers\PacienteController as PacienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
- 
+    //rota paciente em profile
+    Route::post('/profilepaciente', [ProfilePacienteController::class, 'store'])->name('profilepaciente.store');
+    Route::get('/profilepaciente', [PacienteController::class, 'edit'])->name('profilepaciente.edit');
+    Route::patch('/profilepaciente', [PacienteController::class, 'update'])->name('profilepaciente.update');
+    Route::delete('/profilepaciente', [PacienteController::class, 'destroy'])->name('profilepaciente.destroy');
+    //rota medico em profile]
+    Route::post('/profilemedico', [MedicoRegistro::class, 'store'])->name('profilemedico.store');
+    Route::get('/profilemedico', [MedicoRegistro::class, 'edit'])->name('profilemedico.edit');
+    Route::patch('/profilemedico', [MedicoRegistro::class, 'update'])->name('profilemedico.update');
+    Route::delete('/profilemedico', [MedicoRegistro::class, 'destroy'])->name('profilemedico.destroy');
+
 });
 
 Route::middleware('auth')->group(function () {

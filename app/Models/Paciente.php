@@ -14,5 +14,16 @@ class Paciente extends Model
         'sobrenome',
         'user_id',
         'dataNasc',
+        'cpf',
+        'rg',
+        'sexo',
+        'fone',
+        'estadoCivil',
+        'profissao',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

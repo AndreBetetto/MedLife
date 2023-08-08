@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\patient;
 use Carbon\Carbon;
 use App\Models\UserEndereco;
+use App\Http\Requests\MedicoStoreRequest;
 
 class MedicoController extends Controller
 {
@@ -47,27 +48,9 @@ class MedicoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MedicoStoreRequest $request)
     {
-        $validatedData = $request->validate([
-            'nome' => 'required',
-            'sobrenome' => 'required',
-            'dataNasc' => 'required',
-            'sexo' => 'required',
-            'cpf' => 'required',
-            'rg' => 'required',
-            'fone' => 'required',
-            'estadoCivil' => 'required', //
-            'especialidade' => 'required',
-            'crm' => 'required',
-            'cep' => 'required',
-            'logradouro' => 'required',
-            'numero' => 'required',
-            'complemento' => 'required',
-            'bairro' => 'required',
-            'cidade' => 'required',
-            'estado' => 'required',
-        ]);
+        $validatedData = $request->validated();
 
         // dd($request->all());
         $medico = Medico::create([

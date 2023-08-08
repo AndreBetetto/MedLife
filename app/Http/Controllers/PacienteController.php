@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Paciente;
 use Illuminate\Http\Request;
+use App\Http\Requests\PacienteStoreRequest;
+use App\Models\User;
 
 class PacienteController extends Controller
 {
@@ -12,7 +14,9 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        //
+        $user  = User::where('id', auth()->user()->id)->first();
+        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        return view('livewire.paciente.profile.index', compact('user', 'paciente'));
     }
 
     /**
@@ -26,9 +30,10 @@ class PacienteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PacienteStoreRequest $request)
     {
-        //
+        Paciente::create($request->validated());
+        return redirect()->route('paciente.index');
     }
 
     /**
