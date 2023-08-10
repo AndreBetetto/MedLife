@@ -4,15 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PacienteStoreRequest extends FormRequest
+class PacienteEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *  @return bool
      */
-   
-
-
     public function authorize(): bool
     {
         return true;
@@ -37,6 +33,4 @@ class PacienteStoreRequest extends FormRequest
             'profissao' => 'required'
         ];
     }
-
-
 }
