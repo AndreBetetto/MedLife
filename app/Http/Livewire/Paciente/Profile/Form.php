@@ -62,10 +62,6 @@ class Form extends Component
             ]
         );
             
-
-        )
     }   
-
-
 
 }
