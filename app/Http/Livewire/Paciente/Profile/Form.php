@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Endereco;
 
+echo "<script>console.log('{ola}' );</script>";
+
 class Form extends Component
 {
 
