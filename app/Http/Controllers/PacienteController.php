@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PacienteEditRequest;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 use App\Http\Requests\PacienteStoreRequest;
@@ -32,8 +33,14 @@ class PacienteController extends Controller
      */
     public function store(PacienteStoreRequest $request)
     {
-        Paciente::create($request->validated());
-        return redirect()->route('paciente.index');
+        $data = $request->validated();
+        $data['user_id'] = auth()->user()->id;
+        //dd($data); //para testes
+        Paciente::create($data);
+
+        //Muda o role do usuario para paciente
+        User::where('id', auth()->user()->id)->update(['role' => 'paciente']);
+        return redirect()->route('profile.edit');
     }
 
     /**
@@ -47,9 +54,14 @@ class PacienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Paciente $paciente)
+    public function edit(PacienteEditRequest $paciente)
     {
         //
+        $data = $paciente->validated();
+        $data['user_id'] = auth()->user()->id;
+        //dd($data);
+        Paciente::edit($data);
+        return redirect()->route('profile.edit');
     }
 
     /**

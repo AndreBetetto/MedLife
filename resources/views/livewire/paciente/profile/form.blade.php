@@ -15,7 +15,7 @@
 
     {{-- Se usuario n tiver cadastro completo  --}}
     @if($user->role == "user")
-        <form action="{{ url('profilepaciente.store') }}" method="POST" class="mt-6 space-y-6">
+        <form action="{{ route('profilepaciente.store') }}" method="POST" enctype="multipart/form-data" class="mt-6 space-y-6">
             @csrf
             <div class="mt-11">
             </div>
@@ -24,12 +24,17 @@
                     {{-- Success is as dangerous as failure. --}}
                     {{-- In work, do what you enjoy. --}}
                     <div class="mt-11">
+                        <div>
+                            <x-text-input id="user_id" name="user_id" type="text" class="mt-1 block w-full" 
+                            value=" {{ $user->id }}"/>
+                        </div>
                             <div>
                                 <x-input-label for="nome" :value="__('Nome')" />
                                 <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" 
                                 />
                                 <x-input-error class="mt-2" :messages="$errors->get('nome')" />
                             </div>
+                            
 
                             <div>
                                 <x-input-label for="sobrenome" :value="__('Sobrenome')" />

@@ -7,8 +7,8 @@ use App\Http\Livewire\Paciente\Registro\Show as PacienteRegistro;
 use App\Http\Controllers\RegistropacienteController as RegistropacienteController;
 use App\Http\Controllers\MedicoController as MedicoController;
 use App\Http\Livewire\Admin\Index as AdminIndex;
-use App\Http\Livewire\Paciente\Profile\Index as ProfilePacienteController;
 use App\Http\Controllers\PacienteController as PacienteController;
+use App\Http\Controllers\EnderecoController as EnderecoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //rota paciente em profile
-    Route::post('/profilepaciente', [ProfilePacienteController::class, 'store'])->name('profilepaciente.store');
+    Route::post('/profilepaciente', [PacienteController::class, 'store'])->name('profilepaciente.store');
     Route::get('/profilepaciente', [PacienteController::class, 'edit'])->name('profilepaciente.edit');
     Route::patch('/profilepaciente', [PacienteController::class, 'update'])->name('profilepaciente.update');
     Route::delete('/profilepaciente', [PacienteController::class, 'destroy'])->name('profilepaciente.destroy');
@@ -47,7 +47,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profilemedico', [MedicoRegistro::class, 'edit'])->name('profilemedico.edit');
     Route::patch('/profilemedico', [MedicoRegistro::class, 'update'])->name('profilemedico.update');
     Route::delete('/profilemedico', [MedicoRegistro::class, 'destroy'])->name('profilemedico.destroy');
-
+    //Rota endereco em profile
+    Route::post('/profileendereco', [EnderecoController::class, 'store'])->name('profileendereco.store');
+    Route::get('/profileendereco', [EnderecoController::class, 'edit'])->name('profileendereco.edit');
+    Route::patch('/profileendereco', [EnderecoController::class, 'update'])->name('profileendereco.update');
+    Route::delete('/profileendereco', [EnderecoController::class, 'destroy'])->name('profileendereco.destroy');
 });
 
 Route::middleware('auth')->group(function () {
