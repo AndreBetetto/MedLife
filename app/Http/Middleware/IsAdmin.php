@@ -18,7 +18,7 @@ class IsAdmin
     {
         //Checa se usuário está autenticado
         if(Auth::check()){
-                $role = Auth::user()->tipo;
+                $role = Auth::user()->role;
             //Checa se usuário é admin
             if(!empty($role)) {
                 if($role == 'admin') {

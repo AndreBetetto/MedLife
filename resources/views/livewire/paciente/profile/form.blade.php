@@ -11,7 +11,6 @@
     </header>
 
     {{ $user->name }}
-    {{ $paciente->profissao }}
     <br>
 
     {{-- Se usuario n tiver cadastro completo  --}}
