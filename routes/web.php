@@ -6,7 +6,7 @@ use App\Http\Livewire\Medico\Registro\Show as MedicoRegistro;
 use App\Http\Livewire\Paciente\Registro\Show as PacienteRegistro;
 use App\Http\Controllers\RegistropacienteController as RegistropacienteController;
 use App\Http\Controllers\MedicoController as MedicoController;
-use App\Http\Livewire\Admin\Index as AdminIndex;
+use App\Http\Controllers\AdminController as AdminController;
 use App\Http\Controllers\PacienteController as PacienteController;
 use App\Http\Controllers\EnderecoController as EnderecoController;
 

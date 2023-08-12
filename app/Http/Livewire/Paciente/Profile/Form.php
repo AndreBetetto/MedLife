@@ -42,9 +42,8 @@ class Form extends Component
     public function render()
     {
         $user = User::find(Auth::user()->id);
-        $endereco = Endereco::where('user_id', Auth::user()->id)->first();
-        $paciente = Paciente::where('user_id', Auth::user()->id)->first();
-        return view('livewire.paciente.profile.form', compact('user', 'endereco', 'paciente'));
+        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        return view('livewire.paciente.profile.form', compact('user', 'paciente'));
     }
 
     public function salvarUser()
