@@ -21,3 +21,4 @@ class ProfileUpdateRequest extends FormRequest
         ];
     }
 }
+

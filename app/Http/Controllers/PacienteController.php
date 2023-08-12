@@ -7,6 +7,7 @@ use App\Models\Paciente;
 use Illuminate\Http\Request;
 use App\Http\Requests\PacienteStoreRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 
 class PacienteController extends Controller
 {
@@ -17,6 +18,7 @@ class PacienteController extends Controller
     {
         $user  = User::where('id', auth()->user()->id)->first();
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+
         return view('livewire.paciente.profile.index', compact('user', 'paciente'));
     }
 
@@ -57,20 +59,22 @@ class PacienteController extends Controller
     public function edit(PacienteEditRequest $paciente)
     {
         //
-        $data = $paciente->validated();
-        $data['user_id'] = auth()->user()->id;
-        //dd($data);
-        Paciente::edit($data);
-        return redirect()->route('profile.edit');
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Paciente $paciente)
+    public function update(PacienteEditRequest $request, Paciente $paciente) : RedirectResponse
     {
-        //
+
+        $data = $request->validated();
+        //dd($data); //para testes
+        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        $paciente->update($data);
+        return redirect()->route('profile.edit');
     }
+
 
     /**
      * Remove the specified resource from storage.
