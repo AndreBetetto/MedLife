@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PacienteStoreRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use App\Models\Medico;
 
 class PacienteController extends Controller
 {
@@ -20,6 +21,14 @@ class PacienteController extends Controller
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
 
         return view('livewire.paciente.profile.index', compact('user', 'paciente'));
+    }
+
+    public function areapaciente()
+    {
+        $user  = User::where('id', auth()->user()->id)->first();
+        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+
+        return view('livewire.paciente.area.index', compact('user', 'paciente'));
     }
 
     /**

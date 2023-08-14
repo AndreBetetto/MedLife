@@ -15,18 +15,17 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('paciente.index')" :active="request()->routeIs('paciente.index')">
-                        {{ __('Registro paciente') }}
-                    </x-nav-link>
-                        <x-nav-link :href="route('medico.create')" :active="request()->routeIs('medico.create')">
-                            {{ __('Registro médico') }}
-                        </x-nav-link>
-                    
-                    @if([AdminIndex::class] == true)
+                    @if( Auth::user()->role == 'admin')
                         <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                             {{ __('Admin') }}
                         </x-nav-link>
                     @endif
+                    @if( Auth::user()->role == 'paciente')
+                        <x-nav-link :href="route('areapaciente.index')" :active="request()->routeIs('areapaciente.index')">
+                            {{ __('Area do paciente') }}
+                        </x-nav-link>
+                    @endif
+        
                     <x-nav-link :href="route('medico.visual')" :active="request()->routeIs('medico.visual')">
                         {{ __('Ver médicos!') }}
                     </x-nav-link>
