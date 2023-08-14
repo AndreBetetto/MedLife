@@ -69,6 +69,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/medicovisual', [MedicoController::class, 'visual'])->name('medico.visual');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('/areapaciente', [PacienteController::class, 'areapaciente'])->name('areapaciente.index');
+});
+
 Route::middleware('IsMedico')->group(function () {
     Route::get('/medico', [MedicoController::class, 'areaMedico'])->name('areamedico.index');
     Route::get('/medico', [MedicoController::class, 'laudoView'])->name('medicoLaudo.index');
