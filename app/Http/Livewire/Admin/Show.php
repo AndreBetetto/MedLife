@@ -5,37 +5,31 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use App\Models\User;
 use App\Models\Medico;
-use App\Models\patient;
+use App\Models\Paciente;
 use Carbon\Carbon;
+use Livewire\WithPagination;
 
 
 class Show extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+    public $search = '';
+
+
     public function render()
-    {
-        $paciente = patient::all();
-        $user = User::all();
-        $medico = Medico::all();
-        return view('livewire.admin.show', compact('user', 'medico', 'paciente'));
+    {   
+        $users = User::where('name', 'LIKE', '%' . $this->search . '%') ->orWhere('email', 'LIKE', '%' . $this->search . '%') ->paginate(10);
+        $medicos = Medico::where('nome', 'LIKE', '%' . $this->search . '%') ->orWhere('crm', 'LIKE', '%' . $this->search . '%') ->paginate(10);
+        $pacientes = Paciente::where('nome', 'LIKE', '%' . $this->search . '%') ->orWhere('cpf', 'LIKE', '%' . $this->search . '%')->paginate(10) ;
+        $data = Carbon::now()->format('d/m/Y');
+        $hora = Carbon::now()->format('H:i:s');
+        return view('livewire.admin.show', compact('users', 'medicos', 'pacientes', 'data', 'hora'));
     }
 
-    public function destroyUser($id)
+    public function updated($fields)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
+        $this->validateOnly($fields);
     }
-
-    public function destroyMedico($id)
-    {
-        $medico = Medico::findOrFail($id);
-        $medico->delete();
-    }
-
-    public function destroyPaciente($id)
-    {
-        $paciente = patient::findOrFail($id);
-        $paciente->delete();
-    }
-
     
 }

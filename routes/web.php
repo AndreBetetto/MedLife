@@ -79,7 +79,7 @@ Route::middleware('IsMedico')->group(function () {
 });
 
 Route::middleware(['IsAdmin'])->group(function () {
-    Route::get('/admin', [AdminIndex::class, 'render'])->name('admin.index');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
 
 require __DIR__.'/auth.php';

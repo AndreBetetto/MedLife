@@ -12,7 +12,9 @@ class AdminController extends Controller
     //
     public function index()
     {
-
-        return view('livewire.admin.index');
+        $users = User::all();
+        $medicos = Medico::all();
+        $pacientes = Paciente::all();
+        return view('livewire.admin.index', compact('users', 'medicos', 'pacientes'));
     }
 }
