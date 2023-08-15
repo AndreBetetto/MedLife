@@ -7,15 +7,22 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body{
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body class=" bg-gray-50">
-<div class="fixed sm:flex sm:justify-center sm:items-center bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+<body class=" bg-purple-50">
+<!-- <div class="fixed sm:flex sm:justify-center sm:items-center bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-4 text-right z-10">
                     @auth
@@ -29,8 +36,9 @@
                     @endauth
                 </div>
             @endif
-</div>
-    <main class="px-20 mt-14">
+</div> -->
+        @include('layouts/header')
+    <main class="px-20">
         <section class="grid grid-cols-2 items-center pb-6">
             <div>
             <img class="mx-auto" src="doctorsHome.png" alt="Doutor e enfermeiros">
@@ -44,24 +52,24 @@
                 </div>
             </div>
         </section>
-        <section class="grid justify-items-center grid-cols-3  yx-6">
-        <div class="shadow-lg w-4/5 px-16 py-6 flex gap-4 flex-col items-center text-center">
+        <section class="grid justify-items-center grid-cols-3  py-8">
+        <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
             <img src="eficiencia.png" class="w-16" alt="">
                 <h3 class="text-3xl">Eficiência</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit amet officia aliquid quia consequatur error alias voluptate consequuntur nostrum. Quasi repellendus magni ex eligendi aperiam mollitia, amet rerum voluptatem! Adipisci?</p>
             </div>
-            <div class="shadow-lg w-4/5 px-16 py-6 flex gap-4 flex-col items-center text-center">
+            <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
             <img src="eficiencia.png" class="w-16" alt="">
                 <h3 class="text-3xl">Eficiência</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit amet officia aliquid quia consequatur error alias voluptate consequuntur nostrum. Quasi repellendus magni ex eligendi aperiam mollitia, amet rerum voluptatem! Adipisci?</p>
             </div>
-            <div class="shadow-lg w-4/5 px-16 py-6 flex gap-4 flex-col items-center text-center">
+            <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
             <img src="eficiencia.png" class="w-16" alt="">
                 <h3 class="text-3xl">Eficiência</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit amet officia aliquid quia consequatur error alias voluptate consequuntur nostrum. Quasi repellendus magni ex eligendi aperiam mollitia, amet rerum voluptatem! Adipisci?</p>
             </div>
         </section>
-        <section class="grid gap-10 grid-cols-2 items-center py-6">
+        <section class="grid gap-10 grid-cols-2 items-center py-8">
             <div>
                 <h2 class="text-5xl">Mas afinal,
                 <br>
@@ -69,32 +77,41 @@
                 </h2>
                 <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis eveniet aperiam voluptatibus incidunt accusamus modi excepturi quos impedit ipsum? Quae nulla consequuntur incidunt cupiditate in assumenda ipsam, reprehenderit doloribus deserunt.</p>
             </div>
-            <img class="w-full" src="{{URL::asset('/icone.svg')}}" alt="">
+            <img class="w-4/5 place-self-center" src="{{URL::asset('/icone.svg')}}" alt="">
         </section>
     </main>
-    <footer class="px-20 bg-purple-300 py-6 grid grid-cols-3">
-        <img class="w-full" src="{{URL::asset('/icone.svg')}}" alt="">
-        <div>
-            <ul class="h-full w-full items-center flex flex-col gap-6">
-                <li class="text-xl">Acesse</li>
-                <li class="text-xl">
-                    <a href="">Home</a>
-                </li>
-                <li class="text-xl">
-                    <a href="">Login</a>
-                </li>
-                <li class=  "text-xl">
-                    <a href="">Sobre nós</a>
-                </li>
-            </ul>
+    <footer class="px-20 bg-purple-300 py-8 ">
+        <div class="grid grid-cols-3">
+            <img class="w-4/5" src="{{URL::asset('/icone.svg')}}" alt="">
+            <div>
+                <ul class="h-full w-full items-center flex flex-col gap-6">
+                    <li class="text-xl">Acesse</li>
+                    <li class="text-xl">
+                        <a href="">Home</a>
+                    </li>
+                    <li class="text-xl">
+                        <a href="">Login</a>
+                    </li>
+                    <li class=  "text-xl">
+                        <a href="">Sobre nós</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="items-center flex flex-col gap-6">
+                <h2 class="text-xl">Contate-nos</h2>
+                <p class="align-middle"><span class="align-middle material-symbols-outlined">
+                    mail
+                    </span>
+                    email@email.com
+                </p>
+            </div>
+    
         </div>
-        <div class="items-center flex flex-col gap-">
-            <h2 class="text-xl">Contate-nos</h2>
-            <p class="align-middle"><span class="align-middle material-symbols-outlined">
-                mail
-                </span>
-                email@email.com
-            </p>
+        
+        <div class="my-8 w-full bg-black h-px">
+            </div>
+        <div class="w-full flex justify-end">
+            <p> Copyright © 2023 • MedLife Inc.</p>
         </div>
     </footer>
 </body>
