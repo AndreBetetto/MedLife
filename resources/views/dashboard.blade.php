@@ -22,7 +22,6 @@
                         <p>+55 14 99604-0283</p>
                         <p>(14) 3103-6150</p>
                     </div>
-                    <livewire:medico.visualizacao.show />
                 </div>
             </div>
         </div>
