@@ -8,6 +8,16 @@
         </div>
     </div>
 
+    Links tela admin:
+    <div>
+        <a href="{{ route('crudUser.index') }}">Usuarios</a>
+        <a href="{{ route('crudPaciente.index') }}">Pacientes</a>
+        <a href="{{ route('adminmedico.index') }}">Medicos</a>
+
+
+
+    </div>
+
     @if (session()->has('message'))
         <div>
             {{ session('message') }}

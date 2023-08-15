@@ -32,17 +32,7 @@ class MedicoStoreRequest extends FormRequest
             'estadoCivil' => 'required', //
             'especialidade' => 'required',
             'crm' => 'required',
-            'cep' => 'required',
-            'logradouro' => 'required',
-            'numero' => 'required',
-            'complemento' => 'required',
-            'bairro' => 'required',
-            'cidade' => 'required',
-            'estado' => 'required',
+            'user_id' => 'required',
         ];
     } 
-    public function messages()
-    {
-        
-    }
 }

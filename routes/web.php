@@ -79,7 +79,13 @@ Route::middleware('IsMedico')->group(function () {
 });
 
 Route::middleware(['IsAdmin'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin', [AdminController::class, 'index'])->name('areaadmin.index');
+    //
+    Route::get('/adminmedico', [AdminController::class, 'crudMedico'])->name('adminmedico.index');
+    Route::post('/adminmedico', [AdminController::class, 'crudMedicoAdd'])->name('adminmedico.store');
+
+    Route::get('/adminpaciente', [AdminController::class, 'crudPaciente'])->name('crudPaciente.index');
+    Route::get('/adminuser', [AdminController::class, 'crudUser'])->name('crudUser.index');
 });
 
 require __DIR__.'/auth.php';
