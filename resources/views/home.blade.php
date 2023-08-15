@@ -1,43 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <style>
-        body{
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
-</head>
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <style>
+            body{
+                font-family: 'Inter', sans-serif;
+            }
+        </style>
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
+    </head>
 <body class=" bg-purple-50">
-<!-- <div class="fixed sm:flex sm:justify-center sm:items-center bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-4 text-right z-10">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Registrar</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-</div> -->
-        @include('layouts/header')
+    @include('layouts.header')
     <main class="px-20">
         <section class="grid grid-cols-2 items-center pb-6">
             <div>
@@ -80,39 +65,6 @@
             <img class="w-4/5 place-self-center" src="{{URL::asset('/icone.svg')}}" alt="">
         </section>
     </main>
-    <footer class="px-20 bg-purple-300 py-8 ">
-        <div class="grid grid-cols-3">
-            <img class="w-4/5" src="{{URL::asset('/icone.svg')}}" alt="">
-            <div>
-                <ul class="h-full w-full items-center flex flex-col gap-6">
-                    <li class="text-xl">Acesse</li>
-                    <li class="text-xl">
-                        <a href="">Home</a>
-                    </li>
-                    <li class="text-xl">
-                        <a href="">Login</a>
-                    </li>
-                    <li class=  "text-xl">
-                        <a href="">Sobre nós</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="items-center flex flex-col gap-6">
-                <h2 class="text-xl">Contate-nos</h2>
-                <p class="align-middle"><span class="align-middle material-symbols-outlined">
-                    mail
-                    </span>
-                    email@email.com
-                </p>
-            </div>
-    
-        </div>
-        
-        <div class="my-8 w-full bg-black h-px">
-            </div>
-        <div class="w-full flex justify-end">
-            <p> Copyright © 2023 • MedLife Inc.</p>
-        </div>
-    </footer>
+    @include('layouts.footer')
 </body>
 </html>
