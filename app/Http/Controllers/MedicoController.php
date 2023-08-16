@@ -22,7 +22,7 @@ class MedicoController extends Controller
         return view('medico.registro.index', compact('row'));
     }
 
-    public function visual()
+    public function areamedico()
     {
         //
         $medico = Medico::all();
@@ -50,6 +50,7 @@ class MedicoController extends Controller
      */
     public function store(MedicoStoreRequest $request)
     {
+<<<<<<< HEAD
         $validatedData = $request->validated();
 
         // dd($request->all());
@@ -81,6 +82,9 @@ class MedicoController extends Controller
         ]);
 
         return redirect()->route('medico.registro.index');
+=======
+        
+>>>>>>> b5fa6c55e39f2a63a17789b220f3c3d17cbab3d6
     }
 
     /**

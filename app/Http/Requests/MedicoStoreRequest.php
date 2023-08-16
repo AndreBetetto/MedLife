@@ -8,6 +8,8 @@ class MedicoStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     * 
+     * @return bool
      */
     public function authorize(): bool
     {
@@ -32,7 +34,7 @@ class MedicoStoreRequest extends FormRequest
             'estadoCivil' => 'required', //
             'especialidade' => 'required',
             'crm' => 'required',
-            'user_id' => 'required',
+            'user_id' => 'required'
         ];
     } 
 }

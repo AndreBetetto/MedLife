@@ -41,11 +41,12 @@ class AdminController extends Controller
     public function crudMedicoAdd (MedicoStoreRequest $request)
     {
         $data = $request->validated();
+        //dd($data);
         Medico::create($data);
 
         //Muda o role do usuario para medico
         User::where('id', $data['user_id'])->update(['role' => 'medico']);
-        return redirect()->route('admin.crudMedico');
+        return redirect()->route('adminmedico.index');
     }
 
 }

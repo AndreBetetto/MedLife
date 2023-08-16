@@ -9,6 +9,7 @@ use App\Http\Controllers\MedicoController as MedicoController;
 use App\Http\Controllers\AdminController as AdminController;
 use App\Http\Controllers\PacienteController as PacienteController;
 use App\Http\Controllers\EnderecoController as EnderecoController;
+use App\Http\Middleware\medico;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,9 +71,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/areapaciente', [PacienteController::class, 'areapaciente'])->name('areapaciente.index');
 });
 
-Route::middleware('IsMedico')->group(function () {
-    Route::get('/medico', [MedicoController::class, 'areaMedico'])->name('areamedico.index');
-    Route::get('/medico', [MedicoController::class, 'laudoView'])->name('medicoLaudo.index');
+Route::middleware('medico')->group(function () {
+    Route::get('/areamedico', [MedicoController::class, 'areamedico'])->name('areamedico.index');
+    Route::get('/areamedico/consulta', [MedicoController::class, 'areamedicoconsulta'])->name('areamedico.consulta');
+    Route::get('/areamedico/consulta/create', [MedicoController::class, 'areamedicoconsultaCreate'])->name('areamedico.consulta.create');
+    Route::post('/areamedico/consulta/create', [MedicoController::class, 'areamedicoconsultaStore']);
+    Route::get('/areamedico/consulta/{id}/edit', [MedicoController::class, 'areamedicoconsultaEdit'])->name('areamedico.consulta.edit');
+    Route::patch('/areamedico/consulta/{id}/edit', [MedicoController::class, 'areamedicoconsultaUpdate']);
+    Route::delete('/areamedico/consulta/{id}/edit', [MedicoController::class, 'areamedicoconsultaDestroy'])->name('areamedico.consulta.destroy');
+    Route::get('/areamedico/consulta/{id}/show', [MedicoController::class, 'areamedicoconsultaShow'])->name('areamedico.consulta.show');
+
 });
 
 Route::middleware(['IsAdmin'])->group(function () {
