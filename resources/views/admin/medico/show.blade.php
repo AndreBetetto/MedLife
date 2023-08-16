@@ -27,15 +27,16 @@
                 crm:
                 <input type="number" id="crm" name="crm" ><br>
                 id_user:
-                <input type="number" id="user_id" name="crm" ><br>
+                <input type="number" id="user_id" name="user_id" ><br>
 
                 <input type="submit" value="Submit">
                 <input type="reset" value="Reset">
             </form>
+
         </div>
     <hr>
 
-    <table>
+    <table border="1" >
         <th> Medicos</th>
         <tr>
             <td>id</td>
@@ -56,11 +57,14 @@
             <td>{{$medicos->crm}}</td>
             <td>{{$medicos->sexo}}</td>
             <td>{{$medicos->especialidade}}</td>
+        </tr>
 
             @empty
+            <tr>
                 <td rowspan="7">sem registro</td>
+            </tr>
             @endforelse
-        </tr>
+        
     </table>
     
 </div>

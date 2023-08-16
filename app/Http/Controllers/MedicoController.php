@@ -19,22 +19,22 @@ class MedicoController extends Controller
     {
         //
         $row = User::where('id', auth()->user()->id)->first();
-        return view('livewire.medico.registro.index', compact('row'));
+        return view('medico.registro.index', compact('row'));
     }
 
-    public function visual()
+    public function areamedico()
     {
         //
         $medico = Medico::all();
         $row = User::where('id', auth()->user()->id)->first();
-        return view('livewire.medico.visualizacao.index', compact('row', 'medico'));
+        return view('medico.visualizacao.index', compact('row', 'medico'));
     }
 
     public function laudoView()
     {
         //
         $medico = Medico::where('user_id', auth()->user()->id)->first();
-        return view('livewire.medico.visualizacao.index', compact('medico'));
+        return view('medico.visualizacao.index', compact('medico'));
     }
 
     /**
@@ -42,7 +42,7 @@ class MedicoController extends Controller
      */
     public function create()
     {
-        return view(('livewire.medico.registro.index'));
+        return view(('medico.registro.index'));
     }
 
     /**
@@ -50,37 +50,7 @@ class MedicoController extends Controller
      */
     public function store(MedicoStoreRequest $request)
     {
-        $validatedData = $request->validated();
-
-        // dd($request->all());
-        $medico = Medico::create([
-            'nome' => $request->nome,
-            'sobrenome' => $request->sobrenome,
-            'user_id' => auth()->user()->id,
-            'dataNasc' => $request->dataNasc,
-            'sexo' => $request->sexo,
-            'cpf' => $request->cpf,
-            'rg' => $request->rg,
-            'fone' => $request->fone,
-            'estadoCivil' => $request->estadoCivil,
-            'especialidade' => $request->especialidade,
-            'crm' => $request->crm,
-            'primeiraConsulta' => Carbon::now(),
-            'ultimaConsulta' => Carbon::now(),
-        ]);
-
-        $endereco = UserEndereco::create([
-            'user_id' => auth()->user()->id,
-            'cep' => $request->cep,
-            'logradouro' => $request->logradouro,
-            'numero' => $request->numero,
-            'complemento' => $request->complemento,
-            'bairro' => $request->bairro,
-            'cidade' => $request->cidade,
-            'estado' => $request->estado,
-        ]);
-
-        return redirect()->route('livewire.medico.registro.index');
+        
     }
 
     /**

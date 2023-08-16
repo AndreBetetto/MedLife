@@ -20,6 +20,11 @@
                             {{ __('Admin') }}
                         </x-nav-link>
                     @endif
+                    @if( Auth::user()->role == 'medico')
+                        <x-nav-link :href="route('areamedico.index')" :active="request()->routeIs('areamedico.index')">
+                            {{ __('Area medico') }}
+                        </x-nav-link>
+                    @endif
                     @if( Auth::user()->role == 'paciente')
                         <x-nav-link :href="route('areapaciente.index')" :active="request()->routeIs('areapaciente.index')">
                             {{ __('Area do paciente') }}

@@ -20,7 +20,7 @@ class PacienteController extends Controller
         $user  = User::where('id', auth()->user()->id)->first();
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
 
-        return view('livewire.paciente.profile.index', compact('user', 'paciente'));
+        return view('paciente.profile.index', compact('user', 'paciente'));
     }
 
     public function areapaciente()
@@ -28,7 +28,7 @@ class PacienteController extends Controller
         $user  = User::where('id', auth()->user()->id)->first();
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
 
-        return view('livewire.paciente.area.index', compact('user', 'paciente'));
+        return view('paciente.area.index', compact('user', 'paciente'));
     }
 
     /**
