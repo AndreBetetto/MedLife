@@ -17,25 +17,25 @@ class AdminController extends Controller
         $users = User::all();
         $medicos = Medico::all();
         $pacientes = Paciente::all();
-        return view('livewire.admin.index', compact('users', 'medicos', 'pacientes'));
+        return view('admin.index', compact('users', 'medicos', 'pacientes'));
     }
 
     public function crudMedico ()
     {
         $medicos = Medico::all();
-        return view('livewire.admin.medico.index', compact('medicos'));
+        return view('admin.medico.index', compact('medicos'));
     }
 
     public function crudPaciente ()
     {
         $pacientes = Paciente::all();
-        return view('livewire.admin.paciente.index', compact('pacientes'));
+        return view('admin.paciente.index', compact('pacientes'));
     }
 
     public function crudUser ()
     {
         $users = User::all();
-        return view('livewire.admin.user.index', compact('users'));
+        return view('admin.user.index', compact('users'));
     }
 
     public function crudMedicoAdd (MedicoStoreRequest $request)
