@@ -23,14 +23,12 @@
     </head>
 <body class=" bg-purple-50">
     @include('layouts.header')
-    <main class="px-20">
+    <main class="px-20 py-12">
         <section class="grid grid-cols-2 items-center pb-6">
-            <div>
-            <img class="mx-auto" src="doctorsHome.png" alt="Doutor e enfermeiros">
-            </div>
+            <img class="w-11/12 place-self-center m-0" src="doctorsHome.png" alt="Doutor e enfermeiros">
             <div class="text-left flex flex-col gap-12" >
                 <h1 class="text-6xl">Otimize sua consulta com a nossa plataforma</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti hic quaerat totam ipsum veniam delectus omnis quos obcaecati, quae atque quam adipisci earum mollitia. Voluptas mollitia laudantium amet modi eius.</p>
+                <p>A aplicação do software em ambientes profissionais possibilita que haja um melhor atendimento das necessidades do paciente, promovendo consultas mais precisas e com maior acompanhamento do mesmo, evitando que dados importantes não sejam registrados.</p>
                 <div class="flex gap-10">
                     <a href="{{ route('login') }}" class="text-xl rounded-2xl px-8 py-2 w-max bg-violet-500 content-center gap-2 hover:bg-violet-600 hover:px-10 duration-200 ">Entrar <span class="align-middle material-symbols-outlined">arrow_right_alt</span></a>
                     <a href="{{ route('register') }}" class="text-xl rounded-2xl px-8 py-2 w-max bg-green-300 content-center gap-2 hover:bg-green-400 hover:px-10 duration-200">Fazer cadastro</a>
@@ -60,7 +58,7 @@
                 <br>
                 Por que usar a Medlife?
                 </h2>
-                <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis eveniet aperiam voluptatibus incidunt accusamus modi excepturi quos impedit ipsum? Quae nulla consequuntur incidunt cupiditate in assumenda ipsam, reprehenderit doloribus deserunt.</p>
+                <p class="text-justify">Para minimizar a demora ao recolher informações do paciente, as quais serão já disponibilizadas anteriormente à consulta, de forma que a torne mais rápida e eficiente, uma vez que o profissional terá acesso ao histórico diário de sintomas do paciente de forma precisa</p>
             </div>
             <img class="w-4/5 place-self-center" src="{{URL::asset('/icone.svg')}}" alt="">
         </section>

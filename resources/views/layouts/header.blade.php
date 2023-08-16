@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="py-4 fixed w-full bg-transparent backdrop-blur-[2px] h-20">
+<nav x-data="{ open: false }" class="py-4 fixed w-full bg-transparent backdrop-blur-[2px] shadow-md h-24">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img class="h-20" src="icone.svg" alt="">
+                        <img class="h-16" src="icone.svg" alt="">
                     </a>
                 </div>
 
