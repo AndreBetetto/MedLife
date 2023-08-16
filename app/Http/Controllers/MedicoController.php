@@ -19,22 +19,22 @@ class MedicoController extends Controller
     {
         //
         $row = User::where('id', auth()->user()->id)->first();
-        return view('livewire.medico.registro.index', compact('row'));
+        return view('medico.registro.index', compact('row'));
     }
 
-    public function visual()
+    public function areamedico()
     {
         //
         $medico = Medico::all();
         $row = User::where('id', auth()->user()->id)->first();
-        return view('livewire.medico.visualizacao.index', compact('row', 'medico'));
+        return view('medico.visualizacao.index', compact('row', 'medico'));
     }
 
     public function laudoView()
     {
         //
         $medico = Medico::where('user_id', auth()->user()->id)->first();
-        return view('livewire.medico.visualizacao.index', compact('medico'));
+        return view('medico.visualizacao.index', compact('medico'));
     }
 
     /**
@@ -42,7 +42,7 @@ class MedicoController extends Controller
      */
     public function create()
     {
-        return view(('livewire.medico.registro.index'));
+        return view(('medico.registro.index'));
     }
 
     /**
@@ -50,6 +50,7 @@ class MedicoController extends Controller
      */
     public function store(MedicoStoreRequest $request)
     {
+<<<<<<< HEAD
         $validatedData = $request->validated();
 
         // dd($request->all());
@@ -80,7 +81,10 @@ class MedicoController extends Controller
             'estado' => $request->estado,
         ]);
 
-        return redirect()->route('livewire.medico.registro.index');
+        return redirect()->route('medico.registro.index');
+=======
+        
+>>>>>>> b5fa6c55e39f2a63a17789b220f3c3d17cbab3d6
     }
 
     /**

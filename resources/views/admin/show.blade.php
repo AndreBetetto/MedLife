@@ -10,9 +10,9 @@
 
     Links tela admin:
     <div>
-        <a href="{{ route('crudUser.index') }}">Usuarios</a>
+        <a href="{{ route('crudUser.index') }}">Usuários</a>
         <a href="{{ route('crudPaciente.index') }}">Pacientes</a>
-        <a href="{{ route('adminmedico.index') }}">Medicos</a>
+        <a href="{{ route('adminmedico.index') }}">Médicos</a>
 
 
 
