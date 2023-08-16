@@ -20,7 +20,7 @@ class medico
             $role = Auth::user()->tipo;
         //Checa se usuário é admin
         if(!empty($role)) {
-            if($role == 'admin' || $role == 'medico') {
+            if($role == 'admin' ) {
                 //Sucesso, admin passa pra próxima rota
                 return $next($request);
             }

@@ -25,7 +25,7 @@ class MedicoController extends Controller
     public function areamedico()
     {
         //
-        $medico = Medico::all();
+        $medico = Medico::where('user_id', auth()->user()->id)->first();
         $row = User::where('id', auth()->user()->id)->first();
         return view('medico.visualizacao.index', compact('row', 'medico'));
     }
@@ -35,6 +35,11 @@ class MedicoController extends Controller
         //
         $medico = Medico::where('user_id', auth()->user()->id)->first();
         return view('medico.visualizacao.index', compact('medico'));
+    }
+
+    public function addpaciente()
+    {
+        
     }
 
     /**

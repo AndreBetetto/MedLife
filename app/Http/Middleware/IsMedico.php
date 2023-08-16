@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class IsMedico
@@ -15,6 +16,20 @@ class IsMedico
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if()
+        if(Auth::check())
+        {
+            $role = Auth::user()->role;
+            if(!empty($role)) {
+                if($role == 'admin' || $role == 'medico') {
+                    return $next($request);
+                }
+                else {
+                    return response('not allowed to take this action', 500);           
+                }
+            }
+        }
+        return response('not allowed to take this action', 500);
     }
+
 }
+

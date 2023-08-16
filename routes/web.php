@@ -9,7 +9,6 @@ use App\Http\Controllers\MedicoController as MedicoController;
 use App\Http\Controllers\AdminController as AdminController;
 use App\Http\Controllers\PacienteController as PacienteController;
 use App\Http\Controllers\EnderecoController as EnderecoController;
-use App\Http\Middleware\medico;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,9 +70,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/areapaciente', [PacienteController::class, 'areapaciente'])->name('areapaciente.index');
 });
 
-Route::middleware('medico')->group(function () {
+Route::middleware(['IsMedico'])->group(function () {
     Route::get('/areamedico', [MedicoController::class, 'areamedico'])->name('areamedico.index');
     Route::get('/areamedico/consulta', [MedicoController::class, 'areamedicoconsulta'])->name('areamedico.consulta');
+    Route::post('/areamedico/addpaciente', [MedicoController::class, 'addpaciente'])->name('areamedico.addpaciente');
+
     Route::get('/areamedico/consulta/create', [MedicoController::class, 'areamedicoconsultaCreate'])->name('areamedico.consulta.create');
     Route::post('/areamedico/consulta/create', [MedicoController::class, 'areamedicoconsultaStore']);
     Route::get('/areamedico/consulta/{id}/edit', [MedicoController::class, 'areamedicoconsultaEdit'])->name('areamedico.consulta.edit');

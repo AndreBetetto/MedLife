@@ -1,0 +1,17 @@
+-------------------
+Admin
+email: admin@gmail.com
+senha:eq173b189
+-------------------
+Medico
+email: drauzio@gmail.com
+senha:eq173b189
+-------------------
+Paciente
+email:
+senha:
+-------------------
+Funcionario
+email:
+senha:
+-------------------
