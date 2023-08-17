@@ -1,6 +1,8 @@
 <footer class="px-20 bg-purple-300 py-8 ">
   <div class="grid grid-cols-3">
-      <img class="w-4/5" src="{{URL::asset('/icone.svg')}}" alt="">
+    <a href="{{ route('dashboard') }}">
+        <img class="w-4/5" src="{{URL::asset('/icone.svg')}}" alt="">
+    </a>
       <div>
           <ul class="h-full w-full items-center flex flex-col gap-6">
               <li class="text-xl">Acesse</li>
