@@ -25,7 +25,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -39,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profilepaciente', [PacienteController::class, 'edit'])->name('profilepaciente.edit');
     Route::patch('/profilepaciente', [PacienteController::class, 'update'])->name('profilepaciente.update');
     Route::delete('/profilepaciente', [PacienteController::class, 'destroy'])->name('profilepaciente.destroy');
-    //rota medico em profile]
+    //rota medico em profile
     Route::post('/profilemedico', [MedicoRegistro::class, 'store'])->name('profilemedico.store');
     Route::get('/profilemedico', [MedicoRegistro::class, 'edit'])->name('profilemedico.edit');
     Route::patch('/profilemedico', [MedicoRegistro::class, 'update'])->name('profilemedico.update');

@@ -1,6 +1,6 @@
-<footer class="px-20 bg-purple-300 py-8 ">
+<footer class="px-20 bg-purple-300 py-12">
   <div class="grid grid-cols-3">
-    <a href="{{ route('dashboard') }}">
+    <a href="{{ URL::asset('/') }}">
         <img class="w-4/5" src="{{URL::asset('/icone.svg')}}" alt="">
     </a>
       <div>
