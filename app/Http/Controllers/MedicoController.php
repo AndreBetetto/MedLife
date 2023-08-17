@@ -55,7 +55,41 @@ class MedicoController extends Controller
      */
     public function store(MedicoStoreRequest $request)
     {
+<<<<<<< HEAD
+        $validatedData = $request->validated();
+
+        // dd($request->all());
+        $medico = Medico::create([
+            'nome' => $request->nome,
+            'sobrenome' => $request->sobrenome,
+            'user_id' => auth()->user()->id,
+            'dataNasc' => $request->dataNasc,
+            'sexo' => $request->sexo,
+            'cpf' => $request->cpf,
+            'rg' => $request->rg,
+            'fone' => $request->fone,
+            'estadoCivil' => $request->estadoCivil,
+            'especialidade' => $request->especialidade,
+            'crm' => $request->crm,
+            'primeiraConsulta' => Carbon::now(),
+            'ultimaConsulta' => Carbon::now(),
+        ]);
+
+        $endereco = UserEndereco::create([
+            'user_id' => auth()->user()->id,
+            'cep' => $request->cep,
+            'logradouro' => $request->logradouro,
+            'numero' => $request->numero,
+            'complemento' => $request->complemento,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            'estado' => $request->estado,
+        ]);
+
+        return redirect()->route('medico.registro.index');
+=======
         
+>>>>>>> b5fa6c55e39f2a63a17789b220f3c3d17cbab3d6
     }
 
     /**

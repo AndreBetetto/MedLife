@@ -1,5 +1,4 @@
 <div>    
-
     Nome: {{$row->name}}
     <br>
     Tipo: {{$row->tipo}}
