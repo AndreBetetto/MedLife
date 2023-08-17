@@ -34,11 +34,11 @@
                 </section>
                 <section class="grid gap-10 grid-cols-2 items-center py-48">
                     <div>
-                        <h2 class="text-5xl text-white">Mas afinal,
+                        <h2 class="text-5xl dark:text-white">Mas afinal,
                         <br>
                         Por que usar a Medlife?
                         </h2>
-                        <p class="text-justify text-slate-100">Para minimizar a demora ao recolher informações do paciente, as quais serão já disponibilizadas anteriormente à consulta, de forma que a torne mais rápida e eficiente, uma vez que o profissional terá acesso ao histórico diário de sintomas do paciente de forma precisa</p>
+                        <p class="text-justify dark:text-slate-100">Para minimizar a demora ao recolher informações do paciente, as quais serão já disponibilizadas anteriormente à consulta, de forma que a torne mais rápida e eficiente, uma vez que o profissional terá acesso ao histórico diário de sintomas do paciente de forma precisa</p>
                     </div>
                     <img class="w-4/5 place-self-center" src="{{URL::asset('/icone.svg')}}" alt="">
                 </section>
