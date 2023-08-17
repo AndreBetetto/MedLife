@@ -31,6 +31,14 @@ class PacienteController extends Controller
         return view('paciente.area.index', compact('user', 'paciente'));
     }
 
+    public function buscarMedicos()
+    {
+        $user  = User::where('id', auth()->user()->id)->first();
+        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        $medicos = Medico::all();
+        return view('paciente.buscarMedico.index', compact('user', 'paciente', 'medicos'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
