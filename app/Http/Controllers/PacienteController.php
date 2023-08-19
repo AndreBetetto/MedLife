@@ -11,6 +11,9 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\Medico;
 use App\Http\Requests\pacMedStore;
 use App\Models\PacienteMedico;
+use Illuminate\Support\Facades\Http;
+use App\Http\Requests\recomendaMedico;
+use GuzzleHttp\Client;
 
 class PacienteController extends Controller
 {
@@ -39,7 +42,9 @@ class PacienteController extends Controller
         $user  = User::where('id', auth()->user()->id)->first();
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
         $medicos = Medico::all();
-        return view('paciente.buscarMedico.index', compact('user', 'paciente', 'medicos', 'jaSelecionados'));
+        $specialty = null;
+
+        return view('paciente.buscarMedico.index', compact('user', 'paciente', 'medicos', 'jaSelecionados', 'specialty'));
     }
 
     public function meusMedicos()
@@ -47,8 +52,47 @@ class PacienteController extends Controller
         $user  = User::where('id', auth()->user()->id)->first();
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
         $medicos = Medico::all();
+        $specialty = null;
         $pacMeds = PacienteMedico::where('paciente_id', auth()->user()->id)->get();
-        return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos', 'pacMeds'));
+        return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos', 'pacMeds', 'specialty'));
+    }
+
+    protected $httpClient;
+    
+    public function __construct()
+    {
+        $this->httpClient = new Client([
+            'base_uri' => 'https://api.openai.com/v1/',
+            'headers' => [
+                'Authorization' => 'Bearer ' . env('OPENAI_API_KEY'),
+                'Content-Type' => 'application/json',
+            ],
+        ]);
+    }
+    
+    
+    public function recomendaMedico(recomendaMedico $request)
+    {
+        // Dados do formulário
+        $symptoms = $request->input('input');
+
+        // Configuração do cliente Guzzle
+        $message = "what is laravel";
+        $response = $this->httpClient->post('chat/completions', [
+            'json' => [
+                'model' => 'gpt-3.5-turbo',
+                'messages' => [
+                    ['role' => 'system', 'content' => 'You are'],
+                    ['role' => 'user', 'content' => $message],
+                ],
+            ],
+        ]);
+
+        return json_decode($response->getBody(), true)['choices'][0]['message']['content'];
+ 
+       // Redireciona para a view paciente.meusMedicos.index com a especialidade recomendada
+        //return redirect()->route('paciente.buscarmedico.index', ['specialty' => $result]);
+
     }
 
 
