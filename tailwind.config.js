@@ -16,6 +16,11 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                footerDark:{
+                    0: '#40176a',
+                },
+            },  
         },
     },
 

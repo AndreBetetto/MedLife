@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="py-4 fixed w-full bg-transparent backdrop-blur-[2px] shadow-md h-24">
+<nav x-data="{ open: false }" class="py-4 z-10 fixed w-full bg-transparent backdrop-blur-[2px] shadow-md h-24">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -11,7 +11,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="font-20 hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }}
                     </x-nav-link>

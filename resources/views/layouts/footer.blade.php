@@ -1,4 +1,4 @@
-<footer class="px-20 bg-purple-300 py-12">
+<footer class=" px-20 bg-purple-300 py-12 dark:bg-footerDark-0 dark:text-white">
   <div class="grid grid-cols-3">
     <a href="{{ URL::asset('/') }}">
         <img class="w-4/5" src="{{URL::asset('/icone.svg')}}" alt="">
@@ -28,7 +28,7 @@
 
   </div>
   
-  <div class="my-8 w-full bg-black h-px">
+  <div class="my-8 w-full bg-black h-px dark:bg-white">
       </div>
   <div class="w-full flex justify-end">
       <p> Copyright © 2023 • MedLife Inc.</p>
