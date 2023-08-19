@@ -68,7 +68,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/areapaciente', [PacienteController::class, 'areapaciente'])->name('areapaciente.index');
     Route::get('/areapaciente/buscar', [PacienteController::class, 'buscarMedicos'])->name('areapaciente.buscar');
-    Route::post('/areapaciente/store', [PacienteController::class, 'medicoPacienteCreate'])->name('areapaciente.store');
+    Route::post('/areapaciente/store', [PacienteController::class, 'pacienteMedicoCreate'])->name('areapaciente.store');
+    Route::get('/areapaciente/meusMedicos', [PacienteController::class, 'meusMedicos'])->name('areapaciente.meusMedicos');
 });
 
 Route::middleware(['IsMedico'])->group(function () {

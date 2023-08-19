@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Medico;
 use App\Http\Requests\pacMedStore;
+use App\Models\PacienteMedico;
 
 class PacienteController extends Controller
 {
@@ -34,10 +35,11 @@ class PacienteController extends Controller
 
     public function buscarMedicos()
     {
+        $jaSelecionados = PacienteMedico::where('paciente_id', auth()->user()->id)->get();
         $user  = User::where('id', auth()->user()->id)->first();
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
         $medicos = Medico::all();
-        return view('paciente.buscarMedico.index', compact('user', 'paciente', 'medicos'));
+        return view('paciente.buscarMedico.index', compact('user', 'paciente', 'medicos', 'jaSelecionados'));
     }
 
     public function meusMedicos()
@@ -45,8 +47,11 @@ class PacienteController extends Controller
         $user  = User::where('id', auth()->user()->id)->first();
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
         $medicos = Medico::all();
-        return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos'));
+        $pacMeds = PacienteMedico::where('paciente_id', auth()->user()->id)->get();
+        return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos', 'pacMeds'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -56,12 +61,12 @@ class PacienteController extends Controller
         //
     }
 
-    public function medicoPacienteCreate(pacMedStore $request)
+    public function pacienteMedicoCreate(pacMedStore $request)
     {
         $data = $request->validated();
-        dd($data); //para testes
-        //$paciente = Paciente::where('user_id', auth()->user()->id)->first();
-        //return redirect()->route('paciente.meusMedicos');
+        //dd($data); //para testes
+        $pacienteMedico = PacienteMedico::create($data);
+        return redirect()->route('areapaciente.meusMedicos');
     }
 
     /**
