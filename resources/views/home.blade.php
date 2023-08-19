@@ -22,7 +22,7 @@
                         <p class="dark:text-slate-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit amet officia aliquid quia consequatur error alias voluptate consequuntur nostrum. Quasi repellendus magni ex eligendi aperiam mollitia, amet rerum voluptatem! Adipisci?</p>
                     </div>
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
-                        <img src="eficiencia.svg" class="w-16" alt="">
+                        <img src="eficiencia.svg" class="w-16 fill-white" alt="">
                         <h3 class="text-3xl dark:text-white">Eficiência</h3>
                         <p class="dark:text-slate-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit amet officia aliquid quia consequatur error alias voluptate consequuntur nostrum. Quasi repellendus magni ex eligendi aperiam mollitia, amet rerum voluptatem! Adipisci?</p>
                     </div>
@@ -34,8 +34,8 @@
                 </section>
                 <section class="grid gap-10 grid-cols-2 items-center py-48">
                     <div>
-                        <h2 class="text-5xl dark:text-white">Mas afinal,
-                        <br>
+                        <h2 class="mb-12 text-5xl dark:text-white">Mas afinal,
+                            <br>
                         Por que usar a Medlife?
                         </h2>
                         <p class="text-justify dark:text-slate-100">Para minimizar a demora ao recolher informações do paciente, as quais serão já disponibilizadas anteriormente à consulta, de forma que a torne mais rápida e eficiente, uma vez que o profissional terá acesso ao histórico diário de sintomas do paciente de forma precisa</p>
