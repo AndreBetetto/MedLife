@@ -17,7 +17,13 @@
                 <td>{{ $medicos->sobrenome }}</td>
                 <td>{{ $medicos->especialidade }}</td>
                 <td>{{ $medicos->crm }}</td>
-                <td><a href="{{ route('areapaciente.buscar', $medicos->id) }}">Agendar</a></td>
+                <td> 
+                    <form action="{{ route('areapaciente.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="text" name="medico_id" id="medico_id" value="{{ $medicos->user_id }}">
+                        <button type="submit">Adicionar</button>
+                    </form> 
+                </td>
             </tr>
                 
             @empty

@@ -9,6 +9,7 @@ use App\Http\Requests\PacienteStoreRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Medico;
+use App\Http\Requests\pacMedStore;
 
 class PacienteController extends Controller
 {
@@ -39,12 +40,28 @@ class PacienteController extends Controller
         return view('paciente.buscarMedico.index', compact('user', 'paciente', 'medicos'));
     }
 
+    public function meusMedicos()
+    {
+        $user  = User::where('id', auth()->user()->id)->first();
+        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        $medicos = Medico::all();
+        return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         //
+    }
+
+    public function medicoPacienteCreate(pacMedStore $request)
+    {
+        $data = $request->validated();
+        dd($data); //para testes
+        //$paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        //return redirect()->route('paciente.meusMedicos');
     }
 
     /**
