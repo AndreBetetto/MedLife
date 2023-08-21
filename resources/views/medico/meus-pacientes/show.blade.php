@@ -17,7 +17,10 @@
                 <td> {{ $paciente->nome }} </td>
                 <td> {{ $paciente->sobrenome }} </td>
                 <td> 
-                    DETALHES
+                    <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $paciente->id]) }}" method="GET">
+                        @csrf
+                        <button type="submit">Criar formulario</button>
+                    </form>
                 </td>
             </tr>
                 @endif
