@@ -37,6 +37,14 @@ class MedicoController extends Controller
         return view('medico.visualizacao.index', compact('medico'));
     }
 
+    public function criarForms()
+    {
+        //
+        $medico = Medico::where('user_id', auth()->user()->id)->first();
+        $row = User::where('id', auth()->user()->id)->first();
+        return view('medico.forms_diario.index', compact('row', 'medico'));
+    }
+
     public function addpaciente()
     {
         
