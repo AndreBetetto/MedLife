@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    public function aboutUs(Request $request): View
+    function aboutUs()
     {
         return view('default-pages.aboutUs');
     }

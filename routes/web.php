@@ -25,9 +25,11 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::view('/aboutUS', function () {
-    return view('aboutUs');
-});
+// Route::view('/aboutUS', function () {
+//     return view('aboutUs');
+// });
+
+Route::get('/aboutUs', [PagesController::class, 'aboutUs'])->name('aboutUs');
 
 
 Route::get('/dashboard', function () {
