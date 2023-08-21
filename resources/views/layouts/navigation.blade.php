@@ -53,6 +53,8 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-switch-button></x-switch-button>
+                        
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Perfil') }}
                         </x-dropdown-link>
