@@ -54,8 +54,8 @@ class MedicoController extends Controller
         $user  = User::where('id', auth()->user()->id)->first();
         $medico = Medico::where('user_id', auth()->user()->id)->first();
         $pacientes = Paciente::all();
-        $pacMeds = PacienteMedico::where('paciente_id', auth()->user()->id)->get();
-        return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos', 'pacMeds', 'specialty'));
+        $pacMeds = PacienteMedico::where('medico_id', auth()->user()->id)->get();
+        return view('medico.meus-pacientes.index', compact('user', 'pacientes', 'medico', 'pacMeds'));
     }
 
     public function addpaciente()

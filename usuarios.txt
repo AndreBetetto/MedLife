@@ -4,7 +4,7 @@ email: admin@gmail.com
 senha:eq173b189
 -------------------
 Medico
-email: drauzio@gmail.com
+email: medico@gmail.com
 senha:eq173b189
 -------------------
 Paciente

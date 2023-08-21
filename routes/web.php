@@ -25,6 +25,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/sobrenos', function () {
+    return view('sobreNos');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -78,6 +82,7 @@ Route::middleware(['IsMedico'])->group(function () {
     Route::get('/areamedico/consulta', [MedicoController::class, 'areamedicoconsulta'])->name('areamedico.consulta');
     Route::post('/areamedico/addpaciente', [MedicoController::class, 'addpaciente'])->name('areamedico.addpaciente');
     Route::get('/areamedico/criarForms', [MedicoController::class, 'criarForms'])->name('areamedico.criarForms');
+    Route::get('/areamedico/meusPacientes', [MedicoController::class, 'meusPacientes'])->name('areamedico.meusPacientes');
 
     Route::get('/areamedico/consulta/create', [MedicoController::class, 'areamedicoconsultaCreate'])->name('areamedico.consulta.create');
     Route::post('/areamedico/consulta/create', [MedicoController::class, 'areamedicoconsultaStore']);

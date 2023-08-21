@@ -1,7 +1,7 @@
 <div>
     {{-- The whole world belongs to you. --}}
     <table>
-        <th>Medicos que tenho contato</th>
+        <th>Pacientes que tenho contato</th>
         <tr>
             <td>Nome</td>
             <td>Sobrenome</td>
@@ -12,7 +12,7 @@
                 $pacienteId = $paciente->id;
                 $isSelected = $pacMeds->contains('medico_id', $pacienteId);
             @endphp
-            @if ($isSelected)
+            @if (!$isSelected)
             <tr>
                 <td> {{ $paciente->nome }} </td>
                 <td> {{ $paciente->sobrenome }} </td>
