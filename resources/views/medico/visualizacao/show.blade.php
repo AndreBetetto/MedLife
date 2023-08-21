@@ -11,6 +11,11 @@
         Links:
         <a href=""></a>
 
+        <hr>
+        Parte de testes:
+        Formulario <a href="{{ route('areamedico.criarForms') }}">Aqui</a><br>
+        Meus pacientes: <a href="{{ route('areamedico.meusPacientes') }}">Aqui</a>
+
     </div>
 </div>
 
