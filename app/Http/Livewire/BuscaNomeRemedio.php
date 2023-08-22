@@ -58,4 +58,10 @@ class BuscaNomeRemedio extends Component
         //
         
     }
+
+    public $med;
+    public function addMedicine()
+    {
+
+    }
 }

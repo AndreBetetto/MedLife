@@ -14,12 +14,6 @@
         <label for="query">Search Medicine:</label>
         <input type="text" wire:model="query" wire:keyup="search">
     </div>
-    
-    
-
-    
-
-    
 
     @if($retorno != "")
         @php
@@ -32,18 +26,28 @@
             @endphp
 
             {{ $novoValor['content'][$count]['nomeProduto'] }}
-            {{ $novoValor['content'][$count]['idBulaPacienteProtegido'] }}
+            <br>
+            {{ $novoValor['content'][$count]['razaoSocial'] }}
 
             @php
+                $medicine = $novoValor['content'][$count]['nomeProduto'];
                 $id = $novoValor['content'][$count]['idBulaPacienteProtegido'];
                 $link =  'https://consultas.anvisa.gov.br/api/consulta/medicamentos/arquivo/bula/parecer/'.$id.'/?Authorization=';
+
+                $headers = get_headers($link);
+                $isValidUrl = strpos($headers[0], '200 OK') !== false;
+
+                $valorPpassar = $medicine . "@" . $link;
             @endphp
-            Link Download: <a href="{{ $link }}">Download</a>
-
-
-           
-                
-                
+            @if ($isValidUrl)
+                Link Download: <a href="{{ $link }}">Download</a>
+            @else
+                File not found or unavailable for download.
+            @endif
+            <br>
+            <button wire:click="addMedicine('{{ $medicine['link'] }}')">Copy Link</button>
+            <br>
+            <hr>
             <br>
         @endforeach
         
