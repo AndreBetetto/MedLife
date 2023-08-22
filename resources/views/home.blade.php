@@ -17,7 +17,7 @@
                 </section>
                 <section class="grid justify-items-center grid-cols-3 py-48">
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
-                        <img src="eficiencia.svg" class="w-16" alt="">
+                        <img src="eficiencia.svg" class="w-16 dark:fill-white" alt="">
                         <h3 class="text-3xl dark:text-white">Eficiência</h3>
                         <p class="dark:text-slate-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit amet officia aliquid quia consequatur error alias voluptate consequuntur nostrum. Quasi repellendus magni ex eligendi aperiam mollitia, amet rerum voluptatem! Adipisci?</p>
                     </div>
