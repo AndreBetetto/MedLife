@@ -9,6 +9,7 @@ use App\Http\Controllers\MedicoController as MedicoController;
 use App\Http\Controllers\AdminController as AdminController;
 use App\Http\Controllers\PacienteController as PacienteController;
 use App\Http\Controllers\EnderecoController as EnderecoController;
+use App\Http\Controllers\PagesController as PagesController;
 
 /*
 |--------------------------------------------------------------------------
