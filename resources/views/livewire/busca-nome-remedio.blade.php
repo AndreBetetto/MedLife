@@ -32,36 +32,16 @@
             @endphp
 
             {{ $novoValor['content'][$count]['nomeProduto'] }}
-            {{ $novoValor['content'][$count]['idProduto'] }}
             {{ $novoValor['content'][$count]['idBulaPacienteProtegido'] }}
-            
 
             @php
-                $entrada = json_encode($novoValor['content'][$count]['idBulaPacienteProtegido']);
-                $curl = curl_init();
-                curl_setopt_array($curl, array(
-                CURLOPT_URL => "https://bula.vercel.app/bula?id=".$entrada,
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => "",
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 30,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => "GET"
-                ));
-
-                $response = curl_exec($curl);
-                $err = curl_error($curl);
-
-                curl_close($curl);
-
-                if ($err) {
-                    echo "cURL Error #:" . $err;
-                } else {
-                    //echo "<a href='".$response."'>LINKDOWNLOAD</a>";
-                    echo $response;
-                }
-
+                $id = $novoValor['content'][$count]['idBulaPacienteProtegido'];
+                $link =  'https://consultas.anvisa.gov.br/api/consulta/medicamentos/arquivo/bula/parecer/'.$id.'/?Authorization=';
             @endphp
+            Link Download: <a href="{{ $link }}">Download</a>
+
+
+           
                 
                 
             <br>
