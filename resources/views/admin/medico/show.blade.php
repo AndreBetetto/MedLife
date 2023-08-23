@@ -1,7 +1,5 @@
-<div>
-    {{-- In work, do what you enjoy. --}}
-    <hr>
-        COLOCAR ESSA BOMBA EM MODAL no botao add medico
+<x-form-modal>
+    <div>
         <div>
             <form action="{{ route('adminmedico.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -37,34 +35,33 @@
                 <x-primary-button>{{ __('Submit') }}</x-primary-button>
                 <x-primary-button>{{ __('Reset') }}</x-primary-button>
             </form>
-
         </div>
-    <hr>
-    <table border="1" >
-        <th> Médicos</th>
+    </div>
+</x-form-modal>
+<table border="1" >
+    <th> Médicos</th>
+    <tr>
+        <td>ID</td>
+        <td>Nome</td>
+        <td>Sobrenome</td>
+        <td>Telefone</td>
+        <td>CRM</td>
+        <td>Sexo</td>
+        <td>Especialidade</td>
+    </tr>
+    <tr>
+        @forelse ($medicos as $medicos)
+        <td>{{$medicos->id}}</td>
+        <td>{{$medicos->nome}}</td>
+        <td>{{$medicos->sobrenome}}</td>
+        <td>{{$medicos->fone}}</td>
+        <td>{{$medicos->crm}}</td>
+        <td>{{$medicos->sexo}}</td>
+        <td>{{$medicos->especialidade}}</td>
+    </tr>
+        @empty
         <tr>
-            <td>ID</td>
-            <td>Nome</td>
-            <td>Sobrenome</td>
-            <td>Telefone</td>
-            <td>CRM</td>
-            <td>Sexo</td>
-            <td>Especialidade</td>
+            <td rowspan="7">Sem registro</td>
         </tr>
-        <tr>
-            @forelse ($medicos as $medicos)
-            <td>{{$medicos->id}}</td>
-            <td>{{$medicos->nome}}</td>
-            <td>{{$medicos->sobrenome}}</td>
-            <td>{{$medicos->fone}}</td>
-            <td>{{$medicos->crm}}</td>
-            <td>{{$medicos->sexo}}</td>
-            <td>{{$medicos->especialidade}}</td>
-        </tr>
-            @empty
-            <tr>
-                <td rowspan="7">Sem registro</td>
-            </tr>
-            @endforelse
-    </table>
-</div>
+        @endforelse
+</table>

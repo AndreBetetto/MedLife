@@ -36,7 +36,7 @@
                     <div>
                         <h2 class="mb-12 text-5xl dark:text-white">Mas afinal,
                             <br>
-                        Por que usar a Medlife?
+                            Por que usar a Medlife?
                         </h2>
                         <p class="text-justify dark:text-slate-100">Para minimizar a demora ao recolher informações do paciente, as quais serão já disponibilizadas anteriormente à consulta, de forma que a torne mais rápida e eficiente, uma vez que o profissional terá acesso ao histórico diário de sintomas do paciente de forma precisa</p>
                     </div>

@@ -7,6 +7,7 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './node_modules/tw-elements/dist/js/**/*.js'
     ],
 
     darkMode: 'class',
@@ -20,9 +21,14 @@ export default {
                 footerDark:{
                     0: '#391C60',
                 },
-            },  
+            },
         },
     },
+    
+    important: true,  
 
-    plugins: [forms],
+    plugins: [
+        forms,
+        require("tw-elements/dist/plugin.cjs")
+    ],
 };
