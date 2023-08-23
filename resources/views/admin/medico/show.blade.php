@@ -4,7 +4,7 @@
             <form action="{{ route('adminmedico.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="grid grid-cols-2">
-                    <div class="flex flex-col bg-red-400">
+                    <div class="flex flex-col">
                         <label>Nome:</label>
                         <label>Sobrenome:</label>
                         <label>Data de nascimento:</label>
