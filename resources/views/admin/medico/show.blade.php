@@ -3,37 +3,67 @@
         <div>
             <form action="{{ route('adminmedico.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="grid grid-cols-2">
-                    <div class="flex flex-col">
-                        <label>Nome:</label>
-                        <label>Sobrenome:</label>
-                        <label>Data de nascimento:</label>
-                        <label>Sexo:</label>
-                        <label>CPF:</label>
-                        <label>RG:</label>
-                        <label>Telefone:</label>
-                        <label>Estado civil:</label>
-                        <label>Especialidade:</label>
-                        <label>CRM:</label>
-                        <label>Id:</label>
-                    </div>
-                    <div class="flex flex-col">
-                        <input type="text" id="nome" name="nome">
-                        <input type="text" id="sobrenome" name="sobrenome">
-                        <input type="date" id="dataNasc" name="dataNasc">
-                        <input type="text" id="sexo" name="sexo">
-                        <input type="number" id="cpf" name="cpf">
-                        <input type="number" id="rg" name="rg">
-                        <input type="number" id="fone" name="fone">
-                        <input type="text" id=" estadoCivil" name="estadoCivil">
-                        <input type="text" id="especialidade" name="especialidade">
-                        <input type="number" id="crm" name="crm">
-                        <input type="number" id="user_id" name="user_id">
-                    </div>
+
+                <div>
+                    <x-input-label for="nome" :value="__('Nome')" />
+                    <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full"  required autofocus />
+                    <x-input-error class="mt-2" :messages="$errors->get('nome')" />
+                </div>
+                <div>
+                    <x-input-label for="sobrenome" :value="__('Sobrenome')" />
+                    <x-text-input id="sobrenome" name="sobrenome" type="text" class="mt-1 block w-full" required autofocus />
+                    <x-input-error class="mt-2" :messages="$errors->get('sobrenome')" />
+                </div>
+                <div>
+                    <x-input-label for="dataNasc" :value="__('Data de Nascimento')" />
+                    <x-text-input id="dataNasc" name="dataNasc" type="text" class="mt-1 block w-full" required autofocus />
+                    <x-input-error class="mt-2" :messages="$errors->get('dataNasc')" />
+                </div>
+                <div>
+                    <x-input-label for="sexo" :value="__('Sexo')" />
+                    <x-text-input id="sexo" name="sexo" type="text" class="mt-1 block w-full" required autofocus />
+                    <x-input-error class="mt-2" :messages="$errors->get('sexo')" />
+                </div>
+                <div>
+                    <x-input-label for="rg" :value="__('RG')" />
+                    <x-text-input id="rg" name="rg" type="text" class="mt-1 block w-full" required autofocus />
+                    <x-input-error class="mt-2" :messages="$errors->get('rg')" />
+                </div>
+                <div>
+                    <x-input-label for="cpf" :value="__('CPF')" />
+                    <x-text-input id="cpf" name="cpf" type="text" class="mt-1 block w-full" required autofocus />
+                    <x-input-error class="mt-2" :messages="$errors->get('cpf')" />
+                </div>
+                <div>
+                    <x-input-label for="fone" :value="__('Telefone')" />
+                    <x-text-input id="fone" name="fone" type="text" class="mt-1 block w-full" required autofocus />
+                    <x-input-error class="mt-2" :messages="$errors->get('fone')" />
+                </div>
+                <div>
+                    <x-input-label for="estadoCivil" :value="__('Estado Civil')" />
+                    <x-text-input id="estadoCivil" name="estadoCivil" type="text" class="mt-1 block w-full" required autofocus />
+                    <x-input-error class="mt-2" :messages="$errors->get('estadoCivil')" />
+                </div>
+                <div>
+                    <x-input-label for="especialidade" :value="__('Especialidade')" />
+                    <x-text-input id="especialidade" name="especialidade" type="text" class="mt-1 block w-full" required autofocus />
+                    <x-input-error class="mt-2" :messages="$errors->get('especialidade')" />
+                </div>
+                <div>
+                    <x-input-label for="crm" :value="__('CRM')" />
+                    <x-text-input id="crm" name="crm" type="text" class="mt-1 block w-full" required autofocus />
+                    <x-input-error class="mt-2" :messages="$errors->get('crm')" />
+                </div>
+                <div>
+                    <x-input-label for="user_id" :value="__('ID')" />
+                    <x-text-input id="user_id" name="user_id" type="text" class="mt-1 block w-full" required autofocus />
+                    <x-input-error class="mt-2" :messages="$errors->get('user_id')" />
                 </div>
                 
-                <x-primary-button>{{ __('Submit') }}</x-primary-button>
-                <x-primary-button>{{ __('Reset') }}</x-primary-button>
+                <div class="flex items-center gap-4 mt-4">
+                    <x-primary-button>{{ __('Submit') }}</x-primary-button>
+                    <x-primary-button>{{ __('Reset') }}</x-primary-button>
+                </div>
             </form>
         </div>
     </div>
