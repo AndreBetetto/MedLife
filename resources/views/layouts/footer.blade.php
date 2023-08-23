@@ -7,13 +7,19 @@
           <ul class="h-full w-full items-center flex flex-col gap-6">
               <li class="text-xl">Acesse</li>
               <li class="text-xl">
-                  <a href="">Home</a>
+                <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                    {{ __('Home') }}
+                </x-nav-link>
               </li>
               <li class="text-xl">
-                  <a href="">Login</a>
+                <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                    {{ __('Login') }}
+                </x-nav-link>
               </li>
               <li class=  "text-xl">
-                  <a href="">Sobre nós</a>
+                <x-nav-link :href="route('aboutUs')" :active="request()->routeIs('aboutUs')">
+                    {{ __('Sobre nós') }}
+                </x-nav-link>
               </li>
           </ul>
       </div>

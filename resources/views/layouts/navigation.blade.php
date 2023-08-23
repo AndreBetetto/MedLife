@@ -22,12 +22,12 @@
                     @endif
                     @if( Auth::user()->role == 'medico')
                         <x-nav-link :href="route('areamedico.index')" :active="request()->routeIs('areamedico.index')">
-                            {{ __('Area medico') }}
+                            {{ __('Área médico') }}
                         </x-nav-link>
                     @endif
                     @if( Auth::user()->role == 'paciente')
                         <x-nav-link :href="route('areapaciente.index')" :active="request()->routeIs('areapaciente.index')">
-                            {{ __('Area do paciente') }}
+                            {{ __('Área do paciente') }}
                         </x-nav-link>
                     @endif
         
@@ -53,6 +53,7 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-switch-button></x-switch-button>
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Perfil') }}
                         </x-dropdown-link>

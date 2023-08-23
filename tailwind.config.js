@@ -40,8 +40,8 @@ export default {
                 },
 
                 footerDark:{
-                    0: '#40176a',
-                },  
+                    0: '#391C60',
+                },
             },  
         },
     },
