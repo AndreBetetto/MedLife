@@ -22,13 +22,6 @@ use App\Http\Controllers\PagesController as PagesController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
-
-// Route::view('/aboutUS', function () {
-//     return view('aboutUs');
-// });
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('/benefit', [PagesController::class, 'benefit'])->name('benefit');

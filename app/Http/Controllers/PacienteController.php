@@ -20,6 +20,15 @@ class PacienteController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function aareConsulta()
+    {
+        $user  = User::where('id', auth()->user()->id)->first();
+        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+
+        return view('paciente.areaConsulta.detalhes', compact('user', 'paciente'));
+    }
+
     public function index()
     {
         $user  = User::where('id', auth()->user()->id)->first();
