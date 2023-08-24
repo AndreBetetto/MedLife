@@ -3,7 +3,5 @@
 
     @livewire('busca-nome-remedio')
 
-    
-    
-
+    <br>
 </div>

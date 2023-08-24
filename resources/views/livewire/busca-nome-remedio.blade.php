@@ -28,6 +28,8 @@
             {{ $novoValor['content'][$count]['nomeProduto'] }}
             <br>
             {{ $novoValor['content'][$count]['razaoSocial'] }}
+            <br>
+            <h3>{{ $novoValor['content'][$count]['idBulaPacienteProtegido'] }}</h3>
 
             @php
                 $medicine = $novoValor['content'][$count]['nomeProduto'];
@@ -39,19 +41,22 @@
 
                 $valorPpassar = $medicine . "@" . $link;
             @endphp
+
+            <button> </button>
             <br>
+            {{--v
             @if ($isValidUrl)
                 Link Download: <a href="{{ $link }}">Download @svg('bi-file-pdf-fill') </a>
             @else
                 File not found or unavailable for download.
             @endif
-            <br>
-            <br>
-            <hr>
-            <br>
+            --}}
         @endforeach
         
     @else
         <p>No results!</p>
     @endif
+
+
+
 </div>
