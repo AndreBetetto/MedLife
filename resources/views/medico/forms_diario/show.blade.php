@@ -1,5 +1,5 @@
 @include('layouts.head')
-@include('layouts.header')
+
 <div>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <h2 class="text-xl font-semibold leading-tight text-gray-800">
