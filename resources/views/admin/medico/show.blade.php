@@ -78,40 +78,40 @@
                                 </div>
                                 
                                 <div class="flex items-center gap-4 mt-4">
-                                    <x-primary-button>{{ __('Submit') }}</x-primary-button>
-                                    <x-primary-button>{{ __('Reset') }}</x-primary-button>
+                                    <x-primary-button type="submit">{{ __('Submit') }}</x-primary-button>
+                                    <x-primary-button type="reset">{{ __('Reset') }}</x-primary-button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </x-form-modal>
-                <table border="1" >
-                    <th> Médicos</th>
-                    <tr>
-                        <td>ID</td>
-                        <td>Nome</td>
-                        <td>Sobrenome</td>
-                        <td>Telefone</td>
-                        <td>CRM</td>
-                        <td>Sexo</td>
-                        <td>Especialidade</td>
-                    </tr>
-                    <tr>
-                        @forelse ($medicos as $medicos)
-                        <td>{{$medicos->id}}</td>
-                        <td>{{$medicos->nome}}</td>
-                        <td>{{$medicos->sobrenome}}</td>
-                        <td>{{$medicos->fone}}</td>
-                        <td>{{$medicos->crm}}</td>
-                        <td>{{$medicos->sexo}}</td>
-                        <td>{{$medicos->especialidade}}</td>
-                    </tr>
+                <div>
+                    <span> Médicos</span>
+                    <div class="grid grid-cols-small-table border border-black">
+                        <span class="border-x border-black">ID</span>
+                        <span class="border-x border-black">Nome</span>
+                        <span class="border-x border-black">Sobrenome</span>
+                        <span class="border-x border-black">Telefone</span>
+                        <span class="border-x border-black">CRM</span>
+                        <span class="border-x border-black">Sexo</span>
+                        <span class="border-x border-black">Especialidade</span>
+                    </div>
+                    @forelse ($medicos as $medicos)
+                        <div class="grid grid-cols-small-table border border-black">
+                            <span class="border-x border-black">{{$medicos->id}}</span>
+                            <span class="border-x border-black">{{$medicos->nome}}</span>
+                            <span class="border-x border-black">{{$medicos->sobrenome}}</span>
+                            <span class="border-x border-black">{{$medicos->fone}}</span>
+                            <span class="border-x border-black">{{$medicos->crm}}</span>
+                            <span class="border-x border-black">{{$medicos->sexo}}</span>
+                            <span class="border-x border-black">{{$medicos->especialidade}}</span>
+                        </div>
                     @empty
-                        <tr>
-                            <td rowspan="7">Sem registro</td>
-                        </tr>
+                        <div>
+                            <span>Sem regisdivo</span>
+                        </div>
                     @endforelse
-                </table>
+                </div>
             </div>
         </div>
     </div>

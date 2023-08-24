@@ -6,7 +6,7 @@
             @include('layouts.header')
 
             <!-- Page Content -->
-            <main>
+            <main class="py-20">
                 {{ $slot }}
             </main>
         </div>
