@@ -12,24 +12,49 @@
 
                 <!-- Navigation Links -->
                 <div class="font-20 hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Home') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('benefit')" :active="request()->routeIs('benefit')">
-                        {{ __('Benefícios') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('values')" :active="request()->routeIs('values')">
-                        {{ __('Valores') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('medico.create')" :active="request()->routeIs('medico.create')">
-                        {{ __('Médicos') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('contactUs')" :active="request()->routeIs('contactUs')">
-                        {{ __('Contatos') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('aboutUs')" :active="request()->routeIs('aboutUs')">
-                        {{ __('Sobre nós') }}
-                    </x-nav-link>
+                    @if(Auth::check() == false)
+                        <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                            {{ __('Home') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('benefit')" :active="request()->routeIs('benefit')">
+                            {{ __('Benefícios') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('values')" :active="request()->routeIs('values')">
+                            {{ __('Valores') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('medico.create')" :active="request()->routeIs('medico.create')">
+                            {{ __('Médicos') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('contactUs')" :active="request()->routeIs('contactUs')">
+                            {{ __('Contatos') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('aboutUs')" :active="request()->routeIs('aboutUs')">
+                            {{ __('Sobre nós') }}
+                        </x-nav-link>
+                    @endif
+                    @if(Auth::check())
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                        @if( Auth::user()->role == 'admin')
+                            <x-nav-link :href="route('areaadmin.index')" :active="request()->routeIs('areaadmin.index')">
+                                {{ __('Admin') }}
+                            </x-nav-link>
+                        @endif
+                        @if( Auth::user()->role == 'medico')
+                            <x-nav-link :href="route('areamedico.index')" :active="request()->routeIs('areamedico.index')">
+                                {{ __('Área médico') }}
+                            </x-nav-link>
+                        @endif
+                        @if( Auth::user()->role == 'paciente')
+                            <x-nav-link :href="route('areapaciente.index')" :active="request()->routeIs('areapaciente.index')">
+                                {{ __('Área do paciente') }}
+                            </x-nav-link>
+                        @endif
+                        <x-nav-link :href="route('medico.visual')" :active="request()->routeIs('medico.visual')">
+                            {{ __('Ver médicos!') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -47,6 +72,20 @@
                     </x-slot>
                     <x-slot name="content">
                         <x-switch-button></x-switch-button>
+                        <x-dropdown-link :href="route('profile.edit')">
+                            {{ __('Perfil') }}
+                        </x-dropdown-link>
+
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Sair') }}
+                            </x-dropdown-link>
+                        </form>
                     </x-slot>
                 </x-dropdown>
             </div>
@@ -78,7 +117,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -88,7 +127,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Sair') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

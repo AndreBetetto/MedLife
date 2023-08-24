@@ -25,22 +25,22 @@
                     <div>
                         <div>
                             <span> Usuários </span>
-                            <div class="grid grid-cols-6 bg-blue-100 border border-indigo-600">
-                                <span class="border-x border-indigo-600">ID</span>
-                                <span class="border-x border-indigo-600">Nome</span>
-                                <span class="border-x border-indigo-600">Email</span>
-                                <span class="border-x border-indigo-600">Tipo</span>
-                                <span class="border-x border-indigo-600">Criado em:</span>
-                                <span class="border-x border-indigo-600">Atualizado em:</span>
+                            <div class="grid grid-cols-table bg-slate-500 border border-black">
+                                <span class="border-x border-black">ID</span>
+                                <span class="border-x border-black">Nome</span>
+                                <span class="border-x border-black">Email</span>
+                                <span class="border-x border-black">Tipo</span>
+                                <span class="border-x border-black">Criado em:</span>
+                                <span class="border-x border-black">Atualizado em:</span>
                             </div>
                         </div>
                         @forelse ($users as $users)
-                            <div class="grid grid-cols-6 border border-indigo-600">{{ $users->id }}</label>
-                                <span class="border-x border-indigo-600"> {{ $users->name }} </span>
-                                <span class="border-x border-indigo-600"> {{ $users->email }} </span>
-                                <span class="border-x border-indigo-600"> {{ $users->tipo }} </span>
-                                <span class="border-x border-indigo-600"> {{ $users->created_at }} </span>
-                                <span class="border-x border-indigo-600"> {{ $users->updated_at }} </span>
+                            <div class="grid grid-cols-[50px_300px_250px_120px_200px_200px] border border-black">{{ $users->id }}</label>
+                                <span class="border-x border-black"> {{ $users->name }} </span>
+                                <span class="border-x border-black"> {{ $users->email }} </span>
+                                <span class="border-x border-black"> {{ $users->tipo }} </span>
+                                <span class="border-x border-black"> {{ $users->created_at }} </span>
+                                <span class="border-x border-black"> {{ $users->updated_at }} </span>
                             </div>
                         @empty
                             <div>
@@ -53,23 +53,23 @@
                 <div> {{-- Div paciente --}}
                     <div>
                         <span> Pacientes </span>
-                        <div>
-                            <span> ID </span>
-                            <span> Nome </span>
-                            <span> CPF </span>
-                            <span> Data de nascimento </span>
-                            <span> Telefone </span>
-                            <span> Sexo </span>
-                            <span> Opções </span>
+                        <div class="grid grid-cols-large-table border border-black">
+                            <span class="border-x border-black"> ID </span>
+                            <span class="border-x border-black"> Nome </span>
+                            <span class="border-x border-black"> CPF </span>
+                            <span class="border-x border-black"> Data de nascimento </span>
+                            <span class="border-x border-black"> Telefone </span>
+                            <span class="border-x border-black"> Sexo </span>
+                            <span class="border-x border-black"> Opções </span>
                         </div>
                         @forelse ($pacientes as $pacientes)
-                            <div>
-                                <span> {{ $pacientes->id }} </span>
-                                <span> {{ $pacientes->name }} </span>
-                                <span> {{ $pacientes->cpf }} </span>
-                                <span> {{ $pacientes->data_nasc }} </span>
-                                <span> {{ $pacientes->telefone }} </span>
-                                <span> {{ $pacientes->sexo }} </span>
+                            <div class="grid grid-cols-large-table border border-black">
+                                <span class="border-x border-black"> {{ $pacientes->id }} </span>
+                                <span class="border-x border-black"> {{ $pacientes->name }} </span>
+                                <span class="border-x border-black"> {{ $pacientes->cpf }} </span>
+                                <span class="border-x border-black"> {{ $pacientes->data_nasc }} </span>
+                                <span class="border-x border-black"> {{ $pacientes->telefone }} </span>
+                                <span class="border-x border-black"> {{ $pacientes->sexo }} </span>
                                 <div> 
                                     <button wire:click="edit({{ $pacientes->id }})"> Editar </button>
                                     <button wire:click="delete({{ $pacientes->id }})"> Deletar </button>

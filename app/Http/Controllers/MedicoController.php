@@ -16,27 +16,26 @@ use GuzzleHttp\Client;
 
 class MedicoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
         $row = User::where('id', auth()->user()->id)->first();
         return view('medico.registro.index', compact('row'));
     }
 
     public function areamedico()
     {
-        //
         $medico = Medico::where('user_id', auth()->user()->id)->first();
         $row = User::where('id', auth()->user()->id)->first();
         return view('medico.visualizacao.index', compact('row', 'medico'));
     }
 
+    public function visual()
+    {
+        return 0;
+    }
+
     public function laudoView()
     {
-        //
         $medico = Medico::where('user_id', auth()->user()->id)->first();
         return view('medico.visualizacao.index', compact('medico'));
     }

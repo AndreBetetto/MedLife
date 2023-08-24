@@ -44,6 +44,12 @@ export default {
                     0: '#391C60',
                 },
             },
+            gridTemplateColumns: {
+                '16': 'repeat(16, minmax(0, 1fr))',
+                'table': '50px 300px 250px 120px 200px 200px',
+                'large-table': '50px 300px 250px 120px 200px 100px 99px',
+                'small-table': '50px 175px 175px 200px 150px 150px 220px'
+              }
         },
     },
     
