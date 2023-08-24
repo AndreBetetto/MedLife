@@ -1,23 +1,179 @@
-<div class="max-w-sm w-full lg:max-w-full lg:flex">
-  <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/img/card-left.jpg')" title="Woman holding a mug">
-  </div>
-  <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-    <div class="mb-8">
-      <p class="text-sm text-gray-600 flex items-center">
-        <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-          <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-        </svg>
-        Members only
+<!DOCTYPE html>
+<html lang="en" class="dark">
+    @include('layouts.head')
+    <body class=" bg-purple-50 dark:bg-slate-800">
+        @include('layouts.header')
+<br> <br>
+        <section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">NOSSA EQUIPE</font>
+        </font>
+      </h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">O projeto foi desenvolvido pelos alunos do Colégio Técnico Industrial Prof. Isaac Portal Roldan (CTI - UNESP) como um Trabalho de Conclusão de Curso (TCC), visando a aplicação prática dos conhecimentos adquiridos durante o curso. </font>
+          <font style="vertical-align: inherit;"></font>
+        </font>
       </p>
-      <div class="text-gray-900 font-bold text-xl mb-2">Can coffee make you a better developer?</div>
-      <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
     </div>
-    <div class="flex items-center">
-      <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg" alt="Avatar of Jonathan Reinink">
-      <div class="text-sm">
-        <p class="text-gray-900 leading-none">Jonathan Reinink</p>
-        <p class="text-gray-600">Aug 18</p>
+
+    <div class="flex flex-wrap -m-4">
+      <div class="p-4 lg:w-1/2">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left mx-20">
+          <img alt="equipe" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 " src="https://dummyimage.com/200x200">
+          <div class="flex-grow sm:pl-8">
+            <h2 class="title-font font-medium text-lg text-gray-900">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">André Luis Oliveira Betetto</font>
+              </font>
+            </h2>
+            <h3 class="text-gray-500 mb-3">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Desenvolvedor web</font>
+              </font>
+            </h3>
+            <p class="mb-4">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">andre.betetto@unesp.br</font>
+              </font>
+            </p>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class="p-4 lg:w-1/2">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left mx-20">
+          <img alt="equipe" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 " src="https://dummyimage.com/201x201">
+          <div class="flex-grow sm:pl-8">
+            <h2 class="title-font font-medium text-lg text-gray-900">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Gabriela de Lima</font>
+              </font>
+            </h2>
+            <h3 class="text-gray-500 mb-3">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Desenvolvedora web</font>
+              </font>
+            </h3>
+            <p class="mb-4">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">gabriele.lima05@unesp.br</font>
+              </font>
+            </p>
+            
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="p-4 lg:w-1/2">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left mx-20">
+          <img alt="equipe" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 " src="https://dummyimage.com/204x204">
+          <div class="flex-grow sm:pl-8">
+            <h2 class="title-font font-medium text-lg text-gray-900">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Maria Luísa Eid Martins</font>
+              </font>
+            </h2>
+            <h3 class="text-gray-500 mb-3">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Desenvolvedora web</font>
+              </font>
+            </h3>
+            <p class="mb-4">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">luisa.eid@unesp.br</font>
+              </font>
+            </p>
+            
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="p-4 lg:w-1/2">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left mx-20">
+          <img alt="equipe" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 " src="https://dummyimage.com/206x206">
+          <div class="flex-grow sm:pl-8">
+            <h2 class="title-font font-medium text-lg text-gray-900">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Miguel de Oliveira Correia</font>
+              </font>
+            </h2>
+            <h3 class="text-gray-500 mb-3">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Desenvolvedor web</font>
+              </font>
+            </h3>
+            <p class="mb-4">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">mo.correia@unesp.br</font>
+              </font>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="p-4 lg:w-1/2">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left mx-20">
+          <img alt="equipe" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 " src="https://dummyimage.com/200x200">
+          <div class="flex-grow sm:pl-8">
+            <h2 class="title-font font-medium text-lg text-gray-900">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Naydhow Roberto Mascareli Bertaglia</font>
+              </font>
+            </h2>
+            <h3 class="text-gray-500 mb-3">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Líder técnico</font>
+              </font>
+            </h3>
+            <p class="mb-4">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">naydhow.bertaglia@unesp.br</font>
+              </font>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="p-4 lg:w-1/2">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left mx-20">
+          <img alt="equipe" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 " src="https://dummyimage.com/201x201">
+          <div class="flex-grow sm:pl-8">
+            <h2 class="title-font font-medium text-lg text-gray-900">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Vitória Vieira da Silva </font>
+              </font>
+            </h2>
+            <h3 class="text-gray-500 mb-3">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Líder gerencial</font>
+              </font>
+            </h3>
+            <p class="mb-4">
+              <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">vitoria.vieira@unesp.br</font>
+              </font>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+
+</section>
+
+</body>
+</html>
