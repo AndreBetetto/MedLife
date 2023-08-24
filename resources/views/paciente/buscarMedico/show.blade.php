@@ -3,13 +3,7 @@
     <div>
         <div>
             Gostaria de uma recomendation?
-            <form action="{{ route('areapaciente.recomenda') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                Digite aqui seus sintomas:
-                <input type="textbox" name="input">
-                <button type="submit">Pegar recomendacao!</button>
-            </form> 
-            Recoemnda: {{ $specialty }}}
+            @livewire('recomenda-medico', ['paciente' => $paciente])
         </div>
         
 
