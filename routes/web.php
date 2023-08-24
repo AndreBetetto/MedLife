@@ -35,6 +35,7 @@ Route::get('/benefit', [PagesController::class, 'benefit'])->name('benefit');
 Route::get('/values', [PagesController::class, 'values'])->name('values');
 Route::get('/contactUs', [PagesController::class, 'contactUs'])->name('contactUs');
 Route::get('/aboutUs', [PagesController::class, 'aboutUs'])->name('aboutUs');
+Route::get('/sobreNos', [PagesController::class, 'sobreNos'])->name('sobreNos');
 
 
 Route::get('/dashboard', function () {

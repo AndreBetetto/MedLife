@@ -30,4 +30,9 @@ class PagesController extends Controller
     {
         return view('default-pages.aboutUs');
     }
+
+    public function sobreNos()
+    {
+        return view('sobreNos');
+    }
 }
