@@ -39,6 +39,30 @@ function onThemeSwitcherItemClick(event) {
   }
 };
 
+// const userTheme = localStorage.getItem("theme");
+// console.log(userTheme);
+// const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+// console.log(systemTheme);
+
+// const themeCheck = () => {
+//   if(userTheme === "dark" || (!userTheme && systemTheme)) {
+//     document.documentElement.classList.add("dark");
+//     return;
+//   }
+// };
+
+// const themeSwitch = () => {
+//   if(document.documentElement.classList.contains("dark")) {
+//     document.documentElement.classList.remove("dark");
+//     localStorage.setItem("theme", "light");
+//     return;
+//   }
+//   document.documentElement.classList.add("dark");
+//   localStorage.setItem("theme", "dark");
+// };
+
+// themeCheck();
+
 const themeSwitcherItems = document.querySelectorAll("#theme-switcher");
 themeSwitcherItems.forEach((item) => {
   item.addEventListener("click", onThemeSwitcherItemClick);
