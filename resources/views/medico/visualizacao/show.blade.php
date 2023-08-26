@@ -1,6 +1,6 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
-    <div class="lm-3">
+    <div class="lm-3 ">
         <br>Suas informacoes:
         <br>------------------
         <br>Nome: {{ $medico->nome }}
@@ -15,7 +15,6 @@
         Parte de testes:
         Formulario <a href="{{ route('areamedico.criarForms') }}">Aqui</a><br>
         Meus pacientes: <a href="{{ route('areamedico.meusPacientes') }}">Aqui</a>
-
     </div>
 </div>
 
