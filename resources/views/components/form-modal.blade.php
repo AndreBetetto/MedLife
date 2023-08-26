@@ -64,7 +64,7 @@
           data-te-modal-dismiss
           data-te-ripple-init
           data-te-ripple-color="light">
-          Close
+          Fechar
         </button>
       </div>
     </div>

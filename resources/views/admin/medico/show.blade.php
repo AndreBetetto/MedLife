@@ -78,8 +78,8 @@
                                 </div>
                                 
                                 <div class="flex items-center gap-4 mt-4">
-                                    <x-primary-button type="submit">{{ __('Submit') }}</x-primary-button>
-                                    <x-primary-button type="reset">{{ __('Reset') }}</x-primary-button>
+                                    <x-primary-button type="submit">{{ __('Enviar') }}</x-primary-button>
+                                    <x-primary-button type="reset">{{ __('Limpar') }}</x-primary-button>
                                 </div>
                             </form>
                         </div>
@@ -87,10 +87,10 @@
                 </x-form-modal>
                 <div>
                     <span> Médicos</span>
-                    <div class="grid grid-cols-small-table border border-black">
-                        <span class="border-x border-black">ID</span>
-                        <span class="border-x border-black">Nome</span>
+                    <div class="grid grid-cols-small-table bg-slate-500 border border-black">
+                        <span class="border-x border-black text-center">ID</span>
                         <span class="border-x border-black">Sobrenome</span>
+                        <span class="border-x border-black">Nome</span>
                         <span class="border-x border-black">Telefone</span>
                         <span class="border-x border-black">CRM</span>
                         <span class="border-x border-black">Sexo</span>
@@ -98,9 +98,9 @@
                     </div>
                     @forelse ($medicos as $medicos)
                         <div class="grid grid-cols-small-table border border-black">
-                            <span class="border-x border-black">{{$medicos->id}}</span>
-                            <span class="border-x border-black">{{$medicos->nome}}</span>
+                            <span class="border-x border-black text-center">{{$medicos->id}}</span>
                             <span class="border-x border-black">{{$medicos->sobrenome}}</span>
+                            <span class="border-x border-black">{{$medicos->nome}}</span>
                             <span class="border-x border-black">{{$medicos->fone}}</span>
                             <span class="border-x border-black">{{$medicos->crm}}</span>
                             <span class="border-x border-black">{{$medicos->sexo}}</span>
