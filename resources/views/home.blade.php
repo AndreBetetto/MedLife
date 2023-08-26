@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     @include('layouts.head')
-    <body x-cloak x-data="{darkMode: $persist(false)}" :class="{'dark': darkMode === true }" class="antialiased" class=" bg-purple-50 dark:bg-slate-800">
+    <body x-cloak x-data="{darkMode: $persist(false)}" :class="{'dark': darkMode === true }" class="bg-purple-50 dark:bg-slate-800 antialiased">
         @include('layouts.header')
             <main class="px-20 py-12">
                 <section class="grid grid-cols-2 items-center pb-12 pt-12">
