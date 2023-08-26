@@ -20,42 +20,56 @@
             $novoValor = json_decode($retorno, true);
             $count = 0;
         @endphp
-        @foreach ($novoValor as $items)
-            @php
-                $count++;
-            @endphp
+        <ul>
+            @foreach ($novoValor as $items)
+                @php
+                    $count++;
+                    $nomeProduto = $novoValor['content'][$count]['nomeProduto'];
+                    $razaoSocial = $novoValor['content'][$count]['razaoSocial'];
+                    $idMed = $novoValor['content'][$count]['idBulaPacienteProtegido'];
+                @endphp
 
-            {{ $novoValor['content'][$count]['nomeProduto'] }}
-            <br>
-            {{ $novoValor['content'][$count]['razaoSocial'] }}
-            <br>
-            <h3>{{ $novoValor['content'][$count]['idBulaPacienteProtegido'] }}</h3>
+                {{ $nomeProduto }} - 
+                {{ $razaoSocial }} - 
+                <li>
+                    <input type="checkbox" wire:model="updateSelectedMed" value="{{ $idMed }}">
+                </li>
+                {{ $novoValor['content'][$count]['idBulaPacienteProtegido'] }}
 
-            @php
-                $medicine = $novoValor['content'][$count]['nomeProduto'];
-                $id = $novoValor['content'][$count]['idBulaPacienteProtegido'];
-                $link =  'https://consultas.anvisa.gov.br/api/consulta/medicamentos/arquivo/bula/parecer/'.$id.'/?Authorization=';
+                @php
+                    $medicine = $novoValor['content'][$count]['nomeProduto'];
+                    $id = $novoValor['content'][$count]['idBulaPacienteProtegido'];
+                    $link =  'https://consultas.anvisa.gov.br/api/consulta/medicamentos/arquivo/bula/parecer/'.$id.'/?Authorization=';
 
-                $headers = get_headers($link);
-                $isValidUrl = strpos($headers[0], '200 OK') !== false;
+                    $headers = get_headers($link);
+                    $isValidUrl = strpos($headers[0], '200 OK') !== false;
+                    $valorPpassar = $medicine . "@" . $link;
+                    $idMed = $novoValor['content'][$count]['idBulaPacienteProtegido'];
+                    
+                @endphp
 
-                $valorPpassar = $medicine . "@" . $link;
-            @endphp
+                <br>
+                {{--v
+                @if ($isValidUrl)
+                    Link Download: <a href="{{ $link }}">Download @svg('bi-file-pdf-fill') </a>
+                @else
+                    File not found or unavailable for download.
+                @endif
+                --}}
+            @endforeach
+        </ul>
 
-            <button> </button>
-            <br>
-            {{--v
-            @if ($isValidUrl)
-                Link Download: <a href="{{ $link }}">Download @svg('bi-file-pdf-fill') </a>
-            @else
-                File not found or unavailable for download.
-            @endif
-            --}}
-        @endforeach
+        <br>
+        @if($medArray != "")
+            <textarea readonly>{{ implode(', ', $medArray) }}</textarea>
+        @endif
+
         
     @else
         <p>No results!</p>
     @endif
+
+
 
 
 

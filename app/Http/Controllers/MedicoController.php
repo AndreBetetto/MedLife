@@ -12,7 +12,8 @@ use App\Http\Requests\MedicoStoreRequest;
 use App\Models\Paciente;
 use App\Models\PacienteMedico;
 use GuzzleHttp\Client;
-
+use App\Http\Requests\RemedioStore;
+use App\Models\medicamentos;
 
 class MedicoController extends Controller
 {
@@ -124,9 +125,17 @@ class MedicoController extends Controller
         $apiBula = $saida;
     }
 
-    public function addpaciente()
+    public function modificarForm()
     {
         
+    }
+
+    public function adicionarMedicamento(RemedioStore $request)
+    {
+        $data = $request->validated();
+        dd($data); //para testes
+        //$remedio = medicamentos::create($data);
+        //return redirect()->route('areamedico.index');
     }
 
     /**

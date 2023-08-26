@@ -14,9 +14,9 @@ class BuscaNomeRemedio extends Component
 
     public $query = '';
     public $retorno;
-    public $bulaPDF;
-    public $teste = '';
     public $search;
+    public $medArray = [];
+
     protected $queryString = ['search'];
 
     public function search()
@@ -48,20 +48,15 @@ class BuscaNomeRemedio extends Component
             $saida =  $response;
             
         }
-        
         $retorno = $saida;
-        $nomeProduto = [];
-        
         $this->retorno = $retorno;
-        //
-        //
-        //
-        
+
     }
 
     public $med;
-    public function addMedicine()
+    public function updateSelectedMed()
     {
-
+        $medArray = $this->medArray;
+        $this->$medArray = array_unique($this->$medArray);
     }
 }
