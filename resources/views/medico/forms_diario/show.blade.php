@@ -1,10 +1,13 @@
 @include('layouts.head')
 
 <div>
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <h2 class="text-xl font-semibold leading-tight text-gray-800">
-        Informações Pós-Operatório
-    </h2><br>
+    <div class="w-full text-center justify-center items-center">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            Informações Pós-Operatório
+        </h2><br>
+    </div>
 
     <form class="w-full">
         <div class="grid grid-cols-2 items-center  w-full -mx-3 mb-6">
@@ -46,14 +49,14 @@
         </div>
         
         <div class="w-full flex flex-col items-center">
-            <div class="w-full md:w-max px-3 mb-6 md:mb-0">
+            <div class="w-full md:w-max px-20 mb-6 md:mb-0 mr-auto">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Dia
                 </label>
                 <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled id="grid-last-name" type="text">
             </div>
 
-            <div class="w-full md:w-max px-3 mb-6 md:mb-0">
+            <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Grau de dor                    
                 </label>
@@ -100,7 +103,7 @@
                     </div>
             </div><br>
     
-            <div class="w-full md:w-max px-3 mb-6 md:mb-0">
+            <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Grau de Sangramento
                 </label>
@@ -126,16 +129,16 @@
                 </label><br>
             </div>
 
-            <div class="w-full md:w-max px-3 mb-6 md:mb-0">
+            <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     <br><br>Febre
                     <div id="test-slider">
                         <input type="range" min="0" max="100" />
                     </div>
-                </label> <br>
+                </label><br>
             </div>
 
-            <div class="w-full md:w-max px-3 mb-6 md:mb-0">
+            <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Outros sintomas
                 </label>
@@ -148,37 +151,64 @@
 
         <div class="flex flex-wrap -mx-3 mb-6 items-center">
             <div class="w-full px-3 text-center">
-                <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center">
+                <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center -mt-12">
                     <br>Medicamentos
                 </h2><br>
             </div>
             
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
-                Dipirona&nbsp; &nbsp;
-                <label>
-                    <input type="checkbox" class=""/>
-                    <span>08h</span> &nbsp; &nbsp;
+            <div class="w-full text-center justify-center items-center">
+                <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
+                    Dipirona&nbsp; &nbsp;
+                    <label>
+                        <input type="checkbox" class=""/>
+                        <span>08h</span> &nbsp; &nbsp;
+                    </label>
 
-                    <input type="checkbox" />
-                    <span>10h</span>&nbsp; &nbsp;
+                    <label>
+                        <input type="checkbox" class=""/>
+                        <span>10h</span>&nbsp; &nbsp;
+                    </label>
 
-                    <input type="checkbox" />
-                    <span>12h</span>&nbsp; &nbsp;
-                </label>
-            </label>
-
-           
+                    <label>
+                        <input type="checkbox" class=""/>
+                        <span>12h</span>&nbsp; &nbsp;
+                    </label>
+                </div>
+            </div>  
         </div>
 
-        <div class="flex flex-wrap -mx-3 mb-6 justify-center items-center">
-            <div class="w-full px-3 text-center">
-                <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center">
+        <div class="flex flex-wrap -mx-3 mb-6 ">
+            <div class="w-full px-3 text-center justify-center items-center">
+                <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center mt-4">
                     <br>Curativos
                 </h2><br>
             </div>
+
+            <div class="w-full text-center justify-center items-center">
+                <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10 justify-center items-center" for="grid-last-name">
+                    Higienizar&nbsp; &nbsp;
+                    <label>
+                        <input type="checkbox" class=""/>
+                        <span>08h</span> &nbsp; &nbsp;
+                    </label>
+
+                    <label>
+                        <input type="checkbox" class=""/>
+                        <span>16h</span>&nbsp; &nbsp;
+                    </label>
+
+                    <label>
+                        <input type="checkbox" class=""/>
+                        <span>22h</span>&nbsp; &nbsp;
+                    </label>
+                </div>
+            </div>
+            
+            <button class="mt-12 flex-shrink-0 bg-purple-300 border-purple-300 text-sm border-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 py-1 px-2 rounded ml-auto" type="button">
+                Enviar Dados
+            </button>
         </div>
     </div>
-
     </form>
 </div>
 
