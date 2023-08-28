@@ -88,7 +88,7 @@ Route::middleware(['IsMedico'])->group(function () {
     Route::get('/areamedico/criarForms', [MedicoController::class, 'criarForms'])->name('areamedico.criarForms');
     Route::get('/areamedico/meusPacientes', [MedicoController::class, 'meusPacientes'])->name('areamedico.meusPacientes');
     Route::get('/areamedico/meusPacientes/{id}', [MedicoController::class, 'addForms'])->name('areamedico.meusPacientescriarForm');
-    Route::get('/areamendico/adicionarMedicamento', [MedicoController::class, 'adicionarMedicamento'])->name('areamedico.adicionarMedicamento');
+    Route::post('/areamendico/adicionarMedicamento', [MedicoController::class, 'adicionarMedicamento'])->name('areamedico.adicionarMedicamento');
 
     Route::post('/areamedico/meusPacientes/{id}', [MedicoController::class, 'addFormsStore'])->name('areamedico.meusPacientescriarFormStore');
 

@@ -46,7 +46,7 @@ class MedicoController extends Controller
         //Sera deletado e implementado em addForm
         $medico = Medico::where('user_id', auth()->user()->id)->first();
         $row = User::where('id', auth()->user()->id)->first();
-        return view('medico.forms_diario.index', compact('row', 'medico'));
+        return view('medico.forms_diario.index', compact('row', 'medico', 'pegaID'));
     }
 
     public function meusPacientes()
@@ -133,9 +133,9 @@ class MedicoController extends Controller
     public function adicionarMedicamento(RemedioStore $request)
     {
         $data = $request->validated();
-        dd($data); //para testes
-        //$remedio = medicamentos::create($data);
-        //return redirect()->route('areamedico.index');
+        //dd($data); //para testes
+        medicamentos::create($data);
+        return redirect()->route('areamedico.index');
     }
 
     /**

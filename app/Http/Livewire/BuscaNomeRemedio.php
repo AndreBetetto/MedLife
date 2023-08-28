@@ -12,6 +12,8 @@ class BuscaNomeRemedio extends Component
         return view('livewire.busca-nome-remedio', compact('remedios'));
     }
 
+    public $row;
+    public $medico;
     public $query = '';
     public $retorno;
     public $search;

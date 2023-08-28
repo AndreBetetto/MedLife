@@ -1,5 +1,30 @@
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
+    <div>
+        <form action="{{ route('areamedico.adicionarMedicamento')}}" method='POST' enctype="multipart/form-data">
+            @csrf
+
+            ID paciente:
+            <input type="text" name='pacienteID' value="{{ $row->id }}">
+            <br>
+            ID medico
+            <input type="text" name="medicoID" value="{{$medico->id}}">
+            <br>
+            <input type="hidden" name='idBulaProtegida' value="idBulaPaciente">
+            Nome do medicamento:
+            <input type='text' name='nome' placeholder='Nome do medicamento' required>
+            <br>
+            Laboratorio:
+            <input type='text' name='razaoSocial' placeholder='Laboratorio' required>
+            <br>
+            Generico:
+            <input type='text' name='generico' id="generico" value='true'>Sim
+            <br>
+            <input type="submit" value="Adicionar" name="Adicionar">
+            <br>
+        </form>
+    </div>
+    
 
     <br>
 

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class medicamentos extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'idBulaProtegida',
+        'nome',
+        'razaoSocial',
+        'generico'
+    ];
+
 }
