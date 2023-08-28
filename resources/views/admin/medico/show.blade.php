@@ -78,39 +78,44 @@
                                 </div>
                                 
                                 <div class="flex items-center gap-4 mt-4">
-                                    <x-primary-button type="submit">{{ __('Submit') }}</x-primary-button>
-                                    <x-primary-button type="reset">{{ __('Reset') }}</x-primary-button>
+                                    <x-primary-button type="submit">{{ __('Enviar') }}</x-primary-button>
+                                    <x-primary-button type="reset">{{ __('Limpar') }}</x-primary-button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </x-form-modal>
-                <div>
-                    <span> Médicos</span>
-                    <div class="grid grid-cols-small-table border border-black">
-                        <span class="border-x border-black">ID</span>
-                        <span class="border-x border-black">Nome</span>
-                        <span class="border-x border-black">Sobrenome</span>
-                        <span class="border-x border-black">Telefone</span>
-                        <span class="border-x border-black">CRM</span>
-                        <span class="border-x border-black">Sexo</span>
-                        <span class="border-x border-black">Especialidade</span>
+                <span> Médicos</span>
+                <div class="mt-4 mb-3">
+                    <div class="not-prose relative bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-800/25">
+                        <div class="relative rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                            <div class="shadow-sm overflow-hidden my-8">
+                                <div class="grid grid-cols-small-table border-collapse w-full">
+                                    <span class="font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">ID</span>
+                                    <span class="font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Sobrenome</span>
+                                    <span class="font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Nome</span>
+                                    <span class="font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Telefone</span>
+                                    <span class="font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">CRM</span>
+                                    <span class="font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Sexo</span>
+                                    <span class="font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Especialidade</span>
+                                </div>
+                            </div>
+                            @forelse ($medicos as $medicos)
+                                <div class="grid grid-cols-small-table bg-white dark:bg-slate-800">
+                                    <span class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ $medicos->id }}</span>
+                                    <span class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ Str::ucfirst($medicos->sobrenome); }}</span>
+                                    <span class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ Str::ucfirst($medicos->nome); }}</span>
+                                    <span class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ $medicos->crm }}</span>
+                                    <span class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ $medicos->sexo }}</span>
+                                    <span class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ $medicos->especialidade }}</span>
+                                </div>
+                            @empty
+                                <div>
+                                    <span>Sem registro</span>
+                                </div>
+                            @endforelse
+                        </div>
                     </div>
-                    @forelse ($medicos as $medicos)
-                        <div class="grid grid-cols-small-table border border-black">
-                            <span class="border-x border-black">{{$medicos->id}}</span>
-                            <span class="border-x border-black">{{$medicos->nome}}</span>
-                            <span class="border-x border-black">{{$medicos->sobrenome}}</span>
-                            <span class="border-x border-black">{{$medicos->fone}}</span>
-                            <span class="border-x border-black">{{$medicos->crm}}</span>
-                            <span class="border-x border-black">{{$medicos->sexo}}</span>
-                            <span class="border-x border-black">{{$medicos->especialidade}}</span>
-                        </div>
-                    @empty
-                        <div>
-                            <span>Sem regisdivo</span>
-                        </div>
-                    @endforelse
                 </div>
             </div>
         </div>

@@ -54,6 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profileendereco', [EnderecoController::class, 'edit'])->name('profileendereco.edit');
     Route::patch('/profileendereco', [EnderecoController::class, 'update'])->name('profileendereco.update');
     Route::delete('/profileendereco', [EnderecoController::class, 'destroy'])->name('profileendereco.destroy');
+    //Rota detalhes consulto
+    Route::get('/areaconsulta', [ProfileController::class, 'areaConsulta'])->name('profile.areaConsulta');
 });
 
 Route::middleware('auth')->group(function () {

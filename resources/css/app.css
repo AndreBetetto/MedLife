@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+[x-cloak] { display: none !important; }
+
 @layer base {
   html {
+    @apply bg-purple-50;
     @apply text-neutral-800;
   }
+
   html.dark {
     @apply text-neutral-50;
     @apply bg-slate-800;

@@ -46,9 +46,9 @@ export default {
             },
             gridTemplateColumns: {
                 '16': 'repeat(16, minmax(0, 1fr))',
-                'table': '50px 300px 250px 120px 200px 200px',
-                'large-table': '50px 300px 250px 120px 200px 100px 99px',
-                'small-table': '50px 175px 175px 200px 150px 150px 220px'
+                'table': '100px 500px 398px 120px',
+                'large-table': '100px 300px 250px 120px 200px 50px 99px',
+                'small-table': '100px 175px 175px 200px 150px 100px 220px'
               }
         },
     },

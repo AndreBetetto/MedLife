@@ -26,7 +26,7 @@
                 @endif
                 @empty
                     <tr>
-                        <td colspan="3">No patients added</td>
+                        <td colspan="3">Sem pacientes adicionados</td>
                     </tr>
                 @endforelse
     </table>
