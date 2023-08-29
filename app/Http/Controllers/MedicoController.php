@@ -14,6 +14,10 @@ use App\Models\PacienteMedico;
 use GuzzleHttp\Client;
 use App\Http\Requests\RemedioStore;
 use App\Models\medicamentos;
+use App\Http\Requests\FormsDiario;
+use App\Models\checklist;
+use App\Models\formDiario;
+
 
 class MedicoController extends Controller
 {
@@ -59,12 +63,27 @@ class MedicoController extends Controller
         return view('medico.meus-pacientes.index', compact('user', 'pacientes', 'medico', 'pacMeds'));
     }
 
-    public function addForms($id)
+    public function paginaAddForms($id)
     {
-        // Criacao de um forms que vai passar para o paciente
         $medico = Medico::where('user_id', auth()->user()->id)->first();
         $row = Paciente::where('id', $id)->first();
-        $inputRemedio = "AMOXICILINA";
+        return view('medico.forms_diario.indexCriarForm', compact('row', 'medico'));
+    }
+
+    public function passarParaPaciente($id, FormsDiario $request)
+    {
+        $data = $request->validated();
+        dd($data);
+        FormsDiario::create($data);
+
+        $medico = Medico::where('user_id', auth()->user()->id)->first();
+        $row = User::where('id', auth()->user()->id)->first();
+        return view('medico.visualizacao.index', compact('row', 'medico'));
+       
+        // Criacao de um forms que vai passar para o paciente
+        //$medico = Medico::where('user_id', auth()->user()->id)->first();
+        //$row = Paciente::where('id', $id)->first();
+        /*$inputRemedio = "AMOXICILINA";
         //
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -91,7 +110,8 @@ class MedicoController extends Controller
         }
         //
         $apiBula = $saida;
-        return view('medico.forms_diario.indexCriarForm', compact('row', 'medico', 'apiBula', 'link'));
+        return view('medico.forms_diario.indexCriarForm', compact('row', 'medico', 'apiBula', 'link'));*/
+
     }
 
     public function buscaRemedio()
@@ -149,10 +169,6 @@ class MedicoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(MedicoStoreRequest $request)
-    {
-        
-    }
 
     /**
      * Display the specified resource.

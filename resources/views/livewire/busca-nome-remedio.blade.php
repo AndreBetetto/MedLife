@@ -1,27 +1,37 @@
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
     <div>
-        <form action="{{ route('areamedico.adicionarMedicamento')}}" method='POST' enctype="multipart/form-data">
+        <form action="{{ route('areamedico.passarParaPaciente')}}" method='POST' enctype="multipart/form-data">
             @csrf
 
-            ID paciente:
-            <input type="text" name='pacienteID' value="{{ $row->id }}">
-            <br>
-            ID medico
-            <input type="text" name="medicoID" value="{{$medico->id}}">
-            <br>
-            <input type="hidden" name='idBulaProtegida' value="idBulaPaciente">
-            Nome do medicamento:
-            <input type='text' name='nome' placeholder='Nome do medicamento' required>
-            <br>
-            Laboratorio:
-            <input type='text' name='razaoSocial' placeholder='Laboratorio' required>
-            <br>
-            Generico:
-            <input type='text' name='generico' id="generico" value='true'>Sim
-            <br>
-            <input type="submit" value="Adicionar" name="Adicionar">
-            <br>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Selecione o paciente</label>
+                
+                ID paciente:
+                <input type="text" name='pacienteID' value="{{ $row->id }}">
+                <br>
+                ID medico
+                <input type="text" name="medicoID" value="{{$medico->id}}">
+                <br>
+                num dias
+                <input type="text" name="numDias" value="7">
+                <br>
+                Observação
+                <input type="text" name="observacoes" value="teste">
+                <br>
+                Medicamentos:
+                <input type="text" name="medicamentos" value="med1, med2, med3">
+                <br>
+                Diagnostico
+                <input type="text" name="diagnostico" value="teste">
+                <br>
+                Status:
+                <input type="text" name="status" value="1">
+                
+                
+                <input type="submit" value="Adicionar" name="Adicionar">
+                <br>
+            </div>
         </form>
     </div>
     
