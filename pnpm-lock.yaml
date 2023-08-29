@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@alpinejs/persist':
+    specifier: ^3.13.0
+    version: 3.13.0
   tw-elements:
     specifier: 1.0.0-beta3
     version: 1.0.0-beta3(postcss@8.4.28)
@@ -41,6 +44,10 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
     dev: true
+
+  /@alpinejs/persist@3.13.0:
+    resolution: {integrity: sha512-wQtx0VkDBGAthkYDdRnvq9cq2DbYhiPmVwdAEVRfGjFq+nsZu3VyGV0iZv2s9In3LLd7pFjdbQyAoBfO4Qc1cg==}
+    dev: false
 
   /@esbuild/android-arm64@0.18.20:
     resolution: {integrity: sha512-Nz4rJcchGDtENV0eMKUNa6L12zz2zBDXuhj/Vjh18zGqB44Bi7MBMSXjgunJgjRhCmKOjnPuZp4Mb6OKqtMHLQ==}
