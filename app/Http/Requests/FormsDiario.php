@@ -8,10 +8,12 @@ class FormsDiario extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     * 
+     * @return bool
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,15 +24,13 @@ class FormsDiario extends FormRequest
     public function rules(): array
     {
         return [
-        'paciente_id' => 'required',
-        'medico_id' => 'required',
-        'numDias' => 'required',
-        'nivelDor' => 'required',
-        'nivelFebre' => 'required',
-        'sintomas' => 'required',
-        'sangramento' => 'required',
-        'observacoes' => 'required',
-        'medicamentos' => 'required',
+            'paciente_id' => 'required',
+            'medico_id' => 'required',
+            'observacoes' => 'required',
+            'status' => 'required',
+            'medicamentos' => 'required',
+            'diagnostico' => 'required',
+            'numDias' => 'required' //outra tabela
         ];
     }
 }

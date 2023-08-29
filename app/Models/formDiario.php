@@ -12,6 +12,11 @@ class formDiario extends Model
     protected $fillable = [
         'medico_id',
         'paciente_id',
-        'numDias'
+        'numDias',
+        'observacoes',
+        'medicamentos',
+        'diagnostico',
+        'status'
     ];
 }
+ 
