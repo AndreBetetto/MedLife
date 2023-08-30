@@ -16,7 +16,7 @@ use App\Http\Requests\RemedioStore;
 use App\Models\medicamentos;
 use App\Http\Requests\FormsDiario;
 use App\Models\checklist;
-use App\Models\formDiario;
+use App\Models\formDiario as ModelFormDiario;
 
 
 class MedicoController extends Controller
@@ -59,8 +59,10 @@ class MedicoController extends Controller
         $user  = User::where('id', auth()->user()->id)->first();
         $medico = Medico::where('user_id', auth()->user()->id)->first();
         $pacientes = Paciente::all();
+        $formsDiario = ModelFormDiario::all();
         $pacMeds = PacienteMedico::where('medico_id', auth()->user()->id)->get();
-        return view('medico.meus-pacientes.index', compact('user', 'pacientes', 'medico', 'pacMeds'));
+        return view('medico.meus-pacientes.index', compact('user', 'pacientes', 'medico', 'pacMeds', 'formsDiario'));
+    
     }
 
     public function paginaAddForms($id)
@@ -70,11 +72,11 @@ class MedicoController extends Controller
         return view('medico.forms_diario.indexCriarForm', compact('row', 'medico'));
     }
 
-    public function passarParaPaciente($id, FormsDiario $request)
+    public function passarParaPaciente(FormsDiario $request)
     {
         $data = $request->validated();
-        dd($data);
-        FormsDiario::create($data);
+        //dd($data); //para testes
+        ModelFormDiario::create($data);
 
         $medico = Medico::where('user_id', auth()->user()->id)->first();
         $row = User::where('id', auth()->user()->id)->first();

@@ -5,12 +5,16 @@
         <tr>
             <td>Nome</td>
             <td>Sobrenome</td>
-            <td>Detalhes</td>       
+            <td>Detalhes</td>  
+            <td>Processos em andamento</td>     
         </tr>
         @forelse ($pacientes as $paciente)
             @php
                 $pacienteId = $paciente->id;
                 $isSelected = $pacMeds->contains('medico_id', $pacienteId);
+                $qntForms = $formsDiario->where('medico_id', $medico->id)
+                                    ->where('paciente_id', $pacienteId)
+                                    ->count();
             @endphp
             @if (!$isSelected)
             <tr>
@@ -22,11 +26,14 @@
                         <button type="submit">Criar formulario</button>
                     </form>
                 </td>
+                <td>
+                    {{ $qntForms }}
+                </td>
             </tr>
                 @endif
                 @empty
                     <tr>
-                        <td colspan="3">Sem pacientes adicionados</td>
+                        <td colspan="4">Sem pacientes adicionados</td>
                     </tr>
                 @endforelse
     </table>
