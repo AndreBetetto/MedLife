@@ -64,8 +64,13 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    public function areaConsulta(Request $request)
+    public function detalhesConsulta(Request $request)
     {
-        return view('paciente.areaConsulta.details');
+        return view('paciente.areaConsulta.detalhesConsulta');
+    }
+
+    public function detalhesSintomas(Request $request)
+    {
+        return view('paciente.areaConsulta.detalhesSintomas');
     }
 }
