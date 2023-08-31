@@ -12,7 +12,7 @@
             @php
                 $pacienteId = $paciente->id;
                 $isSelected = $pacMeds->contains('medico_id', $pacienteId);
-                $qntForms = $formsDiario->where('medico_id', $medico->id)
+                $qntForms = $formsDiarios->where('medico_id', $medico->id)
                                     ->where('paciente_id', $pacienteId)
                                     ->count();
             @endphp

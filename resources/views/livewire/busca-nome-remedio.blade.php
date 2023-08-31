@@ -27,8 +27,6 @@
                 <br>
                 Status:
                 <input type="text" name="status" value="Em andamento">
-                
-                
                 <input type="submit" value="Adicionar" name="Adicionar">
                 <br>
             </div>

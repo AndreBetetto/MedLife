@@ -19,7 +19,7 @@
                 <td> {{ $medico->sobrenome }} </td>
                 <td> {{ $medico->especialidade }} </td>
                 <td> 
-                    DETALHES <a href="{{ route('areapaciente.medicoDetalhes', ['id' => $medicoId]) }}">Clique aqui!</a>
+                    DETALHES
                 </td>
             </tr>
                 @endif
