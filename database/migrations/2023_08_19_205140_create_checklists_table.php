@@ -19,10 +19,14 @@ return new class extends Migration
             $table->unsignedBigInteger('paciente_id');
             $table->foreign('paciente_id')
                 ->references('id')->on('pacientes')->onDelete('cascade');
+            $table->unsignedBigInteger('forms_id');
+            $table->foreign('forms_id')
+                ->references('id')->on('form_diarios')->onDelete('cascade');
             $table->double('nivelDor')->nullable();
             $table->double('nivelFebre')->nullable();
             $table->longText('sintomas')->nullable();
             $table->longText('observacoes')->nullable();
+            $table->integer('numDia')->nullable();
             $table->enum(
                 'status', [
                     'pendente',

@@ -20,15 +20,18 @@
         </tr>
         @forelse ($formDiarios as $formDiarios)
             @php
-                $pacienteId = $pacMeds->paciente_id;
-                $qntForms = $formDiarios->where('medico_id', $medico->id)
-                                    ->where('paciente_id', $pacienteId)
-                                    ->count();
+                $qntDias = $formDiarios->numDias;
+                $status = $formDiarios->status;
             @endphp
             <tr>
                 <td> {{ $formDiarios->id }} </td>
-                <td> {{ $formDiarios->sobrenome }} </td>
-                
+                <td> {{ $qntDias }} </td>
+                @if ( $status == 'Em andamento' )
+                    <td> <a href="{{ route('areapaciente.medicoDetalhesForms', ['id' => $formDiarios->id]) }}">Responder</a> </td>
+                @else
+                    <td>Nao disponivel</td>
+                @endif
+                <td> {{ $status}} </td>
                 @empty
                     <tr>
                         <td colspan="4">Sem pacientes adicionados</td>

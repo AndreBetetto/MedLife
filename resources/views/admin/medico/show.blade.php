@@ -160,6 +160,61 @@
                                         <x-primary-button type="reset">{{ __('Limpar') }}</x-primary-button>
                                     </div>
                                 </div>
+                                <div>
+                                    <x-input-label for="sobrenome" :value="__('Sobrenome')" />
+                                    <x-text-input id="sobrenome" name="sobrenome" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-input-error class="mt-2" :messages="$errors->get('sobrenome')" />
+                                </div>
+                                <div>
+                                    <x-input-label for="dataNasc" :value="__('Data de Nascimento')" />
+                                    <x-text-input id="dataNasc" name="dataNasc" type="date" class="mt-1 block w-full" required autofocus />
+                                    <x-input-error class="mt-2" :messages="$errors->get('dataNasc')" />
+                                </div>
+                                <div>
+                                    <x-input-label for="sexo" :value="__('Sexo')" />
+                                    <x-text-input id="sexo" name="sexo" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-input-error class="mt-2" :messages="$errors->get('sexo')" />
+                                </div>
+                                <div>
+                                    <x-input-label for="rg" :value="__('RG')" />
+                                    <x-text-input x-mask="99.999.999-9" id="rg" name="rg" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-input-error class="mt-2" :messages="$errors->get('rg')" />
+                                </div>
+                                <div>
+                                    <x-input-label for="cpf" :value="__('CPF')" />
+                                    <x-text-input x-mask="999.999.999-99" id="cpf" name="cpf" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-input-error class="mt-2" :messages="$errors->get('cpf')" />
+                                </div>
+                                <div>
+                                    <x-input-label for="fone" :value="__('Telefone')" />
+                                    <x-text-input x-mask="(99) 99999-9999" id="fone" name="fone" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-input-error class="mt-2" :messages="$errors->get('fone')" />
+                                </div>
+                                <div>
+                                    <x-input-label for="estadoCivil" :value="__('Estado Civil')" />
+                                    <x-text-input id="estadoCivil" name="estadoCivil" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-input-error class="mt-2" :messages="$errors->get('estadoCivil')" />
+                                </div>
+                                <div>
+                                    <x-input-label for="especialidade" :value="__('Especialidade')" />
+                                    <x-text-input id="especialidade" name="especialidade" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-input-error class="mt-2" :messages="$errors->get('especialidade')" />
+                                </div>
+                                <div>
+                                    <x-input-label for="crm" :value="__('CRM')" />
+                                    <x-text-input x-mask="999999" id="crm" name="crm" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-input-error class="mt-2" :messages="$errors->get('crm')" />
+                                </div>
+                                <div>
+                                    <x-input-label for="user_id" :value="__('ID')" />
+                                    <x-text-input id="user_id" name="user_id" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-input-error class="mt-2" :messages="$errors->get('user_id')" />
+                                </div>
+                                
+                                <div class="flex items-center gap-4 mt-4">
+                                    <x-primary-button type="submit">{{ __('Enviar') }}</x-primary-button>
+                                    <x-primary-button type="reset">{{ __('Limpar') }}</x-primary-button>
+                                </div>
                             </form>
                         </div>
                     </div>

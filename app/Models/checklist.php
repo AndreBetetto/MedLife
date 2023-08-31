@@ -12,11 +12,13 @@ class checklist extends Model
     protected $fillable = [
         'paciente_id',
         'medico_id',
+        'forms_id',
         'nivelDor',
         'nivelFebre',
         'sintomas',
         'sangramento',
         'observacoes',
+        'numDia',
         'status',
         'medicamentos',
         'prioridadeMedico',
