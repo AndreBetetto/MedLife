@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Http;
 use App\Http\Requests\recomendaMedico;
 use GuzzleHttp\Client;
 use App\Models\formDiario as formDiario;
+use App\Models\checklist as Checklist;
 
 class PacienteController extends Controller
 {
@@ -114,6 +115,15 @@ class PacienteController extends Controller
         $pacMeds = PacienteMedico::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
         $formDiarios = formDiario::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
         return view('paciente.respondeForms.indexDetalhes', compact('medico', 'user', 'paciente', 'formDiarios', 'todosPacs', 'pacMeds'));
+    }
+
+    public function detalhesMedicoForms($id)
+    {
+        $formsDiarios = formDiario::where('id', $id)->first();
+        $medico = Medico::where('id', $formsDiarios->medico_id)->first();
+        $paciente = Paciente::where('id', $formsDiarios->paciente_id)->first();
+        $checklist = Checklist::where('forms_id', $formsDiarios->id)->get();
+        return view('paciente.respondeForms.index', compact('medico', 'paciente', 'formsDiarios', 'checklist'));
     }
 
 
