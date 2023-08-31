@@ -16,6 +16,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@alpinejs/mask": "^3.13.0",
         "@alpinejs/persist": "^3.13.0",
         "alpine": "^0.2.1",
         "tw-elements": "1.0.0-beta3"

@@ -3,7 +3,7 @@
     @include('layouts.head')
     <body class="  dark:bg-slate-800">
         @include('layouts.header')
-        <main class="pt-24 mx-20">
+        <main class="pt-24 pb-12 mx-20">
             <section class="mt-8 flex flex-col gap-8 items-center justify-evenly">
                 <h1 class="text-2xl">Detalhes da Consulta</h1>
                 <div class="w-full px-6 py-3 border-black rounded-xl border">
@@ -35,3 +35,6 @@
                 
             </section>
         </main>
+        @include('layouts.footer')
+    </body>
+</html>

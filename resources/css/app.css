@@ -6,8 +6,8 @@
 
 @layer base {
   html {
-    @apply bg-purple-50;
     @apply text-neutral-800;
+    @apply bg-purple-50;
   }
 
   html.dark {

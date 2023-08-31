@@ -54,8 +54,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profileendereco', [EnderecoController::class, 'edit'])->name('profileendereco.edit');
     Route::patch('/profileendereco', [EnderecoController::class, 'update'])->name('profileendereco.update');
     Route::delete('/profileendereco', [EnderecoController::class, 'destroy'])->name('profileendereco.destroy');
-    //Rota detalhes consulto
-    Route::get('/areaconsulta', [ProfileController::class, 'areaConsulta'])->name('profile.areaConsulta');
+    //Rota detalhes consulta
+    Route::get('/detalhesconsulta', [ProfileController::class, 'detalhesConsulta'])->name('profile.detalhesConsulta');
+    Route::get('/detalhessintomas', [ProfileController::class, 'detalhesSintomas'])->name('profile.detalhesSintomas');
 });
 
 Route::middleware('auth')->group(function () {
@@ -113,10 +114,3 @@ Route::middleware(['IsAdmin'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-
-
-
-
-
-
