@@ -43,17 +43,17 @@
                                 </div>
                                 <div>
                                     <x-input-label for="rg" :value="__('RG')" />
-                                    <x-text-input id="rg" name="rg" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-text-input x-mask="99.999.999-9" id="rg" name="rg" type="text" class="mt-1 block w-full" required autofocus />
                                     <x-input-error class="mt-2" :messages="$errors->get('rg')" />
                                 </div>
                                 <div>
                                     <x-input-label for="cpf" :value="__('CPF')" />
-                                    <x-text-input id="cpf" name="cpf" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-text-input x-mask="999.999.999-99" id="cpf" name="cpf" type="text" class="mt-1 block w-full" required autofocus />
                                     <x-input-error class="mt-2" :messages="$errors->get('cpf')" />
                                 </div>
                                 <div>
                                     <x-input-label for="fone" :value="__('Telefone')" />
-                                    <x-text-input id="fone" name="fone" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-text-input x-mask="(99) 99999-9999" id="fone" name="fone" type="text" class="mt-1 block w-full" required autofocus />
                                     <x-input-error class="mt-2" :messages="$errors->get('fone')" />
                                 </div>
                                 <div>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div>
                                     <x-input-label for="crm" :value="__('CRM')" />
-                                    <x-text-input id="crm" name="crm" type="text" class="mt-1 block w-full" required autofocus />
+                                    <x-text-input x-mask="999999" id="crm" name="crm" type="text" class="mt-1 block w-full" required autofocus />
                                     <x-input-error class="mt-2" :messages="$errors->get('crm')" />
                                 </div>
                                 <div>

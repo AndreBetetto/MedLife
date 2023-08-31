@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@alpinejs/mask':
+    specifier: ^3.13.0
+    version: 3.13.0
   '@alpinejs/persist':
     specifier: ^3.13.0
     version: 3.13.0
@@ -44,6 +47,10 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
     dev: true
+
+  /@alpinejs/mask@3.13.0:
+    resolution: {integrity: sha512-kmqxC7qzm6xIOZ9A/903fvlj0r6SdCiA3u/xLOf1x2DUT9NDnPfNTe1Yd90tTWIJF963ad7Ca67HLdQM8rcXFA==}
+    dev: false
 
   /@alpinejs/persist@3.13.0:
     resolution: {integrity: sha512-wQtx0VkDBGAthkYDdRnvq9cq2DbYhiPmVwdAEVRfGjFq+nsZu3VyGV0iZv2s9In3LLd7pFjdbQyAoBfO4Qc1cg==}
