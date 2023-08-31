@@ -20,6 +20,17 @@ return new class extends Migration
             $table->foreign('paciente_id')
                 ->references('id')->on('pacientes')->onDelete('cascade');
             $table->integer('numDias'); //numero de dias que o paciente deve responder o form
+            $table->longText('observacoes')->nullable();
+            $table->longText('medicamentos')->nullable();
+            $table->string('diagnostico')->nullable();
+            $table->enum(
+                'status',
+                [
+                    'Aguardando',
+                    'Em andamento',
+                    'Finalizado'
+                ]
+            )->default('Aguardando');
             $table->timestamps();
         });
     }

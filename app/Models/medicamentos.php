@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class formDiario extends Model
+class medicamentos extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'medico_id',
-        'paciente_id',
-        'numDias',
-        'observacoes',
-        'medicamentos',
-        'diagnostico',
-        'status'
+        'idBulaProtegida',
+        'nome',
+        'razaoSocial',
+        'generico'
     ];
+
 }
- 

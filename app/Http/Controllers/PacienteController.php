@@ -14,6 +14,7 @@ use App\Models\PacienteMedico;
 use Illuminate\Support\Facades\Http;
 use App\Http\Requests\recomendaMedico;
 use GuzzleHttp\Client;
+use App\Models\formDiario as formDiario;
 
 class PacienteController extends Controller
 {
@@ -102,6 +103,17 @@ class PacienteController extends Controller
        // Redireciona para a view paciente.meusMedicos.index com a especialidade recomendada
         //return redirect()->route('paciente.buscarmedico.index', ['specialty' => $result]);
 
+    }
+
+    public function detalhesMedico($id)
+    {
+        $medico = Medico::where('id', $id)->first();
+        $user = User::where('id', $medico->user_id)->first();
+        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        $todosPacs = Paciente::all();
+        $pacMeds = PacienteMedico::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
+        $formDiarios = formDiario::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
+        return view('paciente.respondeForms.indexDetalhes', compact('medico', 'user', 'paciente', 'formDiarios', 'todosPacs', 'pacMeds'));
     }
 
 

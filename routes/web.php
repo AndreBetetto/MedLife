@@ -28,6 +28,7 @@ Route::get('/benefit', [PagesController::class, 'benefit'])->name('benefit');
 Route::get('/values', [PagesController::class, 'values'])->name('values');
 Route::get('/contactUs', [PagesController::class, 'contactUs'])->name('contactUs');
 Route::get('/aboutUs', [PagesController::class, 'aboutUs'])->name('aboutUs');
+Route::get('/sobreNos', [PagesController::class, 'sobreNos'])->name('sobreNos');
 
 
 Route::get('/dashboard', function () {
@@ -79,6 +80,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/areapaciente/store', [PacienteController::class, 'pacienteMedicoCreate'])->name('areapaciente.store');
     Route::get('/areapaciente/meusMedicos', [PacienteController::class, 'meusMedicos'])->name('areapaciente.meusMedicos');
     Route::post('/areapaciente/recomenda', [PacienteController::class, 'recomendaMedico'])->name('areapaciente.recomenda');
+    Route::get('/areapaciente/meusMedicos/{id}', [PacienteController::class, 'detalhesMedico'])->name('areapaciente.medicoDetalhes');
 });
 
 Route::middleware(['IsMedico'])->group(function () {
@@ -87,6 +89,10 @@ Route::middleware(['IsMedico'])->group(function () {
     Route::post('/areamedico/addpaciente', [MedicoController::class, 'addpaciente'])->name('areamedico.addpaciente');
     Route::get('/areamedico/criarForms', [MedicoController::class, 'criarForms'])->name('areamedico.criarForms');
     Route::get('/areamedico/meusPacientes', [MedicoController::class, 'meusPacientes'])->name('areamedico.meusPacientes');
+    Route::get('/areamedico/meusPacientes/{id}', [MedicoController::class, 'paginaAddForms'])->name('areamedico.meusPacientescriarForm');
+    Route::post('/areamendico/adicionarMedicamento', [MedicoController::class, 'passarParaPaciente'])->name('areamedico.passarParaPaciente');
+
+    Route::post('/areamedico/meusPacientes/{id}', [MedicoController::class, 'addFormsStore'])->name('areamedico.meusPacientescriarFormStore');
 
     Route::get('/areamedico/consulta/create', [MedicoController::class, 'areamedicoconsultaCreate'])->name('areamedico.consulta.create');
     Route::post('/areamedico/consulta/create', [MedicoController::class, 'areamedicoconsultaStore']);

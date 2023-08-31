@@ -11,6 +11,12 @@ use App\Models\UserEndereco;
 use App\Http\Requests\MedicoStoreRequest;
 use App\Models\Paciente;
 use App\Models\PacienteMedico;
+use GuzzleHttp\Client;
+use App\Http\Requests\RemedioStore;
+use App\Models\medicamentos;
+use App\Http\Requests\FormsDiario;
+use App\Models\checklist;
+use App\Models\formDiario as ModelFormDiario;
 
 
 class MedicoController extends Controller
@@ -41,9 +47,10 @@ class MedicoController extends Controller
 
     public function criarForms()
     {
+        //Sera deletado e implementado em addForm
         $medico = Medico::where('user_id', auth()->user()->id)->first();
         $row = User::where('id', auth()->user()->id)->first();
-        return view('medico.forms_diario.index', compact('row', 'medico'));
+        return view('medico.forms_diario.index', compact('row', 'medico', 'pegaID'));
     }
 
     public function meusPacientes()
@@ -52,13 +59,105 @@ class MedicoController extends Controller
         $user  = User::where('id', auth()->user()->id)->first();
         $medico = Medico::where('user_id', auth()->user()->id)->first();
         $pacientes = Paciente::all();
+        $formsDiario = ModelFormDiario::all();
         $pacMeds = PacienteMedico::where('medico_id', auth()->user()->id)->get();
-        return view('medico.meus-pacientes.index', compact('user', 'pacientes', 'medico', 'pacMeds'));
+        return view('medico.meus-pacientes.index', compact('user', 'pacientes', 'medico', 'pacMeds', 'formsDiario'));
+    
     }
 
-    public function addpaciente()
+    public function paginaAddForms($id)
+    {
+        $medico = Medico::where('user_id', auth()->user()->id)->first();
+        $row = Paciente::where('id', $id)->first();
+        return view('medico.forms_diario.indexCriarForm', compact('row', 'medico'));
+    }
+
+    public function passarParaPaciente(FormsDiario $request)
+    {
+        $data = $request->validated();
+        //dd($data); //para testes
+        ModelFormDiario::create($data);
+
+        $medico = Medico::where('user_id', auth()->user()->id)->first();
+        $row = User::where('id', auth()->user()->id)->first();
+        return view('medico.visualizacao.index', compact('row', 'medico'));
+       
+        // Criacao de um forms que vai passar para o paciente
+        //$medico = Medico::where('user_id', auth()->user()->id)->first();
+        //$row = Paciente::where('id', $id)->first();
+        /*$inputRemedio = "AMOXICILINA";
+        //
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://bula.vercel.app/pesquisar?nome=".$inputRemedio."&pagina=1",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET"
+        ));
+
+        $link = "https://bula.vercel.app/pesquisar?nome=".$inputRemedio."&pagina=1";
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            $saida = "cURL Error #:" . $err;
+        } else {
+            $saida =  $response;
+        }
+        //
+        $apiBula = $saida;
+        return view('medico.forms_diario.indexCriarForm', compact('row', 'medico', 'apiBula', 'link'));*/
+
+    }
+
+    public function buscaRemedio()
+    {
+        $inputRemedio = "AMOXICILINA";
+        //
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://bula.vercel.app/pesquisar?nome=".$inputRemedio."&pagina=1",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET"
+        ));
+
+        $link = "https://bula.vercel.app/pesquisar?nome=".$inputRemedio."&pagina=1";
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            $saida = "cURL Error #:" . $err;
+        } else {
+            $saida =  $response;
+        }
+        //
+        $apiBula = $saida;
+    }
+
+    public function modificarForm()
     {
         
+    }
+
+    public function adicionarMedicamento(RemedioStore $request)
+    {
+        $data = $request->validated();
+        //dd($data); //para testes
+        medicamentos::create($data);
+        return redirect()->route('areamedico.index');
     }
 
     /**
@@ -72,10 +171,6 @@ class MedicoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(MedicoStoreRequest $request)
-    {
-        
-    }
 
     /**
      * Display the specified resource.

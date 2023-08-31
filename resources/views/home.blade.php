@@ -17,19 +17,19 @@
                 </section>
                 <section class="grid justify-items-center grid-cols-3 py-48">
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
-                        <img src="eficiencia.svg" class="w-16 dark:fill-white" alt="">
-                        <h3 class="text-3xl dark:text-white">Eficiência</h3>
-                        <p class="dark:text-slate-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit amet officia aliquid quia consequatur error alias voluptate consequuntur nostrum. Quasi repellendus magni ex eligendi aperiam mollitia, amet rerum voluptatem! Adipisci?</p>
+                        <img src="eficiencia.svg" class="w-16" alt="">
+                        <h3 class="text-3xl dark:text-white">O Fim das Barreiras na Saúde</h3>
+                        <p class="dark:text-slate-100">Supere as Dificuldades de Comunicação Médica! Descubra como a MedLife proporciona ferramentas que aproximam médicos e pacientes para um tratamento mais eficaz.</p>
                     </div>
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
                         <img src="eficiencia.svg" class="w-16 fill-white" alt="">
-                        <h3 class="text-3xl dark:text-white">Eficiência</h3>
-                        <p class="dark:text-slate-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit amet officia aliquid quia consequatur error alias voluptate consequuntur nostrum. Quasi repellendus magni ex eligendi aperiam mollitia, amet rerum voluptatem! Adipisci?</p>
+                        <h3 class="text-3xl dark:text-white">Soluções que Transformam Consultas</h3>
+                        <p class="dark:text-slate-100">Médicos, Simplifiquem as Consultas! Explore como a MedLife oferece tecnologias que otimizam as consultas médicas, tornando-as mais produtivas e informativas.</p>
                     </div>
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
                         <img src="eficiencia.svg" class="w-16" alt="">
-                        <h3 class="text-3xl dark:text-white">Eficiência</h3>
-                        <p class="dark:text-slate-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit amet officia aliquid quia consequatur error alias voluptate consequuntur nostrum. Quasi repellendus magni ex eligendi aperiam mollitia, amet rerum voluptatem! Adipisci?</p>
+                        <h3 class="text-3xl dark:text-white">Conecte-se para Cuidados de Excelência</h3>
+                        <p class="dark:text-slate-100">Conecte-se com Seus Pacientes de Forma Poderosa! Descubra como a MedLife melhora a comunicação médico-paciente, permitindo cuidados de saúde excepcionais.</p>
                     </div>
                 </section>
                 <section class="grid gap-10 grid-cols-2 items-center py-48">
