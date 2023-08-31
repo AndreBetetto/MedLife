@@ -8,10 +8,10 @@
                 <label for="exampleFormControlSelect1">Selecione o paciente</label>
                 
                 ID paciente:
-                <input type="text" name='pacienteID' value="{{ $row->id }}">
+                <input type="text" name='paciente_id' value="{{ $row->id }}">
                 <br>
                 ID medico
-                <input type="text" name="medicoID" value="{{$medico->id}}">
+                <input type="text" name="medico_id" value="{{$medico->id}}">
                 <br>
                 num dias
                 <input type="text" name="numDias" value="7">
@@ -26,7 +26,7 @@
                 <input type="text" name="diagnostico" value="teste">
                 <br>
                 Status:
-                <input type="text" name="status" value="1">
+                <input type="text" name="status" value="Em andamento">
                 
                 
                 <input type="submit" value="Adicionar" name="Adicionar">
