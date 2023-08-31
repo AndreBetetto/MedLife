@@ -8,12 +8,9 @@ import {
   initTE,
 } from "tw-elements";
 
- 
+initTE({ Modal, Ripple });
 
 window.Alpine = Alpine;
+Alpine.plugin([persist, mask]);
 
-Alpine.plugin(mask);
-Alpine.plugin(persist);
 Alpine.start();
-
-initTE({ Modal, Ripple });
