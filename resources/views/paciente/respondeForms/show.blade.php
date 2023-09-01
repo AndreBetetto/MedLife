@@ -163,6 +163,12 @@
                     </div>
                 </label><br>
             </div>
+        
+            {{-- Sintomas --}}
+            <div>
+               @livewire('symptoms-form', ['paciente' => $paciente])
+            </div>
+            {{-- FimSintomas --}}
 
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
