@@ -1,8 +1,6 @@
 @include('layouts.head')
 
 <div>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <div class="w-full text-center justify-center items-center">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             Informações Pós-Operatório
