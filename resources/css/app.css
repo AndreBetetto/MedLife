@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-[x-cloak] { display: none !important; }
+[x-cloak] {
+  display: none !important;
+}
 
 @layer base {
   html {
@@ -13,5 +15,11 @@
   html.dark {
     @apply text-neutral-50;
     @apply bg-slate-800;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 }
