@@ -16,6 +16,7 @@ use App\Http\Requests\recomendaMedico;
 use GuzzleHttp\Client;
 use App\Models\formDiario as formDiario;
 use App\Models\checklist as Checklist;
+use App\Http\Requests\FormSave;
 
 class PacienteController extends Controller
 {
@@ -124,6 +125,15 @@ class PacienteController extends Controller
         $paciente = Paciente::where('id', $formsDiarios->paciente_id)->first();
         $checklist = Checklist::where('forms_id', $formsDiarios->id)->get();
         return view('paciente.respondeForms.index', compact('medico', 'paciente', 'formsDiarios', 'checklist'));
+    }
+
+    public function detalhesMedicoFormsStore(FormSave $request)
+    {
+        $data = $request->validated();
+        dd($data); //para testes
+        //$data['forms_id'] = $id;
+        //checklist = Checklist::create($data);
+        return redirect()->route('areapaciente.medicoDetalhesForms');
     }
 
 

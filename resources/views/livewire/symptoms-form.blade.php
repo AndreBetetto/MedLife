@@ -46,13 +46,43 @@
     </div>
     <hr>
     <div>
-        <h2>Sintomas do braco:</h2>
+        <h2>Sintomas dos bracitos:</h2>
         <ul>
-            @foreach ($symptomsArms as $symptomArm)
-                <li>{{ $symptomArm['Name'] }}</li>
+            @foreach ($symptomsArms as $symptomArms)
+                <li>{{ $symptomArms['Name'] }}</li>
             @endforeach
         </ul>
     </div>
+    <hr>
+    <div>
+        <h2>Sintomas do Pernitas:</h2>
+        <ul>
+            @foreach ($symptomsLegs as $symptomLegs)
+                <li>{{ $symptomLegs['Name'] }}</li>
+            @endforeach
+        </ul>
+    </div>
+    <hr>
+    <div>
+        <h2>Sintomas do Abdomem e bundinha:</h2>
+        <ul>
+            @foreach ($symptomsAbdomen as $symptomAbdomen)
+                <li>{{ $symptomAbdomen['Name'] }}</li>
+            @endforeach
+        </ul>
+    </div>
+    <hr>
+    <div>
+        <h2>Sintomas do pele:</h2>
+        <ul>
+            @foreach ($symptomsSkin as $symptomSkin)
+                <li>{{ $symptomSkin['Name'] }}</li>
+            @endforeach
+        </ul>
+    </div>
+    <hr>
+   
+
     
     <br>
     ID: 06 - Cabeça, garganta e pescoço<br>

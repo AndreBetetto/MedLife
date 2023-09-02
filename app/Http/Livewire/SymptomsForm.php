@@ -37,13 +37,13 @@ class SymptomsForm extends Component
         $outSexo = null;
         $sexo = $this->paciente->sexo;
         if ($sexo == 'Masc') {
-            if($this->getIdade() < 18){
+            if($this->getIdade() < 12){
                 $outSexo = 'boy';
             } else {
                 $outSexo = 'man';
             } 
         } else {
-            if($this->getIdade() < 18){
+            if($this->getIdade() < 12){
                 $outSexo = 'girl';
             } else {
                 $outSexo = 'woman';
@@ -78,9 +78,7 @@ class SymptomsForm extends Component
     {
         $token =$this->getToken();
         $idLocal = 6;
-        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
-            'locationId' => 6,
-            'selectorStatus' => 0,
+        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms/6/'.$this->getSexo(), [
             'token' => $token,
             'language' => 'en-gb',
         ]);
@@ -98,11 +96,9 @@ class SymptomsForm extends Component
     {
         $token =$this->getToken();
         $idLocal = 15;
-        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
+        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms/15/'.$this->getSexo(), [
             'token' => $token,
             'language' => 'en-gb',
-            'locationId' => $idLocal,
-            'selectorStatus' => $this->getSexo(),
         ]);
 
         if ($response->successful()) {
@@ -118,11 +114,9 @@ class SymptomsForm extends Component
     {
         $token =$this->getToken();
         $idLocal = 7;
-        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
+        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms/7/'.$this->getSexo() , [
             'token' => $token,
             'language' => 'en-gb',
-            'locationId' => $idLocal,
-            'selectorStatus' => $this->getSexo(),
         ]);
 
         if ($response->successful()) {
@@ -138,11 +132,9 @@ class SymptomsForm extends Component
     {
         $token =$this->getToken();
         $idLocal = 10;
-        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
+        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms/10/'.$this->getSexo(), [
             'token' => $token,
             'language' => 'en-gb',
-            'locationId' => $idLocal,
-            'selectorStatus' => $this->getSexo(),
         ]);
 
         if ($response->successful()) {
@@ -158,7 +150,7 @@ class SymptomsForm extends Component
     {
         $token =$this->getToken();
         $idLocal = 16;
-        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
+        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms/16/'.$this->getSexo() , [
             'token' => $token,
             'language' => 'en-gb',
             'locationId' => $idLocal,
@@ -178,7 +170,7 @@ class SymptomsForm extends Component
     {
         $token =$this->getToken();
         $idLocal = 17;
-        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
+        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms/17/'.$this->getSexo() , [
             'token' => $token,
             'language' => 'en-gb',
             'locationId' => $idLocal,
@@ -197,10 +189,10 @@ class SymptomsForm extends Component
 
     public function mount()
     {
-        //$this->getSymptoms();
+        $this->getSymptoms();
         $this->getSymptomsHead();
-        $this->getSymptomsTorso();
-        $this->getSymptomsArms();
+        //$this->getSymptomsTorso();
+        //$this->getSymptomsArms();
         //$this->getSymptomsLegs();
         //$this->getSymptomsAbdomen();
         //$this->getSymptomsSkin();
