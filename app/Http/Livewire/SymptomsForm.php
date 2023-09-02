@@ -189,8 +189,8 @@ class SymptomsForm extends Component
 
     public function mount()
     {
-        $this->getSymptoms();
-        $this->getSymptomsHead();
+        //$this->getSymptoms();
+        //$this->getSymptomsHead();
         //$this->getSymptomsTorso();
         //$this->getSymptomsArms();
         //$this->getSymptomsLegs();
