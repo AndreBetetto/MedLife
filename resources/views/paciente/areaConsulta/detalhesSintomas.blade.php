@@ -9,9 +9,15 @@
                 <div class="w-full px-6 py-3 border-black rounded-xl border">
                     <p>Nome do paciente: <span>Rony Rústico</span></p>
                 </div>
-                <div class="w-full grid grid-cols-3 grid-rows-4 h-7">
-                    <div class="col-span-2 row-span-4 bg-black">
+                <div class="w-full grid grid-cols-3 grid-rows-4 gap-4 h-36">
+                    <div class="rounded-xl border py-3 border-black col-span-2 row-span-4">
+                        <form action="" class="grid grid-cols-2">
+                            <div class="w-full flex justify-evenly">
+                                <label for="">Febre</label>
+                                <input type="number" name="" class="h-4 w-4 appearance-none" id="">
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-span-1 row-span-1 bg-black"></div>
-                </div>
+                    <div class="rounded-xl border py-3 border-black row-span-1"></div>
+                    <div class="rounded-xl border py-3 border-black row-span-3"></div>
             </section>
