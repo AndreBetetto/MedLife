@@ -26,7 +26,7 @@
             <tr>
                 <td> {{ $formDiarios->id }} </td>
                 <td> {{ $qntDias }} </td>
-                @if ( $status == 'Em andamento' )
+                @if ( $status == 'Em andamento' || $status == 'Aguardando' )
                     <td> <a href="{{ route('areapaciente.medicoDetalhesForms', ['id' => $formDiarios->id]) }}">Responder</a> </td>
                 @else
                     <td>Nao disponivel</td>
@@ -38,6 +38,7 @@
                     </tr>
                 @endforelse
             </tr>
+
         
     </table>
 
