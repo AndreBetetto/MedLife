@@ -45,7 +45,7 @@ return new class extends Migration
                 ]);
             $table->longText('medicamentos')->nullable();
             $table->longText('alergias')->nullable();
-            $table->string('diagnotico')->nullable();
+            $table->string('diagnostico')->nullable();
             $table->timestamps();
         });
     }
