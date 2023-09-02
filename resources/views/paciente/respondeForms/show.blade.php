@@ -7,7 +7,12 @@
         </h2><br>
     </div>
 
-    <form class="w-full">
+    <form class="w-full" action="{{ route('areapaciente.medicoDetalhesFormsStore') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="text" name="paciente_id" id="paciente_id" value="{{$paciente->id}}">
+        <input type="text" name="medico_id" id="medico_id" value="{{$medico->id}}">
+        <input type="text" name="forms_id" id="forms_id" value="{{$formsDiarios->id}}">
+
         <div class="grid grid-cols-2 items-center  w-full -mx-3 mb-6">
         <div class="w-full flex flex-col items-center">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -78,7 +83,7 @@
                     }
                     echo $numDia;
                 @endphp
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled id="grid-last-name" type="text"
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled id="numDia" type="text"
                 value="{{$numDia}}">
             </div>
 
@@ -87,6 +92,9 @@
                     Grau de dor                    
                 </label>
                     <div class="inline-flex rounded-md shadow-sm" role="group">
+                        {{-- paradinha --}}
+                        <input type="hidden" name="nivelDor" id="nivelDor" value="7">
+
                         <button type="button" title="aaa" class="px-3 py-1 text-sm font-medium text-gray-900 bg-verde-1 border border-black rounded-l-lg focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-7000 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                             1
                         </button>
@@ -132,6 +140,7 @@
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Grau de Sangramento
+                    <input type="hidden" name="sangramento" id="sangramento" value="Pouco">
                 </label>
                 
                 <label>
@@ -158,17 +167,26 @@
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     <br><br>Febre
+                    <input type="hidden" name="nivelFebre" id="nivelFebre" value="38">
+
                     <div id="test-slider">
                         <input type="range" min="0" max="100" />
                     </div>
                 </label><br>
             </div>
+        
+            {{-- Sintomas --}}
+            <div>
+               @livewire('symptoms-form', ['paciente' => $paciente])
+            </div>
+            {{-- FimSintomas --}}
 
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Outros sintomas
                 </label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" maxlength="100">
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="sintomas" type="text" maxlength="100"
+                value="273,75">
             </div>
         </div> 
 
@@ -179,6 +197,7 @@
             <div class="w-full px-3 text-center">
                 <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center -mt-12">
                     <br>Medicamentos
+                    <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
                 </h2><br>
             </div>
             
@@ -229,9 +248,17 @@
                     </label>
                 </div>
             </div>
+            <input type="text" name="observacoes" id="observacoes" value="obs">
+            <input type="text" name="status" id="status" value="Em andamento">
+            <input type="text" name="prioridadeMedico" id="prioridadeMedico" value="true">
+            <input type="text" name="grupo" id="grupo" value="grupinho">
+            <input type="text" name="tipo" id="tipo" value="tipotipo">
+            <input type="text" name="alergias" id="alergias" value="AlewrgiasAAmendoim">
+            <input type="text" name="diagnostico" id="diagnostico" value="diagnstico">
+
             
             <button class="mt-12 flex-shrink-0 bg-purple-300 border-purple-300 text-sm border-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 py-1 px-2 rounded ml-auto" type="button">
-                Enviar Dados
+                Enviar Dados <input type="submit" name="ENVIAR">
             </button>
         </div>
     </div>

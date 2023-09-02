@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img class="h-16" src="icone.svg" alt="">
+                        <img class="h-16" src="{{ URL::asset('/icone.svg') }}" alt="">
                     </a>
                 </div>
 
@@ -22,7 +22,7 @@
                         <x-nav-link :href="route('values')" :active="request()->routeIs('values')">
                             {{ __('Valores') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('medico.create')" :active="request()->routeIs('medico.create')">
+                        <x-nav-link :href="route('doctors')" :active="request()->routeIs('doctors')">
                             {{ __('Médicos') }}
                         </x-nav-link>
                         <x-nav-link :href="route('contactUs')" :active="request()->routeIs('contactUs')">

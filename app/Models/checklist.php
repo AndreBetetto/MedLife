@@ -26,5 +26,6 @@ class checklist extends Model
         'tipo',
         'alergias',
         'diagnostico'
+        
     ];
 }
