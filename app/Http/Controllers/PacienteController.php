@@ -115,7 +115,8 @@ class PacienteController extends Controller
         $todosPacs = Paciente::all();
         $pacMeds = PacienteMedico::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
         $formDiarios = formDiario::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
-        return view('paciente.respondeForms.indexDetalhes', compact('medico', 'user', 'paciente', 'formDiarios', 'todosPacs', 'pacMeds'));
+        //$checklist = Checklist::where('forms_id', $formsDiarios->id)->get();
+        return view('paciente.respondeForms.indexDetalhes', compact('medico', 'user', 'paciente', 'formDiarios', 'todosPacs', 'pacMeds', 'checklist'));
     }
 
     public function detalhesMedicoForms($id)
@@ -127,13 +128,28 @@ class PacienteController extends Controller
         return view('paciente.respondeForms.index', compact('medico', 'paciente', 'formsDiarios', 'checklist'));
     }
 
-    public function detalhesMedicoFormsStore(FormSave $request)
+    public function detalhesMedicoFormsStore(FormSave $r, $id)
     {
-        $data = $request->validated();
-        dd($data); //para testes
-        //$data['forms_id'] = $id;
-        //checklist = Checklist::create($data);
-        return redirect()->route('areapaciente.medicoDetalhesForms');
+        $data = $r->validated();
+        //dd($data); //para testes
+        $numDia = $data['numDia'];
+        $formDiario = formDiario::where('id', $id)->first();
+        $periodo = $formDiario->numDias;
+        $checklist = Checklist::create($data);
+        if($numDia == $periodo){
+            $formDiario->update(['status' => 'Finalizado']);
+            $checklist->update(['status' => 'finalizado']);
+        } else {
+            $formDiario->update(['status' => 'Em andamento']);
+            $checklist->update(['status' => 'em andamento']);
+        }
+        $user  = User::where('id', auth()->user()->id)->first();
+        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        $medicos = Medico::all();
+        $specialty = null;
+        $pacMeds = PacienteMedico::where('paciente_id', auth()->user()->id)->get();
+        return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos', 'pacMeds', 'specialty'));
+   
     }
 
 

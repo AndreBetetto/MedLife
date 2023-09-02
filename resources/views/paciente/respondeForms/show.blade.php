@@ -7,7 +7,7 @@
         </h2><br>
     </div>
 
-    <form class="w-full" action="{{ route('areapaciente.medicoDetalhesFormsStore') }}" method="POST" enctype="multipart/form-data">
+    <form class="w-full" action="{{ route('areapaciente.medicoDetalhesFormsStore', ['id' =>$formsDiarios->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="text" name="paciente_id" id="paciente_id" value="{{$paciente->id}}">
         <input type="text" name="medico_id" id="medico_id" value="{{$medico->id}}">
@@ -27,7 +27,7 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Nome do Paciente
                 </label>
-                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text"
+                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled type="text"
                 value="{{$paciente->nome}}">
             </div>
 
@@ -40,7 +40,7 @@
                     $dataNascimento = $paciente->dataNasc;
                     $idade = Carbon::parse($dataNascimento)->age;
                 @endphp
-                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text"
+                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled type="text"
                 value="{{$idade}}">
             </div>
 
@@ -56,7 +56,7 @@
                         $sexo = 'Feminino';
                     }
                 @endphp
-                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text"
+                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled type="text"
                 value="{{$sexo}}">
             </div>
 
@@ -64,7 +64,7 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Profissão
                 </label>
-                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text"
+                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled type="text"
                 value="{{$paciente->profissao}}">
             </div>
         </div>
@@ -79,12 +79,13 @@
                     {
                         $numDia = 1;
                     } else {
+                        $checklist = $checklist->last();
                         $numDia = $checklist->numDia+1;
                     }
-                    echo $numDia;
                 @endphp
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled id="numDia" type="text"
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled name="numDia" id="numDia" type="text"
                 value="{{$numDia}}">
+                <input type="hidden" id="numDia" name="numDia" value="{{$numDia}}">
             </div>
 
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
@@ -140,26 +141,25 @@
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Grau de Sangramento
-                    <input type="hidden" name="sangramento" id="sangramento" value="Pouco">
                 </label>
                 
                 <label>
-                    <input class="with-gap" name="group1" type="radio" />
+                    <input class="with-gap" name="sangramento" id="sangramento" type="radio" value="nenhum" required/>
                     <span>Nenhum</span>
                 </label><br>
 
                 <label>
-                    <input class="with-gap" name="group1" type="radio"  />
+                    <input class="with-gap" name="sangramento" id="sangramento" type="radio" value="pouco" />
                     <span>Pouco</span>
                 </label><br>
 
                 <label>
-                    <input class="with-gap" name="group1" type="radio"  />
+                    <input class="with-gap" name="sangramento" id="sangramento" type="radio" value="medio" />
                     <span>Médio</span>
                 </label><br>
 
                 <label>
-                    <input class="with-gap" name="group1" type="radio"  />
+                    <input class="with-gap" name="sangramento" id="sangramento" type="radio" value="muito" />
                     <span>Intenso</span>
                 </label><br>
             </div>
@@ -167,10 +167,9 @@
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     <br><br>Febre
-                    <input type="hidden" name="nivelFebre" id="nivelFebre" value="38">
 
                     <div id="test-slider">
-                        <input type="range" min="0" max="100" />
+                        <input type="range" min="0" max="100" id="nivelFebre" name="nivelFebre"/>
                     </div>
                 </label><br>
             </div>
@@ -185,7 +184,7 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Outros sintomas
                 </label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="sintomas" type="text" maxlength="100"
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="sintomas" name="sintomas" type="text" maxlength="100"
                 value="273,75">
             </div>
         </div> 
@@ -249,7 +248,7 @@
                 </div>
             </div>
             <input type="text" name="observacoes" id="observacoes" value="obs">
-            <input type="text" name="status" id="status" value="Em andamento">
+            <input type="text" name="status" id="status" value="em andamento">
             <input type="text" name="prioridadeMedico" id="prioridadeMedico" value="true">
             <input type="text" name="grupo" id="grupo" value="grupinho">
             <input type="text" name="tipo" id="tipo" value="tipotipo">

@@ -26,7 +26,7 @@
                 <input type="text" name="diagnostico" value="teste">
                 <br>
                 Status:
-                <input type="text" name="status" value="Em andamento">
+                <input type="text" name="status" value="Aguardando">
                 <input type="submit" value="Adicionar" name="Adicionar">
                 <br>
             </div>

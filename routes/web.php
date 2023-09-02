@@ -82,7 +82,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/areapaciente/recomenda', [PacienteController::class, 'recomendaMedico'])->name('areapaciente.recomenda');
     Route::get('/areapaciente/meusMedicos/{id}', [PacienteController::class, 'detalhesMedico'])->name('areapaciente.medicoDetalhes');
     Route::get('/areapaciente/meusMedicos/{id}/forms', [PacienteController::class, 'detalhesMedicoForms'])->name('areapaciente.medicoDetalhesForms');
-    Route::post('/areapaciente/meusMedicos/forms', [PacienteController::class, 'detalhesMedicoFormsStore'])->name('areapaciente.medicoDetalhesFormsStore');
+    Route::post('/areapaciente/meusMedicos/{id}/formsEnvia', [PacienteController::class, 'detalhesMedicoFormsStore'])->name('areapaciente.medicoDetalhesFormsStore');
 });
 
 Route::middleware(['IsMedico'])->group(function () {
