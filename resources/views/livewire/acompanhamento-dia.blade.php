@@ -20,6 +20,16 @@
     <br>
     Nivel da dor: {{ $checklist->nivelDor }}
     Nivel da febre: {{ $checklist->nivelFebre }}
+    <br>
+    AQUI<br>
+    <div >
+        <label>Disponível para Viajar?</a>
+            <select name="viagem" class="opacity-100 static">
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select>
+    </div>
+    
     {{-- Sintomas API --}}
     Sintomas: 
         @foreach ($symptoms as $symptom)

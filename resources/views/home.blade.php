@@ -26,6 +26,7 @@
                         <h3 class="text-3xl dark:text-white">Soluções que Transformam Consultas</h3>
                         <p class="dark:text-slate-100">Médicos, Simplifiquem as Consultas! Explore como a MedLife oferece tecnologias que otimizam as consultas médicas, tornando-as mais produtivas e informativas.</p>
                     </div>
+                    
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
                         <img src="eficiencia.svg" class="w-16" alt="">
                         <h3 class="text-3xl dark:text-white">Conecte-se para Cuidados de Excelência</h3>
