@@ -7,9 +7,9 @@
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden ">
-                <div class="p-6 ">
-                    @include('admin.user.show')
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 border-b border-gray-200">
+                    @include('admin.show')
                 </div>
             </div>
         </div>
