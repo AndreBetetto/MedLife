@@ -24,8 +24,8 @@
                     </div>
                     <span> Usuários </span>
                     <div class="mt-4 mb-3">
-                        <div class="not-prose relative bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-800/25">
-                            <div class="relative rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                        <div class="not-prose relative rounded-xl overflow-hidden dark:bg-slate-800/25">
+                            <div class="relative rounded-xl bg-purple-300">
                                 <div class="shadow-sm overflow-hidden my-8">
                                     <div class="grid grid-cols-table border-collapse w-full">
                                         <span class="font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">ID</span>
