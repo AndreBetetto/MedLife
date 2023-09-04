@@ -6,8 +6,13 @@
 
     @php
         $qtdDias = $formsDiarios->numDias;
+        $diaMax = $checklist->count();
+        $id_form = $formsDiarios->id;
         
     @endphp
-    @livewire('acompanhamento-dia', ['qtdDias' => $qtdDias, 'check' => $checklist])
+    @livewire('acompanhamento-dia', [   'qtdDias' => $qtdDias, 
+                                        'diaMax' => $diaMax,
+                                        'id_form' => $id_form
+                                     ])
     
 </div>

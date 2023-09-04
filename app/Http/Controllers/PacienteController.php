@@ -155,7 +155,7 @@ class PacienteController extends Controller
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
         $medicos = Medico::all();
         $specialty = null;
-        $pacMeds = PacienteMedico::where('paciente_id', auth()->user()->id)->get();
+        $pacMeds = PacienteMedico::where('paciente_id', $paciente->id)->get();
         return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos', 'pacMeds', 'specialty'));
    
     }
