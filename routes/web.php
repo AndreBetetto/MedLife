@@ -26,6 +26,7 @@ use App\Http\Controllers\PagesController as PagesController;
 Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('/benefit', [PagesController::class, 'benefit'])->name('benefit');
 Route::get('/values', [PagesController::class, 'values'])->name('values');
+Route::get('/doctors', [PagesController::class, 'doctors'])->name('doctors');
 Route::get('/contactUs', [PagesController::class, 'contactUs'])->name('contactUs');
 Route::get('/aboutUs', [PagesController::class, 'aboutUs'])->name('aboutUs');
 Route::get('/sobreNos', [PagesController::class, 'sobreNos'])->name('sobreNos');

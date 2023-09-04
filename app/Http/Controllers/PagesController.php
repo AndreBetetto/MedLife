@@ -21,6 +21,11 @@ class PagesController extends Controller
         return view('default-pages.values');
     }
 
+    public function doctors()
+    {
+        return view('default-pages.doctors');
+    }
+
     public function contactUs()
     {
         return view('default-pages.contactUs');

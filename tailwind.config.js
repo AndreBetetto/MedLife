@@ -56,6 +56,7 @@ export default {
     important: true,  
 
     plugins: [
+        require('autoprefixer'),
         forms,
         require("tw-elements/dist/plugin.cjs")
     ],
