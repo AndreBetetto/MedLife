@@ -6,7 +6,7 @@
             <td>Nome</td>
             <td>Sobrenome</td>
             <td>especialidade</td>
-            <td>Detalhes</td>       
+            <td>Detalhes</td>      
         </tr>
         @forelse ($medicos as $medico)
             @php

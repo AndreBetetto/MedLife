@@ -17,6 +17,7 @@
             <td>Dias restantes</td>
             <td>Responder</td>
             <td>Status</td>
+            <td>Visulaizar respostas</td>
         </tr>
         @forelse ($formDiarios as $formDiarios)
             @php
@@ -32,6 +33,9 @@
                     <td>Nao disponivel</td>
                 @endif
                 <td> {{ $status}} </td>
+                <td>
+                    Suas respostas <a href="{{ route('areapaciente.acessoForms', ['id' => $formDiarios->id]) }}">Clique aqui!</a>
+                </td>
                 @empty
                     <tr>
                         <td colspan="4">Sem pacientes adicionados</td>
