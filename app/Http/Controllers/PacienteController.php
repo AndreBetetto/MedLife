@@ -115,8 +115,7 @@ class PacienteController extends Controller
         $todosPacs = Paciente::all();
         $pacMeds = PacienteMedico::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
         $formDiarios = formDiario::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
-        //$checklist = Checklist::where('forms_id', $formsDiarios->id)->get();
-        return view('paciente.respondeForms.indexDetalhes', compact('medico', 'user', 'paciente', 'formDiarios', 'todosPacs', 'pacMeds', 'checklist'));
+        return view('paciente.respondeForms.indexDetalhes', compact('medico', 'user', 'paciente', 'formDiarios', 'todosPacs', 'pacMeds'));
     }
 
     public function detalhesMedicoForms($id)
