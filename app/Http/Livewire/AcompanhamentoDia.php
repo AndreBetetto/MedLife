@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Requests\FormsDiario;
 use Livewire\Component;
 use App\Models\formDiario as formDiario;
 use App\Models\checklist as Checklist;
@@ -17,8 +18,9 @@ class AcompanhamentoDia extends Component
     public $id_form = 1;
     public $numberOfDays = 1;
     public $qtdDias = 1;
-    public $diaMax = 1;
+    public $diaMaxRespondido = 1;
     public $totalDays = 7; // Set the default total number of days
+    public $data = [];
 
     public function getToken()
     {
@@ -53,18 +55,33 @@ class AcompanhamentoDia extends Component
         $formId = $this->id_form;
         $checklist = Checklist::where('forms_id',$formId)->where('numDia',$selectedDay)->first();
         $this->sintomasCheck = $checklist->sintomas;
-        return view('livewire.acompanhamento-dia', compact('checklist'));
+        $dia = $this->selectedDay;
+        return view('livewire.acompanhamento-dia', compact('checklist', 'dia'));
     }
 
-    public function setDays()
+    public function dataDay()
     {
-          
+        $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
+        $data = array(
+            "id" => $formDia->id,
+            "nivelDor" => $formDia->nivelDor,
+            "nivelFebre" => $formDia->nivelFebre,
+            "sintomas" => $formDia->sintomas,
+            "numDia" => $formDia->numDia,
+            "observacoes" => $formDia->observacoes,
+            "numDia" => $formDia->numDia,
+            "status" => $formDia->status,
+            "grupo" => $formDia->grupo,
+            "tipo" => $formDia->tipo,
+            "sangramento" => $formDia->sangramento,
+        );
+        $this->data = $data;
     }
 
     public function mount()
     {
-        $this->setDays();
         $this->getSymptoms();
+        $this->dataDay();
     }
 
 }

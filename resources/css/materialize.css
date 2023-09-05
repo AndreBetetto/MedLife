@@ -1603,89 +1603,12 @@
   color: #ffa000 !important;
 }
 
-.amber.darken-3 {
-  background-color: #ff8f00 !important;
+.divider {
+  height: 1px;
+  overflow: hidden;
+  background-color: #e0e0e0;
 }
 
-.amber-text.text-darken-3 {
-  color: #ff8f00 !important;
-}
-
-.amber.darken-4 {
-  background-color: #ff6f00 !important;
-}
-
-.amber-text.text-darken-4 {
-  color: #ff6f00 !important;
-}
-
-.amber.accent-1 {
-  background-color: #ffe57f !important;
-}
-
-.amber-text.text-accent-1 {
-  color: #ffe57f !important;
-}
-
-.amber.accent-2 {
-  background-color: #ffd740 !important;
-}
-
-.amber-text.text-accent-2 {
-  color: #ffd740 !important;
-}
-
-.amber.accent-3 {
-  background-color: #ffc400 !important;
-}
-
-.amber-text.text-accent-3 {
-  color: #ffc400 !important;
-}
-
-.amber.accent-4 {
-  background-color: #ffab00 !important;
-}
-
-.amber-text.text-accent-4 {
-  color: #ffab00 !important;
-}
-
-.orange {
-  background-color: #ff9800 !important;
-}
-
-.orange-text {
-  color: #ff9800 !important;
-}
-
-.orange.lighten-5 {
-  background-color: #fff3e0 !important;
-}
-
-.orange-text.text-lighten-5 {
-  color: #fff3e0 !important;
-}
-
-.orange.lighten-4 {
-  background-color: #ffe0b2 !important;
-}
-
-.orange-text.text-lighten-4 {
-  color: #ffe0b2 !important;
-}
-
-.orange.lighten-3 {
-  background-color: #ffcc80 !important;
-}
-
-.orange-text.text-lighten-3 {
-  color: #ffcc80 !important;
-}
-
-.orange.lighten-2 {
-  background-color: #ffb74d !important;
-}
 
 .orange-text.text-lighten-2 {
   color: #ffb74d !important;
@@ -8486,10 +8409,19 @@ input[type=range]::-ms-thumb {
   visibility: visible;
   -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
           animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s,
+ visibility 0s 1s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ visibility 0s 1s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s 1s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s 1s,
+ -webkit-transform .3s;
 }
 
 .tap-target {
@@ -8542,10 +8474,19 @@ input[type=range]::-ms-thumb {
 
 .tap-target-wave::after {
   visibility: hidden;
-  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s;
-  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s,
+ visibility 0s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ visibility 0s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s,
+ -webkit-transform .3s;
   z-index: -1;
 }
 
