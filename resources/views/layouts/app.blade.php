@@ -12,5 +12,7 @@
         </div>
         @include('layouts.footer')
         @livewireScripts
+        <script type="text/javascript" src="js/materialize.js"></script>
+
     </body>
 </html>
