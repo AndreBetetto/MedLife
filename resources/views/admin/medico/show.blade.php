@@ -219,19 +219,19 @@
                         </div>
                     </div>
                 </x-form-modal>
-                <span> Médicos</span>
-                <div class="mt-4 mb-3">
-                    <div class="not-prose relative bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-800/25">
-                        <div class="relative rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+               
+                <div class="-mt-2 mb-3">
+                    <div class="not-prose relative rounded-xl overflow-hidden dark:bg-slate-800/25">
+                        <div class="relative rounded-xl bg-purple-300">
                             <div class="shadow-sm overflow-hidden my-8">
                                 <div class="grid grid-cols-small-table border-collapse w-full">
-                                    <span class="font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">ID</span>
-                                    <span class="font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Sobrenome</span>
-                                    <span class="font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Nome</span>
-                                    <span class="font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Telefone</span>
-                                    <span class="font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">CRM</span>
-                                    <span class="font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Sexo</span>
-                                    <span class="font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Especialidade</span>
+                                    <span class="font-medium mt-5 p-4 pl-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">ID</span>
+                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Sobrenome</span>
+                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Nome</span>
+                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Telefone</span>
+                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">CRM</span>
+                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Sexo</span>
+                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Especialidade</span>
                                 </div>
                             </div>
                             @forelse ($medicos as $medicos)
