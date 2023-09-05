@@ -22,8 +22,6 @@
         </style>
 
         <!-- Scripts -->
-        <wireui:scripts />
-        <script src="//unpkg.com/alpinejs" defer></script>
         @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/themeSwitcher.js'])
         @livewireStyles
     </head>

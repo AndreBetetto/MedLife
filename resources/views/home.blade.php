@@ -15,6 +15,13 @@
                         </div>
                     </div>
                 </section>
+                
+                <label>Disponível para Viajar?</a>
+                    <select name="viagem">
+                        <option value="sim">Sim</option>
+                        <option value="nao">Não</option>
+                    </select>
+                    
                 <section class="grid justify-items-center grid-cols-3 py-48">
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
                         <img src="eficiencia.svg" class="w-16" alt="">

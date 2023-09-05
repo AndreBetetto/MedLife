@@ -3,17 +3,11 @@ import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    presets: [
-        require('./vendor/wireui/wireui/tailwind.config.js')
-    ],
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './node_modules/tw-elements/dist/js/**/*.js',
-        './vendor/wireui/wireui/resources/**/*.blade.php',
-        './vendor/wireui/wireui/ts/**/*.ts',
-        './vendor/wireui/wireui/src/View/**/*.php'
+        './node_modules/tw-elements/dist/js/**/*.js'
     ],
 
     darkMode: 'class',
@@ -24,28 +18,6 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                'verde': {
-                    '1': '#008000',
-                    '2': '#32cd32',
-                    '3': '#63b76C',
-                },
-
-                'amarelo':{
-                    '1': '#fafa37',
-                    '2': '#ffef00',
-                },
-
-                'laranja':{
-                    '1': '#f9a601',
-                    '2': '#ff7417',
-                },
-
-                'vermelho':{
-                    '1':'#c13617',
-                    '2': '#d72009',
-                    '3': '#e80700',
-                },
-
                 footerDark:{
                     0: '#391C60',
                 },
@@ -62,7 +34,6 @@ export default {
     important: true,  
 
     plugins: [
-        require('autoprefixer'),
         forms,
         require("tw-elements/dist/plugin.cjs")
     ],
