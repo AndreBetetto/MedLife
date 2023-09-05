@@ -6,13 +6,16 @@
 
     @php
         $qtdDias = $formsDiarios->numDias;
-        $diaMax = $checklist->count();
+        $diaMaxRespondido = $checklist->count();
         $id_form = $formsDiarios->id;
-        
+        $maxDias = $formsDiarios->numDias;
+        echo $formsDiarios->numDias;
     @endphp
     @livewire('acompanhamento-dia', [   'qtdDias' => $qtdDias, 
-                                        'diaMax' => $diaMax,
-                                        'id_form' => $id_form
+                                        'diaMaxRespondido' => $diaMaxRespondido,
+                                        'id_form' => $id_form,
+                                        'totalDays' => $maxDias,
                                      ])
+
     
 </div>

@@ -10,10 +10,7 @@
     </div>
     <br><br>
     @php
-        $teste = 'andre, luiz';
-        echo $teste;
         
-        echo json_encode($teste);
     @endphp
     <br><br>
     {{ $selectedDay }}
@@ -23,12 +20,38 @@
     <br>
     AQUI<br>
     <div >
-        <label>Disponível para Viajar?</a>
-            <select name="viagem" class="opacity-100 static">
-                <option value="sim">Sim</option>
-                <option value="nao">Não</option>
-            </select>
+        <label for="selectedDay">Select day:</label>
+        <select
+            placeholder="Select one"
+            wire:model="selectedDay"
+        >
+        @for ($i = 1; $i <= $totalDays; $i++)
+            @if ($i <= $diaMaxRespondido)
+                <option value="{{ $i }} " selected>{{ $i }}</option>
+            @else
+                <option value="{{ $i }} " disabled>{{ $i }}</option>
+            @endif
+        @endfor
+    </select>
     </div>
+    <br>
+    {{ dataDay()}}
+    {{ $dia }}
+    <hr>
+    O que aconteceu nesse dia????????<br>
+    Nivel da dor: <input type="text" value="{{ $data['nivelDor'] }}" disabled>
+    <br>
+    Nivel da febre: <input type="text" value="{{ $data['nivelFebre'] }}" disabled>
+    <br>
+    Sintomas: <input type="text" value="{{ $data['sintomas'] }}" disabled>
+    <br>
+    Sangramento: <input type="text" value="{{ $data['sangramento'] }}" disabled>
+    <br>
+    Observacoes: <input type="text" value="{{ $data['observacoes'] }}" disabled>
+    <hr>
+
+   
+
     
     {{-- Sintomas API --}}
     Sintomas: 
