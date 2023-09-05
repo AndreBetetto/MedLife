@@ -221,13 +221,14 @@
                 </x-form-modal>
                
                 <div class="-mt-2 mb-3">
-                    <div class="not-prose relative rounded-xl overflow-hidden dark:bg-slate-800/25">
-                        <div class="relative rounded-xl bg-purple-300">
-                            <div class="shadow-sm overflow-hidden my-8">
-                                <div class="grid grid-cols-small-table border-collapse w-full">
-                                    <span class="font-medium mt-5 p-4 pl-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">ID</span>
-                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Sobrenome</span>
+                    <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
+                        <div class="relative  py-3">
+                            <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">
+                                <div class="grid grid-cols-8 border-collapse w-full">
+                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left my-1/2">ID</span>
+                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Imagem</span>
                                     <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Nome</span>
+                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Sobrenome</span>
                                     <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Telefone</span>
                                     <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">CRM</span>
                                     <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Sexo</span>
@@ -235,13 +236,15 @@
                                 </div>
                             </div>
                             @forelse ($medicos as $medicos)
-                            <div class="grid grid-cols-small-table bg-white dark:bg-slate-800">
-                                <span class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ $medicos->id }}</span>
-                                <span class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ Str::ucfirst($medicos->sobrenome); }}</span>
-                                <span class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ Str::ucfirst($medicos->nome); }}</span>
-                                <span class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ $medicos->crm }}</span>
-                                <span class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ $medicos->sexo }}</span>
-                                <span class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ $medicos->especialidade }}</span>
+                            <div class="grid grid-cols-8 bg-white dark:bg-slate-800">
+                                <span class="text-sm border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2">{{ $medicos->id }}</span>
+                                <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2"><img src="../../../../public/icone.png"/></span>
+                                <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ Str::ucfirst($medicos->nome); }}</span>
+                                <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ Str::ucfirst($medicos->sobrenome); }}</span>
+                                <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $medicos->fone }}</span>
+                                <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $medicos->crm }}</span>
+                                <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $medicos->sexo }}</span>
+                                <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $medicos->especialidade }}</span>
                             </div>
                             @empty
                             <div>
