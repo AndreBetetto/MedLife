@@ -12,7 +12,7 @@ use GuzzleHttp\Client;
 class AcompanhamentoDia extends Component
 {
 
-    public $symptoms = null;
+    public $symptoms = [];
     public $sintomasCheck = null;
     public $selectedDay = 1;
     public $id_form = 1;
@@ -21,6 +21,7 @@ class AcompanhamentoDia extends Component
     public $diaMaxRespondido = 1;
     public $totalDays = 7; // Set the default total number of days
     public $data = [];
+    public $testeurl;
 
     public function getToken()
     {
@@ -30,13 +31,12 @@ class AcompanhamentoDia extends Component
 
     public function getSymptoms()
     {
-        $input = $this->sintomasCheck;
+        $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
+        $input = $formDia->sintomas;
         $token =$this->getToken();
-        $sintomas = '['.$input.']';
-        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms/', [
+        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms?symptoms=['.$input.']', [
             'token' => $token,
-            'language' => 'en-gb',
-            'symptoms' => $sintomas
+            'language' => 'en-gb'
         ]);
         if ($response->successful()) {
             $this->symptoms = $response->json();
@@ -45,6 +45,7 @@ class AcompanhamentoDia extends Component
             $this->symptoms = [];
             // You can log an error message or set a default value for $this->symptoms
         }
+        $this->testeurl = 'https://sandbox-healthservice.priaid.ch/symptoms?symptoms=['.$input.']&'.$token.'&language=en-gb';
     }
 
 
@@ -56,32 +57,13 @@ class AcompanhamentoDia extends Component
         $checklist = Checklist::where('forms_id',$formId)->where('numDia',$selectedDay)->first();
         $this->sintomasCheck = $checklist->sintomas;
         $dia = $this->selectedDay;
-        return view('livewire.acompanhamento-dia', compact('checklist', 'dia'));
-    }
-
-    public function dataDay()
-    {
         $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
-        $data = array(
-            "id" => $formDia->id,
-            "nivelDor" => $formDia->nivelDor,
-            "nivelFebre" => $formDia->nivelFebre,
-            "sintomas" => $formDia->sintomas,
-            "numDia" => $formDia->numDia,
-            "observacoes" => $formDia->observacoes,
-            "numDia" => $formDia->numDia,
-            "status" => $formDia->status,
-            "grupo" => $formDia->grupo,
-            "tipo" => $formDia->tipo,
-            "sangramento" => $formDia->sangramento,
-        );
-        $this->data = $data;
+        return view('livewire.acompanhamento-dia', compact('checklist', 'dia', 'formDia'));
     }
 
     public function mount()
     {
         $this->getSymptoms();
-        $this->dataDay();
     }
 
 }

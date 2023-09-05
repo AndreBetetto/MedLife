@@ -1,24 +1,9 @@
 <div>
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
 
-    <div>
-        {{-- TODO: Componente q troca esse text input para um <select></select> --}}
-        <div>
-            <label for="selectedDay">Search Medicine:</label>
-            <input type="text" wire:model="selectedDay">
-        </div>
-    </div>
+
     <br><br>
-    @php
-        
-    @endphp
-    <br><br>
-    {{ $selectedDay }}
-    <br>
-    Nivel da dor: {{ $checklist->nivelDor }}
-    Nivel da febre: {{ $checklist->nivelFebre }}
-    <br>
-    AQUI<br>
+
     <div >
         <label for="selectedDay">Select day:</label>
         <select
@@ -34,25 +19,21 @@
         @endfor
     </select>
     </div>
-    <br>
-    {{ dataDay()}}
-    {{ $dia }}
     <hr>
     O que aconteceu nesse dia????????<br>
-    Nivel da dor: <input type="text" value="{{ $data['nivelDor'] }}" disabled>
+    Nivel da dor: <input type="text" value="{{ $formDia->nivelDor }}" disabled>
     <br>
-    Nivel da febre: <input type="text" value="{{ $data['nivelFebre'] }}" disabled>
+    Nivel da febre: <input type="text" value="{{ $formDia->nivelFebre }}" disabled>
     <br>
-    Sintomas: <input type="text" value="{{ $data['sintomas'] }}" disabled>
+    Sintomas: <input type="text" value="{{ $formDia->sintomas }}" disabled>
     <br>
-    Sangramento: <input type="text" value="{{ $data['sangramento'] }}" disabled>
+    Sangramento: <input type="text" value="{{ $formDia->sangramento }}" disabled>
     <br>
-    Observacoes: <input type="text" value="{{ $data['observacoes'] }}" disabled>
+    Observacoes: <input type="text" value="{{ $formDia->observacoes }}" disabled>
     <hr>
 
-   
-
-    
+    <button wire:click="getSymptoms">Ver sintomas</button>
+    <a href="{{ $testeurl }}">Ver sintomas</a>
     {{-- Sintomas API --}}
     Sintomas: 
         @foreach ($symptoms as $symptom)
