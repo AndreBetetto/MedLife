@@ -18,28 +18,6 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                'verde': {
-                    '1': '#008000',
-                    '2': '#32cd32',
-                    '3': '#63b76C',
-                },
-
-                'amarelo':{
-                    '1': '#fafa37',
-                    '2': '#ffef00',
-                },
-
-                'laranja':{
-                    '1': '#f9a601',
-                    '2': '#ff7417',
-                },
-
-                'vermelho':{
-                    '1':'#c13617',
-                    '2': '#d72009',
-                    '3': '#e80700',
-                },
-
                 footerDark:{
                     0: '#391C60',
                 },

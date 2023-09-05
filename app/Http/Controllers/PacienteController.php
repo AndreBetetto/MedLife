@@ -50,11 +50,11 @@ class PacienteController extends Controller
 
     public function buscarMedicos()
     {
-        $jaSelecionados = PacienteMedico::where('paciente_id', auth()->user()->id)->get();
         $user  = User::where('id', auth()->user()->id)->first();
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
         $medicos = Medico::all();
         $specialty = null;
+        $jaSelecionados = PacienteMedico::where('paciente_id', $paciente->id)->get();
 
         return view('paciente.buscarMedico.index', compact('user', 'paciente', 'medicos', 'jaSelecionados', 'specialty'));
     }
@@ -65,7 +65,7 @@ class PacienteController extends Controller
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
         $medicos = Medico::all();
         $specialty = null;
-        $pacMeds = PacienteMedico::where('paciente_id', auth()->user()->id)->get();
+        $pacMeds = PacienteMedico::where('paciente_id', $paciente->id)->get();
         return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos', 'pacMeds', 'specialty'));
     }
 
@@ -127,6 +127,15 @@ class PacienteController extends Controller
         return view('paciente.respondeForms.index', compact('medico', 'paciente', 'formsDiarios', 'checklist'));
     }
 
+    public function acessoFormulario($id)
+    {
+        $formsDiarios = formDiario::where('id', $id)->first();
+        $medico = Medico::where('id', $formsDiarios->medico_id)->first();
+        $paciente = Paciente::where('id', $formsDiarios->paciente_id)->first();
+        $checklist = Checklist::where('forms_id', $formsDiarios->id)->get();
+        return view('paciente.acompanhamentoForms.index', compact('medico', 'paciente', 'formsDiarios', 'checklist'));
+    }
+
     public function detalhesMedicoFormsStore(FormSave $r, $id)
     {
         $data = $r->validated();
@@ -146,7 +155,7 @@ class PacienteController extends Controller
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
         $medicos = Medico::all();
         $specialty = null;
-        $pacMeds = PacienteMedico::where('paciente_id', auth()->user()->id)->get();
+        $pacMeds = PacienteMedico::where('paciente_id', $paciente->id)->get();
         return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos', 'pacMeds', 'specialty'));
    
     }

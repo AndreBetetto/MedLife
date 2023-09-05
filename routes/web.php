@@ -26,6 +26,7 @@ use App\Http\Controllers\PagesController as PagesController;
 Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('/benefit', [PagesController::class, 'benefit'])->name('benefit');
 Route::get('/values', [PagesController::class, 'values'])->name('values');
+Route::get('/doctors', [PagesController::class, 'doctors'])->name('doctors');
 Route::get('/contactUs', [PagesController::class, 'contactUs'])->name('contactUs');
 Route::get('/aboutUs', [PagesController::class, 'aboutUs'])->name('aboutUs');
 Route::get('/sobreNos', [PagesController::class, 'sobreNos'])->name('sobreNos');
@@ -83,6 +84,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/areapaciente/meusMedicos/{id}', [PacienteController::class, 'detalhesMedico'])->name('areapaciente.medicoDetalhes');
     Route::get('/areapaciente/meusMedicos/{id}/forms', [PacienteController::class, 'detalhesMedicoForms'])->name('areapaciente.medicoDetalhesForms');
     Route::post('/areapaciente/meusMedicos/{id}/formsEnvia', [PacienteController::class, 'detalhesMedicoFormsStore'])->name('areapaciente.medicoDetalhesFormsStore');
+    Route::get('/areapaciente/meusMedicos/{id}/suasRespostas/', [PacienteController::class, 'acessoFormulario'])->name('areapaciente.acessoForms');
 });
 
 Route::middleware(['IsMedico'])->group(function () {
