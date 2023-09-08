@@ -11,6 +11,7 @@ class SymptomsForm extends Component
 {
     public $paciente;
     public $symptomsHead = [];
+    public $selectedSymptomHead = '';
     public $symptomsTorso = [];
     public $symptomsArms = [];
     public $symptomsLegs = [];
@@ -18,6 +19,12 @@ class SymptomsForm extends Component
     public $symptomsSkin = [];
     public $symptoms = [];
     public $selectedSymptom = null;
+
+    public function updatedSelectedSymptoms()
+    {
+        // Convert the selectedSymptoms array to a comma-separated string of IDs
+        $this->selectedSymptomHead = implode(',', $this->symptomsHead);
+    }
 
     public function render()
     {
@@ -55,6 +62,7 @@ class SymptomsForm extends Component
     public function getToken()
     {
         $token = env('APIMEDIC_SAND_KEY');
+        //$token = env('APIMEDIC_LIVE_KEY');
         return $token;
     }
 
@@ -190,11 +198,11 @@ class SymptomsForm extends Component
     public function mount()
     {
         //$this->getSymptoms();
-        #$this->getSymptomsHead();
-        #$this->getSymptomsTorso();
-        #$this->getSymptomsArms();
-        #$this->getSymptomsLegs();
-        #$this->getSymptomsAbdomen();
-        #$this->getSymptomsSkin();
+        $this->getSymptomsHead();
+        $this->getSymptomsTorso();
+        $this->getSymptomsArms();
+        $this->getSymptomsLegs();
+        $this->getSymptomsAbdomen();
+        $this->getSymptomsSkin();
     }
 }

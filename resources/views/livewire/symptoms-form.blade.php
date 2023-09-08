@@ -17,79 +17,100 @@
 
 
     @endphp
-
-    <div>
-        <h2>Sintomas gerais:</h2>
-        <ul>
-            @foreach ($symptoms as $symptom)
-                <li>{{ $symptom['Name'] }}</li>
-            @endforeach
-        </ul>
-    </div>
-    <hr>
-    <div>
-        <h2>Sintomas da cabeca:</h2>
-        <ul>
-            @foreach ($symptomsHead as $symptomHead)
-                <li>{{ $symptomHead['Name'] }}</li>
-            @endforeach
-        </ul>
-    </div>
-    <hr>
-    <div>
-        <h2>Sintomas do torso:</h2>
-        <ul>
-            @foreach ($symptomsTorso as $symptomTorso)
-                <li>{{ $symptomTorso['Name'] }}</li>
-            @endforeach
-        </ul>
-    </div>
-    <hr>
-    <div>
-        <h2>Sintomas dos bracitos:</h2>
-        <ul>
-            @foreach ($symptomsArms as $symptomArms)
-                <li>{{ $symptomArms['Name'] }}</li>
-            @endforeach
-        </ul>
-    </div>
-    <hr>
-    <div>
-        <h2>Sintomas do Pernitas:</h2>
-        <ul>
-            @foreach ($symptomsLegs as $symptomLegs)
-                <li>{{ $symptomLegs['Name'] }}</li>
-            @endforeach
-        </ul>
-    </div>
-    <hr>
-    <div>
-        <h2>Sintomas do Abdomem e bundinha:</h2>
-        <ul>
-            @foreach ($symptomsAbdomen as $symptomAbdomen)
-                <li>{{ $symptomAbdomen['Name'] }}</li>
-            @endforeach
-        </ul>
-    </div>
-    <hr>
-    <div>
-        <h2>Sintomas do pele:</h2>
-        <ul>
-            @foreach ($symptomsSkin as $symptomSkin)
-                <li>{{ $symptomSkin['Name'] }}</li>
-            @endforeach
-        </ul>
-    </div>
-    <hr>
-   
-
-    
-    <br>
-    ID: 06 - Cabeça, garganta e pescoço<br>
-    ID: 15 - Tórax e costas<br>
-    ID: 07 - Braços e ombros<br>
-    ID: 16 - Abdômen, pelve e nádegas<br>
-    ID: 10 - Pernas<br>
-    ID: 17 - Pele, articulações e geral<br>
-    <br>
+    <table class="customTable">
+        <tr>
+            <td>
+                <img src="public/logo.png" alt="corpo humano" width="50px">
+                Imagem de um corpo humano (nao ta funcionando ainda!!!)
+                Deve ocupar essas 7 linhas, de forma com que esteja alinhado a cada parte do corpo
+            </td>
+            <td>
+                Sintomas TOP
+            </td>
+        </tr>
+        <tr>
+            <td>
+                .
+            </td>
+            <td>
+                <label>Select sintomas head</label>
+                <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    @foreach ($symptomsHead as $symptomHead)
+                        <option value="{{ $symptomHead['ID'] }}">{{ $symptomHead['Name'] }}</option>
+                    @endforeach
+                </select><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                .
+            </td>
+            <td>
+                <label>Select sintomas torso</label>
+                <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    @foreach ($symptomsTorso as $symptomTorso)
+                        <option value="{{ $symptomTorso['ID'] }}">{{ $symptomTorso['Name'] }}</option>
+                    @endforeach
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                .
+            </td>
+            <td>
+                <label>Select sintomas bracitos</label>
+                <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    @foreach ($symptomsArms as $symptomArms)
+                        <option value="{{ $symptomArms['ID'] }}">{{ $symptomArms['Name'] }}</option>
+                    @endforeach
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                .
+            </td>
+            <td>
+                <label>Select sintomas perninhas</label>
+                <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    @foreach ($symptomsLegs as $symptomLegs)
+                        <option value="{{ $symptomLegs['ID'] }}">{{ $symptomLegs['Name'] }}</option>
+                    @endforeach
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                .
+            </td>
+            <td>
+                <label>Select sintomas abdomem e bundinha</label>
+                <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    @foreach ($symptomsAbdomen as $symptomAbdomen)
+                        <option value="{{ $symptomAbdomen['ID'] }}">{{ $symptomAbdomen['Name'] }}</option>
+                    @endforeach
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                .
+            </td>
+            <td>
+                <label>Select sintomas pele</label>
+                <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    @foreach ($symptomsSkin as $symptomSkin)
+                        <option value="{{ $symptomSkin['ID'] }}">{{ $symptomSkin['Name'] }}</option>
+                    @endforeach
+                </select>
+            </td>
+        </tr>
+    </table>
 </div>

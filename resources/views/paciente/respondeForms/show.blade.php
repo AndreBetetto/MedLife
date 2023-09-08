@@ -137,13 +137,7 @@
                         </button>
                     </div>
             </div><br>
-            <label>Browser Select</label>
-  <select class="browser-default">
-    <option value="" disabled selected>Choose your option</option>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
-  </select>
+            
                 
     
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
