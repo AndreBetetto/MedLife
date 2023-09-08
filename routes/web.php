@@ -117,4 +117,17 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::get('/adminuser', [AdminController::class, 'crudUser'])->name('crudUser.index');
 });
 
+
+Route::middleware('auth')->group(function() {
+    Route::get('/chat', 'HomeController@chat')->name('chat');
+    Route::post('getFriends', 'HomeController@getFriends')->name('getFriends');
+    Route::post('/session/create', 'SessionController@create')->name('session.create');
+    Route::post('/session/{session}/chats', 'ChatController@chats')->name('session.chats');
+    Route::post('/session/{session}/read', 'ChatController@read')->name('session.read');
+    Route::post('/session/{session}/clear', 'ChatController@clear')->name('session.clear');
+    Route::post('/session/{session}/block', 'BlockController@block')->name('session.block');
+    Route::post('/session/{session}/unblock', 'BlockController@unblock')->name('session.unblock');
+    Route::post('/send/{session}', 'ChatController@send')->name('send');
+});
+
 require __DIR__.'/auth.php';

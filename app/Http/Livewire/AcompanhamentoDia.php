@@ -34,7 +34,8 @@ class AcompanhamentoDia extends Component
         $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
         $input = $formDia->sintomas;
         $token =$this->getToken();
-        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms?symptoms=['.$input.']', [
+        $url = 
+        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms?symptoms=[273,75]&', [
             'token' => $token,
             'language' => 'en-gb'
         ]);

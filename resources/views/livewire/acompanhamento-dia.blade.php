@@ -39,4 +39,5 @@
         @foreach ($symptoms as $symptom)
             <li>{{ $symptom['Name'] }}</li>
         @endforeach
+        
 </div>
