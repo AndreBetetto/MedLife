@@ -22,4 +22,8 @@
     -webkit-appearance: none;
     margin: 0; 
   }
+
+  input{
+    cursor: pointer;
+  }
 }
