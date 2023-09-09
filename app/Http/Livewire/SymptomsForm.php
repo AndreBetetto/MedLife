@@ -25,6 +25,7 @@ class SymptomsForm extends Component
     public $symptoms = [];
     public $selectedSymptomIds = '';
     public $isLoading = false;
+    public $dataFetched = false;
 
     public function removeSelectedSymptomHead($symptomId)
     {
@@ -250,6 +251,7 @@ class SymptomsForm extends Component
     {
         // Set isLoading to true to show the loading spinner
         $this->isLoading = true;
+        
         // Perform your API requests here
         $this->getSymptomsHead();
         $this->getSymptomsTorso();
@@ -259,5 +261,6 @@ class SymptomsForm extends Component
         $this->getSymptomsSkin();
         // Set isLoading to false when the API request is complete
         $this->isLoading = false;
+        $this->dataFetched = true;
     }
 }

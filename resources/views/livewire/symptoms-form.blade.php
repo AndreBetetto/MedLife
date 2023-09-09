@@ -46,12 +46,24 @@
             </td>
             <td>
                 <label>Select sintomas head</label>
-                <select wire:model="selectedSymptomHead" multiple>
-                    <option value="" disabled selected>Choose your option</option>
-                    @foreach ($symptomsHead as $symptomHead)
+                <select id="symHead" wire:model="selectedSymptomHead" multiple>
+=                    @foreach ($symptomsHead as $symptomHead)
                         <option value="{{ $symptomHead['ID'] }}">{{ $symptomHead['Name'] }}</option>
                     @endforeach
-                </select><br>
+                    
+                </select>
+                <script>
+                    new MultiSelectTag('symHead')  // id
+                </script>
+                @if ($dataFetched == true)
+                    <script>
+                        new MultiSelectTag('symHead', {
+                            shadow: true,
+                            placeholder: 'Sintomas da cabeca'  // default Search...
+                        })  // id
+                    </script>
+                @endif
+                <br>
                 <div>
                     @foreach ($selectedSymptomHead as $symptomId => $symptomName)
                         <span class="selected-symptom">
@@ -68,12 +80,19 @@
             </td>
             <td>
                 <label>Select sintomas torso</label>
-                <select wire:model="selectedSymptomTorso" multiple>
-                    <option value="" disabled selected>Choose your option</option>
+                <select id="symTorso" wire:model="selectedSymptomTorso" multiple>
                     @foreach ($symptomsTorso as $symptomTorso)
                         <option value="{{ $symptomTorso['ID'] }}">{{ $symptomTorso['Name'] }}</option>
                     @endforeach
-                </select><br>
+                </select>
+                <script>
+                    new MultiSelectTag('symTorso')  // id
+                </script>
+                @if ($dataFetched == true)
+                    <script>
+                        new MultiSelectTag('symTorso')  // id
+                    </script>
+                @endif<br>
                 <div>
                     @foreach ($selectedSymptomTorso as $symptomId => $symptomName)
                         <span class="selected-symptom">
@@ -90,12 +109,19 @@
             </td>
             <td>
                 <label>Select sintomas bracitos</label>
-                <select wire:model="selectedSymptomArms" multiple>
-                    <option value="" disabled selected>Choose your option</option>
+                <select id="symArms" wire:model="selectedSymptomArms" multiple>
                     @foreach ($symptomsArms as $symptomArms)
                         <option value="{{ $symptomArms['ID'] }}">{{ $symptomArms['Name'] }}</option>
                     @endforeach
-                </select><br>
+                </select>
+                <script>
+                    new MultiSelectTag('symArms')  // id
+                </script>
+                @if ($dataFetched == true)
+                    <script>
+                        new MultiSelectTag('symArms')  // id
+                    </script>
+                @endif<br>
                 <div>
                     @foreach ($selectedSymptomArms as $symptomId => $symptomName)
                         <span class="selected-symptom">
@@ -103,6 +129,7 @@
                             <button wire:click="removeSelectedSymptom('{{ $symptomId }}')" class="remove-button">Remove</button>
                         </span>
                     @endforeach
+                </div>
             </td>
         </tr>
         <tr>
@@ -111,12 +138,19 @@
             </td>
             <td>
                 <label>Select sintomas perninhas</label>
-                <select wire:model='selectedSymptomLegs' multiple>
-                    <option value="" disabled selected>Choose your option</option>
+                <select id="symLegs" wire:model='selectedSymptomLegs' multiple>
                     @foreach ($symptomsLegs as $symptomLegs)
                         <option value="{{ $symptomLegs['ID'] }}">{{ $symptomLegs['Name'] }}</option>
                     @endforeach
-                </select><br>
+                </select>
+                <script>
+                    new MultiSelectTag('symLegs')  // id
+                </script>
+                @if ($dataFetched == true)
+                    <script>
+                        new MultiSelectTag('symLegs')  // id
+                    </script>
+                @endif<br>
                 <div>
                     @foreach ($selectedSymptomLegs as $symptomId => $symptomName)
                         <span class="selected-symptom">
@@ -124,7 +158,7 @@
                             <button wire:click="removeSelectedSymptom('{{ $symptomId }}')" class="remove-button">Remove</button>
                         </span>
                     @endforeach
-
+                </div>
             </td>
         </tr>
         <tr>
@@ -133,12 +167,19 @@
             </td>
             <td>
                 <label>Select sintomas abdomem e bundinha</label>
-                <select wire:model='selectedSymptomAbdomen' multiple>
-                    <option value="" disabled selected>Choose your option</option>
+                <select id="symAbdomem" wire:model='selectedSymptomAbdomen' multiple>
                     @foreach ($symptomsAbdomen as $symptomAbdomen)
                         <option value="{{ $symptomAbdomen['ID'] }}">{{ $symptomAbdomen['Name'] }}</option>
                     @endforeach
-                </select><br>
+                </select>
+                <script>
+                    new MultiSelectTag('symAbdomem')  // id
+                </script>
+                @if ($dataFetched == true)
+                    <script>
+                        new MultiSelectTag('symAbdomem')  // id
+                    </script>
+                @endif<br>
                 <div>
                     @foreach ($selectedSymptomAbdomen as $symptomId => $symptomName)
                         <span class="selected-symptom">
@@ -146,6 +187,7 @@
                             <button wire:click="removeSelectedSymptom('{{ $symptomId }}')" class="remove-button">Remove</button>
                         </span>
                     @endforeach
+                </div>
             </td>
         </tr>
         <tr>
@@ -154,12 +196,19 @@
             </td>
             <td>
                 <label>Select sintomas pele</label>
-                <select wire:model='selectedSymptomSkin' multiple>
-                    <option value="" disabled selected>Choose your option</option>
+                <select id="symSkin" wire:model='selectedSymptomSkin' multiple>
                     @foreach ($symptomsSkin as $symptomSkin)
                         <option value="{{ $symptomSkin['ID'] }}">{{ $symptomSkin['Name'] }}</option>
                     @endforeach
-                </select><br>
+                </select>
+                <script>
+                    new MultiSelectTag('symSkin')  // id
+                </script>
+                @if ($dataFetched == true)
+                    <script>
+                        new MultiSelectTag('symSkin')  // id
+                    </script>
+                @endif<br>
                 <div>
                     @foreach ($selectedSymptomSkin as $symptomId => $symptomName)
                         <span class="selected-symptom">
@@ -167,8 +216,15 @@
                             <button wire:click="removeSelectedSymptom('{{ $symptomId }}')" class="remove-button">Remove</button>
                         </span>
                     @endforeach
+                </div>
             </td>
         </tr>
     </table>
-    <input type="text" name="selectedSymptoms" wire:model="allSelectedSymptoms">
+    @foreach ($selectedSymptomHead as $symptomId => $symptomName)
+        <span class="selected-symptom">
+            {{ $symptomName }}
+            <button wire:click="removeSelectedSymptomHead('{{ $symptomId }}')" class="remove-button">Remove</button>
+        </span>
+    @endforeach
+    <input type="text" name="selectedSymptoms" wire:model="selectedSymptomHead">
 </div>
