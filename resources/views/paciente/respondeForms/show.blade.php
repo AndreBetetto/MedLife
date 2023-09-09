@@ -259,7 +259,7 @@
 
             
             <button class="mt-12 flex-shrink-0 bg-purple-300 border-purple-300 text-sm border-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 py-1 px-2 rounded ml-auto" type="button">
-                Enviar Dados <input type="submit" name="ENVIAR">
+                Enviar Dados <input wire:submit.prevent="submitForm" type="submit" name="ENVIAR">
             </button>
         </div>
     </div>

@@ -11,19 +11,54 @@ class SymptomsForm extends Component
 {
     public $paciente;
     public $symptomsHead = [];
-    public $selectedSymptomHead = '';
+    public $selectedSymptomHead = [];
     public $symptomsTorso = [];
+    public $selectedSymptomTorso = [];
     public $symptomsArms = [];
+    public $selectedSymptomArms = [];
     public $symptomsLegs = [];
+    public $selectedSymptomLegs = [];
     public $symptomsAbdomen = [];
+    public $selectedSymptomAbdomen = [];
     public $symptomsSkin = [];
+    public $selectedSymptomSkin = [];
     public $symptoms = [];
-    public $selectedSymptom = null;
+    public $selectedSymptomIds = '';
+    public $isLoading = false;
 
-    public function updatedSelectedSymptoms()
+    public function removeSelectedSymptomHead($symptomId)
     {
-        // Convert the selectedSymptoms array to a comma-separated string of IDs
-        $this->selectedSymptomHead = implode(',', $this->symptomsHead);
+        unset($this->selectedSymptomHead[$symptomId]);
+    }
+
+    public function removeSelectedSymptomTorso($symptomId)
+    {
+        unset($this->selectedSymptomTorso[$symptomId]);
+    }
+
+    public function removeSelectedSymptomArms($symptomId)
+    {
+        unset($this->selectedSymptomArms[$symptomId]);
+    }
+
+    public function removeSelectedSymptomLegs($symptomId)
+    {
+        unset($this->selectedSymptomLegs[$symptomId]);
+    }
+
+    public function removeSelectedSymptomAbdomen($symptomId)
+    {
+        unset($this->selectedSymptomAbdomen[$symptomId]);
+    }
+
+    public function removeSelectedSymptomSkin($symptomId)
+    {
+        unset($this->selectedSymptomSkin[$symptomId]);
+    }
+
+    public function allSelectedSymptoms()
+    {
+        
     }
 
     public function render()
@@ -198,11 +233,31 @@ class SymptomsForm extends Component
     public function mount()
     {
         //$this->getSymptoms();
+        //$this->getSymptomsHead();
+        //$this->getSymptomsTorso();
+        //$this->getSymptomsArms();
+        //$this->getSymptomsLegs();
+        //$this->getSymptomsAbdomen();
+        //$this->getSymptomsSkin();
+    }
+
+    public function showSpinner()
+    {
+        $this->isLoading = true;
+    }
+
+    public function fetchAPIdata()
+    {
+        // Set isLoading to true to show the loading spinner
+        $this->isLoading = true;
+        // Perform your API requests here
         $this->getSymptomsHead();
         $this->getSymptomsTorso();
         $this->getSymptomsArms();
         $this->getSymptomsLegs();
         $this->getSymptomsAbdomen();
         $this->getSymptomsSkin();
+        // Set isLoading to false when the API request is complete
+        $this->isLoading = false;
     }
 }
