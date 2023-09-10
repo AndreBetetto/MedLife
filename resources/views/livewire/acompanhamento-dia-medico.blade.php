@@ -19,6 +19,9 @@
         @endfor
     </select>
     </div>
+    <br>
+    {{$idade}}
+    <br>
     <hr>
     O que aconteceu nesse dia????????<br>
     Nivel da dor: <input type="text" value="{{ $formDia->nivelDor }}" disabled>
@@ -32,12 +35,12 @@
     Observacoes: <input type="text" value="{{ $formDia->observacoes }}" disabled>
     <hr>
 
+<br>
     <button wire:click="getSymptoms">Ver sintomas</button>
-    <a href="{{ $testeurl }}">Ver sintomas</a>
     {{-- Sintomas API --}}
-    Sintomas: 
-        @foreach ($symptoms as $symptom)
-            <li>{{ $symptom['Name'] }}</li>
-        @endforeach
-        
+    @foreach ($symptoms as $symptom)
+        <li>{{ $symptom['Name'] }}</li>
+    @endforeach
+        <br>
+    <button wire:click="getDiagnostico">Analisar diagnostico</button>
 </div>

@@ -7,6 +7,7 @@ use App\Models\formDiario as formDiario;
 use App\Models\checklist as Checklist;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
+use Illuminate\Support\Carbon;
 
 class AcompanhamentoDiaMedico extends Component
 {
@@ -20,7 +21,9 @@ class AcompanhamentoDiaMedico extends Component
     public $diaMaxRespondido = 1;
     public $totalDays = 7; // Set the default total number of days
     public $data = [];
-    public $testeurl;
+    public $diagnosticos = [];
+    public $anoNasc = 0;
+    public $sexo = '';
 
     public function getToken()
     {
@@ -28,13 +31,48 @@ class AcompanhamentoDiaMedico extends Component
         return $token;
     }
 
+    public function getSexo()
+    {
+        $outSexo = null;
+        $sexo = $this->paciente->sexo;
+        if ($sexo == 'Masc') {
+            $outSexo = 'male';
+        } else {
+            $outSexo = 'female';
+        }
+        return $outSexo;
+    }
+
+    public function getDiagnostico()
+    {
+        $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
+        $input = '['.$formDia->sintomas.']';
+        $token =$this->getToken();
+
+        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
+            'symptoms' => $input,
+            'gender' => $this->getSexo(),
+            'year_of_birth' => $this->anoNasc,
+            'token' => $token,
+            'language' => 'en-gb'
+        ]);
+        if ($response->successful()) {
+            $this->diagnosticos = $response->json();
+        } else {
+            // Handle the API request failure
+            $this->diagnosticos = [];
+            // You can log an error message or set a default value for $this->symptoms
+        }
+    }
+
     public function getSymptoms()
     {
         $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
-        $input = $formDia->sintomas;
+        $input = '['.$formDia->sintomas.']';
         $token =$this->getToken();
-        $url = 
-        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms?symptoms=[273,75]&', [
+
+        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
+            'symptoms' => $input,
             'token' => $token,
             'language' => 'en-gb'
         ]);
