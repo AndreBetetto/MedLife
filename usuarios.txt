@@ -11,7 +11,3 @@ Paciente
 email:
 senha:
 -------------------
-Funcionario
-email:
-senha:
--------------------
