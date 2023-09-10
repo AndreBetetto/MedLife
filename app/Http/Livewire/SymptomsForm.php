@@ -27,6 +27,9 @@ class SymptomsForm extends Component
     public $isLoading = false;
     public $dataFetched = false;
 
+    // This code removes a symptom from the list of selected symptoms for each symptom type.
+    // It is called when a user clicks the "Remove" button on the symptom selection screen.
+
     public function removeSelectedSymptomHead($symptomId)
     {
         unset($this->selectedSymptomHead[$symptomId]);
@@ -69,12 +72,19 @@ class SymptomsForm extends Component
         ]);
     }
 
+    
     public function getIdade()
     {
         $idade = Carbon::parse($this->paciente->dataNasc)->age;
         return $idade;
     }
 
+    /**
+     * The function "getSexo" returns the appropriate gender based on the patient's sex and age.
+     * 
+     * @return the gender of the patient based on their age and sex. The possible return values are
+     * 'boy', 'man', 'girl', or 'woman'.
+     */
     public function getSexo()
     {
         $outSexo = null;
@@ -95,13 +105,21 @@ class SymptomsForm extends Component
         return $outSexo;
     }
 
+    /**
+     * The function returns the value of the APIMEDIC_SAND_KEY environment variable.
+     * 
+     * @return the value of the environment variable "APIMEDIC_SAND_KEY".
+     */
     public function getToken()
     {
         $token = env('APIMEDIC_SAND_KEY');
-        //$token = env('APIMEDIC_LIVE_KEY');
         return $token;
     }
 
+    /**
+     * The function `getSymptoms()` retrieves a list of symptoms from an API and stores them in the
+     * `->symptoms` variable.
+     */
     public function getSymptoms()
     {
         $token =$this->getToken();
@@ -118,6 +136,10 @@ class SymptomsForm extends Component
         }
     }
 
+    /**
+     * The above code defines several functions in PHP that make API requests to retrieve symptoms
+     * related to different body parts.
+     */
     public function getSymptomsHead()
     {
         $token =$this->getToken();
@@ -242,6 +264,11 @@ class SymptomsForm extends Component
         //$this->getSymptomsSkin();
     }
 
+    /**
+     * The function fetchAPIdata sets the isLoading variable to true to show a loading spinner,
+     * performs API requests to fetch data, and then sets isLoading to false when the requests are
+     * complete.
+     */
     public function showSpinner()
     {
         $this->isLoading = true;
