@@ -75,6 +75,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/medicovisual', [MedicoController::class, 'visual'])->name('medico.visual');
 });
 
+//Pacientes
 Route::middleware('auth')->group(function () {
     Route::get('/areapaciente', [PacienteController::class, 'areapaciente'])->name('areapaciente.index');
     Route::get('/areapaciente/buscar', [PacienteController::class, 'buscarMedicos'])->name('areapaciente.buscar');
@@ -87,6 +88,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/areapaciente/meusMedicos/{id}/suasRespostas/', [PacienteController::class, 'acessoFormulario'])->name('areapaciente.acessoForms');
 });
 
+//medicos
 Route::middleware(['IsMedico'])->group(function () {
     Route::get('/areamedico', [MedicoController::class, 'areamedico'])->name('areamedico.index');
     Route::get('/areamedico/consulta', [MedicoController::class, 'areamedicoconsulta'])->name('areamedico.consulta');
@@ -95,6 +97,8 @@ Route::middleware(['IsMedico'])->group(function () {
     Route::get('/areamedico/meusPacientes', [MedicoController::class, 'meusPacientes'])->name('areamedico.meusPacientes');
     Route::get('/areamedico/meusPacientes/{id}', [MedicoController::class, 'paginaAddForms'])->name('areamedico.meusPacientescriarForm');
     Route::post('/areamendico/adicionarMedicamento', [MedicoController::class, 'passarParaPaciente'])->name('areamedico.passarParaPaciente');
+    Route::get('/areamedico/meusPacientes/{idPac}/detalhes', [MedicoController::class, 'pacienteProcessos'])->name('areamedico.acessoProcessos');
+    Route::get('/areamedico/meusPacientes/{idPac}/detalhes/{idForm}', [MedicoController::class, 'pacienteProcessosForms'])->name('areamedico.acessoProcessosForms');
 
     Route::post('/areamedico/meusPacientes/{id}', [MedicoController::class, 'addFormsStore'])->name('areamedico.meusPacientescriarFormStore');
 

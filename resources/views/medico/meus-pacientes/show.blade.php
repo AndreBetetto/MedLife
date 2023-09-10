@@ -1,7 +1,7 @@
 
 <div class="bg-white">
     <div class="mx-auto max-w-2xl px-4 py-20 sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">
-        <h2 class="flex items-center text-xl font-bold leading-tight text-gray-800 items-center mt-4 my-5">Pacientes</h2>
+        <h2 class="flex items-center text-xl font-bold leading-tight text-gray-800 mt-4 my-5">Pacientes</h2>
 
         <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             @forelse ($pacientes as $paciente)
@@ -23,7 +23,7 @@
                                 {{ $paciente->nome }} 
                                 {{ $paciente->sobrenome }} 
                                 <p>{{ $qntForms }} processos</p>
-                
+                                Respostas <a href="{{ route('areamedico.acessoProcessos', ['idPac' => $paciente->id]) }}">Clique aqui!</a>
                                 <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $paciente->id]) }}" method="GET">
                                     @csrf
                                     <button type="submit" class="font-bold">Criar formulario</button>
