@@ -23,6 +23,7 @@ class AcompanhamentoDiaMedico extends Component
     public $data = [];
     public $diagnosticos = [];
     public $anoNasc = 0;
+    public $issueInfo = [];
     public $sexo = '';
 
     public function getToken()
@@ -34,7 +35,7 @@ class AcompanhamentoDiaMedico extends Component
     public function getSexo()
     {
         $outSexo = null;
-        $sexo = $this->paciente->sexo;
+        $sexo = $this->sexo;
         if ($sexo == 'Masc') {
             $outSexo = 'male';
         } else {
@@ -49,7 +50,7 @@ class AcompanhamentoDiaMedico extends Component
         $input = '['.$formDia->sintomas.']';
         $token =$this->getToken();
 
-        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
+        $response = Http::get('https://sandbox-healthservice.priaid.ch/diagnosis', [
             'symptoms' => $input,
             'gender' => $this->getSexo(),
             'year_of_birth' => $this->anoNasc,
@@ -58,12 +59,28 @@ class AcompanhamentoDiaMedico extends Component
         ]);
         if ($response->successful()) {
             $this->diagnosticos = $response->json();
+            foreach ($this->diagnosticos as $diagnostico) {
+                $id = $diagnostico['Issue']['ID'];
+                $response = Http::get('https://sandbox-healthservice.priaid.ch/issues/'.$id.'/info', [
+                    'token' => $token,
+                    'language' => 'en-gb'
+                ]);
+                if ($response->successful()) {
+                    $this->issueInfo[$id] = $response->json();
+                } else {
+                    // Handle the API request failure
+                    $this->issueInfo[$id] = [];
+                    // You can log an error message or set a default value for $this->symptoms
+                }
+            }
         } else {
             // Handle the API request failure
             $this->diagnosticos = [];
             // You can log an error message or set a default value for $this->symptoms
         }
     }
+
+
 
     public function getSymptoms()
     {

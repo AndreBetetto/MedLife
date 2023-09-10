@@ -20,7 +20,6 @@
     </select>
     </div>
     <br>
-    {{$idade}}
     <br>
     <hr>
     O que aconteceu nesse dia????????<br>
@@ -43,4 +42,24 @@
     @endforeach
         <br>
     <button wire:click="getDiagnostico">Analisar diagnostico</button>
+    {{-- Diagnostico API --}}
+    @foreach ($diagnosticos as $diagnostico)
+        <li>Diagnostico: {{ $diagnostico['Issue']['Name'] }}</li>
+        <li>
+            @php
+                $issueId = $diagnostico['Issue']['ID'];
+            @endphp
+            Descricao: {{ $issueInfo[$issueId]['Description']}}<br>
+            Possiveis sintomas: {{ $issueInfo[$issueId]['PossibleSymptoms']}}<br>
+            Tratamento: {{ $issueInfo[$issueId]['TreatmentDescription']}}<br>
+            Medical Condition: {{ $issueInfo[$issueId]['MedicalCondition']}}<br>
+        </li>
+        <li>Probabilidade: {{ $diagnostico['Issue']['Accuracy'] }}%</li>
+        <li>Icd: {{$diagnostico['Issue']['IcdName']}} {{$diagnostico['Issue']['Icd']}} . Link: <a href="https://icd.who.int/browse10/2019/en#/{{$diagnostico['Issue']['Icd']}}">Aqui!</a>  </li>
+        <li>Professional name: {{$diagnostico['Issue']['ProfName'] }} </li>
+        <li>Especializacao: 
+        @foreach ($diagnostico['Specialisation'] as $especializacao)
+            - {{ $especializacao['Name'] }}
+        @endforeach </li>
+    @endforeach
 </div>
