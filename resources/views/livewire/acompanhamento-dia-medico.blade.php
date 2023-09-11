@@ -46,13 +46,14 @@
     @foreach ($diagnosticos as $diagnostico)
         <li>Diagnostico: {{ $diagnostico['Issue']['Name'] }}</li>
         <li>
+            <x-button>aa</x-button>
             @php
                 $issueId = $diagnostico['Issue']['ID'];
             @endphp
-            Descricao: {{ $issueInfo[$issueId]['Description']}}<br>
-            Possiveis sintomas: {{ $issueInfo[$issueId]['PossibleSymptoms']}}<br>
-            Tratamento: {{ $issueInfo[$issueId]['TreatmentDescription']}}<br>
-            Medical Condition: {{ $issueInfo[$issueId]['MedicalCondition']}}<br>
+            Descricao: {{ $issueInfo[$issueId]['Description']}}<br><br>
+            Possiveis sintomas: {{ $issueInfo[$issueId]['PossibleSymptoms']}}<br><br>
+            Tratamento: {{ $issueInfo[$issueId]['TreatmentDescription']}}<br><br>
+            Medical Condition: {{ $issueInfo[$issueId]['MedicalCondition']}}<br><br>
         </li>
         <li>Probabilidade: {{ $diagnostico['Issue']['Accuracy'] }}%</li>
         <li>Icd: {{$diagnostico['Issue']['IcdName']}} {{$diagnostico['Issue']['Icd']}} . Link: <a href="https://icd.who.int/browse10/2019/en#/{{$diagnostico['Issue']['Icd']}}">Aqui!</a>  </li>
