@@ -29,6 +29,18 @@
     @endphp
     <!-- Display a loading spinner while the API request is in progress -->
     <br><br><br><br>
+    <select wire:model='teste' multiple id='rrr'>
+        <option value="head">Cabeça, garganta e pescoço</option>
+        <option value="torso">Tórax e costas</option>
+        <option value="arms">Braços e ombros</option>
+        <option value="abdomen">Abdômen, pelve e nádegas</option>
+        <option value="legs">Pernas</option>
+        <option value="skin">Pele, articulações e geral</option>
+    </select>
+    <script>
+        new MultiSelectTag('rrr')  // id
+    </script>
+    {{$teste}}
     <table class="customTable">
         <tr>
             <td>
@@ -46,7 +58,7 @@
             </td>
             <td>
                 <label>Select sintomas head</label>
-                <select id="symHead" wire:model="selectedSymptomHead" multiple>
+                <select name="symHead" id="symHead" wire:model="symHead" multiple>
 =                    @foreach ($symptomsHead as $symptomHead)
                         <option value="{{ $symptomHead['ID'] }}">{{ $symptomHead['Name'] }}</option>
                     @endforeach
@@ -80,7 +92,7 @@
             </td>
             <td>
                 <label>Select sintomas torso</label>
-                <select id="symTorso" wire:model="selectedSymptomTorso" multiple>
+                <select name="symTorso" id="symTorso" wire:model="symTorso" multiple>
                     @foreach ($symptomsTorso as $symptomTorso)
                         <option value="{{ $symptomTorso['ID'] }}">{{ $symptomTorso['Name'] }}</option>
                     @endforeach
@@ -109,7 +121,7 @@
             </td>
             <td>
                 <label>Select sintomas bracitos</label>
-                <select id="symArms" wire:model="selectedSymptomArms" multiple>
+                <select name="symArms" id="symArms" wire:model="symArms" multiple>
                     @foreach ($symptomsArms as $symptomArms)
                         <option value="{{ $symptomArms['ID'] }}">{{ $symptomArms['Name'] }}</option>
                     @endforeach
@@ -137,8 +149,9 @@
                 .
             </td>
             <td>
-                <label>Select sintomas perninhas</label>
-                <select id="symLegs" wire:model='selectedSymptomLegs' multiple>
+                <div>
+                    <label>Select sintomas perninhas</label>
+                <select name="symLegs" id="symLegs" wire:model='symLegs' multiple>
                     @foreach ($symptomsLegs as $symptomLegs)
                         <option value="{{ $symptomLegs['ID'] }}">{{ $symptomLegs['Name'] }}</option>
                     @endforeach
@@ -151,6 +164,17 @@
                         new MultiSelectTag('symLegs')  // id
                     </script>
                 @endif<br>
+                @php
+                    $i = 0;
+                @endphp
+                oi?
+                @foreach ($selectedSymptomLegs as $symp)
+                    @php
+                        $i++;
+                    @endphp
+                    Sintomas n{{$i}} {{ $symp }}
+                @endforeach
+                </div>
                 <div>
                     @foreach ($selectedSymptomLegs as $symptomId => $symptomName)
                         <span class="selected-symptom">
@@ -167,17 +191,17 @@
             </td>
             <td>
                 <label>Select sintomas abdomem e bundinha</label>
-                <select id="symAbdomem" wire:model='selectedSymptomAbdomen' multiple>
+                <select name="symAbdomen" id="symAbdomen" wire:model='symAbdomen' multiple>
                     @foreach ($symptomsAbdomen as $symptomAbdomen)
                         <option value="{{ $symptomAbdomen['ID'] }}">{{ $symptomAbdomen['Name'] }}</option>
                     @endforeach
                 </select>
                 <script>
-                    new MultiSelectTag('symAbdomem')  // id
+                    new MultiSelectTag('symAbdomen')  // id
                 </script>
                 @if ($dataFetched == true)
                     <script>
-                        new MultiSelectTag('symAbdomem')  // id
+                        new MultiSelectTag('symAbdomen')  // id
                     </script>
                 @endif<br>
                 <div>
@@ -196,7 +220,7 @@
             </td>
             <td>
                 <label>Select sintomas pele</label>
-                <select id="symSkin" wire:model='selectedSymptomSkin' multiple>
+                <select name="symSkin" id="symSkin" wire:model='symSkin' multiple>
                     @foreach ($symptomsSkin as $symptomSkin)
                         <option value="{{ $symptomSkin['ID'] }}">{{ $symptomSkin['Name'] }}</option>
                     @endforeach
@@ -220,11 +244,21 @@
             </td>
         </tr>
     </table>
+    @php
+        $listId = '';
+    @endphp
     @foreach ($selectedSymptomHead as $symptomId => $symptomName)
         <span class="selected-symptom">
             {{ $symptomName }}
+            @php
+                $listId = $listId + ','. $symptomId;
+
+            @endphp
             <button wire:click="removeSelectedSymptomHead('{{ $symptomId }}')" class="remove-button">Remove</button>
         </span>
     @endforeach
-    <input type="text" name="selectedSymptoms" wire:model="selectedSymptomHead">
+    @php
+        echo $listId;
+    @endphp
+    <input type="text" name="selectedSymptoms" wire:model="selectedSymptomHead" value="{{$listId}}">
 </div>
