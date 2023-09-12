@@ -18,26 +18,23 @@ class BuscaNomeRemedio extends Component
     public $retorno;
     public $search;
     public $medArray = [];
+    public $medicamentos = [];
 
     protected $queryString = ['search'];
 
-    public function search()
+    public function mount()
     {
-        $inputRemedio = $this->query;
-        //
         $curl = curl_init();
-        curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://bula.vercel.app/pesquisar?nome=".$inputRemedio."&pagina=1",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => "",
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 30,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "GET",
-        
-        ));
 
-        $link = "https://bula.vercel.app/pesquisar?nome=".$inputRemedio."&pagina=1";
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://bula.vercel.app/pesquisar?nome=AMOXICILINA&pagina=1",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET"
+        ));
 
         $response = curl_exec($curl);
         $err = curl_error($curl);
@@ -45,14 +42,13 @@ class BuscaNomeRemedio extends Component
         curl_close($curl);
 
         if ($err) {
-            $saida = "cURL Error #:" . $err;
+            // Handle the cURL error
+            $this->medicamentos = [];
         } else {
-            $saida =  $response;
-            
+            // Parse the API response and store it in the $medicamentos array
+            $this->medicamentos = json_decode($response, true);
         }
-        $retorno = $saida;
-        $this->retorno = $retorno;
-
+        //dd($this->medicamentos);
     }
 
     public $med;

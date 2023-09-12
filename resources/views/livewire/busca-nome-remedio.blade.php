@@ -42,20 +42,25 @@
     <br>
     <hr> --}}
     <br>
-
+        @php
+            $count = 0;
+        @endphp
     <div>
-        <label>Select medicamentos</label>
-                <select name="medArray[]" id="medArray[]" multiple='' >
-=                    @foreach ($symptomsHead as $symptomHead)
-                        <option value="{{ $symptomHead['ID'] }}">{{ $symptomHead['Name'] }}</option>
-                    @endforeach
-                    
-                </select>
-                <script>
-                    new MultiSelectTag('medArray[]')  // id
-                </script>
+        <div>
+            <select id="medicamentos[]" wire:model="selectedMedicamento">
+                <option value="">Selecione um medicamento</option>
+                @foreach ($medicamentos['content'] as $medicamento)
+                    @php
+                        $count++;
+                    @endphp
+                    {{ $medicamento['nomeProduto'] }}
+                    <option value="{{ $medicamento['idProduto'] }}">{{ $medicamento['nomeProduto'] }}</option>
+                @endforeach
+            </select>
+        </div>
     </div>
-
+<hr>
+<br><br><br><br><br><br><br><br>
     @if($retorno != "")
         @php
             $novoValor = json_decode($retorno, true);
