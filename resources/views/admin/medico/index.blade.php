@@ -9,7 +9,7 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden ">
                 <div class="p-6">
-                    @include('admin.medico.show')
+                    @include('admin.medico.info-show.show')
                 </div>
             </div>
         </div>

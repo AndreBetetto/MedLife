@@ -47,7 +47,7 @@ class AcompanhamentoDiaMedico extends Component
     public function getDiagnostico()
     {
         $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
-        $input = '['.$formDia->sintomas.']';
+        $input = $formDia->sintomas;
         $token =$this->getToken();
 
         $response = Http::get('https://sandbox-healthservice.priaid.ch/diagnosis', [
