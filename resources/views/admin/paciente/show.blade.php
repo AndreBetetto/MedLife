@@ -5,11 +5,7 @@
                 <div wire:poll.keep-alive>
                     Current time: {{ now() }}
                 </div>
-                <div>
-                    <a href="{{ route('crudUser.index') }}">Usuários</a>
-                    <a href="{{ route('crudPaciente.index') }}">Pacientes</a>
-                    <a href="{{ route('adminmedico.index') }}">Médicos</a>
-                </div>
+                
                 @if (session()->has('message'))
                 <div>
                     {{ session('message') }}
@@ -173,6 +169,47 @@
                         </div>
                     </div>
                 </x-form-modal>
+
+                <div> {{-- Div paciente --}}
+                    <span> Pacientes </span>
+                    <div class="-mt-2 mb-3">
+                        <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
+                            <div class="relative  py-3">
+                                <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">
+                                    <div class="grid grid-cols-8 border-collapse w-full">
+                                        <span class="font-medium ml-4 text-slate-700 dark:text-slate-700 text-left my-5">ID</span>
+                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Imagem</span>
+                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Nome</span>
+                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">CPF</span>
+                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Data de nascimento</span>
+                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Telefone</span>
+                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Sexo</span>
+                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Opções</span>
+                                    </div>
+                                </div>
+                                @forelse ($pacientes as $pacientes)
+                                    <div class="grid grid-cols-8 bg-white dark:bg-slate-800">
+                                        <span class="text-sm border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2">{{ $pacientes->id }}</span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 text-slate-500 dark:text-slate-400 my-1/2"><img class="rounded-full" src="teste_64.png"/></span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $pacientes->nome }}</span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $pacientes->cpf }}</span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $pacientes->dataNasc }}</span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $pacientes->fone }}</span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $pacientes->sexo }}</span>
+                                        <div class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400"> 
+                                            <button class="hover:text-gray-950" wire:click="edit({{ $pacientes->id }})"> Editar </button>
+                                            <button class="hover:text-gray-950" wire:click="delete({{ $pacientes->id }})"> Deletar </button>
+                                        </div>
+                                    </div>
+                                @empty
+                                    <div>
+                                        <span>Sem dados</span>
+                                    </div>
+                                @endforelse
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
