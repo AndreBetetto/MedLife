@@ -4,12 +4,12 @@
     <body class="  dark:bg-slate-800">
         @include('layouts.header')
         <main class="text-black pt-24 pb-12 mx-20">
-            <section class="mt-8 flex flex-col gap-8 items-center justify-evenly">
+            <section class="mt-8 flex flex-col gap-12 items-center justify-evenly">
                 <h1 class="text-3xl">Detalhes dos sintomas</h1>
-                <div class="w-full px-6 py-8 border-black rounded-xl border">
+                <div class="w-full px-6 py-6 border-black rounded-xl border">
                     <p>Nome do paciente: <span>Rony Rústico</span></p>
                 </div>
-                <form action="" class="w-full grid grid-cols-3 grid-rows-4 gap-4 ">
+                <form action="" class="w-full grid grid-cols-3 grid-rows-4 gap-8 ">
                     <div class="flex justify-center items-center flex-col gap-8 px-6 py-5 rounded-xl border border-black col-span-2 row-span-4">
                         <h2 class="text-xl text-black">Sintomas</h2>
                         <div class="w-3/4 gap-x-60 gap-y-8 grid grid-cols-2">

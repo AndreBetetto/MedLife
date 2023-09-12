@@ -26,6 +26,7 @@ class SymptomsForm extends Component
     public $selectedSymptomIds = '';
     public $isLoading = false;
     public $dataFetched = false;
+    public $teste;
 
     // This code removes a symptom from the list of selected symptoms for each symptom type.
     // It is called when a user clicks the "Remove" button on the symptom selection screen.

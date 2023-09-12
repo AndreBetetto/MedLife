@@ -139,6 +139,17 @@ class PacienteController extends Controller
     public function detalhesMedicoFormsStore(FormSave $r, $id)
     {
         $data = $r->validated();
+        $symH = $data['symHead'];
+        $symT = $data['symTorso'];
+        $symA = $data['symArms'];
+        $symL = $data['symLegs'];
+        $symAb = $data['symAbdomen'];
+        $symS = $data['symSkin'];
+        $combinedArray = array_merge($symH, $symT, $symA, $symL, $symAb, $symS);
+        $uniqueArray = array_unique($combinedArray);
+        $resultString = '[' . implode(',', $uniqueArray) . ']';
+        //dd($resultString);
+        $data['sintomas'] = $resultString;
         //dd($data); //para testes
         $numDia = $data['numDia'];
         $formDiario = formDiario::where('id', $id)->first();
