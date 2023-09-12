@@ -5,14 +5,21 @@
                 <div wire:poll.keep-alive>
                     Current time: {{ now() }}
                 </div>
-                
+
                 @if (session()->has('message'))
                 <div>
                     {{ session('message') }}
                 </div>
                 @endif
 
+                <div class="">                    
+                    <x-input-label :value="__('Pesquisar')" />
+                    <x-text-input name="search" type="text" class="mt-1 block w-80 text-gray-500" wire:model="search" />
+                    <x-input-error class="mt-2" :messages="$errors->get('search')" />
+                </div>
+                
                 <x-form-modal>
+               
                     <div>
                         <div class="row"> 
                             <!--fazer form funcionar-->
@@ -171,7 +178,7 @@
                 </x-form-modal>
 
                 <div> {{-- Div paciente --}}
-                    <span> Pacientes </span>
+                    <span class="text-gray-500"> Pacientes </span>
                     <div class="-mt-2 mb-3">
                         <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
                             <div class="relative  py-3">
@@ -181,7 +188,7 @@
                                         <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Imagem</span>
                                         <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Nome</span>
                                         <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">CPF</span>
-                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Data de nascimento</span>
+                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Nascimento</span>
                                         <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Telefone</span>
                                         <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Sexo</span>
                                         <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Opções</span>
@@ -197,7 +204,7 @@
                                         <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $pacientes->fone }}</span>
                                         <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $pacientes->sexo }}</span>
                                         <div class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400"> 
-                                            <button class="hover:text-gray-950" wire:click="edit({{ $pacientes->id }})"> Editar </button>
+                                            <button class="hover:text-gray-950 -my-3" wire:click="edit({{ $pacientes->id }})"> Editar </button>
                                             <button class="hover:text-gray-950" wire:click="delete({{ $pacientes->id }})"> Deletar </button>
                                         </div>
                                     </div>

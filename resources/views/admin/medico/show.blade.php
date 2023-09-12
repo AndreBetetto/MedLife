@@ -6,15 +6,22 @@
                     <div wire:poll.keep-alive>
                         Current time: {{ now() }}
                     </div>
-
-                    
                 </div>
+
+                
             </div>
                 @if (session()->has('message'))
                 <div>
                     {{ session('message') }}
                 </div>
                 @endif
+
+                <div>                  
+                    <x-input-label :value="__('Pesquisar')" />
+                    <x-text-input name="search" type="text" class="mt-1 block w-80 text-gray-500" wire:model="search" />
+                    <x-input-error class="mt-2" :messages="$errors->get('search')" />
+                </div>
+                
                 <x-form-modal>
                     <div>
                         <div class="row">
@@ -220,8 +227,8 @@
                     </div>
                 </x-form-modal>
                
-                <div class="-mt-2 mb-3">
-                <span> Médicos </span>
+                <span class="text-gray-500"> Médicos </span>  
+                <div class="-mt-2 mb-3">                    
                     <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
                         <div class="relative  py-3">
                             <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">

@@ -29,7 +29,7 @@
 
 
                 <div class="-mt-2 mb-3">
-                <span> Usuários </span>
+                <span><br>Usuários</span>
                     <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
                         <div class="relative py-3">
                             <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">
