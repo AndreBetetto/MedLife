@@ -44,8 +44,16 @@
     <br>
 
     <div>
-        <label for="query">Search Medicine:</label>
-        <input type="text" wire:model="query" wire:keyup="search">
+        <label>Select medicamentos</label>
+                <select name="medArray[]" id="medArray[]" multiple='' >
+=                    @foreach ($symptomsHead as $symptomHead)
+                        <option value="{{ $symptomHead['ID'] }}">{{ $symptomHead['Name'] }}</option>
+                    @endforeach
+                    
+                </select>
+                <script>
+                    new MultiSelectTag('medArray[]')  // id
+                </script>
     </div>
 
     @if($retorno != "")

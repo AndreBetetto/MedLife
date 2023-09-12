@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('medicamentos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('forms_id')->nullable();
+            $table->foreign('forms_id')->references('id')->on('form_diarios');
             $table->string('idBulaProtegida', 255)->nullable();
             $table->string('nome');
             $table->string('razaoSocial');
+            $table->longText('observacao')->nullable();
             $table->boolean('generico')->default(false);
             $table->timestamps();
         });
