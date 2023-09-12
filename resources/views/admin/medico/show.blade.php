@@ -1,15 +1,15 @@
 <div>
     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900 dark:text-gray-200 font-bold">
-            <div wire:poll.visible>
-                <div wire:poll.keep-alive>
-                    Current time: {{ now() }}
+            <div wire:poll.visible> 
+                <div class="space-y-3">  
+                    <div wire:poll.keep-alive>
+                        Current time: {{ now() }}
+                    </div>
+
+                    
                 </div>
-                <div>
-                    <a href="{{ route('crudUser.index') }}">Usuários</a>
-                    <a href="{{ route('crudPaciente.index') }}">Pacientes</a>
-                    <a href="{{ route('adminmedico.index') }}">Médicos</a>
-                </div>
+            </div>
                 @if (session()->has('message'))
                 <div>
                     {{ session('message') }}
@@ -225,20 +225,20 @@
                         <div class="relative  py-3">
                             <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">
                                 <div class="grid grid-cols-8 border-collapse w-full">
-                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left my-1/2">ID</span>
-                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Imagem</span>
-                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Nome</span>
-                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Sobrenome</span>
-                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Telefone</span>
-                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">CRM</span>
-                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Sexo</span>
-                                    <span class="font-medium mt-5 p-4 pr-8 pt-0 pb-3 text-slate-500 dark:text-slate-500 text-left">Especialidade</span>
+                                    <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-left my-5">ID</span>
+                                    <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-left">Imagem</span>
+                                    <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-left">Nome</span>
+                                    <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-left">Sobrenome</span>
+                                    <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-left">Telefone</span>
+                                    <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-left">CRM</span>
+                                    <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-left">Sexo</span>
+                                    <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-left">Especialidade</span>
                                 </div>
                             </div>
                             @forelse ($medicos as $medicos)
                             <div class="grid grid-cols-8 bg-white dark:bg-slate-800">
                                 <span class="text-sm border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2">{{ $medicos->id }}</span>
-                                <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2"><img src="../../../../public/icone.png"/></span>
+                                <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 text-slate-500 dark:text-slate-400 my-1/2"><img class="rounded-full" src="teste_64.png"/></span>
                                 <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ Str::ucfirst($medicos->nome); }}</span>
                                 <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ Str::ucfirst($medicos->sobrenome); }}</span>
                                 <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $medicos->fone }}</span>

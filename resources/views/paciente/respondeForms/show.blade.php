@@ -9,9 +9,9 @@
 
     <form class="w-full" action="{{ route('areapaciente.medicoDetalhesFormsStore', ['id' =>$formsDiarios->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="text" name="paciente_id" id="paciente_id" value="{{$paciente->id}}">
-        <input type="text" name="medico_id" id="medico_id" value="{{$medico->id}}">
-        <input type="text" name="forms_id" id="forms_id" value="{{$formsDiarios->id}}">
+        <input type="hidden" name="paciente_id" id="paciente_id" value="{{$paciente->id}}">
+        <input type="hidden" name="medico_id" id="medico_id" value="{{$medico->id}}">
+        <input type="hidden" name="forms_id" id="forms_id" value="{{$formsDiarios->id}}">
 
         <div class="grid grid-cols-2 items-center  w-full -mx-3 mb-6">
         <div class="w-full flex flex-col items-center">
@@ -265,4 +265,3 @@
     </div>
     </form>
 </div>
-
