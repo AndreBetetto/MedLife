@@ -37,44 +37,27 @@
                             <input type="hidden" name="medico_id" value="{{ $medicoId }}">
                             <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
                             <br>
-                            <a href="{{ route('areapaciente.buscar') }}" class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue">Adicionar</a>
-                           
+                            <button type="submit" class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue">
+                                Adicionar
+                            </button>
                         </form> 
-</p>
-</div>
-                   
-                    @elseif ($isSelected)
-                        <td> 
-                            ja selecionado
-                        </td>
-                        @endif
-                </div>
-</li>
-</div>
-                @if (!$isSelected)
-                    <td>
-                        <form action="{{ route('areapaciente.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="medico_id" value="{{ $medicoId }}">
-                            <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
-                            <a href="{{ route('areapaciente.buscar') }}" class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue">Adicionar</a>
-                           
-                        </form> 
-                    </td>
-                    </tr>
-                    @elseif ($isSelected)
-                        <td> 
-                            ja selecionado
-                        </td>
-                        @endif
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="6">No doctors available</td>
-                        </tr>
-                    @endforelse
-        </table>
-              
+                            </p>
+                            </div>          
+                                @elseif ($isSelected)
+                                    <td> 
+                                        ja selecionado
+                                    </td>
+                                @endif
+                            </div>
+                        </li>
+                    </div>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="6">No doctors available</td>
+                </tr>
+            @endforelse
+        </table>   
     </div>
 </div>
 </div>
