@@ -34,8 +34,13 @@
                 @endif
                 <td> {{ $status}} </td>
                 <td>
-                    Suas respostas <a href="{{ route('areapaciente.acessoForms', ['id' => $formDiarios->id]) }}">Clique aqui!</a>
-                </td>
+                    {{-- verify if there is at least one awnser --}}
+                    @if ($formDiarios->status == 'Aguardando')
+                        Sem respostas   
+                    @else
+                        Suas respostas <a href="{{ route('areapaciente.acessoForms', ['id' => $formDiarios->id]) }}">Clique aqui!</a>
+                    @endif
+                    </td>
                 @empty
                     <tr>
                         <td colspan="4">Sem pacientes adicionados</td>

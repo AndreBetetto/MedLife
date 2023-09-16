@@ -112,4 +112,5 @@ class BuscaNomeRemedio extends Component
         $formattedIds = '[' . implode(', ', $this->selectedMedicamentos) . ']';
         $this->formattedSelectedMedicamentos = $formattedIds;
     }
+    public $stringInput = '';
 }
