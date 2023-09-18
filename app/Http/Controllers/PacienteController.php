@@ -139,18 +139,18 @@ class PacienteController extends Controller
     public function detalhesMedicoFormsStore(FormSave $r, $id)
     {
         $data = $r->validated();
-        $symH = $data['symHead'];
-        $symT = $data['symTorso'];
-        $symA = $data['symArms'];
-        $symL = $data['symLegs'];
-        $symAb = $data['symAbdomen'];
-        $symS = $data['symSkin'];
+        $symH = $data['symHead'] ?? []; //if not set, will set as empty array
+        $symT = $data['symTorso'] ?? []; //if not set, will set as empty array
+        $symA = $data['symArms'] ?? [];//if not set, will set as empty array
+        $symL = $data['symLegs'] ?? [];//if not set, will set as empty array
+        $symAb = $data['symAbdomen'] ?? [];//if not set, will set as empty array
+        $symS = $data['symSkin'] ?? [];//if not set, will set as empty array
         $combinedArray = array_merge($symH, $symT, $symA, $symL, $symAb, $symS);
         $uniqueArray = array_unique($combinedArray);
         $resultString = '[' . implode(',', $uniqueArray) . ']';
         //dd($resultString);
         $data['sintomas'] = $resultString;
-        //dd($data); //para testes
+        dd($data); //para testes
         $numDia = $data['numDia'];
         $formDiario = formDiario::where('id', $id)->first();
         $periodo = $formDiario->numDias;

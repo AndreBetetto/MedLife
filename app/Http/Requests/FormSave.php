@@ -34,18 +34,19 @@ class FormSave extends FormRequest
             'observacoes' => 'required', //
             'numDia' => 'required',
             'status' => 'required', //
-            'medicamentos' => ' ', //
-            'prioridadeMedico' => ' ', //
-            'grupo' => ' ', //
-            'tipo' => ' ', //
-            'alergias' => ' ', //
-            'symHead' => ' ', //not required
-            'symTorso' => ' ', //not required
-            'symArms' => ' ', //not required
-            'symLegs' => ' ', //not required
-            'symAbdomen' => ' ', //not required
-            'symSkin' => ' ', //not required
-            'diagnostico' => ' ' //not required
+            'medicamentos' => 'nullable', //
+            'prioridadeMedico' => 'nullable', //
+            'grupo' => 'nullable', //
+            'tipo' => 'nullable', //
+            'alergias' => 'nullable', //
+            'symHead' => 'nullable', //not required
+            'symTorso' => 'nullable', //not required
+            'symArms' => 'nullable', //not required
+            'symLegs' => 'nullable', //not required
+            'symAbdomen' => 'nullable', //not required
+            'symSkin' => 'nullable', //not required
+            'diagnostico' => 'nullable' //not required
+            
         ];
     }
 
