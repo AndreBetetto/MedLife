@@ -26,12 +26,12 @@
                     @foreach ($medicamentos['content'] as $med)
                         Nome: {{ $med['nomeProduto'] }} <br>
                         Razao social: {{ $med['razaoSocial'] }} <br>
-                        id: {{ $med['idProduto'] }} - 
+                        id: {{ $med['numProcesso'] }} - 
                         <button
-                            wire:click.prevent="addMedicamento({{ $med['idProduto'] }})"
+                            wire:click.prevent="addMedicamento({{ $med['numProcesso'] }})"
                             wire:loading.attr="disabled"
-                            wire:target="addMedicamento({{ $med['idProduto'] }})"
-                            @if (in_array($med['idProduto'], $selectedMedicamentos))
+                            wire:target="addMedicamento({{ $med['numProcesso'] }})"
+                            @if (in_array($med['numProcesso'], $selectedMedicamentos))
                                 disabled
                             @endif
                         >
