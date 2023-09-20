@@ -1,6 +1,6 @@
 <div>
     {{-- The whole world belongs to you. --}}
-    <div>
+    <div class="flex flex-col gap-8">
         <div>
             Gostaria de uma recomendation?
             @livewire('recomenda-medico', ['paciente' => $paciente])
@@ -8,49 +8,56 @@
         
 
 
-        <table>
-            <th>Medicos cadastrados:</th>
-            <tr>
-                <td>id</td>
-                <td>nome</td>
-                <td>sobrenome</td>
-                <td>especialidade</td>
-                <td>crm</td>                
-            </tr>
+        <table class="">
+            <p class="text-xl font-semibold leading-6 text-gray-500 ">Medicos cadastrados:</p>
+            
             @forelse ($medicos as $medico)
                 @php
                     $medicoId = $medico->id;
                     $isSelected = $jaSelecionados->contains('medico_id', $medicoId);
                 @endphp
-                <td> {{ $medico->id }} </td>
-                <td> {{ $medico->nome }} </td>
-                <td> {{ $medico->sobrenome }} </td>
-                <td> {{ $medico->especialidade }} </td>
-                <td> {{ $medico->crm }} </td>
+               
+                <div class="w-full h-px bg-black"></div>
+                <div class="flex justify-between items-center h-fit">
+                <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="imagemacharr.png" alt="">
                 
-                    
-                @if (!$isSelected)
-                    <td>
+                <div class="min-w-0 flex-auto">
+                <p class="text-base font-semibold leading-6 text-gray-900"> {{ $medico->nome }} </p>
+                 <p class="mt-1 truncate text-sm leading-5 text-gray-500">  {{ $medico->especialidade }} </p>
+                </div>
+
+                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                 <p class="text-sm leading-6 text-gray-900"> {{ $medico->crm }} </p>
+                 <p> {{ $medico->id }} </p>
+
+                 @if (!$isSelected)
+                    <p class="mt-1 text-xs leading-5 text-gray-500">
                         <form action="{{ route('areapaciente.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="medico_id" value="{{ $medicoId }}">
                             <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
-                            <button type="submit">Adicionar</button>
+                            <br>
+                            <button type="submit" class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue">
+                                Adicionar
+                            </button>
                         </form> 
-                    </td>
-                    </tr>
-                    @elseif ($isSelected)
-                        <td> 
-                            ja selecionado
-                        </td>
-                        @endif
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="6">No doctors available</td>
-                        </tr>
-                    @endforelse
-        </table>
-              
+                            </p>
+                            </div>          
+                                @elseif ($isSelected)
+                                    <td> 
+                                        ja selecionado
+                                    </td>
+                                @endif
+                            </div>
+                        </li>
+                    </div>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="6">No doctors available</td>
+                </tr>
+            @endforelse
+        </table>   
     </div>
+</div>
 </div>
