@@ -47,7 +47,7 @@
                                         <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $users->name }}</span>
                                         <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $users->email }}</span>
                                         <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ Str::ucfirst($users->role); }}</span>
-                                    </div>
+                                </div>
                                 @empty
                                     <div>
                                         <span>Sem dados</span>
