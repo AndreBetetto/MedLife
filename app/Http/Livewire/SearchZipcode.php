@@ -7,26 +7,26 @@ use Livewire\Component;
 class SearchZipcode extends Component
 {
     protected array $rules = [
-        'zipcode' => ['required'],
-        'city' => ['required'],
-        'street' => ['required'],
-        'neighborhood' => ['required'],
-        'state' => ['required'],
+        'cep' => ['required'],
+        'cidade' => ['required'],
+        'rua' => ['required'],
+        'bairro' => ['required'],
+        'estado' => ['required'],
     ];
 
     protected array $messages = [
-        'zipcode.required' => 'O campo CEP é obrigatório.',
-        'city.required' => 'O campo ENDEREÇO é obrigatório.',
-        'street.required' => 'O campo RUA é obrigatório.',
-        'neighborhood.required' => 'O campo BAIRRO é obrigatório.',
-        'state.required' => 'O campo ESTADO é obrigatório.',
+        'cep.required' => 'O campo CEP é obrigatório.',
+        'cidade.required' => 'O campo ENDEREÇO é obrigatório.',
+        'rua.required' => 'O campo RUA é obrigatório.',
+        'bairro.required' => 'O campo BAIRRO é obrigatório.',
+        'estado.required' => 'O campo ESTADO é obrigatório.',
     ];
 
-    public string $zipcode = '';
-    public string $city = '';
-    public string $street = '';
-    public string $neighborhood = '';
-    public string $state = '';
+    public string $cep = '';
+    public string $cidade = '';
+    public string $rua = '';
+    public string $bairro = '';
+    public string $estado = '';
 
     public array $adresses = [];
 
@@ -34,10 +34,10 @@ class SearchZipcode extends Component
     {
         $response = Http::get("https://viacep.com.br/ws/{$value}/json")->json();
 
-        $this->city = $response['localidade'];
-        $this->street = $response['logradouro'];
-        $this->neighborhood = $response['bairro'];
-        $this->state = $response['uf'];
+        $this->cidade = $response['localidade'];
+        $this->rua = $response['logradouro'];
+        $this->bairro = $response['bairro'];
+        $this->estado = $response['uf'];
     }
 
     public function save(): void
@@ -45,13 +45,13 @@ class SearchZipcode extends Component
         $this->validate();
         Endereco::updateOrCreate(
         [
-            'zipcode' => $this->zipcode,
+            'cep' => $this->cep,
         ],
         [
-            'city' => $this->city,
-            'street' => $this->street,
-            'neighborhood' => $this->neighborhood,
-            'state' => $this->state,
+            'cidade' => $this->cidade,
+            'rua' => $this->rua,
+            'bairro' => $this->bairro,
+            'estado' => $this->estado,
         ]);
         
         $this->render();
@@ -64,11 +64,11 @@ class SearchZipcode extends Component
     public function edit(string $id): void
     {
         $adress = Endereco::find($id);
-        $this->zipcode = $adress->zipcode;
-        $this->city = $adress->city;
-        $this->street = $adress->street;
-        $this->neighborhood = $adress->neighborhood;
-        $this->state = $adress->state;
+        $this->cep = $adress->cep;
+        $this->cidade = $adress->cidade;
+        $this->rua = $adress->rua;
+        $this->bairro = $adress->bairro;
+        $this->estado = $adress->estado;
     }
 
     public function remove(string $id): void
@@ -81,7 +81,7 @@ class SearchZipcode extends Component
 
     public function render()
     {
-        $this->adresses = Adress::all()->toArray();
+        // $this->adresses = Adress::all()->toArray();
 
         return view('livewire.search-zipcode');
     }
