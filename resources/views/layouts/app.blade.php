@@ -2,10 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     @include('layouts.head')
     <body x-cloak x-data="{darkMode: $persist(false)}" :class="{'dark': darkMode === true }" class="font-sans antialiased">
+        @include('layouts.header')
         <div class="min-h-screen">
-            @include('layouts.header')
-
-            <!-- Page Content -->
             <main class="py-20">
                 {{ $slot }}
             </main>

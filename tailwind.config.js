@@ -51,6 +51,12 @@ export default {
                 'small-table': '100px 175px 175px 200px 150px 100px 220px'
               }
         },
+        screens: {
+            'sm': '640px',
+            'md': '768px',
+            'lg': '1024px',
+            'xl': '1280px',
+        },
     },
     
     important: true,  
