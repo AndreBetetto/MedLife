@@ -120,7 +120,7 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::get('/adminpaciente', [AdminController::class, 'crudPaciente'])->name('crudPaciente.index');
     Route::get('/adminuser', [AdminController::class, 'crudUser'])->name('crudUser.index');
 
-    // Route::get('/addfuncionario', [AdminController::class, 'crudFuncionario'])->name('')
+    Route::get('/addfuncionario', [AdminController::class, 'crudFuncionarioAdd'])->name('admin.add.addfuncionario');
 });
 
 
