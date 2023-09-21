@@ -230,30 +230,73 @@
         <div class="flex flex-wrap -mx-3 mb-6 items-center">
             <div class="w-full px-3 text-center">
                 <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center -mt-12">
+                    
                     <br>Medicamentos
                     <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
                 </h2><br>
             </div>
-            
-            <div class="w-full text-center justify-center items-center">
-                <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
-                    Dipirona&nbsp; &nbsp;
-                    <label>
-                        <input type="checkbox" class=""/>
-                        <span>08h</span> &nbsp; &nbsp;
-                    </label>
+            @php
+                $medicamentos = $formsDiarios->medicamentos;
+                $ids = explode(',', str_replace(['[', ']'], '', $medicamentos));
+            @endphp
+            @foreach ($ids as $med)
+                @php
+                    echo $med;
+                    //https://bula.vercel.app/medicamento/25351267345200858
+                    $curl = curl_init();
+                    if($med != ''){
+                        curl_setopt_array($curl, array(
+                        CURLOPT_URL => "https://bula.vercel.app/medicamento/".$med,
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_ENCODING => "",
+                        CURLOPT_MAXREDIRS => 8,
+                        CURLOPT_TIMEOUT => 30,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                        CURLOPT_CUSTOMREQUEST => "GET"
+                    ));
+                    }
+                    $response = curl_exec($curl);
+                    $err = curl_error($curl);
+                   
+                    curl_close($curl);
+                    $arrayMedicamentos = [];
+                    if ($err) {
+                        // Handle the cURL error
+                        $arrayMedicamentos = [];
+                    } else {
+                        // Parse the API response and store it in the $medicamentos array
+                        $arrayMedicamentos = json_decode($response, true);
+                    }
 
-                    <label>
-                        <input type="checkbox" class=""/>
-                        <span>10h</span>&nbsp; &nbsp;
-                    </label>
+                    
+                    //dd($this->medicamentos);
+                @endphp
+                <div class="w-full text-center justify-center items-center">
+                    <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
+                        @if ($arrayMedicamentos != [])
+                            {{ $arrayMedicamentos['nomeComercial'] }}
+                            &nbsp; &nbsp;
+                            <label>
+                                <input type="checkbox" class=""/>
+                                <span>08h</span> &nbsp; &nbsp;
+                            </label>
 
-                    <label>
-                        <input type="checkbox" class=""/>
-                        <span>12h</span>&nbsp; &nbsp;
-                    </label>
-                </div>
-            </div>  
+                            <label>
+                                <input type="checkbox" class=""/>
+                                <span>10h</span>&nbsp; &nbsp;
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class=""/>
+                                <span>12h</span>&nbsp; &nbsp;
+                            </label>
+                        @endif
+                        
+                        
+                    </div>
+                </div> 
+            @endforeach
+             
         </div>
 
         <div class="flex flex-wrap -mx-3 mb-6 ">
@@ -282,13 +325,13 @@
                     </label>
                 </div>
             </div>
-            <input type="text" name="observacoes" id="observacoes" value="obs">
-            <input type="text" name="status" id="status" value="em andamento">
-            <input type="text" name="prioridadeMedico" id="prioridadeMedico" value="true">
-            <input type="text" name="grupo" id="grupo" value="grupinho">
-            <input type="text" name="tipo" id="tipo" value="tipotipo">
-            <input type="text" name="alergias" id="alergias" value="AlewrgiasAAmendoim">
-            <input type="text" name="diagnostico" id="diagnostico" value="diagnstico">
+            <input type="hidden" name="observacoes" id="observacoes" value="obs">
+            <input type="hidden" name="status" id="status" value="em andamento">
+            <input type="hidden" name="prioridadeMedico" id="prioridadeMedico" value="true">
+            <input type="hidden" name="grupo" id="grupo" value="grupo">
+            <input type="hidden" name="tipo" id="tipo" value="tipo">
+            <input type="hidden" name="alergias" id="alergias" value="AlewrgiasAAmendoim">
+            <input type="hidden" name="diagnostico" id="diagnostico" value="not">
 
             
             <button class="mt-12 flex-shrink-0 bg-purple-300 border-purple-300 text-sm border-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 py-1 px-2 rounded ml-auto" type="button">
