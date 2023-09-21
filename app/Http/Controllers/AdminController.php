@@ -49,4 +49,9 @@ class AdminController extends Controller
         return redirect()->route('adminmedico.index');
     }
 
+    public function crudFuncionarioAdd (MedicoStoreRequest $request)
+    {
+        return redirect()->route('admin.admin.addfuncionario');
+    }
+
 }
