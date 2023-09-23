@@ -4,7 +4,7 @@
     <body x-cloak x-data="{darkMode: $persist(false)}" :class="{'dark': darkMode === true }" class="bg-purple-50 dark:bg-slate-800 antialiased">
         @include('layouts.header')
             <main class="px-20 py-12">
-                <section class="grid grid-cols-2 items-center py-12 gap-4">
+                <section class="grid lg:grid-cols-2 items-center py-12 gap-4 md:grid-cols-1">
                     <img class="w-11/12 place-self-center m-0" src="doctorsHome.png" alt="Doutor e enfermeiros">
                     <div class="text-left flex flex-col gap-12" >
                         <h1 class="text-6xl dark:text-white">Otimize sua consulta com a nossa plataforma</h1>
@@ -32,7 +32,7 @@
                         <p class="dark:text-slate-100">Conecte-se com Seus Pacientes de Forma Poderosa! Descubra como a MedLife melhora a comunicação médico-paciente, permitindo cuidados de saúde excepcionais.</p>
                     </div>
                 </section>
-                <section class="grid gap-10 grid-cols-2 items-center py-48">
+                <section class="grid gap-10 lg:grid-cols-2 items-center py-48 md:grid-cols-1">
                     <div>
                         <h2 class="mb-12 text-5xl dark:text-white">Mas afinal,
                             <br>
