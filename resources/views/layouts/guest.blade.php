@@ -14,14 +14,16 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="w-screen bg-gradient-to-r from-violet-400 to-green-200 h-screen flex justify-center items-center font-sans text-gray-900 antialiased">
-        <div class="w-4/5  h-4/6 flex justify-center items-center">
-            <div class="w-2/5 shadow-lg sm:rounded-l-lg">
-                <img class="h-4/5" src="{{URL::asset('/login.png')}}" alt="">
-            </div>
-            <div class="w-2/5 flex justify-center items-center flex-col h-full  shadow-inner overflow-hidden sm:rounded-r-lg">
-                {{ $slot }}
-            </div>
-        </div>
+    <body class="w-screen bg-gradient-to-r from-violet-400 to-green-200 h-screen font-sans text-gray-900 antialiased">
+        <main class="px-20 py-12 h-screen flex items-center justify-center">
+            <section class="w-5/6 grid lg:grid-cols-2 items-center py-12 gap-4 md:grid-cols-1">
+                <div class="shadow-lg sm:rounded-l-lg">
+                    <img  src="{{URL::asset('/login.png')}}" alt="">
+                </div>
+                <div class="grid items-center grid-cols-1">
+                    {{ $slot }}
+                </div>
+            </section>
+        </main>
     </body>
 </html>
