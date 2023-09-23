@@ -132,23 +132,23 @@
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
                 @if( Auth::user()->role == 'admin')
-                    <x-nav-link :href="route('areaadmin.index')" :active="request()->routeIs('areaadmin.index')">
+                    <x-responsive-nav-link :href="route('areaadmin.index')" :active="request()->routeIs('areaadmin.index')">
                         {{ __('Admin') }}
-                    </x-nav-link>
+                    </x-responsive-nav-link>
                 @endif
                 @if( Auth::user()->role == 'medico')
-                    <x-nav-link :href="route('areamedico.index')" :active="request()->routeIs('areamedico.index')">
+                    <x-responsive-nav-link :href="route('areamedico.index')" :active="request()->routeIs('areamedico.index')">
                         {{ __('Área médico') }}
-                    </x-nav-link>
+                    </x-responsive-nav-link>
                 @endif
                 @if( Auth::user()->role == 'paciente')
-                    <x-nav-link :href="route('areapaciente.index')" :active="request()->routeIs('areapaciente.index')">
+                    <x-responsive-nav-link :href="route('areapaciente.index')" :active="request()->routeIs('areapaciente.index')">
                         {{ __('Área do paciente') }}
-                    </x-nav-link>
+                    </x-responsive-nav-link>
                 @endif
-                <x-nav-link :href="route('medico.visual')" :active="request()->routeIs('medico.visual')">
+                <x-responsive-nav-link :href="route('medico.visual')" :active="request()->routeIs('medico.visual')">
                     {{ __('Ver médicos!') }}
-                </x-nav-link>
+                </x-responsive-nav-link>
             @endif
         </div>
 
