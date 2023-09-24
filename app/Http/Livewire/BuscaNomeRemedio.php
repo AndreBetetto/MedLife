@@ -81,8 +81,9 @@ class BuscaNomeRemedio extends Component
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
         ));
-
+        
         $response = curl_exec($curl);
+        //dd($response);
         $err = curl_error($curl);
 
         curl_close($curl);
@@ -98,7 +99,12 @@ class BuscaNomeRemedio extends Component
 
     public function addMedicamento($medicamentoId)
     {
-        $this->selectedMedicamentos[] = $medicamentoId;
+        //string to add to selectedMedicamentos
+        $str = $medicamentoId;
+
+        dd($str);
+        // Add the selected medicine to the $selectedMedicamentos array
+        array_push($this->selectedMedicamentos, $str);
     }
 
     public function removeMedicamento($medicamentoName)

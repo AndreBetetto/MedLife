@@ -117,7 +117,7 @@
         </tr>
         <tr>
             <td>
-                .
+                . 
             </td>
             <td>
                 <label>Select sintomas bracitos</label>
