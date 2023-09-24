@@ -11,15 +11,23 @@
         <table class="">
             <p class="text-xl font-semibold leading-6 text-gray-500 ">Medicos cadastrados:</p>
             
+            
             @forelse ($medicos as $medico)
                 @php
                     $medicoId = $medico->id;
                     $isSelected = $jaSelecionados->contains('medico_id', $medicoId);
+                    //Randomizacao de imagens
+                    $numAleatorio = rand(1, 29);
+                    $stringImg = 'p0'.$numAleatorio;
+                    //pega foto da pasta public
+                    $caminhoImg = 'profile/'.$stringImg.'.png';
+                    echo $caminhoImg;
+            
                 @endphp
                
                 <div class="w-full h-px bg-gray-300"></div>
                 <div class="flex justify-between items-center h-fit">
-                <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="imagemacharr.png" alt="">
+                <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="{{$caminhoImg}}" alt="">
                 
                 <div class="min-w-0 flex-auto">
                     <p class="text-base font-semibold leading-6 text-gray-900 px-5"> {{ $medico->nome }} </p>
