@@ -10,11 +10,19 @@
             @php
                 $medicoId = $medico->id;
                 $isSelected = $pacMeds->contains('medico_id', $medicoId);
+                //Randomizacao de imagens
+                $numAleatorio = rand(1, 28);
+                if($numAleatorio < 10)
+                    $stringImg = 'p00'.$numAleatorio;
+                else
+                    $stringImg = 'p0'.$numAleatorio;
+                //pega foto da pasta public
+                $caminhoImg = 'storage/profile/'.$stringImg.'.png';
             @endphp
             @if ($isSelected)
             <div class="w-full h-px bg-gray-300"></div>
                 <div class="flex justify-between items-center h-fit py-10 px-5">
-                <img class="h-20 w-20 flex-none rounded-full bg-gray-50" src="teste_64,png" alt="imagem nao carrega">
+                <img class="h-20 w-20 flex-none rounded-full bg-gray-50" src="{{asset($caminhoImg)}}" alt="imagem carrega">
                 
                 <div class="min-w-0 flex-auto px-8">
                     <p class="text-base font-semibold leading-6 text-gray-900"> {{ $medico->nome}} {{ Str::ucfirst($medico->sobrenome); }}</p>
