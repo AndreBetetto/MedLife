@@ -32,7 +32,7 @@
                         <p class="dark:text-slate-100">Conecte-se com Seus Pacientes de Forma Poderosa! Descubra como a MedLife melhora a comunicação médico-paciente, permitindo cuidados de saúde excepcionais.</p>
                     </div>
                 </section>
-                <section class="grid gap-10 lg:grid-cols-2 items-center py-48 md:grid-cols-1">
+                <section class="grid gap-12 lg:grid-cols-2 items-center py-48 md:grid-cols-1">
                     <div>
                         <h2 class="mb-12 text-5xl dark:text-white">Mas afinal,
                             <br>
