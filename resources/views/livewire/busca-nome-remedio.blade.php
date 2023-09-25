@@ -21,25 +21,24 @@
                     Pesquisar: <input type="text" wire:model.prevent="search"><br>  
                     @if ($medicamentos['content'] == null)
                         Nenhum medicamento encontrado
-                        
+                    @elseif ($medicamentos['content'] != null)
+                        @foreach ($medicamentos['content'] as $med)
+                            @php
+                                $numProcesso = $med['numProcesso'];
+                            @endphp
+                            Nome: {{ $med['nomeProduto'] }} <br>
+                            Razao social: {{ $med['razaoSocial'] }} <br>
+                            id: {{ $numProcesso }} - 
+                            <button
+                                wire:click.prevent="addMedicamento({{$numProcesso}})"
+                                             
+                            >
+                            {{ $numProcesso }}
+                            Adicionar
+                            </button>
+                            <br>
+                        @endforeach
                     @endif
-                    @foreach ($medicamentos['content'] as $med)
-                        Nome: {{ $med['nomeProduto'] }} <br>
-                        Razao social: {{ $med['razaoSocial'] }} <br>
-                        id: {{ $med['numProcesso'] }} - 
-                        <button
-                            wire:click.prevent="addMedicamento({{ $med['numProcesso'] }})"
-                            wire:loading.attr="disabled"
-                            wire:target="addMedicamento({{ $med['numProcesso'] }})"
-                            @if (in_array($med['numProcesso'], $selectedMedicamentos))
-                                disabled
-                            @endif
-                        >
-                        Adicionar
-                    </button>
-
-                        <br>
-                    @endforeach
                 </div>
                 <div>
                     <h2>Medicamentos Selecionados:</h2><br>

@@ -238,6 +238,7 @@
             @php
                 $medicamentos = $formsDiarios->medicamentos;
                 $ids = explode(',', str_replace(['[', ']'], '', $medicamentos));
+                //dd($ids);
             @endphp
             @foreach ($ids as $med)
                 @php
@@ -267,13 +268,10 @@
                         // Parse the API response and store it in the $medicamentos array
                         $arrayMedicamentos = json_decode($response, true);
                     }
-
-                    
-                    //dd($this->medicamentos);
                 @endphp
                 <div class="w-full text-center justify-center items-center">
                     <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
-                        @if ($arrayMedicamentos != [])
+                        @if ($arrayMedicamentos['nomeComercial'] != [])
                             {{ $arrayMedicamentos['nomeComercial'] }}
                             &nbsp; &nbsp;
                             <label>
