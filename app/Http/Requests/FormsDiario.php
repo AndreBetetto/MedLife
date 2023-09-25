@@ -26,10 +26,10 @@ class FormsDiario extends FormRequest
         return [
             'paciente_id' => 'required',
             'medico_id' => 'required',
-            'observacoes' => 'required',
-            'status' => 'required',
+            'observacoes' => '',
+            'status' => '',
             'medicamentos' => 'required',
-            'diagnostico' => 'required',
+            'diagnostico' => '',
             'numDias' => 'required' //outra tabela
         ];
     }

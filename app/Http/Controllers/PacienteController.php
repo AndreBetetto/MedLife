@@ -50,11 +50,11 @@ class PacienteController extends Controller
 
     public function buscarMedicos()
     {
-        $jaSelecionados = PacienteMedico::where('paciente_id', auth()->user()->id)->get();
         $user  = User::where('id', auth()->user()->id)->first();
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
         $medicos = Medico::all();
         $specialty = null;
+        $jaSelecionados = PacienteMedico::where('paciente_id', $paciente->id)->get();
 
         return view('paciente.buscarMedico.index', compact('user', 'paciente', 'medicos', 'jaSelecionados', 'specialty'));
     }
@@ -65,7 +65,7 @@ class PacienteController extends Controller
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
         $medicos = Medico::all();
         $specialty = null;
-        $pacMeds = PacienteMedico::where('paciente_id', auth()->user()->id)->get();
+        $pacMeds = PacienteMedico::where('paciente_id', $paciente->id)->get();
         return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos', 'pacMeds', 'specialty'));
     }
 
@@ -115,8 +115,7 @@ class PacienteController extends Controller
         $todosPacs = Paciente::all();
         $pacMeds = PacienteMedico::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
         $formDiarios = formDiario::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
-        //$checklist = Checklist::where('forms_id', $formsDiarios->id)->get();
-        return view('paciente.respondeForms.indexDetalhes', compact('medico', 'user', 'paciente', 'formDiarios', 'todosPacs', 'pacMeds', 'checklist'));
+        return view('paciente.respondeForms.indexDetalhes', compact('medico', 'user', 'paciente', 'formDiarios', 'todosPacs', 'pacMeds'));
     }
 
     public function detalhesMedicoForms($id)
@@ -128,10 +127,30 @@ class PacienteController extends Controller
         return view('paciente.respondeForms.index', compact('medico', 'paciente', 'formsDiarios', 'checklist'));
     }
 
+    public function acessoFormulario($id)
+    {
+        $formsDiarios = formDiario::where('id', $id)->first();
+        $medico = Medico::where('id', $formsDiarios->medico_id)->first();
+        $paciente = Paciente::where('id', $formsDiarios->paciente_id)->first();
+        $checklist = Checklist::where('forms_id', $formsDiarios->id)->get();
+        return view('paciente.acompanhamentoForms.index', compact('medico', 'paciente', 'formsDiarios', 'checklist'));
+    }
+
     public function detalhesMedicoFormsStore(FormSave $r, $id)
     {
         $data = $r->validated();
-        //dd($data); //para testes
+        $symH = $data['symHead'] ?? []; //if not set, will set as empty array
+        $symT = $data['symTorso'] ?? []; //if not set, will set as empty array
+        $symA = $data['symArms'] ?? [];//if not set, will set as empty array
+        $symL = $data['symLegs'] ?? [];//if not set, will set as empty array
+        $symAb = $data['symAbdomen'] ?? [];//if not set, will set as empty array
+        $symS = $data['symSkin'] ?? [];//if not set, will set as empty array
+        $combinedArray = array_merge($symH, $symT, $symA, $symL, $symAb, $symS);
+        $uniqueArray = array_unique($combinedArray);
+        $resultString = '[' . implode(',', $uniqueArray) . ']';
+        //dd($resultString);
+        $data['sintomas'] = $resultString;
+        dd($data); //para testes
         $numDia = $data['numDia'];
         $formDiario = formDiario::where('id', $id)->first();
         $periodo = $formDiario->numDias;
@@ -147,7 +166,7 @@ class PacienteController extends Controller
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
         $medicos = Medico::all();
         $specialty = null;
-        $pacMeds = PacienteMedico::where('paciente_id', auth()->user()->id)->get();
+        $pacMeds = PacienteMedico::where('paciente_id', $paciente->id)->get();
         return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos', 'pacMeds', 'specialty'));
    
     }

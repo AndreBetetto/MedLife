@@ -12,32 +12,31 @@ class BuscaNomeRemedio extends Component
         return view('livewire.busca-nome-remedio', compact('remedios'));
     }
 
+    public $retorno;
     public $row;
     public $medico;
-    public $query = '';
-    public $retorno;
-    public $search;
     public $medArray = [];
+    public $medicamentos = [];
+    public $formattedSelectedMedicamentos = '';
 
-    protected $queryString = ['search'];
 
-    public function search()
+    public function mount()
     {
-        $inputRemedio = $this->query;
-        //
+        $input = $this->search;
         $curl = curl_init();
-        curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://bula.vercel.app/pesquisar?nome=".$inputRemedio."&pagina=1",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => "",
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 30,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "GET",
-        
-        ));
 
-        $link = "https://bula.vercel.app/pesquisar?nome=".$inputRemedio."&pagina=1";
+        if($input == ''){
+            $input = 'AMOXICILINA';
+        }
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://bula.vercel.app/pesquisar?nome='.$input.'&pagina=1",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 8,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET"
+        ));
 
         $response = curl_exec($curl);
         $err = curl_error($curl);
@@ -45,20 +44,73 @@ class BuscaNomeRemedio extends Component
         curl_close($curl);
 
         if ($err) {
-            $saida = "cURL Error #:" . $err;
+            // Handle the cURL error
+            $this->medicamentos = [];
         } else {
-            $saida =  $response;
-            
+            // Parse the API response and store it in the $medicamentos array
+            $this->medicamentos = json_decode($response, true);
         }
-        $retorno = $saida;
-        $this->retorno = $retorno;
-
+        //dd($this->medicamentos);
     }
 
-    public $med;
     public function updateSelectedMed()
     {
         $medArray = $this->medArray;
         $this->$medArray = array_unique($this->$medArray);
     }
+
+    public $search = '';
+    public $selectedMedicamentos = [];
+
+    
+    public function updatedSearch()
+    {
+        $input = $this->search;
+        $curl = curl_init();
+
+        if (empty($input)) {
+            $input = 'AMOXICILINA';
+        }
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://bula.vercel.app/pesquisar?nome=" . urlencode($input) . "&pagina=1",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 8,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            // Handle the cURL error
+            $this->medicamentos = [];
+        } else {
+            // Parse the API response and store it in the $medicamentos array
+            $this->medicamentos = json_decode($response, true);
+        }
+    }
+
+    public function addMedicamento($medicamentoId)
+    {
+        $this->selectedMedicamentos[] = $medicamentoId;
+    }
+
+    public function removeMedicamento($medicamentoName)
+    {
+        // Remove the selected medicine from the $selectedMedicamentos array
+        $this->selectedMedicamentos = array_diff($this->selectedMedicamentos, [$medicamentoName]);
+    }
+
+    public function formatSelectedMedicamentos()
+    {
+        $formattedIds = '[' . implode(', ', $this->selectedMedicamentos) . ']';
+        $this->formattedSelectedMedicamentos = $formattedIds;
+    }
+    public $stringInput = '';
 }

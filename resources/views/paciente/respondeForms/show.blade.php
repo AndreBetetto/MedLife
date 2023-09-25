@@ -9,9 +9,9 @@
 
     <form class="w-full" action="{{ route('areapaciente.medicoDetalhesFormsStore', ['id' =>$formsDiarios->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="text" name="paciente_id" id="paciente_id" value="{{$paciente->id}}">
-        <input type="text" name="medico_id" id="medico_id" value="{{$medico->id}}">
-        <input type="text" name="forms_id" id="forms_id" value="{{$formsDiarios->id}}">
+        <input type="hidden" name="paciente_id" id="paciente_id" value="{{$paciente->id}}">
+        <input type="hidden" name="medico_id" id="medico_id" value="{{$medico->id}}">
+        <input type="hidden" name="forms_id" id="forms_id" value="{{$formsDiarios->id}}">
 
         <div class="grid grid-cols-2 items-center  w-full -mx-3 mb-6">
         <div class="w-full flex flex-col items-center">
@@ -94,49 +94,69 @@
                 </label>
                     <div class="inline-flex rounded-md shadow-sm" role="group">
                         {{-- paradinha --}}
-                        <input type="hidden" name="nivelDor" id="nivelDor" value="7">
+                        <input type="hidden" name="nivelDor" id="nivelDor">
 
-                        <button type="button" title="aaa" class="px-3 py-1 text-sm font-medium text-gray-900 bg-verde-1 border border-black rounded-l-lg focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-7000 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <button type="button" class="dor-btn px-3 py-1 text-sm font-medium text-gray-900 bg-verde-1 border border-black rounded-l-lg focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-7000 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                             1
                         </button>
 
-                        <button type="button" class="px-3 py-1 text-sm font-medium text-gray-900 bg-verde-2 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <button type="button" class="dor-btn px-3 py-1 text-sm font-medium text-gray-900 bg-verde-2 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                             2
                         </button>
 
-                        <button type="button" class="px-3 py-1 text-sm font-medium text-gray-900 bg-verde-3 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
-                            3
+                        <button type="button" class="px-3 py-1 text-sm font-medium text-gray-900 bg-verde-3 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">                            3
                         </button>
 
-                        <button type="button" class="px-3 py-1 text-sm font-medium text-gray-900 bg-amarelo-1 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <button type="button" class="dor-btn px-3 py-1 text-sm font-medium text-gray-900 bg-amarelo-1 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white backgrou">
                             4
                         </button>
 
-                        <button type="button" class="px-3 py-1 text-sm font-medium text-gray-900 bg-amarelo-2 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <button type="button" class="dor-btn px-3 py-1 text-sm font-medium text-gray-900 bg-amarelo-2 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                             5
                         </button>
 
-                        <button type="button" class="px-3 py-1 text-sm font-medium text-gray-900 bg-laranja-1 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <button type="button" class="dor-btn px-3 py-1 text-sm font-medium text-gray-900 bg-laranja-1 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                             6
                         </button>
 
-                        <button type="button" class="px-3 py-1 text-sm font-medium text-gray-900 bg-laranja-2 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <button type="button" class="dor-btn px-3 py-1 text-sm font-medium text-gray-900 bg-laranja-2 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                             7
                         </button>
 
-                        <button type="button" class="px-3 py-1 text-sm font-medium text-gray-900 bg-vermelho-1 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <button type="button" class="dor-btn px-3 py-1 text-sm font-medium text-gray-900 bg-vermelho-1 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                             8
                         </button>
 
-                        <button type="button" class="px-3 py-1 text-sm font-medium text-gray-900 bg-vermelho-2 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <button type="button" class="dor-btn px-3 py-1 text-sm font-medium text-gray-900 bg-vermelho-2 border border-black focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                             9
                         </button>
 
-                        <button type="button" class="px-3 py-1 text-sm font-medium text-gray-900 bg-vermelho-3 border border-black rounded-r-md focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <button type="button" class="dor-btn px-3 py-1 text-sm font-medium text-gray-900 bg-vermelho-3 border border-black rounded-r-md focus:z-10 focus:ring-2 focus:ring-black focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                             10
                         </button>
                     </div>
+                    <script>
+                        const selectionButtons = document.querySelectorAll('.dor-btn');
+                        const nivelDorInput = document.getElementById('nivelDor');
+                    
+                        selectionButtons.forEach((button, index) => {
+                            button.addEventListener('click', () => {
+                                // Update the value of the nivelDor input
+                                nivelDorInput.value = index + 1;
+                    
+                                // Reset the styling for all selection buttons
+                                selectionButtons.forEach(btn => {
+                                    btn.classList.remove('selected');
+                                });
+                    
+                                // Add selected class to the clicked button
+                                button.classList.add('selected');
+                            });
+                        });
+                    </script>
             </div><br>
+            
+                
     
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
@@ -144,7 +164,7 @@
                 </label>
                 
                 <label>
-                    <input class="with-gap" name="sangramento" id="sangramento" type="radio" value="nenhum" required/>
+                    <input class="with-gap" name="sangramento" id="sangramento" type="radio" checked value="nenhum" required/>
                     <span>Nenhum</span>
                 </label><br>
 
@@ -173,6 +193,21 @@
                     </div>
                 </label><br>
             </div>
+
+            <div class="frame">
+                <div id="febre" class="rslider"></div>
+                <div class="thermostat">
+                    <div class="ring">
+                        <div class="bottom_overlay"></div>
+                    </div>
+                    <div class="control">
+                        <div class="temp_outside">23°</div>
+                        <div class="temp_room"><span>°</span></div>
+                        <div class="room">Sua temperatura</div>
+                    </div>
+                </div>
+            </div>
+
         
             {{-- Sintomas --}}
             <div>
@@ -195,30 +230,73 @@
         <div class="flex flex-wrap -mx-3 mb-6 items-center">
             <div class="w-full px-3 text-center">
                 <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center -mt-12">
+                    
                     <br>Medicamentos
                     <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
                 </h2><br>
             </div>
-            
-            <div class="w-full text-center justify-center items-center">
-                <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
-                    Dipirona&nbsp; &nbsp;
-                    <label>
-                        <input type="checkbox" class=""/>
-                        <span>08h</span> &nbsp; &nbsp;
-                    </label>
+            @php
+                $medicamentos = $formsDiarios->medicamentos;
+                $ids = explode(',', str_replace(['[', ']'], '', $medicamentos));
+            @endphp
+            @foreach ($ids as $med)
+                @php
+                    echo $med;
+                    //https://bula.vercel.app/medicamento/25351267345200858
+                    $curl = curl_init();
+                    if($med != ''){
+                        curl_setopt_array($curl, array(
+                        CURLOPT_URL => "https://bula.vercel.app/medicamento/".$med,
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_ENCODING => "",
+                        CURLOPT_MAXREDIRS => 8,
+                        CURLOPT_TIMEOUT => 30,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                        CURLOPT_CUSTOMREQUEST => "GET"
+                    ));
+                    }
+                    $response = curl_exec($curl);
+                    $err = curl_error($curl);
+                   
+                    curl_close($curl);
+                    $arrayMedicamentos = [];
+                    if ($err) {
+                        // Handle the cURL error
+                        $arrayMedicamentos = [];
+                    } else {
+                        // Parse the API response and store it in the $medicamentos array
+                        $arrayMedicamentos = json_decode($response, true);
+                    }
 
-                    <label>
-                        <input type="checkbox" class=""/>
-                        <span>10h</span>&nbsp; &nbsp;
-                    </label>
+                    
+                    //dd($this->medicamentos);
+                @endphp
+                <div class="w-full text-center justify-center items-center">
+                    <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
+                        @if ($arrayMedicamentos != [])
+                            {{ $arrayMedicamentos['nomeComercial'] }}
+                            &nbsp; &nbsp;
+                            <label>
+                                <input type="checkbox" class=""/>
+                                <span>08h</span> &nbsp; &nbsp;
+                            </label>
 
-                    <label>
-                        <input type="checkbox" class=""/>
-                        <span>12h</span>&nbsp; &nbsp;
-                    </label>
-                </div>
-            </div>  
+                            <label>
+                                <input type="checkbox" class=""/>
+                                <span>10h</span>&nbsp; &nbsp;
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class=""/>
+                                <span>12h</span>&nbsp; &nbsp;
+                            </label>
+                        @endif
+                        
+                        
+                    </div>
+                </div> 
+            @endforeach
+             
         </div>
 
         <div class="flex flex-wrap -mx-3 mb-6 ">
@@ -247,20 +325,19 @@
                     </label>
                 </div>
             </div>
-            <input type="text" name="observacoes" id="observacoes" value="obs">
-            <input type="text" name="status" id="status" value="em andamento">
-            <input type="text" name="prioridadeMedico" id="prioridadeMedico" value="true">
-            <input type="text" name="grupo" id="grupo" value="grupinho">
-            <input type="text" name="tipo" id="tipo" value="tipotipo">
-            <input type="text" name="alergias" id="alergias" value="AlewrgiasAAmendoim">
-            <input type="text" name="diagnostico" id="diagnostico" value="diagnstico">
+            <input type="hidden" name="observacoes" id="observacoes" value="obs">
+            <input type="hidden" name="status" id="status" value="em andamento">
+            <input type="hidden" name="prioridadeMedico" id="prioridadeMedico" value="true">
+            <input type="hidden" name="grupo" id="grupo" value="grupo">
+            <input type="hidden" name="tipo" id="tipo" value="tipo">
+            <input type="hidden" name="alergias" id="alergias" value="AlewrgiasAAmendoim">
+            <input type="hidden" name="diagnostico" id="diagnostico" value="not">
 
             
             <button class="mt-12 flex-shrink-0 bg-purple-300 border-purple-300 text-sm border-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 py-1 px-2 rounded ml-auto" type="button">
-                Enviar Dados <input type="submit" name="ENVIAR">
+                Enviar Dados <input wire:submit.prevent="submitForm" type="submit" name="ENVIAR">
             </button>
         </div>
     </div>
     </form>
 </div>
-

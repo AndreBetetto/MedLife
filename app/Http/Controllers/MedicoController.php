@@ -62,7 +62,25 @@ class MedicoController extends Controller
         $formsDiario = ModelFormDiario::all();
         $pacMeds = PacienteMedico::where('medico_id', auth()->user()->id)->get();
         return view('medico.meus-pacientes.index', compact('user', 'pacientes', 'medico', 'pacMeds', 'formsDiario'));
-    
+    }
+
+    public function pacienteProcessos($idPac)
+    {
+        $forms = ModelFormDiario::where('paciente_id', $idPac)->get();
+        $checklist = checklist::where('paciente_id', $idPac)->get();
+        $paciente = Paciente::where('id', $idPac)->first();
+        $medico = Medico::where('user_id', auth()->user()->id)->first();
+        return view('medico.meus-pacientes.visualizarProcessos.index', compact('forms', 'paciente', 'medico', 'checklist'));
+    }
+
+    public function pacienteProcessosForms($idPac, $idForm)
+    {
+        $forms = ModelFormDiario::where('paciente_id', $idPac)->get();
+        $checklist = checklist::where('paciente_id', $idPac)->get();
+        $paciente = Paciente::where('id', $idPac)->first();
+        $medico = Medico::where('user_id', auth()->user()->id)->first();
+        $form = ModelFormDiario::where('id', $idForm)->first();
+        return view('medico.meus-pacientes.detalhes.index', compact('forms', 'paciente', 'medico', 'checklist', 'form'));
     }
 
     public function paginaAddForms($id)
@@ -75,6 +93,8 @@ class MedicoController extends Controller
     public function passarParaPaciente(FormsDiario $request)
     {
         $data = $request->validated();
+        $data['status'] = 'Aguardando';
+        $data['diagnostico'] = '';
         //dd($data); //para testes
         ModelFormDiario::create($data);
 

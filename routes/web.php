@@ -75,6 +75,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/medicovisual', [MedicoController::class, 'visual'])->name('medico.visual');
 });
 
+//Pacientes
 Route::middleware('auth')->group(function () {
     Route::get('/areapaciente', [PacienteController::class, 'areapaciente'])->name('areapaciente.index');
     Route::get('/areapaciente/buscar', [PacienteController::class, 'buscarMedicos'])->name('areapaciente.buscar');
@@ -84,8 +85,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/areapaciente/meusMedicos/{id}', [PacienteController::class, 'detalhesMedico'])->name('areapaciente.medicoDetalhes');
     Route::get('/areapaciente/meusMedicos/{id}/forms', [PacienteController::class, 'detalhesMedicoForms'])->name('areapaciente.medicoDetalhesForms');
     Route::post('/areapaciente/meusMedicos/{id}/formsEnvia', [PacienteController::class, 'detalhesMedicoFormsStore'])->name('areapaciente.medicoDetalhesFormsStore');
+    Route::get('/areapaciente/meusMedicos/{id}/suasRespostas/', [PacienteController::class, 'acessoFormulario'])->name('areapaciente.acessoForms');
 });
 
+//medicos
 Route::middleware(['IsMedico'])->group(function () {
     Route::get('/areamedico', [MedicoController::class, 'areamedico'])->name('areamedico.index');
     Route::get('/areamedico/consulta', [MedicoController::class, 'areamedicoconsulta'])->name('areamedico.consulta');
@@ -94,6 +97,8 @@ Route::middleware(['IsMedico'])->group(function () {
     Route::get('/areamedico/meusPacientes', [MedicoController::class, 'meusPacientes'])->name('areamedico.meusPacientes');
     Route::get('/areamedico/meusPacientes/{id}', [MedicoController::class, 'paginaAddForms'])->name('areamedico.meusPacientescriarForm');
     Route::post('/areamendico/adicionarMedicamento', [MedicoController::class, 'passarParaPaciente'])->name('areamedico.passarParaPaciente');
+    Route::get('/areamedico/meusPacientes/{idPac}/detalhes', [MedicoController::class, 'pacienteProcessos'])->name('areamedico.acessoProcessos');
+    Route::get('/areamedico/meusPacientes/{idPac}/detalhes/{idForm}', [MedicoController::class, 'pacienteProcessosForms'])->name('areamedico.acessoProcessosForms');
 
     Route::post('/areamedico/meusPacientes/{id}', [MedicoController::class, 'addFormsStore'])->name('areamedico.meusPacientescriarFormStore');
 
@@ -116,6 +121,19 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::get('/adminuser', [AdminController::class, 'crudUser'])->name('crudUser.index');
 
     Route::get('/addfuncionario', [AdminController::class, 'crudFuncionarioAdd'])->name('admin.add.addfuncionario');
+});
+
+
+Route::middleware('auth')->group(function() {
+    Route::get('/chat', 'HomeController@chat')->name('chat');
+    Route::post('getFriends', 'HomeController@getFriends')->name('getFriends');
+    Route::post('/session/create', 'SessionController@create')->name('session.create');
+    Route::post('/session/{session}/chats', 'ChatController@chats')->name('session.chats');
+    Route::post('/session/{session}/read', 'ChatController@read')->name('session.read');
+    Route::post('/session/{session}/clear', 'ChatController@clear')->name('session.clear');
+    Route::post('/session/{session}/block', 'BlockController@block')->name('session.block');
+    Route::post('/session/{session}/unblock', 'BlockController@unblock')->name('session.unblock');
+    Route::post('/send/{session}', 'ChatController@send')->name('send');
 });
 
 require __DIR__.'/auth.php';

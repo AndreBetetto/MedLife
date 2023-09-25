@@ -1,11 +1,6 @@
 <div>
     <br>
-
-    Quais remedios o paceinte deve tomar?
-    {{ $row->id }}
-    {{ $medico->id }}
-
+    Criando formulario para paciente
     @livewire('busca-nome-remedio', ['medico' => $medico, 'row' => $row])
-    
     <br>
 </div>
