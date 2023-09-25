@@ -1,8 +1,12 @@
 <div>
-    Processos:
 
-    {{ $medico->id }}
-    {{ $paciente->id }}
+    <div class="px-4 sm:px-0">
+        <h3 class="text-xl font-semibold leading-7 text-gray-900 py-3">Processos</h3>
+    </div>
+
+
+    <p class="mt-1 truncate text-base leading-5 text-gray-700"> Médico: {{ $medico->nome}} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
+    <p class="mt-1 truncate text-base leading-5 text-gray-700 pb-5"> Paciente: {{ $paciente->nome}} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
 
     <table>
         @php
@@ -11,35 +15,60 @@
                                     ->where('paciente_id', $pacienteId)
                                     ->count();
             @endphp
-        <th>Processos</th>
-        <tr>
-            <td>id</td>
-            <td>Dias restantes</td>
-            <td>Responder</td>
-            <td>Status</td>
-        </tr>
-        @forelse ($formDiarios as $formDiarios)
-            @php
-                $qntDias = $formDiarios->numDias;
-                $status = $formDiarios->status;
-            @endphp
-            <tr>
-                <td> {{ $formDiarios->id }} </td>
-                <td> {{ $qntDias }} </td>
-                @if ( $status == 'Em andamento' || $status == 'Aguardando' )
-                    <td> <a href="{{ route('areapaciente.medicoDetalhesForms', ['id' => $formDiarios->id]) }}">Responder</a> </td>
-                @else
-                    <td>Nao disponivel</td>
-                @endif
-                <td> {{ $status}} </td>
-                @empty
-                    <tr>
-                        <td colspan="4">Sem pacientes adicionados</td>
-                    </tr>
-                @endforelse
-            </tr>
 
-        
+        <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
+            <div class="relative py-3">
+                <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">
+                    <div class="grid grid-cols-5 items-center justify-center border-collapse w-full">
+                        <span class="font-medium text-slate-700 dark:text-slate-700 text-center my-5">ID</span>
+                        <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Dias restantes</span>
+                        <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Responder</span>
+                        <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Status</span>
+                        <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Respostas</span>
+                    </div>
+
+                    @forelse ($formDiarios as $formDiarios)
+                        @php
+                            $qntDias = $formDiarios->numDias;
+                            $status = $formDiarios->status;
+                        @endphp
+                        
+                    <div class="grid grid-cols-5 bg-white dark:bg-slate-800">
+                        <span class="text-base border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $formDiarios->id }}</span>
+                        <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center"> {{ $qntDias }}</span>
+
+                
+                        @if ( $status == 'Em andamento' || $status == 'Aguardando' )
+                            <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">
+                                <a href="{{ route('areapaciente.medicoDetalhesForms', ['id' => $formDiarios->id]) }}" class="hover:text-gray-500 hover:font-bold">Responder</a> </td>
+                            </span>
+                        @else
+                            <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">
+                                <td>Não disponível</td>
+                            </span>
+                        
+                        @endif
+                            
+                        <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $status}}</span>
+                            {{-- verify if there is at least one awnser --}}
+                            @if ($formDiarios->status == 'Aguardando')
+                                <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">Sem respostas</span>   
+                            @else
+                                <span class="text-base border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">
+                                    <a href="{{ route('areapaciente.acessoForms', ['id' => $formDiarios->id]) }} " class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-400 hover:shadow-purple-400 focus:outline-none focus:ring-0">Ver respostas</a>
+                                </span>
+                            @endif
+
+                            <tr></tr>
+
+                            @empty
+                                <tr>
+                                    <td colspan="4">Sem pacientes adicionados</td>
+                                </tr>
+                            @endforelse
+                    </div>
+                </div>
+            </div>
+        </div>        
     </table>
-
 </div>

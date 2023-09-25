@@ -23,7 +23,7 @@
     <div class="flex flex-wrap -m-4">
       <div class="p-4 lg:w-1/2">
         <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left mx-20">
-          <img alt="equipe" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 " src="https://dummyimage.com/200x200">
+        <img alt="Andre" src="andre.jpeg" class="rounded-lg" width="200px">
           <div class="flex-grow sm:pl-8">
             <h2 class="title-font font-medium text-lg text-gray-900">
               <font style="vertical-align: inherit;">
@@ -48,7 +48,7 @@
 
       <div class="p-4 lg:w-1/2">
         <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left mx-20">
-          <img alt="equipe" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 " src="https://dummyimage.com/201x201">
+        <img alt="Gabriele" src="gabriele.jpg" class="rounded-lg" width="200px">
           <div class="flex-grow sm:pl-8">
             <h2 class="title-font font-medium text-lg text-gray-900">
               <font style="vertical-align: inherit;">
@@ -74,8 +74,8 @@
 
       <div class="p-4 lg:w-1/2">
         <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left mx-20">
-          <img alt="equipe" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 " src="https://dummyimage.com/204x204">
-          <div class="flex-grow sm:pl-8">
+        <img alt="Maria Luisa" src="eid.jpeg" class="rounded-lg" width="200px">          
+        <div class="flex-grow sm:pl-8">
             <h2 class="title-font font-medium text-lg text-gray-900">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Maria Luísa Eid Martins</font>
@@ -100,7 +100,7 @@
 
       <div class="p-4 lg:w-1/2">
         <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left mx-20">
-          <img alt="equipe" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 " src="https://dummyimage.com/206x206">
+          <img alt="Miguel" src="miguel.jpeg" class="rounded-lg" width="200px">
           <div class="flex-grow sm:pl-8">
             <h2 class="title-font font-medium text-lg text-gray-900">
               <font style="vertical-align: inherit;">
@@ -125,7 +125,7 @@
 
       <div class="p-4 lg:w-1/2">
         <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left mx-20">
-          <img alt="equipe" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4 " src="https://dummyimage.com/200x200">
+        <img alt="Naydhow" src="naydhow.jpeg" class="rounded-lg" width="200px">
           <div class="flex-grow sm:pl-8">
             <h2 class="title-font font-medium text-lg text-gray-900">
               <font style="vertical-align: inherit;">

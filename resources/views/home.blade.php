@@ -9,11 +9,17 @@
                     <div class="text-left flex flex-col gap-12" >
                         <h1 class="text-6xl dark:text-white">Otimize sua consulta com a nossa plataforma</h1>
                         <p class="dark:text-slate-100">A aplicação do software em ambientes profissionais possibilita que haja um melhor atendimento das necessidades do paciente, promovendo consultas mais precisas e com maior acompanhamento do mesmo, evitando que dados importantes não sejam registrados.</p>
-                        <div class="flex gap-10 ">
+                        <div class="flex gap-10">
                             <a href="{{ route('login') }}" class="text-xl text-neutral-50 rounded-2xl px-8 py-2 w-max bg-violet-500 content-center gap-2 hover:bg-violet-600 hover:px-10 duration-200">Entrar <span class="align-middle material-symbols-outlined">arrow_right_alt</span></a>
                             <a href="{{ route('register') }}" class="text-xl rounded-2xl px-8 py-2 w-max bg-green-300 content-center gap-2 hover:bg-green-400 hover:px-10 duration-200">Fazer cadastro</a>
                         </div>
                     </div>
+                    <label>Disponível para Viajar?</a>
+                        <select class="dark:bg-slate-800" name="viagem">
+                            <option value="sim">Sim</option>
+                            <option value="nao">Não</option>
+                        </select>
+                    </label>
                 </section>
                 <section class="grid justify-items-center lg:grid-cols-3 py-48 md:grid-cols-1">
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
@@ -26,13 +32,14 @@
                         <h3 class="text-3xl dark:text-white">Soluções que Transformam Consultas</h3>
                         <p class="dark:text-slate-100">Médicos, Simplifiquem as Consultas! Explore como a MedLife oferece tecnologias que otimizam as consultas médicas, tornando-as mais produtivas e informativas.</p>
                     </div>
+                    
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
                         <img src="eficiencia.svg" class="w-16" alt="">
                         <h3 class="text-3xl dark:text-white">Conecte-se para Cuidados de Excelência</h3>
                         <p class="dark:text-slate-100">Conecte-se com Seus Pacientes de Forma Poderosa! Descubra como a MedLife melhora a comunicação médico-paciente, permitindo cuidados de saúde excepcionais.</p>
                     </div>
                 </section>
-                <section class="grid gap-10 lg:grid-cols-2 items-center py-48 md:grid-cols-1">
+                <section class="grid gap-12 lg:grid-cols-2 items-center py-48 md:grid-cols-1">
                     <div>
                         <h2 class="mb-12 text-5xl dark:text-white">Mas afinal,
                             <br>
