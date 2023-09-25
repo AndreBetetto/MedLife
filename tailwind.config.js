@@ -41,6 +41,6 @@ export default {
 
     plugins: [
         forms,
-        require("tw-elements/dist/plugin.cjs")
+        require("tw-elements/dist/plugin.cjs"),
     ],
 };

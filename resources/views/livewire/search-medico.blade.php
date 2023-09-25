@@ -5,16 +5,16 @@
             <div wire:poll.visible> 
                 <div class="space-y-3">  
                     <div wire:poll.keep-alive>
-                        Data e hora: {{ now() }}
+                        Current time: {{ now() }}
                     </div>
                 </div>
 
                 
             </div>
                 @if (session()->has('message'))
-                <div>
-                    {{ session('message') }}
-                </div>
+                    <div>
+                        {{ session('message') }}
+                    </div>
                 @endif
 
                 <div>                  

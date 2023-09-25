@@ -4,7 +4,7 @@
         <div class="p-6 text-gray-900 dark:text-gray-200 font-bold">
             <div wire:poll.visible>
                 <div wire:poll.keep-alive>
-                    Data e hora: {{ now() }}
+                    Current time: {{ now() }}
                 </div>
                 
                 <x-input-label :value="__('Pesquisar')" />
