@@ -4,21 +4,21 @@
         <form action="{{ route('areamedico.passarParaPaciente')}}" method='POST' enctype="multipart/form-data">
             @csrf
 
-            <div class="form-group">
-                <input type="hidden" name='paciente_id' value="{{ $row->id }}">
+            <div class="form-group dark:bg-slate-800">
+                <input type="hidden" name='paciente_id' class="dark:bg-slate-800" value="{{ $row->id }}">
                 <br>
-                <input type="hidden" name="medico_id" value="{{$medico->id}}">
+                <input type="hidden" name="medico_id" class="dark:bg-slate-800" value="{{$medico->id}}">
                 <br>
                 Numero de dias
-                <input type="number"  name="numDias" value="7">
+                <input type="number" name="numDias" class="dark:bg-slate-800" value="7">
                 <br>
                 Observação
-                <input type="text" name="observacoes" value="teste">
+                <input type="text" name="observacoes" class="dark:bg-slate-800" value="teste">
                 <br> 
                 <div>
                     Adicionar medicamento
                     
-                    Pesquisar: <input type="text" wire:model.prevent="search"><br>  
+                    Pesquisar: <input type="text" class="dark:bg-slate-800" wire:model.prevent="search"><br>  
                     @if ($medicamentos['content'] == null)
                         Nenhum medicamento encontrado
                         

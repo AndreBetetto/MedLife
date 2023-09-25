@@ -1,6 +1,6 @@
 
 <div class="bg-white">
-    <div class="mx-auto max-w-2xl px-4 py-20 sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">
+    <div class="mx-auto max-w-2xl px-4 py-20 sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8 dark:bg-slate-800">
         <h2 class="flex items-center text-xl font-bold leading-tight text-gray-800 mt-4 my-5">Pacientes</h2>
 
         <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">

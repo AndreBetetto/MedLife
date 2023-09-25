@@ -5,7 +5,7 @@
             <div wire:poll.visible> 
                 <div class="space-y-3">  
                     <div wire:poll.keep-alive>
-                        Current time: {{ now() }}
+                        Data e hora: {{ now() }}
                     </div>
                 </div>
 
