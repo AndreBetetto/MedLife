@@ -18,6 +18,7 @@
 
     @endphp
 
+<br><br><br><br>
 
     
     <!-- Add a button to trigger the API request -->
@@ -117,7 +118,7 @@
         </tr>
         <tr>
             <td>
-                .
+                . 
             </td>
             <td>
                 <label>Select sintomas bracitos</label>

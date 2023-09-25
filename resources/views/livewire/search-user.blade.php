@@ -42,9 +42,19 @@
                                     <span class="font-medium text-slate-700 dark:text-slate-700 text-left">Tipo</span>
                                 </div>
                                 @forelse ($users as $users)
+                                @php
+                                    //Randomizacao de imagens
+                                    $numAleatorio = rand(1, 28);
+                                    if($numAleatorio < 10)
+                                        $stringImg = 'p00'.$numAleatorio;
+                                    else
+                                        $stringImg = 'p0'.$numAleatorio;
+                                    //pega foto da pasta public
+                                    $caminhoImg = 'storage/profile/'.$stringImg.'.png';
+                                @endphp     
                                 <div class="grid grid-cols-5 bg-white dark:bg-slate-800">
                                         <span class="text-sm border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2">{{ $users->id }}</span>
-                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 text-slate-500 dark:text-slate-400 my-1/2"><img class="rounded-full" src="teste_64.png"/></span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 text-slate-500 dark:text-slate-400 my-1/2"><img class="rounded-full" src="{{asset($caminhoImg)}}"/></span>
                                         <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $users->name }}</span>
                                         <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $users->email }}</span>
                                         <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ Str::ucfirst($users->role); }}</span>

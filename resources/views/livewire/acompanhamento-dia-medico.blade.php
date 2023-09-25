@@ -35,7 +35,7 @@
     <hr>
 
 <br>
-    <button wire:click="getSymptoms">Ver sintomas</button>
+    
     {{-- Sintomas API --}}
     @foreach ($symptoms as $symptom)
         <li>{{ $symptom['Name'] }}</li>
@@ -46,9 +46,10 @@
     @foreach ($diagnosticos as $diagnostico)
         <li>Diagnostico: {{ $diagnostico['Issue']['Name'] }}</li>
         <li>
-            <x-button>aa</x-button>
             @php
                 $issueId = $diagnostico['Issue']['ID'];
+                $descricao = $issueInfo[$issueId]['Description'];
+                
             @endphp
             Descricao: {{ $issueInfo[$issueId]['Description']}}<br><br>
             Possiveis sintomas: {{ $issueInfo[$issueId]['PossibleSymptoms']}}<br><br>
@@ -62,5 +63,10 @@
         @foreach ($diagnostico['Specialisation'] as $especializacao)
             - {{ $especializacao['Name'] }}
         @endforeach </li>
+        <br><br><br>
+        <button wire:click.prevent="traduzEnPt('{{$descricao}}')">Ver sintomas</button>
+        Traduzido: <br>
+        {{ $traduzDesc }}
     @endforeach
+
 </div>

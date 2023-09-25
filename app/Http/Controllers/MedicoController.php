@@ -50,7 +50,7 @@ class MedicoController extends Controller
         //Sera deletado e implementado em addForm
         $medico = Medico::where('user_id', auth()->user()->id)->first();
         $row = User::where('id', auth()->user()->id)->first();
-        return view('medico.forms_diario.index', compact('row', 'medico', 'pegaID'));
+        return view('medico.forms_diario.index', compact('row', 'medico'));
     }
 
     public function meusPacientes()
