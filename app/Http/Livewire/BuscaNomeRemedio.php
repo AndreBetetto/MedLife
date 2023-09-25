@@ -18,6 +18,7 @@ class BuscaNomeRemedio extends Component
     public $medArray = [];
     public $medicamentos = [];
     public $formattedSelectedMedicamentos = '';
+    public $btnId;
 
 
     public function mount()
@@ -101,8 +102,7 @@ class BuscaNomeRemedio extends Component
     {
         //string to add to selectedMedicamentos
         $str = $medicamentoId;
-
-        dd($str);
+        //dd($str);
         // Add the selected medicine to the $selectedMedicamentos array
         array_push($this->selectedMedicamentos, $str);
     }

@@ -102,6 +102,35 @@ class AcompanhamentoDiaMedico extends Component
         }
     }
 
+    public function getHFtoken()
+    {
+        $tokenW = env('HuggingFace_write');
+        $tokenR = env('HuggingFace_read');
+        return $tokenW;
+    }
+    
+
+    public function traduzEnPt()
+    {
+        $input = 
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, 'https://api-inference.huggingface.co/models/VanessaSchenkel/unicamp-finetuned-en-to-pt-dataset-ted');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, '{"inputs": }');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Authorization: '.$this->getHFtoken()
+        ));
+
+        $result = curl_exec($ch);
+
+        curl_close($ch);
+
+        echo $result;
+    }
+
 
     public function render()
     {

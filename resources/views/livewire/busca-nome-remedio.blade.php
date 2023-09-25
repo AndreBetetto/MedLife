@@ -29,10 +29,8 @@
                             Nome: {{ $med['nomeProduto'] }} <br>
                             Razao social: {{ $med['razaoSocial'] }} <br>
                             id: {{ $numProcesso }} - 
-                            <button
-                                wire:click.prevent="addMedicamento({{$numProcesso}})"
-                                             
-                            >
+                            <button id="{{ $numProcesso }}"   
+                                wire:click.prevent="addMedicamento('{{$numProcesso}}')">
                             {{ $numProcesso }}
                             Adicionar
                             </button>
