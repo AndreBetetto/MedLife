@@ -150,7 +150,7 @@ class PacienteController extends Controller
         $resultString = '[' . implode(',', $uniqueArray) . ']';
         //dd($resultString);
         $data['sintomas'] = $resultString;
-        dd($data); //para testes
+        //dd($data); //para testes
         $numDia = $data['numDia'];
         $formDiario = formDiario::where('id', $id)->first();
         $periodo = $formDiario->numDias;
