@@ -51,13 +51,25 @@
                                 {{ __('Área do paciente') }}
                             </x-nav-link>
                         @endif
+                        {{-- 
                         <x-nav-link :href="route('medico.visual')" :active="request()->routeIs('medico.visual')">
                             {{ __('Ver médicos!') }}
-                        </x-nav-link>
+                        </x-nav-link> --}}
                     @endif
                 </div>
             </div>
-
+             
+            <div class="hidden md:flex md:items-center md:ml-6">
+                <form action="{{ route('language') }}" method="POST">
+                    @csrf
+                    <select name="language" onchange="this.form.submit()">
+                        <option value="en" {{ session('language') == 'en' ? 'selected' : '' }}>English</option>
+                        <option value="pt-br" {{ session('language') == 'pt-br' ? 'selected' : '' }}>Português</option>
+                        <option value="es" {{ session('language') == 'es' ? 'selected' : '' }}>Español</option>
+                        <option value="de" {{ session('language') == 'de' ? 'selected' : '' }}>Germany</option>
+                    </select>
+                </form>
+            </div>
             <!-- Settings Dropdown -->
             <div class="hidden md:flex md:items-center md:ml-6">
                 <x-switch-button></x-switch-button>

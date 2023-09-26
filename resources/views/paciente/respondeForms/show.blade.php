@@ -240,60 +240,31 @@
                 $ids = explode(',', str_replace(['[', ']'], '', $medicamentos));
                 //dd($ids);
             @endphp
-            @foreach ($ids as $med)
-                @php
-                    echo $med;
-                    //https://bula.vercel.app/medicamento/25351267345200858
-                    $curl = curl_init();
-                    if($med != ''){
-                        curl_setopt_array($curl, array(
-                        CURLOPT_URL => "https://bula.vercel.app/medicamento/".$med,
-                        CURLOPT_RETURNTRANSFER => true,
-                        CURLOPT_ENCODING => "",
-                        CURLOPT_MAXREDIRS => 8,
-                        CURLOPT_TIMEOUT => 30,
-                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                        CURLOPT_CUSTOMREQUEST => "GET"
-                    ));
+            <script>
+                // JavaScript function to load medication data asynchronously
+                function loadMedicationData(medicationId) {
+                    if (medicationId !== '') {
+                        fetch("https://bula.vercel.app/medicamento/" + medicationId)
+                            .then(response => response.json())
+                            .then(data => {
+                                // Update the DOM with the fetched data
+                                const medicationNameElement = document.querySelector(`.medicamento-name-${medicationId}`);
+                                if (medicationNameElement) {
+                                    medicationNameElement.textContent = data.nomeComercial;
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Error fetching medication data:", error);
+                            });
                     }
-                    $response = curl_exec($curl);
-                    $err = curl_error($curl);
-                   
-                    curl_close($curl);
-                    $arrayMedicamentos = [];
-                    if ($err) {
-                        // Handle the cURL error
-                        $arrayMedicamentos = [];
-                    } else {
-                        // Parse the API response and store it in the $medicamentos array
-                        $arrayMedicamentos = json_decode($response, true);
-                    }
-                @endphp
-                <div class="w-full text-center justify-center items-center">
-                    <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
-                        @if ($arrayMedicamentos['nomeComercial'] != [])
-                            {{ $arrayMedicamentos['nomeComercial'] }}
-                            &nbsp; &nbsp;
-                            <label>
-                                <input type="checkbox" class=""/>
-                                <span>08h</span> &nbsp; &nbsp;
-                            </label>
-
-                            <label>
-                                <input type="checkbox" class=""/>
-                                <span>10h</span>&nbsp; &nbsp;
-                            </label>
-
-                            <label>
-                                <input type="checkbox" class=""/>
-                                <span>12h</span>&nbsp; &nbsp;
-                            </label>
-                        @endif
-                        
-                        
-                    </div>
-                </div> 
-            @endforeach
+                }
+            
+                // Trigger the API calls for each medication ID
+                const medicationIds = {!! json_encode($ids) !!};
+                medicationIds.forEach(medicationId => {
+                    loadMedicationData(medicationId);
+                });
+            </script>
              
         </div>
 

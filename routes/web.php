@@ -137,3 +137,9 @@ Route::middleware('auth')->group(function() {
 });
 
 require __DIR__.'/auth.php';
+
+Route::post('/language', function (Illuminate\Http\Request $request) {
+    $language = $request->input('language');
+    session(['language' => $language]);
+    return redirect()->back();
+})->name('language');
