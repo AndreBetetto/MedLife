@@ -2,7 +2,8 @@
     {{-- The whole world belongs to you. --}}
     <div class="flex flex-col gap-8">
         <div>
-            Gostaria de uma recomendation?
+            Nao sabe qual especialidade de médico escolher para sua consulta? <br>
+            clique no botão abaixo, espere carregar a lista, e selecione os sintomas que voce está sentindo. <br>
             @livewire('recomenda-medico', ['paciente' => $paciente])
         </div>
         
@@ -31,7 +32,7 @@
                         <img class="h-14 w-14 flex-none rounded-full bg-gray-50" src="{{ asset($caminhoImg) }}" alt="">
                         
                         <div class="min-w-0 flex-auto">
-                            <p class="text-base font-semibold leading-6 text-gray-900 px-5"> {{ $medico->nome }} </p>
+                            <p class="text-base font-semibold leading-6 px-5"> {{ $medico->nome }} </p>
                             <p class="mt-1 truncate text-sm leading-5 text-gray-500 px-5">  {{ $medico->especialidade }} </p>
                         </div>
 

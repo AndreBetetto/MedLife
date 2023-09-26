@@ -1,6 +1,7 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
 import persist from '@alpinejs/persist';
+import mask from '@alpinejs/mask'
 import {
   Modal,
   Ripple,
@@ -9,7 +10,7 @@ import {
 
 window.Alpine = Alpine;
 
-Alpine.plugin(persist);
+Alpine.plugin([persist, mask]);
 Alpine.start();
 
 initTE({ Modal, Ripple });
