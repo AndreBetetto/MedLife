@@ -61,31 +61,35 @@
         <li>{{ $symptom['Name'] }}</li>
     @endforeach
         <br>
-    <button wire:click="getDiagnostico">Analisar diagnostico</button>
+    <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar diagnostico</button>
     {{-- Diagnostico API --}}
     @foreach ($diagnosticos as $diagnostico)
-        <li>Diagnostico: {{ $diagnostico['Issue']['Name'] }}</li>
-        <li>
+    <br><br>
+    <label class="font-bold text-gray-700 ">Diagnóstico:</label> {{ $diagnostico['Issue']['Name'] }}</li>
+        
             @php
                 $issueId = $diagnostico['Issue']['ID'];
                 $descricao = $issueInfo[$issueId]['Description'];
                 
             @endphp
-            Descricao: {{ $issueInfo[$issueId]['Description']}}<br><br>
-            Possiveis sintomas: {{ $issueInfo[$issueId]['PossibleSymptoms']}}<br><br>
-            Tratamento: {{ $issueInfo[$issueId]['TreatmentDescription']}}<br><br>
-            Medical Condition: {{ $issueInfo[$issueId]['MedicalCondition']}}<br><br>
-        </li>
-        <li>Probabilidade: {{ $diagnostico['Issue']['Accuracy'] }}%</li>
-        <li>Icd: {{$diagnostico['Issue']['IcdName']}} {{$diagnostico['Issue']['Icd']}} . Link: <a href="https://icd.who.int/browse10/2019/en#/{{$diagnostico['Issue']['Icd']}}">Aqui!</a>  </li>
-        <li>Professional name: {{$diagnostico['Issue']['ProfName'] }} </li>
-        <li>Especializacao: 
-        @foreach ($diagnostico['Specialisation'] as $especializacao)
-            - {{ $especializacao['Name'] }}
-        @endforeach </li>
-        <br><br><br>
-        <button wire:click.prevent="traduzEnPt('{{$descricao}}')">Ver sintomas</button>
-        Traduzido: <br>
+        <div class="text-justify">
+            <br><br><label class="font-bold text-gray-700">Descrição:</label> {{ $issueInfo[$issueId]['Description']}}<br><br>
+            <br><label class="font-bold text-gray-700">Possíveis sintomas:</label>  {{ $issueInfo[$issueId]['PossibleSymptoms']}}<br><br>
+            <br><label class="font-bold text-gray-700">Tratamento:</label> {{ $issueInfo[$issueId]['TreatmentDescription']}}<br><br>
+            <br><label class="font-bold text-gray-700">Condição médica:</label> {{ $issueInfo[$issueId]['MedicalCondition']}}<br><br>
+        
+            <br><br><label class="font-bold text-gray-700">Probabilidade:</label> {{ $diagnostico['Issue']['Accuracy'] }}%</li>
+            <br><label class="font-bold text-gray-700">ICD:</label> {{$diagnostico['Issue']['IcdName']}} {{$diagnostico['Issue']['Icd']}}. <a href="https://icd.who.int/browse10/2019/en#/{{$diagnostico['Issue']['Icd']}}"  target="_blank" class="font-semibold hover:font-bold hover:text-purple-600">Acessar site</a>
+            <br><label class="font-bold text-gray-700">Professional name:</label> {{$diagnostico['Issue']['ProfName'] }} </li>
+            <br><label class="font-bold text-gray-700">Especializacao:</label>
+            @foreach ($diagnostico['Specialisation'] as $especializacao)
+                - {{ $especializacao['Name'] }}
+            @endforeach 
+        </div>
+
+        <br>
+        <button wire:click.prevent="traduzEnPt('{{$descricao}}')" class="font-bold hover:text-purple-600">Ver sintomas</button>
+       <!-- Traduzido: <br> -->
         {{ $traduzDesc }}
     @endforeach
 
