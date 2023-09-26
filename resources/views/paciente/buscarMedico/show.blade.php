@@ -2,7 +2,8 @@
     {{-- The whole world belongs to you. --}}
     <div class="flex flex-col gap-8">
         <div>
-            Gostaria de uma recomendation?
+            Nao sabe qual especialidade de médico escolher para sua consulta? <br>
+            clique no botão abaixo, espere carregar a lista, e selecione os sintomas que voce está sentindo. <br>
             @livewire('recomenda-medico', ['paciente' => $paciente])
         </div>
         
