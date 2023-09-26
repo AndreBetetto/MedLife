@@ -23,18 +23,18 @@
                 </section>
                 <section class="grid justify-items-center lg:grid-cols-3 py-48 md:grid-cols-1">
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
-                        <img src="eficiencia.svg" class="w-16" alt="">
+                        <img src="{{URL::asset('/consultando.png')}}" class="w-16" alt="">
                         <h3 class="text-3xl dark:text-white">O Fim das Barreiras na Saúde</h3>
                         <p class="dark:text-slate-100">Supere as Dificuldades de Comunicação Médica! Descubra como a MedLife proporciona ferramentas que aproximam médicos e pacientes para um tratamento mais eficaz.</p>
                     </div>
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
-                        <img src="eficiencia.svg" class="w-16 fill-white" alt="">
+                        <img src="{{URL::asset('/lampada.png')}}" class="w-16 fill-white" alt="">
                         <h3 class="text-3xl dark:text-white">Soluções que Transformam Consultas</h3>
                         <p class="dark:text-slate-100">Médicos, Simplifiquem as Consultas! Explore como a MedLife oferece tecnologias que otimizam as consultas médicas, tornando-as mais produtivas e informativas.</p>
                     </div>
                     
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">
-                        <img src="eficiencia.svg" class="w-16" alt="">
+                        <img src="{{URL::asset('/eficiencia.svg')}}" class="w-16" alt="">
                         <h3 class="text-3xl dark:text-white">Conecte-se para Cuidados de Excelência</h3>
                         <p class="dark:text-slate-100">Conecte-se com Seus Pacientes de Forma Poderosa! Descubra como a MedLife melhora a comunicação médico-paciente, permitindo cuidados de saúde excepcionais.</p>
                     </div>
