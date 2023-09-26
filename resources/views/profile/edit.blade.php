@@ -5,8 +5,18 @@
         </h2>
     </x-slot>
 
-    <main class="grid grid-cols-3">
-        
+    <main class="pt-24 pb-12 mx-20 grid grid-cols-3">
+        <div class="">
+            <div class="">
+                <h2>Detalhes da conta</h2>
+                <div class="">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="grid-cols-2">
+
+        </div>
     </main>
     <!-- <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
