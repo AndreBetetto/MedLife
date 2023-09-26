@@ -42,7 +42,6 @@
                                 <span> id: {{ $numProcesso }} - 
                                 <button id="{{ $numProcesso }}"   
                                     wire:click.prevent="addMedicamento('{{$numProcesso}}')">
-                                {{ $numProcesso }}
                                 Adicionar
                                 </button> </span>
                             </div>
@@ -61,7 +60,7 @@
                             @foreach ($selectedMedicamentos as $selected)
                                 <span>
                                     {{ $selected }}
-                                    <button wire:click.prevent="removeMedicamento('{{ $selected }}')">Remover</button>
+                                    <button wire:click.prevent="removeMedicamento('{{ $selected }}')">- Remover</button>
                                 </span>
                                 @php
                                     $stringInput = $selected . ',' . $stringInput;
