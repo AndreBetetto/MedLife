@@ -28,10 +28,8 @@
                             @endphp
                             Nome: {{ $med['nomeProduto'] }} <br>
                             Razao social: {{ $med['razaoSocial'] }} <br>
-                            id: {{ $numProcesso }} - 
                             <button id="{{ $numProcesso }}"   
                                 wire:click.prevent="addMedicamento('{{$numProcesso}}')">
-                            {{ $numProcesso }}
                             Adicionar
                             </button>
                             <br>
