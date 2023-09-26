@@ -18,8 +18,7 @@
 
     @endphp
 
-<br><br><br><br>
-
+<br><br>
     
     <!-- Add a button to trigger the API request -->
     <button wire:click.prevent="fetchAPIdata">Fetch Data</button>
@@ -29,18 +28,7 @@
         }
     @endphp
     <!-- Display a loading spinner while the API request is in progress -->
-    <br><br><br><br>
-    <select wire:model='teste' multiple id='rrr'>
-        <option value="head">Cabeça, garganta e pescoço</option>
-        <option value="torso">Tórax e costas</option>
-        <option value="arms">Braços e ombros</option>
-        <option value="abdomen">Abdômen, pelve e nádegas</option>
-        <option value="legs">Pernas</option>
-        <option value="skin">Pele, articulações e geral</option>
-    </select>
-    <script>
-        new MultiSelectTag('rrr')  // id
-    </script>
+    <br><br>
     {{$teste}}
     <br><table class="customTable">
         <tr>
@@ -69,7 +57,7 @@
                 </div>
                 <select name="symHead[]" id="symHead[]" wire:model="symHead" multiple='' >
                     @foreach ($symptomsHead as $symptomHead)
-                        <option value="{{ $symptomHead['ID'] }}">{{ $symptomHead['Name'] }}</option>
+                        <option value="{{ $symptomHead['ID'] }}">{{ __('translations.'.$symptomHead['Name']) }}</option>
                     @endforeach
                     
                 </select>
@@ -107,7 +95,7 @@
                 </div>
                 <select name="symTorso[]" id="symTorso[]" wire:model="symTorso" multiple>
                     @foreach ($symptomsTorso as $symptomTorso)
-                        <option value="{{ $symptomTorso['ID'] }}">{{ $symptomTorso['Name'] }}</option>
+                        <option value="{{ $symptomTorso['ID'] }}">{{ __('translations.'.$symptomTorso['Name']) }}</option>
                     @endforeach
                 </select>
                 <script>
@@ -140,7 +128,7 @@
                 </div>
                 <select name="symArms[]" id="symArms[]" wire:model="symArms" multiple>
                     @foreach ($symptomsArms as $symptomArms)
-                        <option value="{{ $symptomArms['ID'] }}">{{ $symptomArms['Name'] }}</option>
+                        <option value="{{ $symptomArms['ID'] }}">{{ __('translations.'.$symptomArms['Name'])  }}</option>
                     @endforeach
                 </select>
                 <script>
@@ -174,7 +162,7 @@
                 <div>
                 <select name="symLegs[]" id="symLegs[]" wire:model='symLegs' multiple>
                     @foreach ($symptomsLegs as $symptomLegs)
-                        <option value="{{ $symptomLegs['ID'] }}">{{ $symptomLegs['Name'] }}</option>
+                        <option value="{{ $symptomLegs['ID'] }}">{{ __('translations.'.$symptomLegs['Name']) }}</option>
                     @endforeach
                 </select>
                 <script>
@@ -218,7 +206,7 @@
                 </div>
                 <select name="symAbdomen[]" id="symAbdomen[]" wire:model='symAbdomen' multiple>
                     @foreach ($symptomsAbdomen as $symptomAbdomen)
-                        <option value="{{ $symptomAbdomen['ID'] }}">{{ $symptomAbdomen['Name'] }}</option>
+                        <option value="{{ $symptomAbdomen['ID'] }}">{{ __('translations.'.$symptomAbdomen['Name']) }}</option>
                     @endforeach
                 </select>
                 <script>
@@ -251,7 +239,7 @@
                 </div>
                 <select name="symSkin[]" id="symSkin[]" wire:model='symSkin' multiple>
                     @foreach ($symptomsSkin as $symptomSkin)
-                        <option value="{{ $symptomSkin['ID'] }}">{{ $symptomSkin['Name'] }}</option>
+                        <option value="{{ $symptomSkin['ID'] }}">{{ __('translations.'.$symptomSkin['Name']) }}</option>
                     @endforeach
                 </select>
                 <script>

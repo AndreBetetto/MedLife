@@ -60,5 +60,8 @@ return [
     "Unconsciousness, short" => "Inconsciência breve",
     "Vomiting" => "Vômito",
     "Vomiting blood" => "Vômito com sangue",
+    "weakness" => "Fraqueza",
+    "Weight gain" => "Ganho de peso",
+    "Wheezing" => "Chiado",
 ];
 ?>
