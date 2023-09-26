@@ -19,9 +19,22 @@
                     <div class="lm-0 mb-5">
                         <p>Veja alguns dos nossos especialistas.</p>
                         <p>Caso esteja interessado poderá contatá-los pelo telefone de contato ou pelo nosso endereço</p>
-                        <p>R. José dos Santos Godói, 218 - Nucleo Hab. Pres. Geisel, Bauru - SP, 17033-550</p>
-                        <p>+55 14 99604-0283</p>
-                        <p>(14) 3103-6150</p>
+                        
+                        <div class="flex items-center">
+                            <i class="material-icons py-3 mr-1">location_on</i>
+                            <label class="mb-1 text-lg">R. José dos Santos Godói, 218 - Nucleo Hab. Pres. Geisel, Bauru - SP, 17033-550</label>
+                        </div>
+
+                        <div class="flex items-center">
+                            <i class="material-icons py-3 mr-1">phone</i>
+                            <label class="mb-1 text-lg">+55 14 99604-0283</label>
+                        </div>
+                            
+                        <div class="flex items-center">
+                            <i class="material-icons py-3 mr-1">phone_iphone</i>
+                            <label class="mb-1 text-lg">(14) 3103-6150</label>
+                        </div>
+                            
                     </div>
                 </div>
             </div>

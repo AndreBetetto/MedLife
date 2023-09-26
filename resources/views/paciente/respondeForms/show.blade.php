@@ -2,7 +2,7 @@
 
 <div>
     <div class="w-full text-center justify-center items-center">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+        <h2 class="text-xl font-bold leading-tight text-gray-800 py-8">
             Informações Pós-Operatório
         </h2><br>
     </div>
@@ -13,8 +13,27 @@
         <input type="hidden" name="medico_id" id="medico_id" value="{{$medico->id}}">
         <input type="hidden" name="forms_id" id="forms_id" value="{{$formsDiarios->id}}">
 
+        
         <div class="grid grid-cols-2 items-center  w-full -mx-3 mb-6">
         <div class="w-full flex flex-col items-center">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    Dia
+                </label>
+                @php
+                    if($checklist->count() == 0)
+                    {
+                        $numDia = 1;
+                    } else {
+                        $checklist = $checklist->last();
+                        $numDia = $checklist->numDia+1;
+                    }
+                @endphp
+                <input class="appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled name="numDia" id="numDia" type="text"
+                value="{{$numDia}}">
+                <input type="hidden" id="numDia" name="numDia" value="{{$numDia}}">
+            </div>
+
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Médico
@@ -70,24 +89,6 @@
         </div>
         
         <div class="w-full flex flex-col items-center">
-            <div class="w-full md:w-max px-20 mb-6 md:mb-0 mr-auto">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                    Dia
-                </label>
-                @php
-                    if($checklist->count() == 0)
-                    {
-                        $numDia = 1;
-                    } else {
-                        $checklist = $checklist->last();
-                        $numDia = $checklist->numDia+1;
-                    }
-                @endphp
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled name="numDia" id="numDia" type="text"
-                value="{{$numDia}}">
-                <input type="hidden" id="numDia" name="numDia" value="{{$numDia}}">
-            </div>
-
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                     Grau de dor                    
@@ -201,7 +202,6 @@
                         <div class="bottom_overlay"></div>
                     </div>
                     <div class="control">
-                        <div class="temp_outside">23°</div>
                         <div class="temp_room"><span>°</span></div>
                         <div class="room">Sua temperatura</div>
                     </div>
@@ -333,7 +333,7 @@
 
             
             <button class="mt-12 flex-shrink-0 bg-purple-300 border-purple-300 text-sm border-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 py-1 px-2 rounded ml-auto" type="button">
-                Enviar Dados <input wire:submit.prevent="submitForm" type="submit" name="ENVIAR">
+                <input wire:submit.prevent="submitForm" type="submit" name="ENVIAR">
             </button>
         </div>
     </div>

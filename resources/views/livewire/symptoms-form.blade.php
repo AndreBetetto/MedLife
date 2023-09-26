@@ -42,7 +42,7 @@
         new MultiSelectTag('rrr')  // id
     </script>
     {{$teste}}
-    <table class="customTable">
+    <br><table class="customTable">
         <tr>
             <td>
                 <img src="public/logo.png" alt="corpo humano" width="50px">
@@ -50,7 +50,11 @@
                 Deve ocupar essas 7 linhas, de forma com que esteja alinhado a cada parte do corpo
             </td>
             <td>
-                Sintomas TOP
+                <div class="text-center justify-center items-center">
+                    <p class="text-xl font-bold leading-tight text-gray-800">
+                        Sintomas
+                    </p>
+                </div>
             </td>
         </tr>
         <tr>
@@ -58,9 +62,13 @@
                 .
             </td>
             <td>
-                <label>Select sintomas head</label>
+                <div class="text-center justify-center items-center">
+                    <p class="text-base font-semibold leading-tight text-gray-800 p-3">
+                        Sintomas cabeça
+                    </p>
+                </div>
                 <select name="symHead[]" id="symHead[]" wire:model="symHead" multiple='' >
-=                    @foreach ($symptomsHead as $symptomHead)
+                    @foreach ($symptomsHead as $symptomHead)
                         <option value="{{ $symptomHead['ID'] }}">{{ $symptomHead['Name'] }}</option>
                     @endforeach
                     
@@ -92,7 +100,11 @@
                 .
             </td>
             <td>
-                <label>Select sintomas torso</label>
+                <div class="text-center justify-center items-center">
+                    <p class="text-base font-semibold leading-tight text-gray-800 p-3">
+                        Sintomas torso
+                    </p>
+                </div>
                 <select name="symTorso[]" id="symTorso[]" wire:model="symTorso" multiple>
                     @foreach ($symptomsTorso as $symptomTorso)
                         <option value="{{ $symptomTorso['ID'] }}">{{ $symptomTorso['Name'] }}</option>
@@ -121,7 +133,11 @@
                 . 
             </td>
             <td>
-                <label>Select sintomas bracitos</label>
+                <div class="text-center justify-center items-center">
+                    <p class="text-base font-semibold leading-tight text-gray-800 p-3">
+                        Sintomas braço
+                    </p>
+                </div>
                 <select name="symArms[]" id="symArms[]" wire:model="symArms" multiple>
                     @foreach ($symptomsArms as $symptomArms)
                         <option value="{{ $symptomArms['ID'] }}">{{ $symptomArms['Name'] }}</option>
@@ -150,8 +166,12 @@
                 .
             </td>
             <td>
+                <div class="text-center justify-center items-center">
+                    <p class="text-base font-semibold leading-tight text-gray-800 p-3">
+                        Sintomas perna
+                    </p>
+                </div>
                 <div>
-                    <label>Select sintomas perninhas</label>
                 <select name="symLegs[]" id="symLegs[]" wire:model='symLegs' multiple>
                     @foreach ($symptomsLegs as $symptomLegs)
                         <option value="{{ $symptomLegs['ID'] }}">{{ $symptomLegs['Name'] }}</option>
@@ -168,7 +188,7 @@
                 @php
                     $i = 0;
                 @endphp
-                oi?
+                
                 @foreach ($selectedSymptomLegs as $symp)
                     @php
                         $i++;
@@ -191,7 +211,11 @@
                 .
             </td>
             <td>
-                <label>Select sintomas abdomem e bundinha</label>
+                <div class="text-center justify-center items-center">
+                    <p class="text-base font-semibold leading-tight text-gray-800 p-3">
+                        Sintomas abdômen e glúteo
+                    </p>
+                </div>
                 <select name="symAbdomen[]" id="symAbdomen[]" wire:model='symAbdomen' multiple>
                     @foreach ($symptomsAbdomen as $symptomAbdomen)
                         <option value="{{ $symptomAbdomen['ID'] }}">{{ $symptomAbdomen['Name'] }}</option>
@@ -220,7 +244,11 @@
                 .
             </td>
             <td>
-                <label>Select sintomas pele</label>
+                <div class="text-center justify-center items-center">
+                    <p class="text-base font-semibold leading-tight text-gray-800 p-3">
+                        Sintomas pele
+                    </p>
+                </div>
                 <select name="symSkin[]" id="symSkin[]" wire:model='symSkin' multiple>
                     @foreach ($symptomsSkin as $symptomSkin)
                         <option value="{{ $symptomSkin['ID'] }}">{{ $symptomSkin['Name'] }}</option>
