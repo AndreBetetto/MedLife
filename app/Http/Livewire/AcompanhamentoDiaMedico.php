@@ -25,6 +25,8 @@ class AcompanhamentoDiaMedico extends Component
     public $anoNasc = 0;
     public $issueInfo = [];
     public $sexo = '';
+    public $traduzido = false;
+    public $traduzDesc = '';
 
     public function getToken()
     {
@@ -67,6 +69,7 @@ class AcompanhamentoDiaMedico extends Component
                 ]);
                 if ($response->successful()) {
                     $this->issueInfo[$id] = $response->json();
+                    //$this->traduzEnPt($response->json());
                 } else {
                     // Handle the API request failure
                     $this->issueInfo[$id] = [];
@@ -110,25 +113,32 @@ class AcompanhamentoDiaMedico extends Component
     }
     
 
-    public function traduzEnPt()
+    public function traduzEnPt($entrada)
     {
-        $input = 
+        $input = $entrada;
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, 'https://api-inference.huggingface.co/models/VanessaSchenkel/unicamp-finetuned-en-to-pt-dataset-ted');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, '{"inputs": }');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, '{"inputs":'. $input .'}');
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json',
             'Authorization: '.$this->getHFtoken()
         ));
+        if (!$this->traduzido) {
+            $result = curl_exec($ch);
+            $this->traduzDesc = $result;
+            $this->traduzido = true;
+        }
+
 
         $result = curl_exec($ch);
 
         curl_close($ch);
 
-        echo $result;
+
+
     }
 
 
