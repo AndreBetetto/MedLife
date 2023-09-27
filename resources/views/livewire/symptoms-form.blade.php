@@ -17,8 +17,6 @@
 
 
     @endphp
-
-<br><br>
     
     <!-- Add a button to trigger the API request -->
     <button wire:click.prevent="fetchAPIdata">Fetch Data</button>
@@ -28,8 +26,38 @@
         }
     @endphp
     <!-- Display a loading spinner while the API request is in progress -->
-    <br><br>
-    {{$teste}}
+    <div class="text-center justify-center items-center">
+        <p class="text-base font-semibold leading-tight text-gray-800 p-3">
+            Sintomas
+        </p>
+    </div>
+    <select name="sym[]" id="sym[]" wire:model="symAll" multiple='' >
+        @foreach ($symptoms as $symptomHead)
+            <option value="{{ $symptomHead['ID'] }}">{{ __('translations.'.$symptomHead['Name']) }}</option>
+        @endforeach
+        
+    </select>
+    <script>
+        new MultiSelectTag('sym[]')  // id
+    </script>
+    @if ($dataFetched == true)
+        <script>
+            new MultiSelectTag('sym[]', {
+                shadow: true,
+                placeholder: 'Sintomas da cabeca'  // default Search...
+            })  // id
+        </script>
+    @endif
+    <br>
+    <div>
+        @foreach ($selectedSymptomHead as $symptomId => $symptomName)
+            <span class="selected-symptom">
+                {{ $symptomName }}
+                <button wire:click="removeSelectedSymptom('{{ $symptomId }}')" class="remove-button">Remove</button>
+            </span>
+        @endforeach
+    </div>
+    {{-- 
     <br><table class="customTable">
         <tr>
             <td>
@@ -50,39 +78,35 @@
                 .
             </td>
             <td>
-                <div class="text-center justify-center items-center">
-                    <p class="text-base font-semibold leading-tight text-gray-800 p-3">
-                        Sintomas cabeça
-                    </p>
-                </div>
                 <select name="symHead[]" id="symHead[]" wire:model="symHead" multiple='' >
-                    @foreach ($symptomsHead as $symptomHead)
-                        <option value="{{ $symptomHead['ID'] }}">{{ __('translations.'.$symptomHead['Name']) }}</option>
-                    @endforeach
-                    
-                </select>
-                <script>
-                    new MultiSelectTag('symHead[]')  // id
-                </script>
-                @if ($dataFetched == true)
-                    <script>
-                        new MultiSelectTag('symHead[]', {
-                            shadow: true,
-                            placeholder: 'Sintomas da cabeca'  // default Search...
-                        })  // id
-                    </script>
-                @endif
-                <br>
-                <div>
-                    @foreach ($selectedSymptomHead as $symptomId => $symptomName)
-                        <span class="selected-symptom">
-                            {{ $symptomName }}
-                            <button wire:click="removeSelectedSymptom('{{ $symptomId }}')" class="remove-button">Remove</button>
-                        </span>
-                    @endforeach
-                </div>
+        @foreach ($symptomsHead as $symptomHead)
+            <option value="{{ $symptomHead['ID'] }}">{{ __('translations.'.$symptomHead['Name']) }}</option>
+        @endforeach
+        
+    </select>
+    <script>
+        new MultiSelectTag('symHead[]')  // id
+    </script>
+    @if ($dataFetched == true)
+        <script>
+            new MultiSelectTag('symHead[]', {
+                shadow: true,
+                placeholder: 'Sintomas da cabeca'  // default Search...
+            })  // id
+        </script>
+    @endif
+    <br>
+    <div>
+        @foreach ($selectedSymptomHead as $symptomId => $symptomName)
+            <span class="selected-symptom">
+                {{ $symptomName }}
+                <button wire:click="removeSelectedSymptom('{{ $symptomId }}')" class="remove-button">Remove</button>
+            </span>
+        @endforeach
+    </div>
             </td>
-        </tr>
+        </tr> --}}
+        {{-- 
         <tr>
             <td>
                 .
@@ -249,7 +273,7 @@
                     <script>
                         new MultiSelectTag('symSkin[]')  // id
                     </script>
-                @endif<br>
+                @endif<br>--}}
                 <div>
                     @foreach ($selectedSymptomSkin as $symptomId => $symptomName)
                         <span class="selected-symptom">
@@ -258,7 +282,8 @@
                         </span>
                     @endforeach
                 </div>
+                {{-- 
             </td>
         </tr>
-    </table>
+    </table>--}}
 </div>

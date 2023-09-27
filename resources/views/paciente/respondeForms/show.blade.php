@@ -211,16 +211,17 @@
                     </div>
                 </div> -->
 
+                @livewire('symptoms-form', ['paciente' => $paciente])
             
             
-
+                {{-- 
                 <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                         Outros sintomas
                     </label>
                     <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="sintomas" name="sintomas" type="text" maxlength="100"
                     value="273,75">
-                </div>
+                </div>--}}
             </div>
             <div class="my-5 col-span-2 h-px w-full bg-black"></div> 
             <div class="col-span-2 flex flex-wrap items-center py-4">

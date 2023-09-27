@@ -281,12 +281,13 @@ class SymptomsForm extends Component
         $this->isLoading = true;
         
         // Perform your API requests here
-        $this->getSymptomsHead();
-        $this->getSymptomsTorso();
-        $this->getSymptomsArms();
-        $this->getSymptomsLegs();
-        $this->getSymptomsAbdomen();
-        $this->getSymptomsSkin();
+        $this->getSymptoms();
+        //$this->getSymptomsHead();
+        //$this->getSymptomsTorso();
+        //$this->getSymptomsArms();
+        //$this->getSymptomsLegs();
+        //$this->getSymptomsAbdomen();
+        //$this->getSymptomsSkin();
         // Set isLoading to false when the API request is complete
         $this->isLoading = false;
         $this->dataFetched = true;
