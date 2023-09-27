@@ -14,12 +14,7 @@
                             <a href="{{ route('register') }}" class="text-xl rounded-2xl px-8 py-2 w-max bg-green-300 content-center gap-2 hover:bg-green-400 hover:px-10 duration-200">Fazer cadastro</a>
                         </div>
                     </div>
-                    <label>Disponível para Viajar?</a>
-                        <select class="dark:bg-slate-800" name="viagem">
-                            <option value="sim">Sim</option>
-                            <option value="nao">Não</option>
-                        </select>
-                    </label>
+                    
                 </section>
                 <section class="grid justify-items-center lg:grid-cols-3 py-48 md:grid-cols-1">
                     <div class="shadow-lg w-4/5 px-16 py-8 flex gap-4 flex-col items-center text-center">

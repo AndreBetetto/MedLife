@@ -8,7 +8,7 @@
             @if ($dataFetched == true)
                 <select id="symptomsSelected[]" wire:model="symptomsSelected" multiple >
                     @foreach ($symptoms as $symptom)
-                        <option value={{ $symptom['ID'] }}> {{ __('translations.'.$symptom['Name']) }} -{{ $symptom['ID'] }}</option>
+                        <option value={{ $symptom['ID'] }}> {{ __('translations.'.$symptom['Name']) }} </option>
                     @endforeach
                 </select>
             @endif
@@ -18,7 +18,7 @@
         <br>
         Resultado:<br>
         @forelse ($saida as $out)
-            {{ $out['ID']}} - {{ $out['Name']}} - {{ $out['Accuracy']}}%
+            {{ $out['ID']}} - {{ __('translations.'.$out['Name']) }} - {{ $out['Accuracy']}}%
             <br>
         @empty
             Clinico geral
