@@ -1,0 +1,5 @@
+    {{-- Sintomas --}}
+            <div>
+               @livewire('symptoms-form', ['paciente' => $paciente])
+            </div>
+    {{-- FimSintomas --}}
