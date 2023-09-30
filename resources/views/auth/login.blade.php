@@ -21,6 +21,7 @@
                             type="password"
                             name="password"
                             required autocomplete="current-password" />
+                            <button type="button" id="PasswordButton"><img id="eye" src="eye.svg" alt="olhinho"></button>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
