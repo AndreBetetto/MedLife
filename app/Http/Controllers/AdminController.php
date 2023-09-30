@@ -17,29 +17,39 @@ class AdminController extends Controller
         $users = User::all();
         $medicos = Medico::all();
         $pacientes = Paciente::all();
+        $language = session('language', 'en');
+        app()->setLocale($language);
         return view('admin.index', compact('users', 'medicos', 'pacientes'));
     }
 
     public function crudMedico ()
     {
+        $language = session('language', 'en');
+        app()->setLocale($language);
         $medicos = Medico::all();
         return view('admin.medico.index', compact('medicos'));
     }
 
     public function crudPaciente ()
     {
+        $language = session('language', 'en');
+        app()->setLocale($language);
         $pacientes = Paciente::all();
         return view('admin.paciente.index', compact('pacientes'));
     }
 
     public function crudUser ()
     {
+        $language = session('language', 'en');
+        app()->setLocale($language);
         $users = User::all();
         return view('admin.user.index', compact('users'));
     }
 
     public function crudMedicoAdd (MedicoStoreRequest $request)
     {
+        $language = session('language', 'en');
+        app()->setLocale($language);
         $data = $request->validated();
         //dd($data);
         Medico::create($data);

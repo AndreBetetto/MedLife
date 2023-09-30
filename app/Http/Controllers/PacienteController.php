@@ -23,6 +23,7 @@ class PacienteController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
 
     public function aareConsulta()
     {
@@ -138,6 +139,7 @@ class PacienteController extends Controller
 
     public function detalhesMedicoFormsStore(FormSave $r, $id)
     {
+        
         $data = $r->validated();
         $symH = $data['symHead'] ?? []; //if not set, will set as empty array
         $symT = $data['symTorso'] ?? []; //if not set, will set as empty array

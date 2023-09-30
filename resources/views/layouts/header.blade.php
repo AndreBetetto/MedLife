@@ -28,7 +28,7 @@
                         <x-nav-link :href="route('contactUs')" :active="request()->routeIs('contactUs')">
                             {{ __('Contatos') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('aboutUs')" :active="request()->routeIs('aboutUs')">
+                        <x-nav-link :href="route('sobreNos')" :active="request()->routeIs('sobreNos')">
                             {{ __('Sobre nós') }}
                         </x-nav-link>
                     @endif
@@ -51,13 +51,25 @@
                                 {{ __('Área do paciente') }}
                             </x-nav-link>
                         @endif
+                        {{-- 
                         <x-nav-link :href="route('medico.visual')" :active="request()->routeIs('medico.visual')">
                             {{ __('Ver médicos!') }}
-                        </x-nav-link>
+                        </x-nav-link> --}}
                     @endif
                 </div>
             </div>
-
+             
+            <div class="hidden md:flex md:items-center md:ml-6 ">
+                <form action="{{ route('language') }}" method="POST">
+                    @csrf
+                    <select name="language" onchange="this.form.submit()" class="border rounded border-gray-400 dark:bg-slate-800">
+                        <option value="en" {{ session('language') == 'en' ? 'selected' : '' }}>English</option>
+                        <option value="pt-br" {{ session('language') == 'pt-br' ? 'selected' : '' }}>Português</option>
+                        <option value="es" {{ session('language') == 'es' ? 'selected' : '' }}>Español</option>
+                        <option value="de" {{ session('language') == 'de' ? 'selected' : '' }}>Germany</option>
+                    </select>
+                </form>
+            </div>
             <!-- Settings Dropdown -->
             <div class="hidden md:flex md:items-center md:ml-6">
                 <x-switch-button></x-switch-button>

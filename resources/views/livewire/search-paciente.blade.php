@@ -190,15 +190,17 @@
                         <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
                             <div class="relative  py-3">
                                 <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">
-                                    <div class="grid grid-cols-8 border-collapse w-full">
-                                        <span class="font-medium ml-4 text-slate-700 dark:text-slate-700 text-left my-5">ID</span>
-                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Imagem</span>
-                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Nome</span>
-                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">CPF</span>
-                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Nascimento</span>
-                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Telefone</span>
-                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Sexo</span>
-                                        <span class="font-medium text-slate-700 dark:text-slate-700 text-left my-5">Opções</span>
+                                    <div class="grid grid-cols-7 items-center justify-center border-collapse w-full">
+                                        <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-center my-5">ID</span>
+                                        <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-center my-5">Imagem</span>
+                                        <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-center my-5">Nome</span>
+                                        <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-center my-5">CPF</span>
+                                        <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-center my-5">Nascimento</span>
+                                        <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-center my-5">Telefone</span>
+                                        <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-center my-5">Sexo</span>
+                                        <!--
+                                            <span class="font-medium mt-8 p-4 pr-8 pt-0 pb-3 text-slate-700 dark:text-slate-700 text-center my-5">Opções</span>
+                                        -->
                                     </div>
                                 </div>
                                 @forelse ($pacientes as $pacientes)
@@ -212,18 +214,23 @@
                                     //pega foto da pasta public
                                     $caminhoImg = 'storage/profile/'.$stringImg.'.png';
                                 @endphp
-                                    <div class="grid grid-cols-8 bg-white dark:bg-slate-800">
-                                        <span class="text-sm border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2">{{ $pacientes->id }}</span>
-                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 text-slate-500 dark:text-slate-400 my-1/2"><img class="rounded-full" src="{{asset($caminhoImg)}}"/></span>
-                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $pacientes->nome }}</span>
-                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $pacientes->cpf }}</span>
-                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $pacientes->dataNasc }}</span>
-                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $pacientes->fone }}</span>
-                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $pacientes->sexo }}</span>
-                                        <div class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400"> 
-                                            <button class="hover:text-gray-950 -my-3" wire:click="edit({{ $pacientes->id }})"> Editar </button>
-                                            <button class="hover:text-gray-950" wire:click="delete({{ $pacientes->id }})"> Deletar </button>
-                                        </div>
+                                    <div class="grid grid-cols-7 bg-white dark:bg-slate-800">
+                                        <span class="text-sm border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $pacientes->id }}</span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 text-slate-500 dark:text-slate-400 items-center flex justify-center">
+                                            <img class="rounded-full" src="{{ asset($caminhoImg) }}" />
+                                        </span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $pacientes->nome }}</span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $pacientes->cpf }}</span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $pacientes->dataNasc }}</span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $pacientes->fone }}</span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $pacientes->sexo }}</span>
+                                      
+                                        <!-- fazer funcionar as opções de editar e deletar
+                                            <div class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center"> 
+                                                <button class="hover:text-gray-950 -my-3" wire:click="edit({{ $pacientes->id }})"> Editar </button>
+                                                <button class="hover:text-gray-950" wire:click="delete({{ $pacientes->id }})"> Deletar </button>
+                                            </div>
+                                        -->
                                     </div>
                                 @empty
                                     <div>

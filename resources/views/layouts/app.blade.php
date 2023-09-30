@@ -5,9 +5,11 @@
         @include('layouts.header')
         <div class="min-h-screen">
             <main class="py-20">
+                
                 {{ $slot }}
             </main>
         </div>
+        
         @include('layouts.footer')
         @livewireScripts
     </body>

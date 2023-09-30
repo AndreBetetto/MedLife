@@ -17,7 +17,7 @@
                 </x-nav-link>
               </li>
               <li class=  "text-xl">
-                <x-nav-link :href="route('aboutUs')" :active="request()->routeIs('aboutUs')">
+                <x-nav-link :href="route('sobreNos')" :active="request()->routeIs('sobreNos')">
                     {{ __('Sobre nós') }}
                 </x-nav-link>
               </li>

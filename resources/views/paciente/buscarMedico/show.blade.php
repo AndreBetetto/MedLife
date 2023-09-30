@@ -2,14 +2,15 @@
     {{-- The whole world belongs to you. --}}
     <div class="flex flex-col gap-8">
         <div>
-            Gostaria de uma recomendation?
+            Não sabe qual especialidade de médico escolher para sua consulta? <br>
+            Clique no botão abaixo, espere carregar a lista, e selecione os sintomas que voce está sentindo. <br>
             @livewire('recomenda-medico', ['paciente' => $paciente])
         </div>
         
 
 
         <table class="">
-            <p class="text-xl font-semibold leading-6 text-gray-500 ">Medicos cadastrados:</p>
+            <p class="text-xl font-semibold leading-6 text-gray-500 ">Médicos cadastrados:</p>
             
             
             @forelse ($medicos as $medico)
@@ -53,7 +54,7 @@
                                 </p>
                         </div>          
                             @elseif ($isSelected)
-                                ja selecionado
+                                Já selecionado
                             @endif
                     </div>
                     </div>

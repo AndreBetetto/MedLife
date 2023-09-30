@@ -34,14 +34,14 @@ table.customTable {
   background-color: #FFFFFF;
   border-collapse: collapse;
   border-width: 2px;
-  border-color: #7EA8F8;
+  border-color: #c9c9c9;
   border-style: solid;
   color: #000000;
 }
 
 table.customTable td, table.customTable th {
   border-width: 2px;
-  border-color: #7EA8F8;
+  border-color: #c9c9c9;
   border-style: solid;
   padding: 5px;
 }
@@ -78,13 +78,13 @@ table.customTable thead {
   margin-top: -200px;
   margin-left: -200px;
   border-radius: 2px;
-	box-shadow: .5rem 1rem 1rem 0 rgba(0,0,0,0.6);
+/*	box-shadow: .5rem 1rem 1rem 0 rgba(0,0,0,0.6);*/
 	overflow: hidden;
   color: #333;
 	font-family: 'Rubik', Helvetica, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
- background: #201c29;
+ /*background: #201c29;*/
 }
 
 .thermostat {
@@ -150,7 +150,7 @@ table.customTable thead {
   right: 0;
   text-align: center;
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 12px;
 }
 .thermostat .ring {
   position: absolute;
