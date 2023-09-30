@@ -7,8 +7,13 @@ use Livewire\Component;
 class ApresentaRemedio extends Component
 {
     public $ids;
+    public $count =0;
     public bool $isLoading = false;
     public $arrayMedicamentos = [];
+    public $medNomes = [];
+    public $medPrincipioAtivo = [];
+    public $medCatRegulatoria = [];
+
     public function render()
     {
         return view('livewire.apresenta-remedio');
@@ -16,6 +21,7 @@ class ApresentaRemedio extends Component
 
     public function init()
     {
+        $this->getMed();
         $this->isLoading = true;
     }
 
@@ -46,7 +52,17 @@ class ApresentaRemedio extends Component
                 // Parse the API response and store it in the $medicamentos array
                 $arrayMed = json_decode($response, true);
             }
-            array_push($this->arrayMedicamentos, $arrayMed);
+            //dd($arrayMed);
+            $principioAtivo = $arrayMed['principioAtivo'];
+            $catRegulatoria = $arrayMed['categoriaRegulatoria'];
+            $nome = $arrayMed['nomeComercial'];
+
+            array_push($this->medNomes, $nome);
+            array_push($this->medPrincipioAtivo, $principioAtivo);
+            array_push($this->medCatRegulatoria, $catRegulatoria);
+
+            $this->count++;
         }
+        //dd($this->medNomes);
     }
 }

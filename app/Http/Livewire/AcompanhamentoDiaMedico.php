@@ -160,6 +160,7 @@ class AcompanhamentoDiaMedico extends Component
     }
 
     public bool $loadData = false;
+    
     public function init()
     {
         $this->getSymptoms();

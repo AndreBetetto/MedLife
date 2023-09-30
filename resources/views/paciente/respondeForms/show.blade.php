@@ -231,25 +231,17 @@
                         <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
                     </h2><br>
                 </div>
-                    <!-- @php
+                    @php
                         $medicamentos = $formsDiarios->medicamentos;
                         $ids = explode(',', str_replace(['[', ']'], '', $medicamentos));
                         //dd($ids);
                     @endphp
-                    @foreach ($ids as $med)
-                        @php
-                            echo $med;
-                            //https://bula.vercel.app/medicamento/25351267345200858
-                            
-                        @endphp -->
                     <div class="w-full text-center justify-center items-center">
                         <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
-                            
                             @livewire('apresenta-remedio', ['ids' => $ids])
-                            
                         </div>
                     </div> 
-                @endforeach
+
                 
             </div>
             <div class="my-5 col-span-2 h-px w-full bg-black"></div>
