@@ -59,10 +59,10 @@
                 </div>
             </div>
              
-            <div class="hidden md:flex md:items-center md:ml-6">
+            <div class="hidden md:flex md:items-center md:ml-6 ">
                 <form action="{{ route('language') }}" method="POST">
                     @csrf
-                    <select name="language" onchange="this.form.submit()" class="border rounded border-gray-400">
+                    <select name="language" onchange="this.form.submit()" class="border rounded border-gray-400 dark:bg-slate-800">
                         <option value="en" {{ session('language') == 'en' ? 'selected' : '' }}>English</option>
                         <option value="pt-br" {{ session('language') == 'pt-br' ? 'selected' : '' }}>Português</option>
                         <option value="es" {{ session('language') == 'es' ? 'selected' : '' }}>Español</option>
