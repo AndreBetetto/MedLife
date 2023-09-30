@@ -37,8 +37,19 @@
     </div>
 
     <div>
+        
         <label class="font-bold text-gray-700">Sintomas</label>
-        <input type="text" value="{{ $formDia->sintomas }}" disabled class="mx-8 border rounded w-3/4 p-2  border-gray-400">
+        <div wire:init="init">
+            @if ($loadData)
+                <div id="loadesh1" wire:ignore>
+                    @foreach ($symptoms as $symptom)
+                        <li>{{ __('translations.'. $symptom['Name']) }}</li>
+                    @endforeach
+                </div>
+            @else
+                Carregando dados...
+            @endif
+        </div>
     </div>
 
     <div>
@@ -56,10 +67,10 @@
 
 
     
+
+    
     {{-- Sintomas API --}}
-    @foreach ($symptoms as $symptom)
-        <li>{{ $symptom['Name'] }}</li>
-    @endforeach
+    
         <br>
     <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar diagnostico</button>
     {{-- Diagnostico API --}}

@@ -35,12 +35,16 @@
                         @foreach ($medicamentos['content'] as $med)
                             @php    
                                 $numProcesso = $med['numProcesso'];
+                                $nomeProduto = $med['nomeProduto'];
                             @endphp
                             <div class="grid">
                                 <span> Nome: {{ $med['nomeProduto'] }} </span>
                                 <span> Razao social: {{ $med['razaoSocial'] }} </span>
                                 <button id="{{ $numProcesso }}"   
-                                    wire:click.prevent="addMedicamento('{{$numProcesso}}')">
+                                    wire:click.prevent="addMedicamento('{{$numProcesso}}', '{{$nomeProduto}}')"
+                                    @if (in_array($numProcesso, $selectedMedicamentos))
+                                        disabled
+                                    @endif>
                                 Adicionar
                                 </button> </span>
                             </div>
@@ -56,7 +60,7 @@
                         <span>Nenhum medicamento selecionado</span>
                     @else
                         <div class="grid gap-2">
-                            @foreach ($selectedMedicamentos as $selected)
+                            @foreach ($selectedMedicamentosName as $selected)
                                 <span>
                                     {{ $selected }}
                                     <button wire:click.prevent="removeMedicamento('{{ $selected }}')">- Remover</button>
