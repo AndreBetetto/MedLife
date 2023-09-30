@@ -26,12 +26,12 @@
                         </div>
 
                         <div class="flex items-center">
-                            <i class="material-icons py-3 mr-1">phone</i>
-                            <label class="mb-1 text-lg">+55 14 99604-0283</label>
+                            <i class="material-icons py-3 mr-1">phone_iphone</i>
+                            <label class="mb-1 text-lg">+55 (14) 99604-0283</label>
                         </div>
                             
                         <div class="flex items-center">
-                            <i class="material-icons py-3 mr-1">phone_iphone</i>
+                            <i class="material-icons py-3 mr-1">phone</i>
                             <label class="mb-1 text-lg">(14) 3103-6150</label>
                         </div>
                             

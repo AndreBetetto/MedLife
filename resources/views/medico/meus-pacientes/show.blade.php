@@ -24,7 +24,7 @@
                             <div class="text-center text-lg">
                                 {{ $paciente->nome }} 
                                 {{ $paciente->sobrenome }} 
-                                <p>{{ $qntForms }} processos</p>
+                                <br>
                                 <a href="{{ route('areamedico.acessoProcessos', ['idPac' => $paciente->id]) }}" class="hover:font-semibold">Ver respostas</a>
                                 <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $paciente->id]) }}" method="GET">
                                     @csrf

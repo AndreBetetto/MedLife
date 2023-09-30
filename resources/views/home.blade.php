@@ -10,8 +10,8 @@
                         <h1 class="text-6xl dark:text-white">Otimize sua consulta com a nossa plataforma</h1>
                         <p class="dark:text-slate-100">A aplicação do software em ambientes profissionais possibilita que haja um melhor atendimento das necessidades do paciente, promovendo consultas mais precisas e com maior acompanhamento do mesmo, evitando que dados importantes não sejam registrados.</p>
                         <div class="flex gap-10">
-                            <a href="{{ route('login') }}" class="text-xl text-neutral-50 rounded-2xl px-8 py-2 w-max bg-violet-500 content-center gap-2 hover:bg-violet-600 hover:px-10 duration-200">Entrar <span class="align-middle material-symbols-outlined">arrow_right_alt</span></a>
-                            <a href="{{ route('register') }}" class="text-xl rounded-2xl px-8 py-2 w-max bg-green-300 content-center gap-2 hover:bg-green-400 hover:px-10 duration-200">Fazer cadastro</a>
+                            <a href="{{ route('login') }}" class="text-xl text-neutral-50 rounded-2xl px-8 py-2 w-max bg-violet-500 content-center gap-2 hover:bg-violet-600 duration-200">Entrar <span class="align-middle material-symbols-outlined">arrow_right_alt</span></a>
+                            <a href="{{ route('register') }}" class="text-xl rounded-2xl px-8 py-2 w-max bg-green-300 content-center gap-2 hover:bg-green-400 duration-200">Fazer cadastro</a>
                         </div>
                     </div>
                     
