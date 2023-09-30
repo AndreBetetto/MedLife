@@ -4,72 +4,82 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
+                @if(Auth::check() == false)
+                <div class="shrink-0 flex items-center">
+                    <a href="{{ route('home') }}">
+                        <img class="h-16" src="{{ URL::asset('/icone.svg') }}" alt="">
+                    </a>
+                </div>
+                @else
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         <img class="h-16" src="{{ URL::asset('/icone.svg') }}" alt="">
                     </a>
                 </div>
+                @endif
 
                 <!-- Navigation Links -->
-                <div class="font-20 hidden space-x-8 md:-my-px md:ml-10 md:flex">
-                    @if(Auth::check() == false)
-                        <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                            {{ __('Home') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('benefit')" :active="request()->routeIs('benefit')">
-                            {{ __('Benefícios') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('values')" :active="request()->routeIs('values')">
-                            {{ __('Valores') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('doctors')" :active="request()->routeIs('doctors')">
-                            {{ __('Médicos') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('contactUs')" :active="request()->routeIs('contactUs')">
-                            {{ __('Contatos') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('sobreNos')" :active="request()->routeIs('sobreNos')">
-                            {{ __('Sobre nós') }}
-                        </x-nav-link>
-                    @endif
-                    @if(Auth::check())
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-nav-link>
-                        @if( Auth::user()->role == 'admin')
-                            <x-nav-link :href="route('areaadmin.index')" :active="request()->routeIs('areaadmin.index')">
-                                {{ __('Admin') }}
+                @if(Route::currentRouteName() != "register" && Route::currentRouteName() != "login")
+                    <div class="font-20 hidden space-x-8 md:-my-px md:ml-10 md:flex">
+                        @if(Auth::check() == false)
+                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                                {{ __('Home') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('benefit')" :active="request()->routeIs('benefit')">
+                                {{ __('Benefícios') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('values')" :active="request()->routeIs('values')">
+                                {{ __('Valores') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('doctors')" :active="request()->routeIs('doctors')">
+                                {{ __('Médicos') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('contactUs')" :active="request()->routeIs('contactUs')">
+                                {{ __('Contatos') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('sobreNos')" :active="request()->routeIs('sobreNos')">
+                                {{ __('Sobre nós') }}
                             </x-nav-link>
                         @endif
-                        @if( Auth::user()->role == 'medico')
-                            <x-nav-link :href="route('areamedico.index')" :active="request()->routeIs('areamedico.index')">
-                                {{ __('Área médico') }}
+                        @if(Auth::check())
+                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                                {{ __('Dashboard') }}
                             </x-nav-link>
+                            @if( Auth::user()->role == 'admin')
+                                <x-nav-link :href="route('areaadmin.index')" :active="request()->routeIs('areaadmin.index')">
+                                    {{ __('Admin') }}
+                                </x-nav-link>
+                            @endif
+                            @if( Auth::user()->role == 'medico')
+                                <x-nav-link :href="route('areamedico.index')" :active="request()->routeIs('areamedico.index')">
+                                    {{ __('Área médico') }}
+                                </x-nav-link>
+                            @endif
+                            @if( Auth::user()->role == 'paciente')
+                                <x-nav-link :href="route('areapaciente.index')" :active="request()->routeIs('areapaciente.index')">
+                                    {{ __('Área do paciente') }}
+                                </x-nav-link>
+                            @endif
+                            {{-- 
+                            <x-nav-link :href="route('medico.visual')" :active="request()->routeIs('medico.visual')">
+                                {{ __('Ver médicos!') }}
+                            </x-nav-link> --}}
                         @endif
-                        @if( Auth::user()->role == 'paciente')
-                            <x-nav-link :href="route('areapaciente.index')" :active="request()->routeIs('areapaciente.index')">
-                                {{ __('Área do paciente') }}
-                            </x-nav-link>
-                        @endif
-                        {{-- 
-                        <x-nav-link :href="route('medico.visual')" :active="request()->routeIs('medico.visual')">
-                            {{ __('Ver médicos!') }}
-                        </x-nav-link> --}}
-                    @endif
+                    </div>
                 </div>
-            </div>
-             
-            <div class="hidden md:flex md:items-center md:ml-6 ">
-                <form action="{{ route('language') }}" method="POST">
-                    @csrf
-                    <select name="language" onchange="this.form.submit()" class="border rounded border-gray-400 dark:bg-slate-800">
-                        <option value="en" {{ session('language') == 'en' ? 'selected' : '' }}>English</option>
-                        <option value="pt-br" {{ session('language') == 'pt-br' ? 'selected' : '' }}>Português</option>
-                        <option value="es" {{ session('language') == 'es' ? 'selected' : '' }}>Español</option>
-                        <option value="de" {{ session('language') == 'de' ? 'selected' : '' }}>Germany</option>
-                    </select>
-                </form>
-            </div>
+                <div class="hidden md:flex md:items-center md:ml-6 ">
+                    <form action="{{ route('language') }}" method="POST">
+                        @csrf
+                        <select name="language" onchange="this.form.submit()" class="border rounded border-gray-400 dark:bg-slate-800">
+                            <option value="en" {{ session('language') == 'en' ? 'selected' : '' }}>English</option>
+                            <option value="pt-br" {{ session('language') == 'pt-br' ? 'selected' : '' }}>Português</option>
+                            <option value="es" {{ session('language') == 'es' ? 'selected' : '' }}>Español</option>
+                            <option value="de" {{ session('language') == 'de' ? 'selected' : '' }}>Germany</option>
+                        </select>
+                    </form>
+                </div>
+            @endif
+
             <!-- Settings Dropdown -->
             <div class="hidden md:flex md:items-center md:ml-6">
                 <x-switch-button></x-switch-button>
