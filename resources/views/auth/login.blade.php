@@ -41,6 +41,15 @@
                 </a>
             @endif
         </div>
+        <br>
+        @php
+            $caminhoGoogleLight = '/google_web/1x/btn_google_signin_light_normal_web.png';
+            $caminhoGoogleDark = '/google_web/1x/btn_google_signin_dark_normal_web.png';
+        @endphp
+        <a href="{{ url('auth/google') }}">
+            <img src="{{ asset($caminhoGoogleLight)}}">
+        </a> 
+        <br>
 
         <div class="flex items-center justify-end mt-4">
             <x-primary-button class="ml-3">
