@@ -13,12 +13,20 @@
                     $qntForms = $formsDiario->where('medico_id', $medico->id)
                                         ->where('paciente_id', $pacienteId)
                                         ->count();
+                    //Randomizacao de imagens
+                    $numAleatorio = rand(1, 28);
+                    if($numAleatorio < 10)
+                        $stringImg = 'p00'.$numAleatorio;
+                    else
+                        $stringImg = 'p0'.$numAleatorio;
+                    //pega foto da pasta public
+                    $caminhoImg = 'storage/profile/'.$stringImg.'.png';
                 @endphp
                        
                     <div>
                         @if (!$isSelected) 
                             <div>  
-                                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg" alt="Paciente" class="h-full w-full object-cover object-center group-hover:opacity-75 rounded-full">
+                                <img src="{{asset($caminhoImg)}}" alt="Paciente" class="h-full w-full object-cover object-center group-hover:opacity-75 rounded-full">
                             </div>
                             
                             <div class="text-center text-lg">
