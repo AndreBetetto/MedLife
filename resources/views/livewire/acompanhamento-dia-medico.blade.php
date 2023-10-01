@@ -41,11 +41,17 @@
         <label class="font-bold text-gray-700">Sintomas</label>
         <div wire:init="init">
             @if ($loadData)
-                <div id="loadesh1" wire:ignore>
-                    @foreach ($symptoms as $symptom)
-                        <li>{{ __('translations.'. $symptom['Name']) }}</li>
-                    @endforeach
-                </div>
+                @if($erro)
+                    <div id="loadesh1" wire:ignore>
+                        @foreach ($symptoms as $symptom)
+                            <li>{{ __('translations.'. $symptom['Name']) }}</li>
+                        @endforeach
+                    </div>
+                @else
+                    <div id="loadesh2" wire:ignore>
+                        <p>* Erro ao carregar dados (nao esqueca de trocar a API key) </p>
+                    </div>
+                @endif
             @else
                 Carregando dados...
             @endif
@@ -71,7 +77,7 @@
     
     {{-- Sintomas API --}}
     
-        <br>
+    <br>
     <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar diagnostico</button>
     {{-- Diagnostico API --}}
     @foreach ($diagnosticos as $diagnostico)
@@ -103,5 +109,8 @@
        <!-- Traduzido: <br> -->
         {{ $traduzDesc }}
     @endforeach
+    <br><br>
+    <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar gr'afico</button>
+    
 
 </div>

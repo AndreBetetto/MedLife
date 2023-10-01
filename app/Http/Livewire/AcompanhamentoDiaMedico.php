@@ -27,6 +27,7 @@ class AcompanhamentoDiaMedico extends Component
     public $sexo = '';
     public $traduzido = false;
     public $traduzDesc = '';
+    public bool $erro = false;
 
     public function getToken()
     {
@@ -73,6 +74,7 @@ class AcompanhamentoDiaMedico extends Component
                 } else {
                     // Handle the API request failure
                     $this->issueInfo[$id] = [];
+                    $this->erro = true;
                     // You can log an error message or set a default value for $this->symptoms
                 }
             }
@@ -101,6 +103,7 @@ class AcompanhamentoDiaMedico extends Component
         } else {
             // Handle the API request failure
             $this->symptoms = [];
+
             // You can log an error message or set a default value for $this->symptoms
         }
     }
