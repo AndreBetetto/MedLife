@@ -1,11 +1,11 @@
 <x-guest-layout>
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <x-auth-session-status class="mb-4 flex align-center justify-center" :status="session('status')" />
     
     <!-- <a  href="/"><x-application-logo class="w-1/2" /></a> -->
     <form class="w-full flex justify-center items-center flex-col" method="POST" action="{{ route('login') }}">
     @csrf
-
+        <h1 class="mx-1/6 font-bold text-2xl w-4/6 mb-5">Login</h1>
         <!-- Email Address -->
         <div class="w-4/6">
             <x-input-label for="email" :value="__('Email')" />
@@ -28,11 +28,7 @@
 
         <!-- Remember Me -->
         <div class="flex items-center justify-end mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Manter conectado') }}</span>
-            </label>
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
+        <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
                 {{ __('Não está registrado?') }}
             </a>
             @if (Route::has('password.request'))
@@ -41,15 +37,17 @@
                 </a>
             @endif
         </div>
-        <br>
         @php
             $caminhoGoogleLight = '/google_web/1x/btn_google_signin_light_normal_web.png';
             $caminhoGoogleDark = '/google_web/1x/btn_google_signin_dark_normal_web.png';
         @endphp
-        <a href="{{ url('auth/google') }}">
-            <img src="{{ asset($caminhoGoogleLight)}}">
-        </a> 
-        <br>
+        <div class="flex items-center justify-end mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
+                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Manter conectado') }}</span>
+            </label>
+            
+        </div>
 
         <div class="flex items-center justify-end mt-4">
             <x-primary-button class="ml-3">
