@@ -23,7 +23,7 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         Médico
                     </label>
-                    <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text"
+                    <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled type="text"
                     value="{{$medico->nome}}, {{$medico->sobrenome}}">
                 </div>
 
@@ -86,7 +86,7 @@
                             $numDia = $checklist->numDia+1;
                         }
                     @endphp
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled name="numDia" id="numDia" type="text"
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled type="text"
                     value="{{$numDia}}">
                     <input type="hidden" id="numDia" name="numDia" value="{{$numDia}}">
                 </div>
@@ -167,7 +167,7 @@
                     </label>
                     
                     <label>
-                        <input class="with-gap" name="sangramento" id="sangramento" type="radio" checked value="nenhum" required/>
+                        <input class="with-gap" name="sangramento" id="sangramento" type="radio" checked value="nenhum"/>
                         <span>Nenhum</span>
                     </label><br>
 
@@ -190,9 +190,24 @@
                 <div class="mr-auto w-full md:w-max px-20 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold" for="grid-last-name">
                         Febre
-
+                        <script>
+                            // Ensure the DOM is ready
+                            $(document).ready(function() {
+                                // Get the range input element
+                                var rangeInput = $('#nivelFebre');
+                        
+                                // Get the element where you want to display the selected value
+                                var selectedValueElement = $('#selectedValue');
+                        
+                                // Update the displayed value when the range input value changes
+                                rangeInput.on('input', function() {
+                                    selectedValueElement.text('Selected Value: ' + rangeInput.val());
+                                });
+                            });
+                        </script>
                         <div id="test-slider">
-                            <input type="range" min="0" max="100" id="nivelFebre" name="nivelFebre"/>
+                            <input type="range" min="30" value="36.5" max="43" id="nivelFebre" step="0.1" name="nivelFebre" style="width: 200px"/>
+                            <p id="selectedValue">Selected Value: 36.5</p>
                         </div>
                     </label><br>
                 </div>
@@ -219,78 +234,10 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                         Outros sintomas
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="sintomas" name="sintomas" type="text" maxlength="100"
-                    value="273,75">
+                    
                 </div>--}}
-            </div>
-            <div class="my-5 col-span-2 h-px w-full bg-black"></div> 
-            <div class="col-span-2 flex flex-wrap items-center py-4">
-                <div class="w-full px-3 text-center">
-                    <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center">
-                        Medicamentos
-                        <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
-                    </h2><br>
-                </div>
-                    <!-- @php
-                        $medicamentos = $formsDiarios->medicamentos;
-                        $ids = explode(',', str_replace(['[', ']'], '', $medicamentos));
-                        //dd($ids);
-                    @endphp
-                    @foreach ($ids as $med)
-                        @php
-                            echo $med;
-                            //https://bula.vercel.app/medicamento/25351267345200858
-                            $curl = curl_init();
-                            if($med != ''){
-                                curl_setopt_array($curl, array(
-                                CURLOPT_URL => "https://bula.vercel.app/medicamento/".$med,
-                                CURLOPT_RETURNTRANSFER => true,
-                                CURLOPT_ENCODING => "",
-                                CURLOPT_MAXREDIRS => 8,
-                                CURLOPT_TIMEOUT => 30,
-                                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                                CURLOPT_CUSTOMREQUEST => "GET"
-                            ));
-                            }
-                            $response = curl_exec($curl);
-                            $err = curl_error($curl);
-                        
-                            curl_close($curl);
-                            $arrayMedicamentos = [];
-                            if ($err) {
-                                // Handle the cURL error
-                                $arrayMedicamentos = [];
-                            } else {
-                                // Parse the API response and store it in the $medicamentos array
-                                $arrayMedicamentos = json_decode($response, true);
-                            }
-                        @endphp -->
-                    <div class="w-full text-center justify-center items-center">
-                        <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
-                            @if ($arrayMedicamentos['nomeComercial'] != [])
-                                {{ $arrayMedicamentos['nomeComercial'] }}
-                                &nbsp; &nbsp;
-                                <label>
-                                    <input type="checkbox" class=""/>
-                                    <span>08h</span> &nbsp; &nbsp;
-                                </label>
-
-                                <label>
-                                    <input type="checkbox" class=""/>
-                                    <span>10h</span>&nbsp; &nbsp;
-                                </label>
-
-                                <label>
-                                    <input type="checkbox" class=""/>
-                                    <span>12h</span>&nbsp; &nbsp;
-                                </label>
-                            @endif
-                            
-                            
-                        </div>
-                    </div> 
-                @endforeach
-                
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="sintomas" name="sintomas" type="hidden" maxlength="100"
+                    value="">
             </div>
             <div class="my-5 col-span-2 h-px w-full bg-black"></div>
             <div class="col-span-2 flex flex-wrap">
@@ -324,17 +271,29 @@
                 <input type="hidden" name="prioridadeMedico" id="prioridadeMedico" value="true">
                 <input type="hidden" name="grupo" id="grupo" value="grupo">
                 <input type="hidden" name="tipo" id="tipo" value="tipo">
-                <input type="hidden" name="alergias" id="alergias" value="AlewrgiasAAmendoim">
+                <input type="hidden" name="alergias" id="alergias" value="AlergiasAAmendoim">
                 <input type="hidden" name="diagnostico" id="diagnostico" value="not">
-
-                
-                
             </div>
+            <div class="my-5 col-span-2 h-px w-full bg-black"></div> 
+            <div class="col-span-2 flex flex-wrap items-center py-4">
+                <div class="w-full px-3 text-center">
+                    <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center">
+                        Medicamentos
+                        <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
+                    </h2><br>
+                </div>
+                    @php
+                        $medicamentos = $formsDiarios->medicamentos;
+                        $ids = explode(',', str_replace(['[', ']'], '', $medicamentos));
+                        //dd($ids);
+                    @endphp
+                    <div class="w-full text-center justify-center items-center">
+                        <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
+                            @livewire('apresenta-remedio', ['ids' => $ids])
+                        </div>
+                    </div> 
+            </div> 
         </div>
-        <div class="mt-5 col-span-2 flex justify-center">
-        <button class=" bg-purple-300 border-purple-500 text-sm border-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 py-1 px-2 rounded " type="button">
-                     <input wire:submit.prevent="submitForm" type="submit" name="ENVIAR">
-                </button>
-        </div>
+        
     </form>
 </div>

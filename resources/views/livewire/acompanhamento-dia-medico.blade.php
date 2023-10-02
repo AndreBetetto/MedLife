@@ -37,8 +37,25 @@
     </div>
 
     <div>
+        
         <label class="font-bold text-gray-700">Sintomas</label>
-        <input type="text" value="{{ $formDia->sintomas }}" disabled class="mx-8 border rounded w-3/4 p-2  border-gray-400">
+        <div wire:init="init">
+            @if ($loadData)
+                @if($erro)
+                    <div id="loadesh1" wire:ignore>
+                        @foreach ($symptoms as $symptom)
+                            <li>{{ __('translations.'. $symptom['Name']) }}</li>
+                        @endforeach
+                    </div>
+                @else
+                    <div id="loadesh2" wire:ignore>
+                        <p>* Erro ao carregar dados (nao esqueca de trocar a API key) </p>
+                    </div>
+                @endif
+            @else
+                Carregando dados...
+            @endif
+        </div>
     </div>
 
     <div>
@@ -56,11 +73,11 @@
 
 
     
+
+    
     {{-- Sintomas API --}}
-    @foreach ($symptoms as $symptom)
-        <li>{{ $symptom['Name'] }}</li>
-    @endforeach
-        <br>
+    
+    <br>
     <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar diagnostico</button>
     {{-- Diagnostico API --}}
     @foreach ($diagnosticos as $diagnostico)
@@ -92,5 +109,86 @@
        <!-- Traduzido: <br> -->
         {{ $traduzDesc }}
     @endforeach
+    <br><br>
+    <button wire:click="generateGraph" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar gr'afico</button>
+    @if($graphicActive)
+        @php
+            $labels = [];
+            $painLevel = [];
+            $bodyTemp = [];
+            $labels = ['User 1', 'User 2', 'User 3'];
+            $normalRange = [97.0, 99.0]; // Replace with your normal range
+            $feverRange = [99.1, 100.4]; // Replace with your fever range
+            $dangerRange = [100.5, 104.0]; // Replace with your danger range
+
+            foreach ($dorForms as $dor) {
+                array_push($painLevel, $dor->nivelDor);
+                array_push($bodyTemp, $dor->nivelFebre);
+                //array_push($labels, $dor->numDia);
+                //echo $dor->nivelFebre;
+            }
+
+            for ($i=0; $i < $totalDays ; $i++) { 
+                array_push($labels, $i+1);
+            }
+
+            
+        @endphp
+        <br><br>
+        <div style="width: 50%" >
+            <canvas id="painChart" ></canvas>
+        </div>
+
+        <div style="width: 50%" >
+            <canvas id="feverChart" ></canvas>
+        </div>
+        
+        <script>
+            const ctxPain = document.getElementById('painChart');
+            const ctxFever = document.getElementById('feverChart');
+          
+            new Chart(ctxPain, {
+              type: 'line',
+              data: {
+                labels: @json($labels),
+                datasets: [{
+                  label: '# Nivel da dor',
+                  data: @json($painLevel),
+                  borderWidth: 1
+                }
+            ]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    max: 10
+                  }
+                }
+              }
+            });
+
+            new Chart(ctxFever, {
+              type: 'line',
+              data: {
+                labels: @json($labels),
+                datasets: [{
+                  label: '# Nivel da dor',
+                  data: @json($painLevel),
+                  borderWidth: 1
+                }
+            ]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    max: 10
+                  }
+                }
+              }
+            });
+        </script>
+    @endif
 
 </div>

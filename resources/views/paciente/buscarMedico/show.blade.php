@@ -5,6 +5,22 @@
             Não sabe qual especialidade de médico escolher para sua consulta? <br>
             Clique no botão abaixo, espere carregar a lista, e selecione os sintomas que voce está sentindo. <br>
         </div>
+        
+        @php
+            use Illuminate\Support\Facades\File;
+            use Illuminate\Support\Facades\Storage;
+            //$files = Storage::files('profile');
+            $folderPath = public_path('profilePics');
+            if (File::exists($folderPath) && File::isDirectory($folderPath)) {
+                $files = File::files($folderPath);
+                $fileCount = count($files);
+
+                //echo "Number of files in the folder: $fileCount";
+            } else {
+                //echo "The specified folder does not exist or is not a directory.";
+                $fileCount = 1;
+            }
+        @endphp 
 
         @livewire('recomenda-medico', ['paciente' => $paciente])
         <table class="">
@@ -15,19 +31,14 @@
                 @php
                     $medicoId = $medico->id;
                     $isSelected = $jaSelecionados->contains('medico_id', $medicoId);
-                    //Randomizacao de imagens
-                    $numAleatorio = rand(1, 28);
-                    if($numAleatorio < 10)
-                        $stringImg = 'p00'.$numAleatorio;
-                    else
-                        $stringImg = 'p0'.$numAleatorio;
-                    //pega foto da pasta public
-                    $caminhoImg = 'storage/profile/'.$stringImg.'.png';
+                    $imgIndex = $medicoId % $fileCount;
+                    $imgIndex = $imgIndex == 0 ? $fileCount : $imgIndex;
+                    $imgPath = 'profilePics/'.$imgIndex.'.svg';
                 @endphp
                
                 <div class="w-full h-px bg-gray-300"></div>
                     <div class="flex justify-between items-center h-fit">
-                        <img class="h-14 w-14 flex-none rounded-full bg-gray-50" src="{{ asset($caminhoImg) }}" alt="">
+                        <img class="h-14 w-14 flex-none rounded-full bg-gray-50" src="{{ asset($imgPath) }}" alt="">
                         
                         <div class="min-w-0 flex-auto">
                             <p class="text-base font-semibold leading-6 px-5"> {{ $medico->nome }} </p>

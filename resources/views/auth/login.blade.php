@@ -21,6 +21,7 @@
                             type="password"
                             name="password"
                             required autocomplete="current-password" />
+                            <button type="button" id="PasswordButton"><img id="eye" src="eye.svg" alt="olhinho"></button>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -40,6 +41,15 @@
                 </a>
             @endif
         </div>
+        <br>
+        @php
+            $caminhoGoogleLight = '/google_web/1x/btn_google_signin_light_normal_web.png';
+            $caminhoGoogleDark = '/google_web/1x/btn_google_signin_dark_normal_web.png';
+        @endphp
+        <a href="{{ url('auth/google') }}">
+            <img src="{{ asset($caminhoGoogleLight)}}">
+        </a> 
+        <br>
 
         <div class="flex items-center justify-end mt-4">
             <x-primary-button class="ml-3">
