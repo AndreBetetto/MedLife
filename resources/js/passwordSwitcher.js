@@ -11,11 +11,12 @@ if(password)
   PasswordButton.addEventListener('click', () => {
     if(password.type === 'password') {
       password.type = 'text';
-      eye.setAttribute('src', currentUrl+'/sun.svg');
+      eye.setAttribute('src', currentUrl+'/closedeye.svg');
     } 
     else
     {
-      password.type = 'password'
+      password.type = 'password';
+      eye.setAttribute('src', currentUrl+'/eye.svg');
     }
   });
 
@@ -32,5 +33,3 @@ if(password)
     });
   }
 }
-
-
