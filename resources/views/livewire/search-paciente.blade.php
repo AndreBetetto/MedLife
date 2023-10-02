@@ -2,10 +2,8 @@
 <div>
     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900 dark:text-gray-200 font-bold">
-            <div wire:poll.visible>
-                <div wire:poll.keep-alive>
-                    Current time: {{ now() }}
-                </div>
+            <div>
+                
 
                 @if (session()->has('message'))
                 <div>

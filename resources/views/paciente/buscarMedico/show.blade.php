@@ -1,16 +1,14 @@
 <div>
     {{-- The whole world belongs to you. --}}
     <div class="flex flex-col gap-8">
-        <div>
+        <div class="text-center font-semibold pt-5">
             Não sabe qual especialidade de médico escolher para sua consulta? <br>
             Clique no botão abaixo, espere carregar a lista, e selecione os sintomas que voce está sentindo. <br>
-            @livewire('recomenda-medico', ['paciente' => $paciente])
         </div>
-        
 
-
+        @livewire('recomenda-medico', ['paciente' => $paciente])
         <table class="">
-            <p class="text-xl font-semibold leading-6 text-gray-500 ">Médicos cadastrados:</p>
+            <p class="text-xl font-semibold leading-6 text-gray-800 ">Médicos cadastrados</p>
             
             
             @forelse ($medicos as $medico)
