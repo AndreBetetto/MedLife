@@ -116,10 +116,11 @@
             $labels = [];
             $painLevel = [];
             $bodyTemp = [];
-            $labels = ['User 1', 'User 2', 'User 3'];
-            $normalRange = [97.0, 99.0]; // Replace with your normal range
-            $feverRange = [99.1, 100.4]; // Replace with your fever range
-            $dangerRange = [100.5, 104.0]; // Replace with your danger range
+            $hipotermiaRange = [25, 35]; 
+            $normalRange = [36, 37.5];
+            $feverRange = [37.7, 39.5]; 
+            $highFeverRange = [39.6, 41.0]; 
+            $hipertemia = [41.1, 60];
 
             foreach ($dorForms as $dor) {
                 array_push($painLevel, $dor->nivelDor);
@@ -129,7 +130,7 @@
             }
 
             for ($i=0; $i < $totalDays ; $i++) { 
-                array_push($labels, $i+1);
+                array_push($labels, 'Dia '.$i+1);
             }
 
             
@@ -173,21 +174,34 @@
               data: {
                 labels: @json($labels),
                 datasets: [{
-                  label: '# Nivel da dor',
-                  data: @json($painLevel),
+                  label: '# Temperatura corporal',
+                  data: @json($bodyTemp),
                   borderWidth: 1
+                },
+                {
+                    data: @json($hipotermiaRange),
+                    fill: true,
+                    showLine: false
                 }
+                
             ]
               },
               options: {
                 scales: {
                   y: {
                     beginAtZero: true,
-                    max: 10
+                    max: 50,
+                    min: 25
                   }
+                },
+                plugins: {
+                    filler: {
+                        propagate: true
+                    }
                 }
               }
             });
+ 
         </script>
     @endif
 
