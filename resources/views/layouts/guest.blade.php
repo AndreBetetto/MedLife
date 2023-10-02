@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     @include('layouts.head')
-    <body class="w-screen bg-gradient-to-r from-violet-400 to-green-200 h-screen font-sans text-gray-900 antialiased">
-        @include('layouts.header')
-        <main class="px-20 py-12 h-screen flex items-center justify-center">
-            <section class="w-5/6 grid lg:grid-cols-2 items-center py-12 gap-4 md:grid-cols-1">
-                <div class="shadow-lg sm:rounded-l-lg">
-                    <img  src="{{URL::asset('/login.png')}}" alt="">
-                </div>
-                <div class="grid items-center grid-cols-1">
+    <body class="w-screen bg-violet-500 h-screen font-sans text-gray-900 antialiased">
+        
+        <main class="h-full grid justify-items-center content-center place-items-center">
+            <section class="bg-violet-100 w-2/3 grid grid-cols-5">
+                <div class="bg-gray-100 col-span-2 grid items-center grid-cols-1">
                     {{ $slot }}
+                </div>
+                <div class="col-span-3">
+                    <img  src="{{URL::asset('/login.png')}}" alt="">
                 </div>
             </section>
         </main>
