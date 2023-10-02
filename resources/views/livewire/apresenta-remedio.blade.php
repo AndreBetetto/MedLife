@@ -8,7 +8,7 @@
         @if($isLoading)
             <div id="loadesh1" wire:ignore>
                 @for ($i = 0; $i < $count; $i++)
-                    @if ($medNomes[$i] != [])
+                    @if (isset($medNomes[$i]) || $medNomes[$i] != [] || $medNomes[$i] != null)
                     {{ $medNomes[$i] }}
                     &nbsp; &nbsp;
                     <label>
@@ -25,7 +25,7 @@
                         <input type="checkbox" class=""/>
                         <span>12h</span>&nbsp; &nbsp;
                     </label>
-                    <br>
+                    <br><br>
                     @endif
                 @endfor
             </div>

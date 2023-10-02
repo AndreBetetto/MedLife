@@ -139,7 +139,6 @@ class PacienteController extends Controller
 
     public function detalhesMedicoFormsStore(FormSave $r, $id)
     {
-        
         $data = $r->validated();
         $symH = $data['symHead'] ?? []; //if not set, will set as empty array
         $symT = $data['symTorso'] ?? []; //if not set, will set as empty array
@@ -152,7 +151,7 @@ class PacienteController extends Controller
         $resultString = '[' . implode(',', $uniqueArray) . ']';
         //dd($resultString);
         $data['sintomas'] = $resultString;
-        //dd($data); //para testes
+        dd($data); //para testes
         $numDia = $data['numDia'];
         $formDiario = formDiario::where('id', $id)->first();
         $periodo = $formDiario->numDias;

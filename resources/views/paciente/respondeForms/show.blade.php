@@ -167,7 +167,7 @@
                     </label>
                     
                     <label>
-                        <input class="with-gap" name="sangramento" id="sangramento" type="radio" checked value="nenhum" required/>
+                        <input class="with-gap" name="sangramento" id="sangramento" type="radio" checked value="nenhum"/>
                         <span>Nenhum</span>
                     </label><br>
 
@@ -190,9 +190,24 @@
                 <div class="mr-auto w-full md:w-max px-20 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold" for="grid-last-name">
                         Febre
-
+                        <script>
+                            // Ensure the DOM is ready
+                            $(document).ready(function() {
+                                // Get the range input element
+                                var rangeInput = $('#nivelFebre');
+                        
+                                // Get the element where you want to display the selected value
+                                var selectedValueElement = $('#selectedValue');
+                        
+                                // Update the displayed value when the range input value changes
+                                rangeInput.on('input', function() {
+                                    selectedValueElement.text('Selected Value: ' + rangeInput.val());
+                                });
+                            });
+                        </script>
                         <div id="test-slider">
-                            <input type="range" min="0" max="100" id="nivelFebre" name="nivelFebre"/>
+                            <input type="range" min="30" value="36.5" max="43" id="nivelFebre" step="0.1" name="nivelFebre" style="width: 200px"/>
+                            <p id="selectedValue">Selected Value: 36.5</p>
                         </div>
                     </label><br>
                 </div>
@@ -219,9 +234,10 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                         Outros sintomas
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="sintomas" name="sintomas" type="text" maxlength="100"
-                    value="273,75">
+                    
                 </div>--}}
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="sintomas" name="sintomas" type="hidden" maxlength="100"
+                    value=" ">
             </div>
             <div class="my-5 col-span-2 h-px w-full bg-black"></div> 
             <div class="col-span-2 flex flex-wrap items-center py-4">
@@ -276,17 +292,14 @@
                 <input type="hidden" name="prioridadeMedico" id="prioridadeMedico" value="true">
                 <input type="hidden" name="grupo" id="grupo" value="grupo">
                 <input type="hidden" name="tipo" id="tipo" value="tipo">
-                <input type="hidden" name="alergias" id="alergias" value="AlewrgiasAAmendoim">
+                <input type="hidden" name="alergias" id="alergias" value="AlergiasAAmendoim">
                 <input type="hidden" name="diagnostico" id="diagnostico" value="not">
-
-                
-                
             </div>
         </div>
         <div class="mt-5 col-span-2 flex justify-center">
-        <button class=" bg-purple-300 border-purple-500 text-sm border-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 py-1 px-2 rounded " type="button">
-                     <input wire:submit.prevent="submitForm" type="submit" name="ENVIAR">
-                </button>
+            <button class="mt-12 flex-shrink-0 bg-purple-300 border-purple-300 text-sm border-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 py-1 px-2 rounded ml-auto" type="button">
+                Enviar Dados <input wire:submit.prevent="submitForm" type="submit" name="ENVIAR">
+            </button>
         </div>
     </form>
 </div>

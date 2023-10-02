@@ -110,7 +110,85 @@
         {{ $traduzDesc }}
     @endforeach
     <br><br>
-    <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar gr'afico</button>
-    
+    <button wire:click="generateGraph" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar gr'afico</button>
+    @if($graphicActive)
+        @php
+            $labels = [];
+            $painLevel = [];
+            $bodyTemp = [];
+            $labels = ['User 1', 'User 2', 'User 3'];
+            $normalRange = [97.0, 99.0]; // Replace with your normal range
+            $feverRange = [99.1, 100.4]; // Replace with your fever range
+            $dangerRange = [100.5, 104.0]; // Replace with your danger range
+
+            foreach ($dorForms as $dor) {
+                array_push($painLevel, $dor->nivelDor);
+                array_push($bodyTemp, $dor->nivelFebre);
+                //array_push($labels, $dor->numDia);
+                //echo $dor->nivelFebre;
+            }
+
+            for ($i=0; $i < $totalDays ; $i++) { 
+                array_push($labels, $i+1);
+            }
+
+            
+        @endphp
+        <br><br>
+        <div style="width: 50%" >
+            <canvas id="painChart" ></canvas>
+        </div>
+
+        <div style="width: 50%" >
+            <canvas id="feverChart" ></canvas>
+        </div>
+        
+        <script>
+            const ctxPain = document.getElementById('painChart');
+            const ctxFever = document.getElementById('feverChart');
+          
+            new Chart(ctxPain, {
+              type: 'line',
+              data: {
+                labels: @json($labels),
+                datasets: [{
+                  label: '# Nivel da dor',
+                  data: @json($painLevel),
+                  borderWidth: 1
+                }
+            ]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    max: 10
+                  }
+                }
+              }
+            });
+
+            new Chart(ctxFever, {
+              type: 'line',
+              data: {
+                labels: @json($labels),
+                datasets: [{
+                  label: '# Nivel da dor',
+                  data: @json($painLevel),
+                  borderWidth: 1
+                }
+            ]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    max: 10
+                  }
+                }
+              }
+            });
+        </script>
+    @endif
 
 </div>

@@ -49,17 +49,12 @@ class ApresentaRemedio extends Component
                 // Handle the cURL error
                 $arrayMed = [];
             } else {
-                // Parse the API response and store it in the $medicamentos array
+                // Handle the successful cURL request
                 $arrayMed = json_decode($response, true);
+                $nome = $arrayMed['nomeComercial'];
+                array_push($this->medNomes, $nome);
             }
-            //dd($arrayMed);
-            $principioAtivo = $arrayMed['principioAtivo'];
-            $catRegulatoria = $arrayMed['categoriaRegulatoria'];
-            $nome = $arrayMed['nomeComercial'];
-
-            array_push($this->medNomes, $nome);
-            array_push($this->medPrincipioAtivo, $principioAtivo);
-            array_push($this->medCatRegulatoria, $catRegulatoria);
+            
 
             $this->count++;
         }

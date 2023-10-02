@@ -1,5 +1,6 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
+import Chart from 'chart.js/auto';
 import persist from '@alpinejs/persist';
 import mask from '@alpinejs/mask'
 import {
