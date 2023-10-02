@@ -17,12 +17,12 @@
             <button  class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" wire:click.prevent="fetchAPIdata" type="submit">Submit</button>
         </form> 
         <br>
-        Resultado:<br>
+        <label class="font-semibold">Resultado:</label>
         @forelse ($saida as $out)
             {{ $out['ID']}} - {{ __('translations.'.$out['Name']) }} - {{ $out['Accuracy']}}%
             <br>
         @empty
-            Clinico geral
+            Clínico geral
         @endforelse
         <br><br><br>
         

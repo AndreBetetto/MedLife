@@ -27,6 +27,9 @@ class AcompanhamentoDiaMedico extends Component
     public $sexo = '';
     public $traduzido = false;
     public $traduzDesc = '';
+    public bool $loadData = false;
+    public bool $erro = false;
+    public bool $graphicActive = false;
 
     public function getToken()
     {
@@ -73,6 +76,7 @@ class AcompanhamentoDiaMedico extends Component
                 } else {
                     // Handle the API request failure
                     $this->issueInfo[$id] = [];
+                    $this->erro = true;
                     // You can log an error message or set a default value for $this->symptoms
                 }
             }
@@ -83,12 +87,10 @@ class AcompanhamentoDiaMedico extends Component
         }
     }
 
-
-
     public function getSymptoms()
     {
         $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
-        $input = '['.$formDia->sintomas.']';
+        $input = $formDia->sintomas;
         $token =$this->getToken();
 
         $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
@@ -112,7 +114,6 @@ class AcompanhamentoDiaMedico extends Component
         return $tokenW;
     }
     
-
     public function traduzEnPt($entrada)
     {
         $input = $entrada;
@@ -131,16 +132,9 @@ class AcompanhamentoDiaMedico extends Component
             $this->traduzDesc = $result;
             $this->traduzido = true;
         }
-
-
         $result = curl_exec($ch);
-
         curl_close($ch);
-
-
-
     }
-
 
     public function render()
     {
@@ -150,12 +144,26 @@ class AcompanhamentoDiaMedico extends Component
         $checklist = Checklist::where('forms_id',$formId)->where('numDia',$selectedDay)->first();
         $this->sintomasCheck = $checklist->sintomas;
         $dia = $this->selectedDay;
+        $dorForms = Checklist::where('forms_id', $this->id_form)->select('numDia', 'nivelDor', 'nivelFebre')->get();
+        //dd($dorForms);
         $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
-        return view('livewire.acompanhamento-dia-medico', compact('checklist', 'dia', 'formDia'));
+        return view('livewire.acompanhamento-dia-medico', compact('checklist', 'dia', 'formDia', 'dorForms'));
     }
 
     public function mount()
     {
         //$this->getSymptoms();
+    }
+    
+    public function init()
+    {
+        $this->getSymptoms();
+        //$this->getDiagnostico();
+        $this->loadData = true;
+    }
+
+    public function generateGraph()
+    {
+        $this->graphicActive = true;
     }
 }

@@ -10,6 +10,9 @@ use App\Http\Controllers\AdminController as AdminController;
 use App\Http\Controllers\PacienteController as PacienteController;
 use App\Http\Controllers\EnderecoController as EnderecoController;
 use App\Http\Controllers\PagesController as PagesController;
+use Laravel\Socialite\Facades\Socialite as Socialite;
+use App\Models\User as User;
+use App\Http\Controllers\Auth\AuthenticatedSessionController as AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,6 +138,11 @@ Route::middleware('auth')->group(function() {
     Route::post('/session/{session}/unblock', 'BlockController@unblock')->name('session.unblock');
     Route::post('/send/{session}', 'ChatController@send')->name('send');
 });
+
+Route::get('auth/google', [AuthenticatedSessionController::class, 'signInwithGoogle']);
+
+Route::get('auth/google/callback', [AuthenticatedSessionController::class, 'callbackToGoogle']);
+
 
 require __DIR__.'/auth.php';
 

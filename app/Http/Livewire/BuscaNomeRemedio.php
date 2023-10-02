@@ -62,6 +62,7 @@ class BuscaNomeRemedio extends Component
 
     public $search = '';
     public $selectedMedicamentos = [];
+    public $selectedMedicamentosName = [];
 
     
     public function updatedSearch()
@@ -98,13 +99,18 @@ class BuscaNomeRemedio extends Component
         }
     }
 
-    public function addMedicamento($medicamentoId)
+    public function addMedicamento($medicamentoId, $medicamentoName)
     {
+        //dd($medicamentoName);
         //string to add to selectedMedicamentos
+        $name = $medicamentoName;
         $str = $medicamentoId;
         //dd($str);
         // Add the selected medicine to the $selectedMedicamentos array
         array_push($this->selectedMedicamentos, $str);
+        //dd($this->selectedMedicamentos);
+        array_push($this->selectedMedicamentosName, $name);
+        //dd($this->selectedMedicamentos);
     }
 
     public function removeMedicamento($medicamentoName)

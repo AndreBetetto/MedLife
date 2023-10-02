@@ -37,6 +37,10 @@
                 </a>
             @endif
         </div>
+        @php
+            $caminhoGoogleLight = '/google_web/1x/btn_google_signin_light_normal_web.png';
+            $caminhoGoogleDark = '/google_web/1x/btn_google_signin_dark_normal_web.png';
+        @endphp
         <div class="flex items-center justify-end mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">

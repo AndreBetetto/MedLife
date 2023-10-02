@@ -29,7 +29,7 @@ class FormSave extends FormRequest
             'forms_id' => 'required', //
             'nivelDor' => 'required', //
             'nivelFebre' => 'required', //
-            'sintomas' => 'required', //
+            'sintomas' => 'nullable', //
             'sangramento' => 'required',
             'observacoes' => 'required', //
             'numDia' => 'required',
@@ -46,7 +46,6 @@ class FormSave extends FormRequest
             'symAbdomen' => 'nullable', //not required
             'symSkin' => 'nullable', //not required
             'diagnostico' => 'nullable' //not required
-            
         ];
     }
 
