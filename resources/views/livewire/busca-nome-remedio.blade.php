@@ -28,9 +28,9 @@
                             <input type="text" name="search" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" wire:model.prevent="search">
                             <x-input-error class="mt-2" :messages="$errors->get('search')" />
                         </div>
-                    @if ($medicamentos['content'] == null)
+                    @if (!isset($medicamentos['content']))
                         <span>Nenhum medicamento encontrado</span>
-                    @elseif ($medicamentos['content'] != null)
+                    @elseif (isset($medicamentos['content']))
                         <div class="grid grid-cols-2 gap-4">
                         @foreach ($medicamentos['content'] as $med)
                             @php    
@@ -42,11 +42,11 @@
                                 <span> Razao social: {{ $med['razaoSocial'] }} </span>
                                 <button id="{{ $numProcesso }}"   
                                     wire:click.prevent="addMedicamento('{{$numProcesso}}', '{{$nomeProduto}}')"
-                                    class="inline-block rounded bg-purple-300 my-3 px-3 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-400 hover:shadow-purple-400 focus:outline-none focus:ring-0">
+                                    class="inline-block rounded bg-purple-300 my-3 px-3 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-400 hover:shadow-purple-400 focus:outline-none focus:ring-0"
                                     @if (in_array($numProcesso, $selectedMedicamentos))
                                         disabled
                                     @endif>
-                                    Adicionar
+                                        Adicionar
                                 </button>
                             </div>
                         @endforeach
@@ -61,20 +61,27 @@
                     @if (empty($selectedMedicamentos))
                         <span>Nenhum medicamento selecionado</span>
                     @else
+                        @php
+                            $count = 0;
+                        @endphp
                         <div class="grid gap-2">
-                            @foreach ($selectedMedicamentosName as $selected)
-                                <span>
-                                    {{ $selected }}
-                                    <button wire:click.prevent="removeMedicamento('{{ $selected }}')" class="hover:font-bold">- Remover</button>
-                                </span>
+                            @foreach ($selectedMedicamentos as $selected)
                                 @php
                                     $stringInput = $selected . ',' . $stringInput;
+                                    //nome
+                                    $name = $selectedMedicamentosName[$count];
+                                    $count++;
                                 @endphp
+                                <span>
+                                    {{ $name }}
+                                    <button wire:click.prevent="removeMedicamento('{{ $selected }}')" class="hover:font-bold">- Remover</button>
+                                </span>
                             @endforeach
                         </div>
                         @php
                         // Remove the trailing comma
                             $stringInput = rtrim($stringInput, ',');
+                            //echo $stringInput;
                         @endphp
                     @endif
                 </div>

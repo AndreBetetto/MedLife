@@ -23,7 +23,7 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         Médico
                     </label>
-                    <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text"
+                    <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled type="text"
                     value="{{$medico->nome}}, {{$medico->sobrenome}}">
                 </div>
 
@@ -86,7 +86,7 @@
                             $numDia = $checklist->numDia+1;
                         }
                     @endphp
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled name="numDia" id="numDia" type="text"
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled type="text"
                     value="{{$numDia}}">
                     <input type="hidden" id="numDia" name="numDia" value="{{$numDia}}">
                 </div>
@@ -237,28 +237,7 @@
                     
                 </div>--}}
                 <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="sintomas" name="sintomas" type="hidden" maxlength="100"
-                    value=" ">
-            </div>
-            <div class="my-5 col-span-2 h-px w-full bg-black"></div> 
-            <div class="col-span-2 flex flex-wrap items-center py-4">
-                <div class="w-full px-3 text-center">
-                    <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center">
-                        Medicamentos
-                        <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
-                    </h2><br>
-                </div>
-                    @php
-                        $medicamentos = $formsDiarios->medicamentos;
-                        $ids = explode(',', str_replace(['[', ']'], '', $medicamentos));
-                        //dd($ids);
-                    @endphp
-                    <div class="w-full text-center justify-center items-center">
-                        <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
-                            @livewire('apresenta-remedio', ['ids' => $ids])
-                        </div>
-                    </div> 
-
-                
+                    value="">
             </div>
             <div class="my-5 col-span-2 h-px w-full bg-black"></div>
             <div class="col-span-2 flex flex-wrap">
@@ -295,11 +274,26 @@
                 <input type="hidden" name="alergias" id="alergias" value="AlergiasAAmendoim">
                 <input type="hidden" name="diagnostico" id="diagnostico" value="not">
             </div>
+            <div class="my-5 col-span-2 h-px w-full bg-black"></div> 
+            <div class="col-span-2 flex flex-wrap items-center py-4">
+                <div class="w-full px-3 text-center">
+                    <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center">
+                        Medicamentos
+                        <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
+                    </h2><br>
+                </div>
+                    @php
+                        $medicamentos = $formsDiarios->medicamentos;
+                        $ids = explode(',', str_replace(['[', ']'], '', $medicamentos));
+                        //dd($ids);
+                    @endphp
+                    <div class="w-full text-center justify-center items-center">
+                        <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
+                            @livewire('apresenta-remedio', ['ids' => $ids])
+                        </div>
+                    </div> 
+            </div> 
         </div>
-        <div class="mt-5 col-span-2 flex justify-center">
-            <button class="mt-12 flex-shrink-0 bg-purple-300 border-purple-300 text-sm border-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 py-1 px-2 rounded ml-auto" type="button">
-                Enviar Dados <input wire:submit.prevent="submitForm" type="submit" name="ENVIAR">
-            </button>
-        </div>
+        
     </form>
 </div>

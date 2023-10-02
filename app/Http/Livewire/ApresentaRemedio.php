@@ -51,8 +51,13 @@ class ApresentaRemedio extends Component
             } else {
                 // Handle the successful cURL request
                 $arrayMed = json_decode($response, true);
-                $nome = $arrayMed['nomeComercial'];
-                array_push($this->medNomes, $nome);
+                //dd($arrayMed);
+                if(isset($arrayMed))
+                {
+                    $nome = $arrayMed['nomeComercial'];
+                    array_push($this->medNomes, $nome);
+                }
+                
             }
             
 

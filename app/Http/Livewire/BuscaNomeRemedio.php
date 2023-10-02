@@ -108,6 +108,7 @@ class BuscaNomeRemedio extends Component
         //dd($str);
         // Add the selected medicine to the $selectedMedicamentos array
         array_push($this->selectedMedicamentos, $str);
+        //dd($this->selectedMedicamentos);
         array_push($this->selectedMedicamentosName, $name);
         //dd($this->selectedMedicamentos);
     }
