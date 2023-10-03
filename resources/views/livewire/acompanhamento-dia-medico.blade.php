@@ -136,11 +136,13 @@
             
         @endphp
         <br><br>
-        <div style="width: 50%" >
+        <div style="width: 65%" >
             <canvas id="painChart" ></canvas>
         </div>
 
-        <div style="width: 50%" >
+        <br><br>
+
+        <div style="width: 65%" >
             <canvas id="feverChart" ></canvas>
         </div>
         
@@ -150,12 +152,19 @@
           
             new Chart(ctxPain, {
               type: 'line',
+              title: 'Nivel da dor do paciente durante os ultimos ' + @json($totalDays) + ' dias',
               data: {
                 labels: @json($labels),
                 datasets: [{
                   label: '# Nivel da dor',
                   data: @json($painLevel),
-                  borderWidth: 1
+                  borderWidth: 3,
+                  borderColor: [
+                    'rgba(2, 90, 83, 0.4)'
+                  ],
+                  backgroundColor: [
+                    'rgba(2, 90, 83, 0.8)'
+                  ]
                 }
             ]
               },
@@ -170,36 +179,35 @@
             });
 
             new Chart(ctxFever, {
-              type: 'line',
-              data: {
-                labels: @json($labels),
-                datasets: [{
-                  label: '# Temperatura corporal',
-                  data: @json($bodyTemp),
-                  borderWidth: 1
-                },
-                {
-                    data: @json($hipotermiaRange),
-                    fill: true,
-                    showLine: false
-                }
-                
-            ]
-              },
-              options: {
-                scales: {
-                  y: {
-                    beginAtZero: true,
-                    max: 50,
-                    min: 25
-                  }
-                },
-                plugins: {
-                    filler: {
-                        propagate: true
+                type: 'line',
+                data: {
+                    labels: @json($labels),
+                    datasets: [{
+                        label: '# Temperatura corporal',
+                        data: @json($bodyTemp),
+                        borderWidth: 3,
+                        borderColor: [
+                            'rgba(211, 134, 0, 0.4)'
+                        ],
+                        backgroundColor: [
+                            'rgba(211, 134, 0, 0.1)'
+                        ]
+                    }
+                ]},
+                options: {
+                    scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 50,
+                        min: 25
+                    }
+                    },
+                    plugins: {
+                        filler: {
+                            propagate: true
+                        }
                     }
                 }
-              }
             });
  
         </script>
