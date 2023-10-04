@@ -19,6 +19,7 @@
         "@alpinejs/mask": "^3.13.0",
         "@alpinejs/persist": "^3.13.0",
         "chart.js": "^4.4.0",
+        "tinymce": "^5.10.7",
         "tw-elements": "1.0.0-beta3"
     }
 }

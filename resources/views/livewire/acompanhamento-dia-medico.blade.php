@@ -15,6 +15,7 @@
         <select
             placeholder="Select one"
             wire:model="selectedDay"
+            wire:change="getFormDia"
             class="border rounded border-gray-400 w-3/4">
             @for ($i = 1; $i <= $totalDays; $i++)
                 @if ($i <= $diaMaxRespondido)
@@ -25,6 +26,8 @@
             @endfor
         </select>
     </div>
+
+    {{--<textarea id="mytextarea">Hello, World!</textarea>--}}
 
     <div>
         <label class="font-bold text-gray-700">Nível da dor</label>

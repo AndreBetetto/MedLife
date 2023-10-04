@@ -47,7 +47,7 @@
 
                         <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
                             <p class="text-sm leading-6 text-gray-900"> {{ $medico->crm }} </p>
-                            <p> {{ $medico->id }} </p>
+                            
 
                             @if (!$isSelected)
                                 <p class="mt-1 text-xs leading-5 text-gray-500">

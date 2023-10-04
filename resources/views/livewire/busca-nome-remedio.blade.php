@@ -46,7 +46,11 @@
                                     @if (in_array($numProcesso, $selectedMedicamentos))
                                         disabled
                                     @endif>
+                                    @if (in_array($numProcesso, $selectedMedicamentos))
+                                        Ja adicionado
+                                    @else
                                         Adicionar
+                                    @endif
                                 </button>
                             </div>
                         @endforeach

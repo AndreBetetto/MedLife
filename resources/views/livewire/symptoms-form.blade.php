@@ -31,18 +31,18 @@
             Sintomas
         </p>
     </div>
-    <select name="sym[]" id="sym[]" wire:model="symAll" multiple='' >
+    <select name="symHead[]" id="symHead[]" wire:model="symAll" multiple='' >
         @foreach ($symptoms as $symptomHead)
             <option value="{{ $symptomHead['ID'] }}">{{ __('translations.'.$symptomHead['Name']) }}</option>
         @endforeach
         
     </select>
     <script>
-        new MultiSelectTag('sym[]')  // id
+        new MultiSelectTag('symHead[]')  // id
     </script>
     @if ($dataFetched == true)
         <script>
-            new MultiSelectTag('sym[]', {
+            new MultiSelectTag('symHead[]', {
                 shadow: true,
                 placeholder: 'Sintomas da cabeca'  // default Search...
             })  // id

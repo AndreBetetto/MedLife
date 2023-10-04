@@ -30,11 +30,19 @@ class AcompanhamentoDiaMedico extends Component
     public bool $loadData = false;
     public bool $erro = false;
     public bool $graphicActive = false;
+    public bool $trocaDia = false;
 
     public function getToken()
     {
         $token = env('APIMEDIC_SAND_KEY');
         return $token;
+    }
+
+    public function getFormDia()
+    {
+        $this->getSymptoms();
+        //$this->getDiagnostico();
+        $this->loadData = true;
     }
 
     public function getSexo()

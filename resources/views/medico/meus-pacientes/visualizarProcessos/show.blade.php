@@ -35,9 +35,16 @@
                     <div class="grid grid-cols-4 bg-white dark:bg-slate-800">
                         <span class="text-base border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $formDiarios->id }}</span>
                         <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $qntDias }} de {{ $formDiarios->numDias}}</span>
-                        <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $status}}</span>                        <span class="text-base border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">
-                            <a href="{{ route('areamedico.acessoProcessosForms', ['idPac' => $formDiarios->paciente_id, 'idForm' => $formDiarios->id ]) }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-400 hover:shadow-purple-400 focus:outline-none focus:ring-0">Ver respostas</a></span>
-                        </span>
+                        <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $status}}</span>                        
+                        @if ($status != 'Aguardando')
+                        <span class="text-base border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">
+                            <a href="{{ route('areamedico.acessoProcessosForms', ['idPac' => $formDiarios->paciente_id, 'idForm' => $formDiarios->id ]) }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-400 hover:shadow-purple-400 focus:outline-none focus:ring-0"
+                            
+                            >Ver respostas</a></span>
+                        </span> @else
+                        <span class="text-base border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">                           
+                            Esperando respostas do paciente</a></span>
+                        </span> @endif
                     </div>
 
                     <tr>
