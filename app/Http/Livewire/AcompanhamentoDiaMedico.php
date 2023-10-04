@@ -31,6 +31,7 @@ class AcompanhamentoDiaMedico extends Component
     public bool $erro = false;
     public bool $graphicActive = false;
     public bool $trocaDia = false;
+    public bool $fixo = false;
 
     public function getToken()
     {
@@ -40,9 +41,12 @@ class AcompanhamentoDiaMedico extends Component
 
     public function getFormDia()
     {
+        //$this->fixo = true;
+        $this->trocaDia = true;
         $this->getSymptoms();
-        //$this->getDiagnostico();
+        //dd($this->selectedDay);
         $this->loadData = true;
+
     }
 
     public function getSexo()
@@ -100,19 +104,28 @@ class AcompanhamentoDiaMedico extends Component
         $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
         $input = $formDia->sintomas;
         $token =$this->getToken();
-
-        $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
-            'symptoms' => $input,
-            'token' => $token,
-            'language' => 'en-gb'
-        ]);
-        if ($response->successful()) {
-            $this->symptoms = $response->json();
-        } else {
-            // Handle the API request failure
-            $this->symptoms = [];
-            // You can log an error message or set a default value for $this->symptoms
+        if($input != '[]')
+        {
+            $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
+                'symptoms' => $input,
+                'token' => $token,
+                'language' => 'en-gb'
+            ]);
+            if ($response->successful()) {
+                $this->symptoms = $response->json();
+            } else {
+                // Handle the API request failure
+                $this->symptoms = [];
+                // You can log an error message or set a default value for $this->symptoms
+            }
         }
+        else {
+            $this->symptoms = [];
+            $this->erro = true;
+        }
+        //$this->trocaDia = false;
+        //dd($this->symptoms);
+        
     }
 
     public function getHFtoken()

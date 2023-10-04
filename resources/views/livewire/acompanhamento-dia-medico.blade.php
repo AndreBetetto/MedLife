@@ -42,23 +42,50 @@
     <div>
         
         <label class="font-bold text-gray-700">Sintomas</label>
-        <div wire:init="init">
-            @if ($loadData)
-                @if($erro)
-                    <div id="loadesh1" wire:ignore>
-                        @foreach ($symptoms as $symptom)
-                            <li>{{ __('translations.'. $symptom['Name']) }}</li>
-                        @endforeach
-                    </div>
+        @if($trocaDia == false && $fixo == false)
+            <div wire:init="init">
+                @if ($loadData)
+                    @if(!$erro)
+                        <div id="loadesh1" wire:ignore>
+                            @foreach ($symptoms as $symptom)
+                                <li>{{ __('translations.'. $symptom['Name']) }}</li>
+                            @endforeach
+                        </div>
+                    @else
+                        <div id="loadesh2" wire:ignore>
+                            <p>* Erro ao carregar dados (nao esqueca de trocar a API key) </p>
+                        </div>
+                    @endif
+                    @php
+                        $loadData = false;
+                        $trocaDia = true;
+                    @endphp
                 @else
-                    <div id="loadesh2" wire:ignore>
-                        <p>* Erro ao carregar dados (nao esqueca de trocar a API key) </p>
-                    </div>
+                    Carregando dados...
                 @endif
-            @else
-                Carregando dados...
-            @endif
-        </div>
+            </div>
+        @elseif($trocaDia == true)
+            <div>
+                @if ($loadData)
+                    @if(!$erro)
+                        <div id="loadesh1" wire:ignore>
+                            @foreach ($symptoms as $symptom)
+                                <li>{{ __('translations.'. $symptom['Name']) }}</li>
+                            @endforeach
+                        </div>
+                    @else
+                        <div id="loadesh2" wire:ignore>
+                            <p>* Erro ao carregar dados (nao esqueca de trocar a API key) </p>
+                        </div>
+                    @endif
+                    @php
+                        $loadData = false;
+                    @endphp
+                @else
+                    Carregando dados...
+                @endif
+            </div>
+        @endif
     </div>
 
     <div>
