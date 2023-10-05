@@ -4,16 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PacienteEditRequest;
 use App\Models\Paciente;
-use Illuminate\Http\Request;
 use App\Http\Requests\PacienteStoreRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Medico;
 use App\Http\Requests\pacMedStore;
 use App\Models\PacienteMedico;
-use Illuminate\Support\Facades\Http;
-use App\Http\Requests\recomendaMedico;
-use GuzzleHttp\Client;
 use App\Models\formDiario as formDiario;
 use App\Models\checklist as Checklist;
 use App\Http\Requests\FormSave;
@@ -23,96 +19,76 @@ class PacienteController extends Controller
     /**
      * Display a listing of the resource.
      */
-    
+    public function getUser()
+    {
+        $user  = User::where('id', auth()->user()->id)->first();
+        return $user;
+    }
+
+    public function getPaciente()
+    {
+        $user = $this->getUser();
+        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        return $paciente;
+    }
 
     public function aareConsulta()
     {
-        $user  = User::where('id', auth()->user()->id)->first();
-        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        $user  = $this->getUser();
+        $paciente = $this->getPaciente();
 
         return view('paciente.areaConsulta.detalhes', compact('user', 'paciente'));
     }
 
     public function index()
     {
-        $user  = User::where('id', auth()->user()->id)->first();
-        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        $user  = $this->getUser();
+        $paciente = $this->getPaciente();
 
         return view('paciente.profile.index', compact('user', 'paciente'));
     }
 
     public function areapaciente()
     {
-        $user  = User::where('id', auth()->user()->id)->first();
-        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        $user  = $this->getUser();
+        $paciente = $this->getPaciente();
 
         return view('paciente.area.index', compact('user', 'paciente'));
     }
 
     public function buscarMedicos()
     {
-        $user  = User::where('id', auth()->user()->id)->first();
-        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        $user  = $this->getUser();
+        $paciente = $this->getPaciente();
         $medicos = Medico::all();
         $specialty = null;
-        $jaSelecionados = PacienteMedico::where('paciente_id', $paciente->id)->get();
+        $jaSelecionados = $this->getPacMed();
 
         return view('paciente.buscarMedico.index', compact('user', 'paciente', 'medicos', 'jaSelecionados', 'specialty'));
     }
 
+    public function getPacMed()
+    {
+        $paciente = $this->getPaciente();
+        $pacMeds = PacienteMedico::where('paciente_id', $paciente->id)->get();
+        return $pacMeds;
+    }
+
     public function meusMedicos()
     {
-        $user  = User::where('id', auth()->user()->id)->first();
-        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        $user  = $this->getUser();
+        $paciente = $this->getPaciente();
         $medicos = Medico::all();
         $specialty = null;
-        $pacMeds = PacienteMedico::where('paciente_id', $paciente->id)->get();
+        $pacMeds = $this->getPacMed();
         return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos', 'pacMeds', 'specialty'));
-    }
-
-    protected $httpClient;
-    
-    public function __construct()
-    {
-        $this->httpClient = new Client([
-            'base_uri' => 'https://api.openai.com/v1/',
-            'headers' => [
-                'Authorization' => 'Bearer ' . env('OPENAI_API_KEY'),
-                'Content-Type' => 'application/json',
-            ],
-        ]);
-    }
-    
-    
-    public function recomendaMedico(recomendaMedico $request)
-    {
-        // Dados do formulário
-        $symptoms = $request->input('input');
-
-        // Configuração do cliente Guzzle
-        $message = "what is laravel";
-        $response = $this->httpClient->post('chat/completions', [
-            'json' => [
-                'model' => 'gpt-3.5-turbo',
-                'messages' => [
-                    ['role' => 'system', 'content' => 'You are'],
-                    ['role' => 'user', 'content' => $message],
-                ],
-            ],
-        ]);
-
-        return json_decode($response->getBody(), true)['choices'][0]['message']['content'];
- 
-       // Redireciona para a view paciente.meusMedicos.index com a especialidade recomendada
-        //return redirect()->route('paciente.buscarmedico.index', ['specialty' => $result]);
-
     }
 
     public function detalhesMedico($id)
     {
         $medico = Medico::where('id', $id)->first();
         $user = User::where('id', $medico->user_id)->first();
-        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        $paciente = $this->getPaciente();
         $todosPacs = Paciente::all();
         $pacMeds = PacienteMedico::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
         $formDiarios = formDiario::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
@@ -163,11 +139,11 @@ class PacienteController extends Controller
             $formDiario->update(['status' => 'Em andamento']);
             $checklist->update(['status' => 'em andamento']);
         }
-        $user  = User::where('id', auth()->user()->id)->first();
-        $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+        $user  = $this->getUser();
+        $paciente = $this->getPaciente();
         $medicos = Medico::all();
         $specialty = null;
-        $pacMeds = PacienteMedico::where('paciente_id', $paciente->id)->get();
+        $pacMeds = $this->getPacMed();
         return view('paciente.meusMedicos.index', compact('user', 'paciente', 'medicos', 'pacMeds', 'specialty'));
    
     }

@@ -19,10 +19,6 @@
             <br><h3 class="text-lg font-bold leading-7 text-gray-600">Seção do Paciente</h3><br>
         </div>
 
-        <div class="pb-2">
-            <label class="font-semibold">Formulário </label> <a href="{{ route('areamedico.criarForms') }}" class="px-11 hover:font-bold hover:text-gray-700">Ver formulário</a><br>
-        </div>
-
         <label class="font-semibold">Meus pacientes</label> <a href="{{ route('areamedico.meusPacientes') }}" class="px-3 hover:font-bold hover:text-gray-700">Ver pacientes</a>
     </div>
 </div>

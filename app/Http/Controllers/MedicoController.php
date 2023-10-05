@@ -5,13 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Medico;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\patient;
-use Carbon\Carbon;
-use App\Models\UserEndereco;
-use App\Http\Requests\MedicoStoreRequest;
+use Illuminate\Support\Carbon;
 use App\Models\Paciente;
 use App\Models\PacienteMedico;
-use GuzzleHttp\Client;
 use App\Http\Requests\RemedioStore;
 use App\Models\medicamentos;
 use App\Http\Requests\FormsDiario;
@@ -21,43 +17,51 @@ use App\Models\formDiario as ModelFormDiario;
 
 class MedicoController extends Controller
 {
+
+    public function getUser()
+    {
+        $user  = User::where('id', auth()->user()->id)->first();
+        return $user;
+    }
+
+    public function getMedico()
+    {
+        $user = $this->getUser();
+        $medico = Medico::where('user_id', auth()->user()->id)->first();
+        return $medico;
+    }
+
     public function index()
     {
-        $row = User::where('id', auth()->user()->id)->first();
+        $row = $this->getUser();
         return view('medico.registro.index', compact('row'));
     }
 
     public function areamedico()
     {
-        $medico = Medico::where('user_id', auth()->user()->id)->first();
-        $row = User::where('id', auth()->user()->id)->first();
+        $medico = $this->getMedico();
+        $row = $this->getUser();
         return view('medico.visualizacao.index', compact('row', 'medico'));
-    }
-
-    public function visual()
-    {
-        return 0;
     }
 
     public function laudoView()
     {
-        $medico = Medico::where('user_id', auth()->user()->id)->first();
+        $medico = $this->getMedico();
         return view('medico.visualizacao.index', compact('medico'));
     }
 
     public function criarForms()
     {
         //Sera deletado e implementado em addForm
-        $medico = Medico::where('user_id', auth()->user()->id)->first();
-        $row = User::where('id', auth()->user()->id)->first();
+        $medico = $this->getMedico();
+        $row = $this->getUser();
         return view('medico.forms_diario.index', compact('row', 'medico'));
     }
 
     public function meusPacientes()
     {
-
-        $user  = User::where('id', auth()->user()->id)->first();
-        $medico = Medico::where('user_id', auth()->user()->id)->first();
+        $user  = $this->getUser();
+        $medico = $this->getMedico();
         $pacientes = Paciente::all();
         $formsDiario = ModelFormDiario::all();
         $pacMeds = PacienteMedico::where('medico_id', auth()->user()->id)->get();
