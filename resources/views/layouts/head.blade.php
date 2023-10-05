@@ -22,7 +22,7 @@
         </style>
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/themeSwitcher.js', 'resources/js/passwordSwitcher.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/themeSwitcher.js', 'resources/js/passwordSwitcher.js', '/resources/js/tinymce.min.js'])
         @livewireStyles
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
         <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
@@ -30,6 +30,5 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/roundSlider/1.3.2/roundslider.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="/resources/js/tinymce.min.js"></script>
         <x-head.tinymce-config />
     </head>

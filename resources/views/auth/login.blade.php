@@ -5,7 +5,7 @@
     <!-- <a  href="/"><x-application-logo class="w-1/2" /></a> -->
     <form class="w-full flex justify-center items-center flex-col" method="POST" action="{{ route('login') }}">
     @csrf
-        <h1 class="mx-1/6 font-bold text-2xl w-4/6 mb-5">Entrar</h1>
+        <h1 class="mx-1/6 font-bold text-2xl w-4/6 mb-5 dark:text-white">Entrar</h1>
         <!-- Email Address -->
         <div class="w-4/6">
             <x-input-label for="email" :value="__('Email')" />
@@ -23,7 +23,7 @@
                                 name="password"
                                 required autocomplete="current-password" />
                                 <button type="button" id="PasswordButton"><img id="eye" src="eye.svg" alt="olhinho"></button>
-
+                
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
         </div>

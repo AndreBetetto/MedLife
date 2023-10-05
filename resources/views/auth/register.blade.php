@@ -1,7 +1,7 @@
 <x-guest-layout>
     <form method="POST" class="flex flex-col items-center justify center" action="{{ route('register') }}">
         @csrf
-        <h1 class="mx-1/6 font-bold text-2xl w-4/6 mb-5">Registrar</h1>
+        <h1 class="mx-1/6 font-bold text-2xl w-4/6 mb-5 dark:text-white">Registrar</h1>
         <!-- Name -->
         <div class="w-4/6">
             <x-input-label for="name" :value="__('Nome')" />

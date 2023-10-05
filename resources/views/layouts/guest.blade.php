@@ -5,7 +5,7 @@
         
         <main class="h-full grid justify-items-center content-center place-items-center">
             <div class="rounded-md shadow-2xl shadow-gray-600 bg-violet-100 w-2/3 grid grid-cols-5">
-                <div class="rounded-md bg-gray-100 col-span-2 grid items-center grid-cols-1">
+                <div class="rounded-md bg-gray-100 dark:bg-slate-800 col-span-2 grid items-center grid-cols-1">
                     {{ $slot }}
                 </div>
                 <div class="col-span-3">
