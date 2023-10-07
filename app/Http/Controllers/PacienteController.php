@@ -139,6 +139,7 @@ class PacienteController extends Controller
             $formDiario->update(['status' => 'Em andamento']);
             $checklist->update(['status' => 'em andamento']);
         }
+        $formDiario->update(['new' => TRUE]);
         $user  = $this->getUser();
         $paciente = $this->getPaciente();
         $medicos = Medico::all();

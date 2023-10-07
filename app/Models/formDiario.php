@@ -16,7 +16,14 @@ class formDiario extends Model
         'observacoes',
         'medicamentos',
         'diagnostico',
-        'status'
+        'status',
+        'new'
     ];
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class);
+
+    }
 }
  
