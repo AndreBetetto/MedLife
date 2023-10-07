@@ -160,7 +160,7 @@
                 </div>
 
                 {{-- Parte das observacoes --}}
-                <textarea id="observacoesPaciente">{{$formsDiarios->observacoes}}</textarea>
+                <textarea id="observacoesPaciente" readonly>{{$formsDiarios->observacoes}}</textarea>
                 {{-- Parte das observacoes --}}
                 
                 <!-- <svg viewBox="0 0 36 36" fill="none" role="img" xmlns="http://www.w3.org/2000/svg" width="80" height="80"><mask id=":rdg:" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" fill="#FFFFFF"></rect></mask><g mask="url(#:rdg:)"><rect width="36" height="36" fill="#e83535"></rect><rect x="0" y="0" width="36" height="36" transform="translate(7 1) rotate(133 18 18) scale(1.1)" fill="#e2d9c2" rx="6"></rect><g transform="translate(3.5 -4) rotate(-3 18 18)"><path d="M15 20c2 1 4 1 6 0" stroke="#000000" fill="none" stroke-linecap="round"></path><rect x="11" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect><rect x="23" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect></g></g></svg> -->
