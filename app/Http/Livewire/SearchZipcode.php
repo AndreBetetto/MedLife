@@ -33,11 +33,21 @@ class SearchZipcode extends Component
     {
         $response = Http::get("https://viacep.com.br/ws/{$value}/json/")->json();
 
-        $this->cep = $response['cep'];
-        $this->rua = $response['logradouro'];
-        $this->bairro = $response['bairro'];
-        $this->cidade = $response['localidade'];
-        $this->estado = $response['uf'];
+        if(in_array("erro", $response) && $response["erro"]!=false)
+        {
+            $this->rua = "Seu cep não existe";
+            $this->bairro = '';
+            $this->cidade = '';
+            $this->estado = '';
+        }
+        else
+        {
+            $this->cep = $response['cep'];
+            $this->rua = $response['logradouro'];
+            $this->bairro = $response['bairro'];
+            $this->cidade = $response['localidade'];
+            $this->estado = $response['uf'];
+        }
     }
 
     // public function save(): void

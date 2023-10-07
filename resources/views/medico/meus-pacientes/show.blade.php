@@ -1,8 +1,8 @@
 
-<div class="bg-white">
+<div class="dark:bg-slate-800">
     <div class="mx-auto max-w-2xl px-4 py-20 sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">
         <div class="flex justify-center items-center">
-            <h2 class="text-xl font-bold leading-tight text-gray-800 mt-4 my-5 mb-8">Pacientes</h2>
+            <h2 class="text-xl font-bold leading-tight text-gray-800 dark:text-white mt-4 my-5 mb-8">Pacientes</h2>
         </div>
         @php
             use Illuminate\Support\Facades\File;
@@ -43,7 +43,7 @@
                             <a href="{{ route('areamedico.acessoProcessos', ['idPac' => $paciente->id]) }}" class="hover:font-semibold">Ver respostas</a>
                             <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $paciente->id]) }}" method="GET">
                                 @csrf
-                                <button type="submit" class="font-bold">Criar formulario</button>
+                                <button type="submit" class="font-bold">Criar formulário</button>
                             </form>
                         </div>
                     @endif

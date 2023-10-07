@@ -15,7 +15,7 @@
                     </div>
                     <div class="grid gap-1">
                         <span class="font-semibold">Observação</span>
-                        <input type="text" name="observacao" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" value="Escreva">
+                        <input type="text" name="observacao" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6 dark:placeholder:text-gray-400" placeholder="Prescrição">
                         <x-input-error class="mt-2" :messages="$errors->get('observacao')" />
                     </div>
                 </div>
@@ -38,8 +38,8 @@
                                 $nomeProduto = $med['nomeProduto'];
                             @endphp
                             <div class="grid">
-                                <span> Nome: {{ $med['nomeProduto'] }} </span>
-                                <span> Razao social: {{ $med['razaoSocial'] }} </span>
+                                <span>Nome: {{ Str::title($med['nomeProduto']) }} </span>
+                                <span>Razão social: {{ Str::title($med['razaoSocial']) }} </span>
                                 <button id="{{ $numProcesso }}"   
                                     wire:click.prevent="addMedicamento('{{$numProcesso}}', '{{$nomeProduto}}')"
                                     class="inline-block rounded bg-purple-300 my-3 px-3 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-400 hover:shadow-purple-400 focus:outline-none focus:ring-0"
@@ -90,7 +90,7 @@
                     @endif
                 </div>
                 <input type="hidden" name="medicamentos" value="{{ $stringInput }}">
-                <input type="submit" value="Enviar" name="enviar" class="font-bold text-gray-600 hover:text-gray-900">
+                <input type="submit" value="Enviar" name="enviar" class="font-bold text-gray-600 hover:text-gray-900 dark:hover:text-gray-400">
             </div>
         </div>
     </form>
