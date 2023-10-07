@@ -97,6 +97,7 @@ class MedicoController extends Controller
     public function passarParaPaciente(FormsDiario $request)
     {
         $data = $request->validated();
+        //dd($data); //para testes
         $data['status'] = 'Aguardando';
         $data['diagnostico'] = '';
         //dd($data); //para testes

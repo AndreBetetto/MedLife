@@ -1,9 +1,9 @@
-
-<script type="text/javascript">
-   tinymce.init({
-     selector: '#mytextarea', // Replace this CSS selector to match the placeholder element for TinyMCE
-     plugins: 'powerpaste advcode table lists checklist',
-     toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
-   });
+<script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: 'textarea#observacoes', // Replace this CSS selector to match the placeholder element for TinyMCE
+    plugins: 'code table lists save',
+    toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table | save',
+    save_enablewhendirty: false
+  });
 </script>
-
