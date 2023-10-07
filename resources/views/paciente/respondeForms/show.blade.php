@@ -277,7 +277,7 @@
             <div class="my-5 col-span-2 h-px w-full bg-black"></div> 
             <div class="col-span-2 flex flex-wrap items-center py-4">
                 <div class="w-full px-3 text-center">
-                    <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center">
+                    <h2 class="text-xl font-semibold leading-tight dark:text-white items-center">
                         Medicamentos
                         <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
                     </h2><br>

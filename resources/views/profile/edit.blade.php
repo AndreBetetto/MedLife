@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <main class="pt-24 pb-12 mx-20 grid grid-cols-3">
+    <main class="pt-24 pb-12 mx-20 grid grid-cols-1">
         <div class="">
             <div class="">
                 <h2>Detalhes da conta</h2>
@@ -15,7 +15,17 @@
             </div>
         </div>
         <div class="grid-cols-2">
-
+            <div class="hidden md:flex md:items-center md:ml-6 ">
+                <form action="{{ route('language') }}" method="POST">
+                    @csrf
+                    <select name="language" onchange="this.form.submit()" class="border rounded border-gray-400 dark:bg-slate-800">
+                        <option value="en" {{ session('language') == 'en' ? 'selected' : '' }}>English</option>
+                        <option value="pt-br" {{ session('language') == 'pt-br' ? 'selected' : '' }}>Português</option>
+                        <option value="es" {{ session('language') == 'es' ? 'selected' : '' }}>Español</option>
+                        <option value="de" {{ session('language') == 'de' ? 'selected' : '' }}>Germany</option>
+                    </select>
+                </form>
+            </div>
         </div>
     </main>
     <!-- <div class="py-12">

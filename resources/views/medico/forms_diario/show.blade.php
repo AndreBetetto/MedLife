@@ -4,7 +4,7 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <div class="w-full text-center justify-center items-center">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+        <h2 class="text-xl font-semibold leading-tight dark:text-white">
             Informações Pós-Operatório
         </h2><br>
     </div>
@@ -13,51 +13,51 @@
         <div class="grid grid-cols-2 items-center  w-full -mx-3 mb-6">
         <div class="w-full flex flex-col items-center">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                <label class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2" for="grid-first-name">
                     Médico
                 </label>
-                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text">
+                <input class="appearance-none block w-max bg-gray-200 dark:text-white dark:bg-slate-800 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text">
             </div>
 
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                <label class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2" for="grid-first-name">
                     Nome
                 </label>
-                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text">
+                <input class="appearance-none block w-max bg-gray-200 dark:text-white dark:bg-slate-800 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text">
             </div>
 
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                <label class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2" for="grid-first-name">
                     Idade
                 </label>
-                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text">
+                <input class="appearance-none block w-max bg-gray-200 dark:text-white dark:bg-slate-800 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text">
             </div>
 
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                <label class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2" for="grid-first-name">
                     Sexo
                 </label>
-                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text">
+                <input class="appearance-none block w-max bg-gray-200 dark:text-white dark:bg-slate-800 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text">
             </div>
 
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                <label class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2" for="grid-first-name">
                     Profissão
                 </label>
-                <input class="appearance-none block w-max bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text">
+                <input class="appearance-none block w-max bg-gray-200 dark:text-white dark:bg-slate-800 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" disabled id="grid-first-name" type="text">
             </div>
         </div>
         
         <div class="w-full flex flex-col items-center">
             <div class="w-full md:w-max px-20 mb-6 md:mb-0 mr-auto">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                <label class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2" for="grid-last-name">
                     Dia
                 </label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled id="grid-last-name" type="text">
+                <input class="appearance-none block w-full bg-gray-200 dark:text-white dark:bg-slate-800 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" disabled id="grid-last-name" type="text">
             </div>
 
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                <label class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2" for="grid-last-name">
                     Grau de dor                    
                 </label>
                     <div class="inline-flex rounded-md shadow-sm" role="group">
@@ -104,7 +104,7 @@
             </div><br>
     
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                <label class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2" for="grid-last-name">
                     Grau de Sangramento
                 </label>
                 
@@ -130,7 +130,7 @@
             </div>
 
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                <label class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2" for="grid-last-name">
                     <br><br>Febre
                     <div id="test-slider">
                         <input type="range" min="0" max="100" />
@@ -139,10 +139,10 @@
             </div>
 
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                <label class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2" for="grid-last-name">
                     Outros sintomas
                 </label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" maxlength="100">
+                <input class="appearance-none block w-full bg-gray-200 dark:text-white  dark:bg-slate-800 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" maxlength="100">
             </div>
         </div> 
 
@@ -151,13 +151,13 @@
 
         <div class="flex flex-wrap -mx-3 mb-6 items-center">
             <div class="w-full px-3 text-center">
-                <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center -mt-12">
+                <h2 class="text-xl font-semibold leading-tight dark:text-white items-center -mt-12">
                     <br>Medicamentos
                 </h2><br>
             </div>
             
             <div class="w-full text-center justify-center items-center">
-                <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
+                <div class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2 px-10" for="grid-last-name">
                     Dipirona&nbsp; &nbsp;
                     <label>
                         <input type="checkbox" class=""/>
@@ -179,13 +179,13 @@
 
         <div class="flex flex-wrap -mx-3 mb-6 ">
             <div class="w-full px-3 text-center justify-center items-center">
-                <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center mt-4">
+                <h2 class="text-xl font-semibold leading-tight dark:text-white items-center mt-4">
                     <br>Curativos
                 </h2><br>
             </div>
 
             <div class="w-full text-center justify-center items-center">
-                <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10 justify-center items-center" for="grid-last-name">
+                <div class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2 px-10 justify-center items-center" for="grid-last-name">
                     Higienizar&nbsp; &nbsp;
                     <label>
                         <input type="checkbox" class=""/>
@@ -204,7 +204,7 @@
                 </div>
             </div>
             
-            <button class="mt-12 flex-shrink-0 bg-purple-300 border-purple-300 text-sm border-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 py-1 px-2 rounded ml-auto" type="button">
+            <button class="mt-12 flex-shrink-0 bg-purple-300 border-purple-300 text-sm border-4 text-gray-500 dark:text-gray-400 hover:dark:text-white py-1 px-2 rounded ml-auto" type="button">
                 Enviar Dados
             </button>
         </div>
