@@ -26,7 +26,7 @@
             <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 @forelse ($pacientes as $paciente)
                     @php
-                        //verify if new? is true in formsDiario
+                        //verify if new is true in formsDiario
                         
 
                         foreach ($formsDiario as $formDiario) {
@@ -37,9 +37,8 @@
                                 $new = false;
                             }
                         }                        
-                        
-
                         $pacienteId = $paciente->id;
+                        //dd($paciente);
                         $isSelected = $pacMeds->contains('medico_id', $pacienteId);
                         $qntForms = $formsDiario->where('medico_id', $medico->id)
                                             ->where('paciente_id', $pacienteId)
