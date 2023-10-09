@@ -216,9 +216,10 @@
                                         $fileCount = 1;
                                     }
                                 @endphp
+
                                 @forelse ($pacientes as $pacientes)
                                 @php
-                                    $imgIndex = $medicoId % $fileCount;
+                                    $imgIndex = $pacientes->id % $fileCount;
                                     $imgIndex = $imgIndex == 0 ? $fileCount : $imgIndex;
                                     $imgPath = 'profilePics/'.$imgIndex.'.svg';
                                 @endphp

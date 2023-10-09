@@ -8,6 +8,7 @@ use App\Models\User;
 class SearchUser extends Component
 {
     public $search = '';
+    public $users;
     public $results = [];
 
   

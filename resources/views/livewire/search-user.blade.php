@@ -10,22 +10,12 @@
                     <x-input-error class="mt-2" :messages="$errors->get('search')" />
                 </div>
 
-                <div class="flex justify-between space-x-5 py-5">
-                    <div class="">
-                        <a href="{{ route('crudUser.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700">Usuários</a>
-                        <a href="{{ route('crudPaciente.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700">Pacientes</a>
-                        <a href="{{ route('adminmedico.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700">Médicos</a>
-                    </div>
-                </div>
-
-              
                 @if (session()->has('message'))
                 <div>
                     {{ session('message') }}
                 </div>
                 @endif
 
-                
                 <span class="text-gray-500">Usuários</span>
                 <div class="-mt-2 mb-3">
                     <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
@@ -55,7 +45,8 @@
                                 @endphp
                                 @forelse ($users as $users)
                                 @php
-                                    $imgIndex = $medicoId % $fileCount;
+                                    $usersId = $users->id;
+                                    $imgIndex = $usersId % $fileCount;
                                     $imgIndex = $imgIndex == 0 ? $fileCount : $imgIndex;
                                     $imgPath = 'profilePics/'.$imgIndex.'.svg';
                                 @endphp     

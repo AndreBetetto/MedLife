@@ -5,10 +5,10 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
-use GuzzleHttp\Client;
-use log;
+use App\Models\Medico;
 use App\Models\Paciente;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RecomendaMedico extends Component
 {
@@ -19,10 +19,18 @@ class RecomendaMedico extends Component
     public $sym = [];
     public $dataFetched = false;
     public $saida = [];
+    public $medicos;
+    public $paciente;
+    public $jaSelecionados;
+    public $fileCount;
+    public $searchMedic = '';
 
     public function render()
     {
-        return view('livewire.recomenda-medico');
+        $this->medicos = Medico::where(DB::raw('lower(nome)'), 'like', '%' . strtolower($this->searchMedic) . '%')->get();
+        return view('livewire.recomenda-medico', [
+            'medicos' => $this->medicos,
+        ]);
     }
 
     public function recomenda()
