@@ -4,7 +4,11 @@
       <a href="{{ route('crudPaciente.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0">Pacientes</a>
       <a href="{{ route('adminmedico.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0">Médicos</a>
     </div>
-    <x-button-modal class="align-middle">Adicionar médico</x-button-modal>
+    @if(Route::currentRouteName() == "adminmedico")
+      <x-button-modal class="align-middle">Adicionar médico</x-button-modal>
+    @else
+      <x-button-modal class="align-middle">Adicionar Paciente</x-button-modal>
+    @endif
 </div>
 
 
