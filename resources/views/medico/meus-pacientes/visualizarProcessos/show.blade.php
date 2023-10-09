@@ -1,10 +1,10 @@
 <div>
     <div class="px-4 sm:px-0">
-        <h3 class="text-xl font-semibold leading-7 text-gray-900 py-3">Processos</h3>
+        <h3 class="text-xl font-semibold leading-7 text-gray-900 dark:text-white py-3">Processos</h3>
     </div>
 
-    <p class="mt-1 truncate text-base leading-5 text-gray-700"> Médico: {{ $medico->nome}} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
-    <p class="mt-1 truncate text-base leading-5 text-gray-700 pb-5"> Paciente: {{ $paciente->nome}} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
+    <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300"> Médico: {{ $medico->nome}} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
+    <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300 pb-5"> Paciente: {{ $paciente->nome}} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
 
 
     <table>

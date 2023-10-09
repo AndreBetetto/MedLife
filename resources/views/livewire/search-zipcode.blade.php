@@ -17,6 +17,11 @@
                 <x-input-error class="mt-2" :messages="$errors->get('bairro')" />
             </div>
             <div>
+                <x-input-label for="complemento" :value="__('Complemento')" />
+                <x-text-input id="complemento" name="complemento" type="text" class="mt-1 block w-full" wire:model.lazy='complemento' required autofocus autocomplete="complemento" />
+                <x-input-error class="mt-2" :messages="$errors->get('complemento')" />
+            </div>
+            <div>
                 <x-input-label for="cidade" :value="__('Cidade')" />
                 <x-text-input id="cidade" name="cidade" type="text" class="mt-1 block w-full" wire:model.lazy='cidade' required autofocus autocomplete="cidade" />
                 <x-input-error class="mt-2" :messages="$errors->get('cidade')" />

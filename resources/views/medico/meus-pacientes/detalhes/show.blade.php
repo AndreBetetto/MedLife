@@ -1,8 +1,7 @@
 <div>
     {{-- The whole world belongs to you. --}}
-    Acompanhar resultados de formularios
-
-    Dia selecionado:
+    <p>Acompanhar resultados de formulários</p>
+    <span>Dia selecionado:</span>
 
     @php
         use Carbon\Carbon;
@@ -14,7 +13,5 @@
         $anoNasc = Carbon::parse($paciente->dataNasc)->format('Y');
 
     @endphp
-    @livewire('acompanhamento-dia-medico', ['qtdDias' => $qtdDias, 'diaMaxRespondido' => $diaMaxRespondido, 'id_form' => $id_form, 'totalDays' => $maxDias, 'sexo' => $paciente->sexo, 'anoNasc' => $anoNasc])
-
-    
+    @livewire('acompanhamento-dia-medico', ['qtdDias' => $qtdDias, 'diaMaxRespondido' => $diaMaxRespondido, 'id_form' => $id_form, 'totalDays' => $maxDias, 'sexo' => $paciente->sexo, 'anoNasc' => $anoNasc])    
 </div>
