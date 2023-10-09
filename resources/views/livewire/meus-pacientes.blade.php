@@ -7,7 +7,12 @@
 
             {{-- Parte da pesquisa --}}
             <input type="text" class="w-full h-10 pl-3 pr-8 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" placeholder="Pesquisar" wire:model="search">
-            <br><br><br><br>
+            <br>
+            <label for="showOnlyNewUsers" style="color: #8a2be2; cursor: pointer;">
+                <input type="checkbox" id="showOnlyNewUsers" wire:click="toggleShowOnlyNewUsers" class="mr-2" {{ $showOnlyNewUsers ? 'checked' : '' }}>
+                {{ $showOnlyNewUsers ? 'Show All Users' : 'Show Only New Users' }}
+            </label>
+            <br><br><br>
             @php
                 use Illuminate\Support\Facades\File;
                 use Illuminate\Support\Facades\Storage;
@@ -22,13 +27,12 @@
                     //echo "The specified folder does not exist or is not a directory.";
                     $fileCount = 1;
                 }
+                
             @endphp 
             <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                @forelse ($pacientes as $paciente)
+                @forelse ($pacientes as $index=>$paciente)
                     @php
-                        //verify if new is true in formsDiario
                         
-
                         foreach ($formsDiario as $formDiario) {
                             if ($formDiario->new == true) {
                                 $new = true;
@@ -37,12 +41,11 @@
                                 $new = false;
                             }
                         }                        
-                        $pacienteId = $paciente->id;
-                        //dd($paciente);
+                        $pacienteId = $arrayInfo[$index]->id;
                         $isSelected = $pacMeds->contains('medico_id', $pacienteId);
                         $qntForms = $formsDiario->where('medico_id', $medico->id)
-                                            ->where('paciente_id', $pacienteId)
-                                            ->count();
+                                                ->where('paciente_id', $pacienteId)
+                                                ->count();
                         $imgIndex = $pacienteId % $fileCount;
                         $imgIndex = $imgIndex == 0 ? $fileCount : $imgIndex;
                         $imgPath = 'profilePics/'.$imgIndex.'.svg';
@@ -53,18 +56,22 @@
                                 <img src="{{asset($imgPath)}}" alt="Paciente" class="h-full w-full object-cover object-center group-hover:opacity-75 rounded-full">
                             </div>
                             <div class="text-center text-lg">
-                                {{ $paciente->nome }} 
+                                {{ $paciente->nome }}
+                                {{ $arrayInfo[$index]->nome}} 
+                                {{ $arrayInfo[$index]->sobrenome}} 
                                 {{ $paciente->sobrenome }} 
                                 
                                 <br>
-                                <a href="{{ route('areamedico.acessoProcessos', ['idPac' => $paciente->id]) }}" class="hover:font-semibold">Ver respostas</a>
-                                <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $paciente->id]) }}" method="GET">
+                                <a href="{{ route('areamedico.acessoProcessos', ['idPac' => $pacienteId]) }}" class="hover:font-semibold">Ver respostas</a>
+                                <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $pacienteId]) }}" method="GET">
                                     @csrf
                                     <button type="submit" class="font-bold">Criar formulario</button>
                                 </form>
-                                @if($new)
+                                
+                                @if(in_array($pacienteId, $arrayVerifica))
                                     <p style="color: red">NEW!</p>
                                 @endif
+                                
                             </div>
                         @endif
                     </div>

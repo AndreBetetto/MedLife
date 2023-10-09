@@ -17,31 +17,70 @@ class MeusPacientes extends Component
     public $formsDiario = null;
     public $pacMeds = null;
     public $search ='';
+    public $arrayVerifica = [];
+    public $showOnlyNewUsers = false;
 
     public function render()
     {
         $medico_id = $this->medico->id;
-        //search patient
-        //dd($medico_id);
         $arrayPacientes = [];
+        $arrayVerifica = [];
+        $arrayInfo = [];
         $pacientes = Paciente::where(DB::raw('lower(nome)'), 'like', '%'.strtolower($this->search).'%')->get();
         foreach($pacientes as $paciente){
             $pacientes = PacienteMedico::where('paciente_id', $paciente->id)->where('medico_id', $medico_id)->first();
             //dd($pacientes);
             if($pacientes != null)
-                array_push($arrayPacientes, $pacientes);
+            {
+                if(!$this->showOnlyNewUsers){
+                    array_push($arrayPacientes, $pacientes);
+                    array_push($arrayInfo, $paciente);
+                    $formsDiario = formDiario::where('paciente_id', $paciente->id)->get();
+                    if($formsDiario != null)
+                    {
+                        foreach($formsDiario as $index=>$formDiario){
+                            if($formDiario->new == true && $formDiario != null){
+                                array_push($this->arrayVerifica, $formDiario->paciente_id);
+                                //dd($formDiario);
+                            }
+                        }
+                    }
+                } else {
+                    $formsDiario = formDiario::where('paciente_id', $paciente->id)->get();
+                    if($formsDiario != null)
+                    {
+                        $count = 0;
+                        foreach($formsDiario as $index=>$formDiario){
+                            $count++;
+                            if($formDiario->new == true && $formDiario != null){
+                                array_push($this->arrayVerifica, $formDiario->paciente_id);
+                                array_push($arrayPacientes, $pacientes);
+                                array_push($arrayInfo, $paciente);
+                            }
+                        }
+                        //dd($count);
+                    }
+                    //dd($this->arrayVerifica, $arrayPacientes, $arrayInfo);
+                }
+                
+                
+            }
         }
+
+        
+        
+        //dd($this->arrayVerifica);
+        //dd($arrayInfo);
         $pacientes = $arrayPacientes;
-        dd($pacientes);
-
-
-        return view('livewire.meus-pacientes', compact('pacientes'));
+        
+        $pacientes = array_unique($pacientes);
+        
+        return view('livewire.meus-pacientes', compact('pacientes', 'arrayInfo'));
         //dd($this->medico);
     }
 
-    public function verifyNew($patientId)
+    public function toggleShowOnlyNewUsers()
     {
-        $id = $patientId;
-
+        $this->showOnlyNewUsers = !$this->showOnlyNewUsers;
     }
 }
