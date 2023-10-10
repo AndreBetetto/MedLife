@@ -12,6 +12,7 @@
         "laravel/socialite": "^5.9",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
+        "spatie/laravel-cookie-consent": "^3.2",
         "tinymce/tinymce": "^6.7"
     },
     "require-dev": {
