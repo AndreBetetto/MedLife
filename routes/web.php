@@ -13,6 +13,7 @@ use App\Http\Controllers\PagesController as PagesController;
 use Laravel\Socialite\Facades\Socialite as Socialite;
 use App\Models\User as User;
 use App\Http\Controllers\Auth\AuthenticatedSessionController as AuthenticatedSessionController;
+use App\Models\Paciente;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::get('/sobreNos', [PagesController::class, 'sobreNos'])->name('sobreNos');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+//teste
+Route::get('/testeGPT', [PacienteController::class, 'testeGPT'])->name('testeGPT');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

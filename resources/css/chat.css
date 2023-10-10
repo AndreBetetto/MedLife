@@ -1,0 +1,17 @@
+/* public/css/chat-button.css */
+
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-button:hover {
+    background-color: #0056b3;
+}

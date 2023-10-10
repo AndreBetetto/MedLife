@@ -182,12 +182,9 @@ class PacienteController extends Controller
         return redirect()->route('profile.edit');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Paciente $paciente)
+    public function testeGPT()
     {
-        //
+        return view('test');
     }
 
     /**

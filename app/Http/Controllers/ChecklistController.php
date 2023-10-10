@@ -12,7 +12,7 @@ class ChecklistController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
