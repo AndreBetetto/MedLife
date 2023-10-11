@@ -27,7 +27,6 @@
         <button wire:click="getGPT" data-toggle="modal" data-target="#chatModal">Send</button>
     </div>
     
-    
     {{-- 
     <button id="myBtn">Open Modal</button>
     <!-- The Modal -->

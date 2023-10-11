@@ -12,7 +12,7 @@ use Illuminate\Support\Carbon;
 class AcompanhamentoDiaMedico extends Component
 {
     
-    public $symptoms = [];
+    //public $symptoms = [];
     public $sintomasCheck = null;
     public $selectedDay = 1;
     public $id_form = 1;
@@ -41,12 +41,9 @@ class AcompanhamentoDiaMedico extends Component
 
     public function getFormDia()
     {
-        //$this->fixo = true;
         $this->trocaDia = true;
-        $this->getSymptoms();
-        //dd($this->selectedDay);
         $this->loadData = true;
-
+        //$this->getSymptomsProperty();
     }
 
     public function getSexo()
@@ -99,8 +96,10 @@ class AcompanhamentoDiaMedico extends Component
         }
     }
 
-    public function getSymptoms()
+
+    public function getSymptomsProperty() 
     {
+        $symptoms = [];
         $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
         $input = $formDia->sintomas;
         $token =$this->getToken();
@@ -112,19 +111,24 @@ class AcompanhamentoDiaMedico extends Component
                 'language' => 'en-gb'
             ]);
             if ($response->successful()) {
-                $this->symptoms = $response->json();
+                $symptoms = $response->json();
             } else {
                 // Handle the API request failure
-                $this->symptoms = [];
+                $symptoms = [];
                 // You can log an error message or set a default value for $this->symptoms
             }
         }
         else {
-            $this->symptoms = [];
+            $symptoms = [];
             $this->erro = true;
         }
         //$this->trocaDia = false;
         //dd($this->symptoms);
+        return $symptoms;
+    }
+
+    public function getSymptoms()
+    {
         
     }
 
@@ -163,7 +167,12 @@ class AcompanhamentoDiaMedico extends Component
         $selectedDay = $this->selectedDay;
         $formId = $this->id_form;
         $checklist = Checklist::where('forms_id',$formId)->where('numDia',$selectedDay)->first();
-        $this->sintomasCheck = $checklist->sintomas;
+        //dd($checklist, $formId);
+        if($checklist->sintomas)
+        {
+            $this->sintomasCheck = $checklist->sintomas;
+        }
+        
         $dia = $this->selectedDay;
         $dorForms = Checklist::where('forms_id', $this->id_form)->select('numDia', 'nivelDor', 'nivelFebre')->get();
         //dd($dorForms);

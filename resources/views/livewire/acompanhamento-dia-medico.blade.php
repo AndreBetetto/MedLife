@@ -37,50 +37,18 @@
 
         <div>
             <label class="font-bold text-gray-700 dark:text-zinc-300">Sintomas</label>
-            @if($trocaDia == false && $fixo == false)
                 <div wire:init="init">
-                    @if ($loadData)
-                        @if(!$erro)
-                            <div id="loadesh1" wire:ignore>
-                                @foreach ($symptoms as $symptom)
-                                    <li>{{ __('translations.'. $symptom['Name']) }}</li>
-                                @endforeach
-                            </div>
-                        @else
-                            <div id="loadesh2" wire:ignore>
-                                <p>* Erro ao carregar dados (nao esqueca de trocar a API key) </p>
-                            </div>
-                        @endif
-                        @php
-                            $loadData = false;
-                            $trocaDia = true;
-                        @endphp
-                    @else
+                    @foreach ($this->symptoms as $symptom)
+                        <li wire:key={{ $loop->index }}>{{ __('translations.'. $symptom['Name']) }}</li>
+                    @endforeach
+                    @php
+                        $loadData = false;
+                        $trocaDia = true;
+                    @endphp
+                    <div wire:loading wire:target='selectedDay'> 
                         Carregando dados...
-                    @endif
+                    </div>
                 </div>
-            @elseif($trocaDia == true)
-                <div>
-                    @if ($loadData)
-                        @if(!$erro)
-                            <div id="loadesh1" wire:ignore>
-                                @foreach ($symptoms as $symptom)
-                                    <li>{{ __('translations.'. $symptom['Name']) }}</li>
-                                @endforeach
-                            </div>
-                        @else
-                            <div id="loadesh2" wire:ignore>
-                                <p>* Erro ao carregar dados (nao esqueca de trocar a API key) </p>
-                            </div>
-                        @endif
-                        @php
-                            $loadData = false;
-                        @endphp
-                    @else
-                        Carregando dados...
-                    @endif
-                </div>
-            @endif
         </div>
 
         <div>
@@ -99,6 +67,9 @@
     <div class="">
         <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar diagnóstico</button>
         {{-- Diagnostico API --}}
+        <div wire:loading wire:target='getDiagnostico'> 
+            Gerando diagnostico...
+        </div>
         @foreach ($diagnosticos as $diagnostico)
         <label class="font-bold text-gray-700 ">Diagnóstico:</label> {{ $diagnostico['Issue']['Name'] }}</li>
             @php
