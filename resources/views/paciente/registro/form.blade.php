@@ -106,5 +106,4 @@
             <x-primary-button class="w-fit" wire:click='resetInputFields'>{{ __('Cancelar') }}</x-primary-button>
         
     </form>
-    
 </section>
