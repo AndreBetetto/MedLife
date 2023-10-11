@@ -1,4 +1,4 @@
-<div>
+<div class="">
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
 
     <div class="px-4 sm:px-0">
@@ -6,10 +6,11 @@
     </div>
 
     <div class="grid grid-cols-2 gap-4 py-10">
-        <div>
-            <label for="selectedDay" class="font-bold text-gray-700 dark:text-zinc-300">Selecione o dia</label>
+        <div class="grid grid-cols-1">
+            <span for="selectedDay" class="font-bold text-gray-700 dark:text-zinc-300">Selecione o dia</span>
             <select
-                placeholder="Select one"
+                placeholder="Selecione o dia"
+                id="selectedDay"
                 wire:model="selectedDay"
                 wire:change="getFormDia"
                 class="border rounded border-gray-400 w-3/4 dark:bg-slate-800">
@@ -25,14 +26,14 @@
 
         {{--<textarea id="mytextarea">Hello, World!</textarea>--}}
 
-        <div>
-            <label class="font-bold text-gray-700 dark:text-zinc-300">Nível da dor</label>
-            <input type="text" value="{{ $formDia->nivelDor }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800">
+        <div class="grid grid-cols-1">
+            <span class="font-bold text-gray-700 dark:text-zinc-300">Nível da dor</span>
+            <input type="text" id="nivelDor" value="{{ $formDia->nivelDor }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800">
         </div>
 
-        <div>
-            <label class="font-bold text-gray-700 dark:text-zinc-300">Nível da febre</label>
-            <input type="text" value="{{ $formDia->nivelFebre }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800">
+        <div class="grid grid-cols-1">
+            <span class="font-bold text-gray-700 dark:text-zinc-300">Nível da febre</span>
+            <input type="text" id="nivelFebre" value="{{ $formDia->nivelFebre }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800">
         </div>
 
         <div>
@@ -60,50 +61,80 @@
             </div>
         </div>
 
-        <div>
-            <label class="font-bold text-gray-700 dark:text-zinc-300">Sangramento</label>
-            <input type="text" value="{{ $formDia->sangramento }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800 capitalize">
+        <div class="grid grid-cols-1">
+            <span class="font-bold text-gray-700 dark:text-zinc-300">Sangramento</span>
+            <input type="text" id="sangramento" value="{{ $formDia->sangramento }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800 capitalize">
         </div>
 
-        <div>
-            <label class="font-bold text-gray-700 dark:text-zinc-300">Observações</label>
-            <input type="text" value="{{ $formDia->observacoes }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800 capitalize">
+        <div class="grid grid-cols-1">
+            <span class="font-bold text-gray-700 dark:text-zinc-300">Observações</span>
+            <input type="text" id="observacoes" value="{{ $formDia->observacoes }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800 capitalize">
         </div>
     </div>
 
     {{-- Sintomas API --}}
 
     <div class="">
-        <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar diagnóstico</button>
+        <div class="grid grid-cols-2 gap-2">
+            <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar diagnóstico</button>
+            <button wire:click="generateGraph" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar gráfico</button>
+        </div>        
         {{-- Diagnostico API --}}
         <div wire:loading wire:target='getDiagnostico'> 
             Gerando diagnostico...
         </div>
         @foreach ($diagnosticos as $diagnostico)
-        <label class="font-bold text-gray-700 ">Diagnóstico:</label> {{ $diagnostico['Issue']['Name'] }}</li>
-            @php
-                $issueId = $diagnostico['Issue']['ID'];
-                $descricao = $issueInfo[$issueId]['Description'];
-            @endphp
-        <div class="text-justify">
-            <br><br><span class="font-bold text-gray-700">Descrição:</span> {{ $issueInfo[$issueId]['Description']}}<br><br>
-            <br><span class="font-bold text-gray-700">Possíveis sintomas:</span>  {{ $issueInfo[$issueId]['PossibleSymptoms']}}<br><br>
-            <br><span class="font-bold text-gray-700">Tratamento:</span> {{ $issueInfo[$issueId]['TreatmentDescription']}}<br><br>
-            <br><span class="font-bold text-gray-700">Condição médica:</span> {{ $issueInfo[$issueId]['MedicalCondition']}}<br><br>
-        
-            <br><br><span class="font-bold text-gray-700">Probabilidade:</span> {{ $diagnostico['Issue']['Accuracy'] }}%</li>
-            <br><span class="font-bold text-gray-700">CID:</span> {{$diagnostico['Issue']['IcdName']}} {{$diagnostico['Issue']['Icd']}}. <a href="https://icd.who.int/browse10/2019/en#/{{$diagnostico['Issue']['Icd']}}"  target="_blank" class="font-semibold hover:font-bold hover:text-purple-600">Acessar site</a>
-            <br><span class="font-bold text-gray-700">Nome científico:</span> {{$diagnostico['Issue']['ProfName'] }} </li>
-            <br><span class="font-bold text-gray-700">Especialização:</span>
-            @foreach ($diagnostico['Specialisation'] as $especializacao)
-                - {{ $especializacao['Name'] }}
-            @endforeach 
+       <div class="mt-10">
+            <div class="grid gap-4">
+                <div>
+                    <span class="font-bold text-gray-700 ">Diagnóstico:</span> {{ $diagnostico['Issue']['Name'] }}</li>
+                    @php
+                        $issueId = $diagnostico['Issue']['ID'];
+                        $descricao = $issueInfo[$issueId]['Description'];
+                    @endphp
+                </div>
+                <div>
+                    <span class="font-bold text-gray-700">Descrição:</span> 
+                    <p>{{ $issueInfo[$issueId]['Description']}}</p>
+                </div>
+                <div>
+                    <span class="font-bold text-gray-700">Possíveis sintomas:</span>  
+                    <p>{{ $issueInfo[$issueId]['PossibleSymptoms']}}</p>
+                </div>
+                <div>
+                    <span class="font-bold text-gray-700">Tratamento:</span> 
+                    <p>{{ $issueInfo[$issueId]['TreatmentDescription']}}</p>
+                </div>
+                <div>
+                    <span class="font-bold text-gray-700">Condição médica:</span> 
+                    <p>{{ $issueInfo[$issueId]['MedicalCondition']}}</p>
+                </div>
+                <div>
+                    <span class="font-bold text-gray-700">Probabilidade:</span> 
+                    <p>{{ $issueInfo[$issueId]['MedicalCondition']}}</p>
+                </div>
+                <div>
+                    <span class="font-bold text-gray-700">CID:</span> 
+                    <p>{{$diagnostico['Issue']['IcdName']}} {{$diagnostico['Issue']['Icd']}}.</p>
+                    <a href="https://icd.who.int/browse10/2019/en#/{{$diagnostico['Issue']['Icd']}}"  target="_blank" class="font-semibold hover:font-bold hover:text-purple-600">Acessar site</a>
+                </div>
+                <div>
+                    <span class="font-bold text-gray-700">Nome científico:</span> 
+                    <p>{{$diagnostico['Issue']['ProfName'] }}</p>
+                </div>
+                <div>
+                    <span class="font-bold text-gray-700">Especialização:</span>
+                    @foreach ($diagnostico['Specialisation'] as $especializacao)
+                        <p>- {{ $especializacao['Name'] }}</p>
+                    @endforeach 
+                    <button wire:click.prevent="traduzEnPt('{{$descricao}}')" class="font-bold hover:text-purple-600">Ver sintomas</button>
+                </div>
+            </div>
         </div>
-        <button wire:click.prevent="traduzEnPt('{{$descricao}}')" class="font-bold hover:text-purple-600">Ver sintomas</button>
        <!-- Traduzido: <br> -->
         {{ $traduzDesc }}
         @endforeach
-        <button wire:click="generateGraph" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar gráfico</button>
+
         @if($graphicActive)
             @php
                 $labels = [];
@@ -127,11 +158,13 @@
                 }
             @endphp
 
-        <div style="width: 65%" >
-            <canvas id="painChart" ></canvas>
-        </div>
-        <div style="width: 65%" >
-            <canvas id="feverChart" ></canvas>
+        <div class="mt-10 grid grid-cols-1 place-items-center gap-10">
+            <div class="w-3/4">
+                <canvas class="dark:bg-zinc-400" id="painChart" ></canvas>
+            </div>
+            <div class="w-3/4">
+                <canvas class="dark:bg-zinc-400" id="feverChart" ></canvas>
+            </div>
         </div>
     </div>
         

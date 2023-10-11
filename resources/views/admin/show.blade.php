@@ -12,7 +12,7 @@
 
                 <div class="">                    
                     <x-input-label :value="__('Pesquisar')" />
-                    <x-text-input name="search" type="text" class="mt-1 block w-80" wire:model="search" />
+                    <x-text-input name="search" type="text" class="mt-1 block w-80" wire:model.prevent="search" />
                     <x-input-error class="mt-2" :messages="$errors->get('search')" />
                 </div>
 
