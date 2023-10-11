@@ -3,9 +3,10 @@
         <h3 class="text-xl font-semibold leading-7 text-gray-900 dark:text-white py-3">Processos</h3>
     </div>
 
+    {{-- 
     <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300"> Médico: {{ $medico->nome}} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
     <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300 pb-5"> Paciente: {{ $paciente->nome}} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
-
+    --}}
 
     <table>
         <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
@@ -35,7 +36,13 @@
                     <div class="grid grid-cols-4 bg-white dark:bg-slate-800">
                         <span class="text-base border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $formDiarios->id }}</span>
                         <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $qntDias }} de {{ $formDiarios->numDias}}</span>
-                        <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $status}}</span>                        
+                        <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">
+                            {{ $status}}
+                            <br>
+                            @if($formDiarios->new == true)
+                                <span class="text-xs bg-purple-300 rounded-full px-2 py-1 text-white font-bold">Novo</span>
+                            @endif
+                        </span>                        
                         @if ($status != 'Aguardando')
                         <span class="text-base border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">
                             <a href="{{ route('areamedico.acessoProcessosForms', ['idPac' => $formDiarios->paciente_id, 'idForm' => $formDiarios->id ]) }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-400 hover:shadow-purple-400 focus:outline-none focus:ring-0"

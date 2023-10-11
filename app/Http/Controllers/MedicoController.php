@@ -84,6 +84,11 @@ class MedicoController extends Controller
         $paciente = Paciente::where('id', $idPac)->first();
         $medico = Medico::where('user_id', auth()->user()->id)->first();
         $form = ModelFormDiario::where('id', $idForm)->first();
+        if($form->new == true)
+        {
+            $form->new = false;
+            $form->update();
+        }
         return view('medico.meus-pacientes.detalhes.index', compact('forms', 'paciente', 'medico', 'checklist', 'form'));
     }
 

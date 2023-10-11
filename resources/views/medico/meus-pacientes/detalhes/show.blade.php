@@ -1,8 +1,5 @@
 <div>
     {{-- The whole world belongs to you. --}}
-    <p>Acompanhar resultados de formulários</p>
-    <span>Dia selecionado:</span>
-
     @php
         use Carbon\Carbon;
         $qtdDias = $form->numDias;

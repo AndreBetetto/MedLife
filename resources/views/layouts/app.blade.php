@@ -8,7 +8,6 @@
                 {{ $slot }}
             </main>
         </div>
-        <livewire:chat-component-btn />
         @include('layouts.footer')
         @livewireScripts
     </body>

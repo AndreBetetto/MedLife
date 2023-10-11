@@ -37,18 +37,27 @@
 
         <div>
             <label class="font-bold text-gray-700 dark:text-zinc-300">Sintomas</label>
-                <div wire:init="init">
-                    @foreach ($this->symptoms as $symptom)
-                        <li wire:key={{ $loop->index }}>{{ __('translations.'. $symptom['Name']) }}</li>
-                    @endforeach
+            <div wire:init="getSymptomsProperty">
+                @foreach ($this->symptoms as $symptom)
+                    <li wire:key={{ $loop->index }}>{{ __('translations.'. $symptom['Name']) }}</li>
+                @endforeach
+                @php
+                    $loadData = false;
+                    $trocaDia = true;
+                @endphp
+            </div>
+            @if($erro)
+                <div class="text-red-500">
+                    Erro ao carregar API. Verifique a API Key.
                     @php
-                        $loadData = false;
-                        $trocaDia = true;
+                        dd($erro);
                     @endphp
-                    <div wire:loading wire:target='selectedDay'> 
-                        Carregando dados...
-                    </div>
                 </div>
+            @endif
+            
+            <div wire:loading wire:target='selectedDay'> 
+                Carregando dados...
+            </div>
         </div>
 
         <div>

@@ -120,6 +120,7 @@ class AcompanhamentoDiaMedico extends Component
         }
         else {
             $symptoms = [];
+
             $this->erro = true;
         }
         //$this->trocaDia = false;
@@ -187,9 +188,9 @@ class AcompanhamentoDiaMedico extends Component
     
     public function init()
     {
-        $this->getSymptoms();
+        $this->getSymptomsProperty();
         //$this->getDiagnostico();
-        $this->loadData = true;
+        
     }
 
     public function generateGraph()
