@@ -11,7 +11,6 @@ use Illuminate\Support\Carbon;
 
 class AcompanhamentoDiaMedico extends Component
 {
-    
     //public $symptoms = [];
     public $sintomasCheck = null;
     public $selectedDay = 1;

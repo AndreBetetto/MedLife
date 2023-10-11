@@ -18,211 +18,89 @@
                 <x-form-modal>
                     <form action="{{ route('adminmedico.store') }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-2 gap-8">
                         @csrf
-                            <div class="gap-8">
-                                <div class="">
-                                    <label for="nome">Nome</label>
-                                    <input id="nome" name="nome" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
-                                    <x-input-error class="mt-2" :messages="$errors->get('nome')" />
-                                </div>
-
-                                <div class="">
-                                    <label for="sobrenome">Sobrenome</label>
-                                    <input id="sobrenome" name="sobrenome" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
-                                    <x-input-error class="mt-2" :messages="$errors->get('sobrenome')" />
-                                </div>
-
-                                <div class="">
-                                    <label for="dataNasc">Data de Nascimento</label>
-                                    <input id="dataNasc" name="dataNasc" type="date" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
-                                    <x-input-error class="mt-2" :messages="$errors->get('dataNasc')" />
-                                </div>                             
-                                
-                                <div class="mt-2 mx-3 flex flex-col">
-                                    <label for="sexo">Sexo</label>
-                                        <select name="sexo" id="sexo" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6">
-                                            <option value="Feminino">Feminino</option>
-                                            <option value="Masculino">Masculino</option>
-                                        </select>
-                                        <!-- <button type="button" id="sexo" name="sexo" required autofocus class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
-                                            <span class="flex items-center">
-                                                <span class="ml-1 block truncate text-gray-500">Escolha uma opção</span>
-                                            </span>
-                                            <span class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
-                                                </svg>
-                                            </span>
-                                        </button>
-                                        <ul class="dark:bg-slate-800 absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
-                                            <li class="relative cursor-default select-none py-2 pl-3 pr-9" id="listbox-option-0" role="option">
-                                                <div class="flex items-center">
-                                                    <span class="font-normal ml-3 block truncate">Feminino</span>
-                                                </div>
-                                            </li>
-                                            <hr class="text-gray-700">
-                                            <li class="relative cursor-default select-none py-2 pl-3 pr-9" id="listbox-option-0" role="option">
-                                                <div class="flex items-center">
-                                                    <span class="font-normal ml-3 block truncate">Masculino</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div> -->
-                                    <x-input-error class="mt-2" :messages="$errors->get('sexo')" />
-                                </div>
-
-                                <div class="">
-                                    <label for="rg">RG</label>
-                                    <input x-mask="99.999.999-9" id="rg" name="rg" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
-                                    <x-input-error class="mt-2" :messages="$errors->get('rg')" />
-                                </div>
-
-                                <div class="">
-                                    <label for="cpf">CPF</label>
-                                    <input x-mask="999.999.999-99" id="cpf" name="cpf" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
-                                    <x-input-error class="mt-2" :messages="$errors->get('cpf')" />
-                                </div>
-                            </div>
-
-                            <div class="gap-8">
-                                <div class="">
-                                    <label for="fone">Telefone</label>
-                                    <input x-mask="(14) 99999-9999" id="fone" name="fone" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
-                                    <x-input-error class="mt-2" :messages="$errors->get('fone')" />
-                                </div>
-                                
-                                <div class="mt-2 mx-3 flex flex-col">
-                                    <label for="estadoCivil">Estado Civil</label>
-                                        <select name="estadoCivil" id="estadoCivil" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6">
-                                            <option value="Solteiro(a)">Solteiro(a)</option>
-                                            <option value="Casado(a)">Casado(a)</option>
-                                            <option value="Separado(a)">Separado(a)</option>
-                                            <option value="Divorciado(a)">Divorciado(a)</option>
-                                            <option value="Viúvo(a)">Viúvo(a)</option>
-                                        </select>
-                                        <!-- <button type="button" id="estadoCivil" name="estadoCivil" required autofocus class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
-                                            <span class="flex items-center">
-                                                <span class="ml-1 block truncate text-gray-500">Escolha uma opção</span>
-                                            </span>
-
-                                            <span class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
-                                                </svg>
-                                            </span>
-                                        </button>
-                                        <ul class="dark:bg-slate-800 absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
-                                            <li class="relative cursor-default select-none py-2 pl-3 pr-9" id="listbox-option-0" role="option">
-                                                <div class="flex items-center">
-                                                    <span class="font-normal ml-3 block truncate">Solteiro(a)</span>
-                                                </div>
-                                            </li>
-                                            <hr class="text-gray-700">
-                                            <li class="relative cursor-default select-none py-2 pl-3 pr-9" id="listbox-option-0" role="option">
-                                                <div class="flex items-center">
-                                                    <span class="font-normal ml-3 block truncate">Casado(a)</span>
-                                                </div>
-                                            </li>
-                                            <hr class="text-gray-700">
-                                            <li class="relative cursor-default select-none py-2 pl-3 pr-9" id="listbox-option-0" role="option">
-                                                <div class="flex items-center">
-                                                    <span class="font-normal ml-3 block truncate">Divorciado(a)</span>
-                                                </div>
-                                            </li>
-                                            <hr class="text-gray-700">
-                                            <li class="relative cursor-default select-none py-2 pl-3 pr-9" id="listbox-option-0" role="option">
-                                                <div class="flex items-center">
-                                                    <span class="font-normal ml-3 block truncate">Separado(a)</span>
-                                                </div>
-                                            </li>
-                                            <hr class="text-gray-700">
-                                            <li class="relative cursor-default select-none py-2 pl-3 pr-9" id="listbox-option-0" role="option">
-                                                <div class="flex items-center">
-                                                    <span class="font-normal ml-3 block truncate">Viúvo(a)</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div> -->
-                                    <x-input-error class="mt-2" :messages="$errors->get('estadoCivil')" />
-                                </div>
-
-                                <div class="">
-                                    <label for="especialidade">Especialidade</label>
-                                    <input id="especialidade" name="especialidade" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
-                                    <x-input-error class="mt-2" :messages="$errors->get('especialidade')" />
-                                </div>
-
-                                <div class="">
-                                    <label for="crm">CRM</label>
-                                    <input x-mask="999999" id="crm" name="crm" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
-                                    <x-input-error class="mt-2" :messages="$errors->get('crm')" />
-                                </div>
-
-                                <div class="">
-                                    <label for="user_id">ID</label>
-                                    <input id="user_id" name="user_id" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
-                                    <x-input-error class="mt-2" :messages="$errors->get('user_id')" />
-                                </div>
+                        <div class="gap-8">
+                            <div class="">
+                                <label for="nome">Nome</label>
+                                <input id="nome" name="nome" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
+                                <x-input-error class="mt-2" :messages="$errors->get('nome')" />
                             </div>
 
                             <div class="">
-                                <x-primary-button type="submit">{{ __('Enviar') }}</x-primary-button>
-                                <x-primary-button type="reset">{{ __('Limpar') }}</x-primary-button>
+                                <label for="sobrenome">Sobrenome</label>
+                                <input id="sobrenome" name="sobrenome" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
+                                <x-input-error class="mt-2" :messages="$errors->get('sobrenome')" />
                             </div>
-                        <!-- <div>
-                            <x-input-label for="sobrenome" :value="__('Sobrenome')" />
-                            <x-text-input id="sobrenome" name="sobrenome" type="text" class="mt-1 block w-full" required autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('sobrenome')" />
+
+                            <div class="">
+                                <label for="dataNasc">Data de Nascimento</label>
+                                <input id="dataNasc" name="dataNasc" type="date" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
+                                <x-input-error class="mt-2" :messages="$errors->get('dataNasc')" />
+                            </div>                             
+                            
+                            <div class="mt-2 mx-3 flex flex-col">
+                                <label for="sexo">Sexo</label>
+                                    <select name="sexo" id="sexo" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6">
+                                        <option value="Fem">Feminino</option>
+                                        <option value="Masc">Masculino</option>
+                                    </select>
+                                <x-input-error class="mt-2" :messages="$errors->get('sexo')" />
+                            </div>
+
+                            <div class="">
+                                <label for="rg">RG</label>
+                                <input x-mask="99.999.999-9" id="rg" name="rg" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
+                                <x-input-error class="mt-2" :messages="$errors->get('rg')" />
+                            </div>
+
+                            <div class="">
+                                <label for="cpf">CPF</label>
+                                <input x-mask="999.999.999-99" id="cpf" name="cpf" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
+                                <x-input-error class="mt-2" :messages="$errors->get('cpf')" />
+                            </div>
                         </div>
-                        <div>
-                            <x-input-label for="dataNasc" :value="__('Data de Nascimento')" />
-                            <x-text-input id="dataNasc" name="dataNasc" type="date" class="mt-1 block w-full" required autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('dataNasc')" />
+
+                        <div class="gap-8">
+                            <div class="">
+                                <label for="fone">Telefone</label>
+                                <input x-mask="(14) 99999-9999" id="fone" name="fone" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
+                                <x-input-error class="mt-2" :messages="$errors->get('fone')" />
+                            </div>
+                            
+                            <div class="mt-2 mx-3 flex flex-col">
+                                <label for="estadoCivil">Estado Civil</label>
+                                    <select name="estadoCivil" id="estadoCivil" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6">
+                                        <option value="Solteiro">Solteiro(a)</option>
+                                        <option value="Casado">Casado(a)</option>
+                                        <option value="Separado">Separado(a)</option>
+                                        <option value="Divorciado">Divorciado(a)</option>
+                                        <option value="Viuvo">Viúvo(a)</option>
+                                    </select>
+                                <x-input-error class="mt-2" :messages="$errors->get('estadoCivil')" />
+                            </div>
+
+                            <div class="">
+                                <label for="especialidade">Especialidade</label>
+                                <input id="especialidade" name="especialidade" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
+                                <x-input-error class="mt-2" :messages="$errors->get('especialidade')" />
+                            </div>
+
+                            <div class="">
+                                <label for="crm">CRM</label>
+                                <input x-mask="999999" id="crm" name="crm" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
+                                <x-input-error class="mt-2" :messages="$errors->get('crm')" />
+                            </div>
+
+                            <div class="">
+                                <label for="user_id">ID</label>
+                                <input id="user_id" name="user_id" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
+                                <x-input-error class="mt-2" :messages="$errors->get('user_id')" />
+                            </div>
                         </div>
-                        <div>
-                            <x-input-label for="sexo" :value="__('Sexo')" />
-                            <x-text-input id="sexo" name="sexo" type="text" class="mt-1 block w-full" required autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('sexo')" />
-                        </div>
-                        <div>
-                            <x-input-label for="rg" :value="__('RG')" />
-                            <x-text-input x-mask="99.999.999-9" id="rg" name="rg" type="text" class="mt-1 block w-full" required autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('rg')" />
-                        </div>
-                        <div>
-                            <x-input-label for="cpf" :value="__('CPF')" />
-                            <x-text-input x-mask="999.999.999-99" id="cpf" name="cpf" type="text" class="mt-1 block w-full" required autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('cpf')" />
-                        </div>
-                        <div>
-                            <x-input-label for="fone" :value="__('Telefone')" />
-                            <x-text-input x-mask="(99) 99999-9999" id="fone" name="fone" type="text" class="mt-1 block w-full" required autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('fone')" />
-                        </div>
-                        <div>
-                            <x-input-label for="estadoCivil" :value="__('Estado Civil')" />
-                            <x-text-input id="estadoCivil" name="estadoCivil" type="text" class="mt-1 block w-full" required autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('estadoCivil')" />
-                        </div>
-                        <div>
-                            <x-input-label for="especialidade" :value="__('Especialidade')" />
-                            <x-text-input id="especialidade" name="especialidade" type="text" class="mt-1 block w-full" required autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('especialidade')" />
-                        </div>
-                        <div>
-                            <x-input-label for="crm" :value="__('CRM')" />
-                            <x-text-input x-mask="999999" id="crm" name="crm" type="text" class="mt-1 block w-full" required autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('crm')" />
-                        </div>
-                        <div>
-                            <x-input-label for="user_id" :value="__('ID')" />
-                            <x-text-input id="user_id" name="user_id" type="text" class="mt-1 block w-full" required autofocus />
-                            <x-input-error class="mt-2" :messages="$errors->get('user_id')" />
-                        </div>
-                        
-                        <div class="flex items-center gap-4 mt-4">
+
+                        <div class="">
                             <x-primary-button type="submit">{{ __('Enviar') }}</x-primary-button>
                             <x-primary-button type="reset">{{ __('Limpar') }}</x-primary-button>
-                        </div> -->
+                        </div>
                     </form>
                 </x-form-modal>
                
@@ -260,7 +138,7 @@
                             @endphp
                             @forelse ($medicos as $medicos)
                                 @php
-                                    $imgIndex = $medicoId % $fileCount;
+                                    $imgIndex = $medicos->id % $fileCount;
                                     $imgIndex = $imgIndex == 0 ? $fileCount : $imgIndex;
                                     $imgPath = 'profilePics/'.$imgIndex.'.svg';
                                 @endphp 

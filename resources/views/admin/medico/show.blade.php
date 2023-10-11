@@ -1,1 +1,2 @@
+
 <livewire:search-medico />
