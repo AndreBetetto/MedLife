@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chatbot_messages', function (Blueprint $table) {
+        Schema::create('chat_bot_messages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chatbot_messages');
+        Schema::dropIfExists('chat_bot_messages');
     }
 };
