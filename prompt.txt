@@ -1,0 +1,1 @@
+Hello! I am using laravel, livewire, tailwind and alpinejs (TALL Stack). The software i am developing is called MedLife, and the main  purpose is to help people to manage their medical history. The software has 3 types of users, the patient, the doctor and the admin.

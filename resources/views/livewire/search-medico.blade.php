@@ -78,6 +78,25 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('estadoCivil')" />
                             </div>
 
+
+                            <div class="mt-4">
+                                <label for="especialidade">Specialization</label>
+                                <select wire:model="selectedSpecializationProperty" id="especialidade" name="especialidade" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6">
+                                    <option value="" disabled selected>Select a especialidade</option>
+                                    @foreach($specializations as $specialization)
+                                        <option value="{{ $specialization['ID'] }}">{{ $specialization['Name'] }}</option>
+                                    @endforeach
+                                </select>
+                                <!-- You can add x-input-error here if needed -->
+                            </div>
+
+                            <script>
+                                // Initialize Select2 for the specialization dropdown
+                                $(document).ready(function () {
+                                    $('#specialization').select2();
+                                });
+                            </script>
+
                             <div class="">
                                 <label for="especialidade">Especialidade</label>
                                 <input id="especialidade" name="especialidade" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
@@ -90,11 +109,25 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('crm')" />
                             </div>
 
-                            <div class="">
-                                <label for="user_id">ID</label>
-                                <input id="user_id" name="user_id" type="text" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" required autofocus />
+                            <div>
+                                <label for="user_id">User</label>
+                                <select wire:model="search" id="user_id" name="user_id" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6">
+                                    <option value="" disabled selected>Select a user</option>
+                                    @foreach($users as $user)
+                                        @if($user->role == 'user')
+                                            <option value="{{ $user->id }}">(ID: {{ $user->id }}) - {{ $user->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                                 <x-input-error class="mt-2" :messages="$errors->get('user_id')" />
                             </div>
+                            
+                            <script>
+                                // Initialize Select2
+                                $(document).ready(function () {
+                                    $('#user_id').select2();
+                                });
+                            </script>
                         </div>
 
                         <div class="">

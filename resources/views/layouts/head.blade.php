@@ -15,7 +15,8 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/roundSlider/1.3.2/roundslider.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="/resources/css/chat.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-        
+        <link href="vendor/select2/dist/css/select2.min.css" rel="stylesheet" />
+
         <style>
             body{
                 font-family: 'Inter', sans-serif;
@@ -31,5 +32,6 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/roundSlider/1.3.2/roundslider.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="vendor/select2/dist/js/select2.min.js"></script>
         <x-head.tinymce-config/>
     </head>
