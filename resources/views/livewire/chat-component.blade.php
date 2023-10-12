@@ -1,4 +1,3 @@
-
 <div>
     <div class="modal-body">
         sim, eu vou diminuir a imagem, calma la
@@ -19,14 +18,51 @@
                     </div>
                 @endforeach
             </div>
+            @if($temp == false)
+                {{$txtTempPrompt}}
+            @endif
         @endif
+        <div wire:loading='getGPT'>
+            Processing prompt...
+        </div>
     </div>
     <div>
         <label for="prompt">Enter your message:</label>
         <input wire:model="prompt" type="text" id="prompt" />
         <button wire:click="getGPT" data-toggle="modal" data-target="#chatModal">Send</button>
     </div>
-    
+
+        <div class=" flex flex-row">
+            <div class="border basis-1/3 border-spacing-1 border-cyan-50">
+                <ul role="list" class="divide-y divide-gray-100">
+                    <li class="flex justify-between gap-x-6 py-5">
+                        <div class="flex min-w-0 gap-x-4">
+                            <img class="h-10 w-10 flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                            <div class="min-w-0 flex-auto">
+                            <p class="text-sm font-semibold leading-6 text-gray-900">Leslie Alexander</p>
+                            <p class="mt-1 truncate text-xs leading-5 text-gray-500">leslie.alexander@example.com</p>
+                            </div>
+                        </div>
+                        <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                            <p class="mt-1 text-xs leading-5 text-gray-500">Last seen <time datetime="2023-01-23T13:23Z">3h ago</time></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="container w-3/6 px-4">
+                {{-- Response --}}
+                <div class="mr-3 p-2 shadow-md rounded-md max-w-2">
+                    <p class="break-words text-justify">RESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSE</p>
+                </div>
+                {{-- Prompt --}}
+                <div class="ml-3 p-2 shadow-md rounded-md">
+                    <p class="break-words text-justify">PROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPT</p>
+                </div>
+            </div>
+        </div>
+ 
+
+
     {{-- 
     <button id="myBtn">Open Modal</button>
     <!-- The Modal -->

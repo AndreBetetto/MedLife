@@ -15,6 +15,7 @@ class ChatComponent extends Component
     public $messages = []; 
     public $myMessages = [];
     public $temp = false;
+    public $txtTempPrompt = '';
 
     public function render()
     {
@@ -26,12 +27,17 @@ class ChatComponent extends Component
         // Add your logic here to open the chat with OpenAI API
         // You can use JavaScript to open a modal or perform any other UI action
     }
+    public function tempPrompt($input)
+    {
+        $this->txtTempPrompt = $input;
+    }
 
     public function getGPT()
     {
         $this->temp = true;
         //dd(Auth::user()->id);
         $prompt = $this->prompt;
+        $this->tempPrompt($prompt);
         $model = 'Mini Orca (Small)';
         //dd($prompt, $model);
         //$response = Http::get('http://localhost:4891/v1/models');
@@ -68,6 +74,7 @@ class ChatComponent extends Component
             chatBotMessages::create($data);
             $this->prompt = '';
             //dd($this->output);
+            $this->txtTempPrompt = '';
 
 
         } else {
