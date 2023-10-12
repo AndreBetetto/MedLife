@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\User;
+use App\View\Components;
 
 class SearchUser extends Component
 {
@@ -15,6 +16,7 @@ class SearchUser extends Component
     public function render()
     {
         $users = User::whereRaw("LOWER(name) LIKE ?", ['%' . strtolower($this->search) . '%'])->get();
-        return view('livewire.search-user', compact("users"));
+        $UserList = User::all();
+        return view('livewire.search-user', compact("users", "UserList"));
     }
 }

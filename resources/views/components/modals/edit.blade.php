@@ -1,15 +1,11 @@
 <div class="flex justify-between space-x-5 py-5">
-    <div class="">
-      <a href="{{ route('crudUser.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0">Usuários</a>
-      <a href="{{ route('crudPaciente.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0">Pacientes</a>
-      <a href="{{ route('crudMedico.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0">Médicos</a>
-    </div>
+    
     @if(Route::currentRouteName() == "crudMedico.index")
-      <x-button-modal class="align-middle">Adicionar médico</x-button-modal>
+      <x:modals.edit-button-modal class="align-middle">Editar médico</x:modals.edit-button-modal>
     @elseif(Route::currentRouteName() == "crudUser.index")
-      <x-button-modal class="align-middle">Adicionar Usuario</x-button-modal>
+      <x:modals.edit-button-modal class="align-middle">Editar Usuario</x:modals.edit-button-modal>
     @elseif (Route::currentRouteName() == "crudPaciente.index")
-      <x-button-modal class="align-middle">Adicionar Paciente</x-button-modal>
+      <x:modals.edit-button-modal class="align-middle">Editar Paciente</x:modals.edit-button-modal>
     @endif
 </div>
 
@@ -17,9 +13,9 @@
 <div
   data-te-modal-init
   class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none backdrop-blur-[2px] shadow-md"
-  id="exampleModalCenter"
+  id="modalEditUser"
   tabindex="-1"
-  aria-labelledby="exampleModalCenterTitle"
+  aria-labelledby="modalEditUserTitle"
   aria-modal="true"
   role="dialog">
   <div
@@ -34,11 +30,11 @@
           class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
           id="exampleModalScrollableLabel">
           @if(Route::currentRouteName() == "crudMedico.index")
-            Adicionar médico
+            Editar médico
           @elseif(Route::currentRouteName() == "crudUser.index")
-            Adicionar Usuario
+            Editar Usuario
           @elseif (Route::currentRouteName() == "crudPaciente.index")
-            Adicionar Paciente
+            Editar Paciente
           @endif
         </h5>
         <!--Close button-->

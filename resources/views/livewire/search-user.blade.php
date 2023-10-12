@@ -16,17 +16,20 @@
                 </div>
                 @endif
 
+                <x:modals.user.create />
+                
                 <span class="text-gray-500">Usuários</span>
                 <div class="-mt-2 mb-3">
                     <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
                         <div class="relative py-3">
                             <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">
-                                <div class="grid grid-cols-5 items-center justify-center border-collapse w-full">
+                                <div class="grid grid-cols-6 items-center justify-center border-collapse w-full">
                                     <span class="font-medium text-slate-700 dark:text-slate-700 text-center my-5">ID</span>
                                     <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Imagem</span>
                                     <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Nome</span>
                                     <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Email</span>
                                     <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Tipo</span>
+                                    <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Opcoes</span>
                                 </div>
                                 @php
                                     use Illuminate\Support\Facades\File;
@@ -43,21 +46,26 @@
                                         $fileCount = 1;
                                     }
                                 @endphp
-                                @forelse ($users as $users)
+                                @forelse ($users as $user)
                                 @php
-                                    $usersId = $users->id;
-                                    $imgIndex = $usersId % $fileCount;
+
+                                    $userId = $user->id;
+                                    $imgIndex = $userId % $fileCount;
                                     $imgIndex = $imgIndex == 0 ? $fileCount : $imgIndex;
                                     $imgPath = 'profilePics/'.$imgIndex.'.svg';
                                 @endphp     
-                                <div class="grid grid-cols-5 bg-white dark:bg-slate-800">
-                                        <span class="text-sm border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $users->id }}</span>
+                                <div class="grid grid-cols-6 bg-white dark:bg-slate-800">
+                                        <span class="text-sm border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $user->id }}</span>
                                         <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 text-slate-500 dark:text-slate-400 items-center flex justify-center">
                                             <img class="rounded-full" src="{{ asset($imgPath) }}" />
                                         </span>  
-                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $users->name }}</span>
-                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $users->email }}</span>
-                                        <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ Str::ucfirst($users->role); }}</span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $user->name }}</span>
+                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $user->email }}</span>
+                                        <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ Str::ucfirst($user->role); }}</span>
+                                        <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center"> 
+                                            <a href="{{ route('crudUser.edit', ['id' => $user->id]) }}">Editar</a>
+                                            {{-- delete form --}}
+                                        </span>
                                     </div>
                                 @empty
                                     <div>

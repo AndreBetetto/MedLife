@@ -30,10 +30,6 @@
                             {{ __('Área do paciente') }}
                         </x-nav-link>
                     @endif
-        
-                    <x-nav-link :href="route('medico.visual')" :active="request()->routeIs('medico.visual')">
-                        {{ __('Ver médicos!') }}
-                    </x-nav-link>
                 </div>
             </div>
 

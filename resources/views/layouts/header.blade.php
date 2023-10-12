@@ -157,9 +157,6 @@
                         {{ __('Área do paciente') }}
                     </x-responsive-nav-link>
                 @endif
-                <x-responsive-nav-link :href="route('medico.visual')" :active="request()->routeIs('medico.visual')">
-                    {{ __('Ver médicos!') }}
-                </x-responsive-nav-link>
             @endif
         </div>
 

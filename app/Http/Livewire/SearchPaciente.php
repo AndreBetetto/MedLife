@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use App\Models\Paciente;
+use App\View\Components;
+
 
 class SearchPaciente extends Component
 {

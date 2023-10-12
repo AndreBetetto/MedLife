@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Medico;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
+use App\View\Components;
 
 
 class SearchMedico extends Component
@@ -14,13 +15,16 @@ class SearchMedico extends Component
     public $search = '';
     public $idUserSearch = '';
     public $results = [];
+    public $searchId = '';
+
 
     public function render()
     {
         $users = $this->getUsers();
         $this->getSpecializationsProperty();
         $medicos = Medico::whereRaw("LOWER(nome) LIKE ?", ['%' . strtolower($this->search) . '%'])->get();
-        return view('livewire.search-medico', compact("medicos", "users"));
+        $userList = User::whereRaw("LOWER(name) LIKE ?", ['%' . strtolower($this->searchId) . '%'])->get();
+        return view('livewire.search-medico', compact("medicos", "users", "userList"));
     }
 
     private function getUsers()

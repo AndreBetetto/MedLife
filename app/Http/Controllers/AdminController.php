@@ -8,6 +8,10 @@ use App\Models\Medico;
 use App\Models\Paciente;
 use App\Http\Requests\MedicoStoreRequest;
 use App\Http\Requests\PacienteStoreRequest;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller
 {
@@ -46,6 +50,54 @@ class AdminController extends Controller
         return view('admin.user.index', compact('users'));
     }
 
+    public function crudUserAdd(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        event(new Registered($user));
+        $language = session('language', 'en');
+        app()->setLocale($language);
+        
+        return view('crudUser.index');
+    }
+
+    public function crudUserEdit($id)
+    {
+        //dd($id);
+        $language = session('language', 'en');
+        app()->setLocale($language);
+        $user = User::where('id', $id)->first();
+        return view('admin.user.edit.index', compact('user'));
+    }
+
+    public function crudUserUpdate(Request $request)
+    {
+        //dd($request->all());
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class]
+        ]);
+        //dd($request->all());
+        $user = User::where('id', $request->id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        $language = session('language', 'en');
+        app()->setLocale($language);
+        return redirect()->route('crudUser.index');
+    }
+
     public function crudMedicoAdd (MedicoStoreRequest $request)
     {
         $language = session('language', 'en');
@@ -56,7 +108,7 @@ class AdminController extends Controller
 
         //Muda o role do usuario para medico
         User::where('id', $data['user_id'])->update(['role' => 'medico']);
-        return redirect()->route('adminmedico.index');
+        return redirect()->route('crudMedico.index');
     }
 
     public function crudFuncionarioAdd ()
