@@ -42,7 +42,7 @@ class ChatComponent extends Component
         //dd($prompt, $model);
         //$response = Http::get('http://localhost:4891/v1/models');
         
-        $response = Http::post('http://localhost:4891/v1/completions', [
+        $response = Http::timeout(240)->post('http://localhost:4891/v1/completions', [
             "prompt" => $prompt,
             "max_tokens" => 200,
             "temperature" => 0.7,

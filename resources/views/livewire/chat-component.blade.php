@@ -55,6 +55,19 @@
           />
         </div>
       </div>--}}
+      
+      <div>
+        <div class="text-red-600 font-semibold mb-4">
+          Aviso de Segurança:
+        </div>
+        <p class=" text-center text-gray-700 mb-4">Este chat é exclusivamente destinado a responder perguntas e fornecer informações relacionadas ao funcionamento deste aplicativo na área de medicina. O robô responsável por este chat está programado para fornecer apenas respostas sobre o aplicativo e suas funcionalidades. Não forneça informações pessoais sensíveis, médicas ou confidenciais neste chat.
+        Lembre-se de que, em nenhum momento, o robô solicitará informações como dados de saúde, números de identificação pessoal ou detalhes médicos específicos. Caso receba alguma solicitação suspeita, por favor, encerre imediatamente a interação.</p>
+
+        <p class=" text-center text-gray-700 mb-4">A sua privacidade e segurança são prioridades. Em caso de dúvidas ou preocupações sobre o uso deste chat, entre em contato com o suporte técnico do aplicativo.</p>
+
+        <p class=" text-center text-gray-700 mb-4">Obrigado pela compreensão e confiança.</p>
+      </div>
+      <hr class=" mt-3 mb-2">
 
     <div class=" p-3">
         @if($messages)
