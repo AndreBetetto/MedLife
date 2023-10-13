@@ -27,6 +27,13 @@ export default {
                 'table': '100px 500px 398px 120px',
                 'large-table': '100px 300px 250px 120px 200px 50px 99px',
                 'small-table': '100px 175px 175px 200px 150px 100px 220px'
+              },
+            width: {
+                '1/20': '5%',
+                '1/10': '10%',
+                '3/20': '15%',
+                '19/20': '95%'
+
               }
         },
         screens: {

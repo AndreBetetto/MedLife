@@ -1,36 +1,131 @@
 <div>
-    <div class="modal-body">
-        sim, eu vou diminuir a imagem, calma la
+    {{-- 
+    <div class="  w-2/3 px-5 justify-between">
+        <div class="flex flex-col mt-5">
+          <div class="flex justify-end mb-4">
+            <div
+              class="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white"
+            >
+              Welcome to group everyone !
+            </div>
+            
+          </div>
+          <div class="flex justify-start mb-4">
+            <div
+              class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white"
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
+              at praesentium, aut ullam delectus odio error sit rem. Architecto
+              nulla doloribus laborum illo rem enim dolor odio saepe,
+              consequatur quas?
+            </div>
+          </div>
+          <div class="flex justify-end mb-4">
+            <div>
+              <div
+                class="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white"
+              >
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Magnam, repudiandae.
+              </div>
+    
+              <div
+                class="mt-4 mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white"
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Debitis, reiciendis!
+              </div>
+            </div>
+            
+          </div>
+          <div class="flex justify-start mb-4">
+            
+            <div
+              class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white"
+            >
+              happy holiday guys!
+            </div>
+          </div>
+        </div>
+        <div class="py-5">
+          <input
+            class="w-full bg-gray-300 py-5 px-3 rounded-xl"
+            type="text"
+            placeholder="type your message here..."
+          />
+        </div>
+      </div>--}}
+
+    <div class=" p-3">
         @if($messages)
-            <div style="max-height: 500px; overflow-y: auto; width:800px">
+            <div class=" overflow-y-auto max-h-96 ">
                 @foreach($messages as $message)
                     {{-- Prompt do usuario --}}
-                    <div class=" ">
-                        <p style="background-color: #e6f7ff; padding: 8px; margin-bottom: 5px; border-radius: 5px;">
-                            {{ $message['prompt'] }}
-                        </p>
+                    <div>
+                        <div class="flex justify-end mb-4">
+                            <div class="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white ml-36">
+                                <p>
+                                    {{ $message['prompt'] }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                     {{-- Response da Maquina --}}
-                    <div>
-                        <p style="background-color: #e6f7ff; padding: 8px; margin-bottom: 5px; border-radius: 5px; min-height:14px;">
-                            <img src="{{asset('icons/machine/orca_mini.svg')}}" height="16px"> {{ $message['response'] }}
-                        </p>
+                    
+                    <div class="flex justify-start mb-4">
+                        <div class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white mr-36">
+                            <div class=" object-right w-full origin-right right-2/3">
+                                <p class=" ">
+                                    {{ $message['response'] }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 @endforeach
             </div>
-            @if($temp == false)
-                {{$txtTempPrompt}}
-            @endif
         @endif
         <div wire:loading='getGPT'>
             Processing prompt...
         </div>
     </div>
-    <div>
-        <label for="prompt">Enter your message:</label>
-        <input wire:model="prompt" type="text" id="prompt" />
-        <button wire:click="getGPT" data-toggle="modal" data-target="#chatModal">Send</button>
+    <hr class="mt-3 mb-5 ">
+    <div class="ml-8 ">
+        <div class="flex">
+            <div class="w-19/20">
+                <input wire:model="prompt" 
+                    type="text" 
+                    id="prompt" 
+                    placeholder="Enter your message..."
+                    class="w-19/20 mr-8  border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"/>
+            </div>
+            <div class=" w-1/20 mr-20 ">
+                <button wire:click="getGPT" 
+                    data-toggle="modal" 
+                    data-target="#chatModal"
+                    class="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-2 flex-shrink-0">
+                    Send
+                    <span class="ml-2">
+                        <svg
+                          class="w-4 h-4 transform rotate-45 -mt-px"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                          ></path>
+                        </svg>
+                      </span>
+                </button>
+            </div>
+        </div>
     </div>
+
+    {{-- --
 
         <div class=" flex flex-row">
             <div class="border basis-1/3 border-spacing-1 border-cyan-50">
@@ -49,17 +144,19 @@
                     </li>
                 </ul>
             </div>
-            <div class="container w-3/6 px-4">
+            <div class="container w-3/6 px-4">-}}
                 {{-- Response --}}
+                {{-- 
                 <div class="mr-3 p-2 shadow-md rounded-md max-w-2">
                     <p class="break-words text-justify">RESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSE</p>
-                </div>
+                </div>--}}
                 {{-- Prompt --}}
+                {{-- 
                 <div class="ml-3 p-2 shadow-md rounded-md">
                     <p class="break-words text-justify">PROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPTPROMPT</p>
                 </div>
             </div>
-        </div>
+        </div>--}}
  
 
 

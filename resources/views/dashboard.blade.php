@@ -34,7 +34,6 @@
                             <i class="material-icons py-3 mr-1">phone</i>
                             <label class="mb-1 text-lg">(14) 3103-6150</label>
                         </div>
-                            
                     </div>
                 </div>
             </div>
