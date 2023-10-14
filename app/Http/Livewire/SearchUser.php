@@ -13,6 +13,8 @@ class SearchUser extends Component
     public $search = '';
     public $results = [];
     public $deleteId = '';
+    public $searchId = '';
+    
 
     use WithPagination;
   
@@ -20,7 +22,8 @@ class SearchUser extends Component
     {
         //user where user != admin
         $users = User::where(DB::raw('lower(name)'), 'like', '%'.strtolower($this->search).'%')->orderBy('id')->where('role', '!=', 'admin' )->paginate(15);
-        return view('livewire.search-user', compact("users"));
+        $userList = User::whereRaw("LOWER(name) LIKE ?", ['%' . strtolower($this->searchId) . '%'])->get();
+        return view('livewire.search-user', compact("users", "userList"));
     }
 
     public function updatingSearch()

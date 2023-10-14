@@ -44,6 +44,16 @@ class AdminController extends Controller
         return view('admin.paciente.index', compact('pacientes'));
     }
 
+    public function crudPacienteAdd(PacienteStoreRequest $request)
+    {
+        $data = $request->validated();
+        //dd($data);
+        Paciente::create($data);
+        $language = session('language', 'en');
+        app()->setLocale($language);
+        redirect()->route('crudPaciente.index');
+    }
+
     public function crudUser ()
     {
         $language = session('language', 'en');
@@ -70,7 +80,7 @@ class AdminController extends Controller
         $language = session('language', 'en');
         app()->setLocale($language);
         
-        return view('crudUser.index');
+        redirect()->route('crudUser.index');
     }
 
     public function crudUserEdit($id)

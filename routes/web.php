@@ -84,6 +84,7 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::post('/adminmedico', [AdminController::class, 'crudMedicoAdd'])->name('crudMedico.store');
 
     Route::get('/adminpaciente', [AdminController::class, 'crudPaciente'])->name('crudPaciente.index');
+    Route::post('/adminpaciente', [AdminController::class, 'crudPacienteAdd'])->name('crudPaciente.store');
 
     Route::get('/adminuser', [AdminController::class, 'crudUser'])->name('crudUser.index');
     Route::post('/adminuser', [AdminController::class, 'crudUserAdd'])->name('crudUser.store');
