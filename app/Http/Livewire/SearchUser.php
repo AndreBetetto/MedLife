@@ -12,6 +12,7 @@ class SearchUser extends Component
 {
     public $search = '';
     public $results = [];
+    public $deleteId = '';
 
     use WithPagination;
   
@@ -27,9 +28,10 @@ class SearchUser extends Component
         $this->resetPage();
     }
 
+    
     public function confirmDelete($id)
     {
-        $this->dispatchBrowserEvent('show-delete-modal', ['id' => $id]);
+        $this->deleteId = $id;
     }
 
     public function deleteUser($id)

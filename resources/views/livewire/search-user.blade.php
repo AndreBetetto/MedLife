@@ -3,29 +3,23 @@
     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900 dark:text-gray-200 font-bold">
             <div>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        Livewire.on('show-delete-modal', function (data) {
-                            if (confirm('Are you sure you want to delete this user?')) {
-                                Livewire.emit('deleteUser', data.id);
-                            }
-                        });
-                    });
-                </script>
                 <x-input-label :value="__('Pesquisar')" />
                 <div class="flex space-x-5">                        
                     <x-text-input name="search" type="text" class="mt-1 block w-80" wire:model="search" />
                     <x-input-error class="mt-2" :messages="$errors->get('search')" />
                 </div>
-
                 @if (session()->has('message'))
                 <div>
                     {{ session('message') }}
                 </div>
                 @endif
 
-                <x:modals.user.create />
                 
+                {{-- to not break modal --}}
+                <div wire:ignore>
+                    <x:modals.user.create />
+                </div>
+            
                 <span class="text-gray-500">Usuários</span>
                 <div class="-mt-2 mb-3">
                     <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
@@ -71,14 +65,11 @@
                                         <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ Str::ucfirst($user->role); }}</span>
                                         <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center"> 
                                             <a href="{{ route('crudUser.edit', ['id' => $user->id]) }}">Editar</a>
-                                            <button type="button"
-                                                wire:click="confirmDelete({{ $user->id }})"
-                                                class="text-red-600 hover:text-red-900"
-                                                wire:confirm.prompt='Tem certeza que deseja deletar o usuário {{ $user->name }}?\n\nType&quot;{{ $user->name }}&quot; to confirm|{{$user->name}}'
-                                            >
-                                                Deletar
-                                            </button> 
-                                            
+                                            <br>
+                                            <button type="button" wire:click="deleteUser('{{ $user->id }}')" 
+                                                class="btn btn-danger" >
+                                                Delete
+                                            </button>
                                             {{-- delete form --}}
                                         </span>
                                     </div>
