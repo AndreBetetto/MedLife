@@ -13,6 +13,8 @@ use Illuminate\Validation\Rules;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 
+
+
 class AdminController extends Controller
 {
     //

@@ -7,6 +7,7 @@ use App\Models\Medico;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
 use App\View\Components;
+use Livewire\WithPagination;
 
 
 class SearchMedico extends Component
@@ -17,19 +18,20 @@ class SearchMedico extends Component
     public $results = [];
     public $searchId = '';
 
+    use WithPagination;
 
     public function render()
     {
         $users = $this->getUsers();
         $this->getSpecializationsProperty();
-        $medicos = Medico::whereRaw("LOWER(nome) LIKE ?", ['%' . strtolower($this->search) . '%'])->get();
-        $userList = User::whereRaw("LOWER(name) LIKE ?", ['%' . strtolower($this->searchId) . '%'])->get();
+        $medicos = Medico::whereRaw("LOWER(nome) LIKE ?", ['%' . strtolower($this->search) . '%'])->paginate(20)->get();
+        $userList = User::whereRaw("LOWER(name) LIKE ?", ['%' . strtolower($this->searchId) . '%'])->paginate(20)->get();
         return view('livewire.search-medico', compact("medicos", "users", "userList"));
     }
 
     private function getUsers()
     {
-        return User::where('name', 'like', '%' . $this->idUserSearch . '%')
+        return User::where('name', 'like', '%' . $this->idUserSearch . '%')->paginate(20)
                    ->get();
     }
 
