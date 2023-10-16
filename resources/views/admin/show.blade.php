@@ -9,7 +9,6 @@
                         <a href="{{ route('crudMedico.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700">Médicos</a>
                     </div>
                 </div>
-
                 <div class="">                    
                     <x-input-label :value="__('Pesquisar')" />
                     <x-text-input name="search" type="text" class="mt-1 block w-80" wire:model.prevent="search" />
@@ -25,44 +24,43 @@
 
                 <div class="-mt-2 mb-3">
                 <span><br>Usuários</span>
-                    <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
-                        <div class="relative py-3">
-                            <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">
-                                <div class="grid grid-cols-5 items-center justify-center border-collapse w-full">
-                                    <span class="font-medium ml-4 text-slate-700 dark:text-slate-700 text-left my-5">ID</span>
-                                    <span class="font-medium text-slate-700 dark:text-slate-700 text-left">Imagem</span>
-                                    <span class="font-medium text-slate-700 dark:text-slate-700 text-left">Nome</span>
-                                    <span class="font-medium text-slate-700 dark:text-slate-700 text-left">Email</span>
-                                    <span class="font-medium text-slate-700 dark:text-slate-700 text-left">Tipo</span>
-                                </div>
-                                @forelse ($users as $users)
-                                @php
-                                    //Randomizacao de imagens
-                                    $numAleatorio = rand(1, 28);
-                                    if($numAleatorio < 10)
-                                        $stringImg = 'p00'.$numAleatorio;
-                                    else
-                                        $stringImg = 'p0'.$numAleatorio;
-                                    //pega foto da pasta public
-                                    $caminhoImg = 'storage/profile/'.$stringImg.'.png';
-                                @endphp 
-                                <div class="grid grid-cols-5 bg-white dark:bg-slate-800">
-                                        <span class="text-sm border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2">{{ $users->id }}</span>
-                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 text-slate-500 dark:text-slate-400 my-1/2"><img class="rounded-full" src="{{asset($caminhoImg)}}"/></span>
-                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $users->name }}</span>
-                                        <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $users->email }}</span>
-                                        <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ Str::ucfirst($users->role); }}</span>
-                                </div>
-                                @empty
-                                    <div>
-                                        <span>Sem dados</span>
-                                    </div>
-                                @endforelse
+                <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
+                    <div class="relative py-3">
+                        <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">
+                            <div class="grid grid-cols-5 items-center justify-center border-collapse w-full">
+                                <span class="font-medium ml-4 text-slate-700 dark:text-slate-700 text-left my-5">ID</span>
+                                <span class="font-medium text-slate-700 dark:text-slate-700 text-left">Imagem</span>
+                                <span class="font-medium text-slate-700 dark:text-slate-700 text-left">Nome</span>
+                                <span class="font-medium text-slate-700 dark:text-slate-700 text-left">Email</span>
+                                <span class="font-medium text-slate-700 dark:text-slate-700 text-left">Tipo</span>
                             </div>
+                            @forelse ($users as $users)
+                            @php
+                                //Randomizacao de imagens
+                                $numAleatorio = rand(1, 28);
+                                if($numAleatorio < 10)
+                                    $stringImg = 'p00'.$numAleatorio;
+                                else
+                                    $stringImg = 'p0'.$numAleatorio;
+                                //pega foto da pasta public
+                                $caminhoImg = 'storage/profile/'.$stringImg.'.png';
+                            @endphp 
+                            <div class="grid grid-cols-5 bg-white dark:bg-slate-800">
+                                    <span class="text-sm border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2">{{ $users->id }}</span>
+                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 text-slate-500 dark:text-slate-400 my-1/2"><img class="rounded-full" src="{{asset($caminhoImg)}}"/></span>
+                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $users->name }}</span>
+                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ $users->email }}</span>
+                                    <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400">{{ Str::ucfirst($users->role); }}</span>
+                            </div>
+                            @empty
+                                <div>
+                                    <span>Sem dados</span>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>
-            {{--</div>--}}
-        </div>
+            </div>
+        {{--</div>--}}
     </div>
 </div>

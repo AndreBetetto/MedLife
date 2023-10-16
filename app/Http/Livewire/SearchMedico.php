@@ -24,15 +24,14 @@ class SearchMedico extends Component
     {
         $users = $this->getUsers();
         $this->getSpecializationsProperty();
-        $medicos = Medico::whereRaw("LOWER(nome) LIKE ?", ['%' . strtolower($this->search) . '%'])->paginate(20)->get();
+        $medicos = Medico::whereRaw("LOWER(nome) LIKE ?", ['%' . strtolower($this->search) . '%'])->paginate(20);
         $userList = User::whereRaw("LOWER(name) LIKE ?", ['%' . strtolower($this->searchId) . '%'])->get();
         return view('livewire.search-medico', compact("medicos", "users", "userList"));
     }
 
     private function getUsers()
     {
-        return User::where('name', 'like', '%' . $this->idUserSearch . '%')->paginate(20)
-                   ->get();
+        return User::where('name', 'like', '%' . $this->idUserSearch . '%')->paginate(20);
     }
 
     public function updatedSelectedUserId()

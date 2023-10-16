@@ -186,6 +186,7 @@ class MedicoController extends Controller
     {
         $data = $request->validated();
         //dd($data); //para testes
+        //dd($data);
         medicamentos::create($data);
         return redirect()->route('areamedico.index');
     }
