@@ -1,4 +1,4 @@
-<div class="flex justify-between space-x-5 py-5">
+<div class="flex justify-between space-x-5 py-5 absolute right-[120px] bottom-[75px]">
     <x:chat.modal-btn class="align-middle"></x:modal-btn>
 </div>
 

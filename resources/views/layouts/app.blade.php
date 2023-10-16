@@ -6,8 +6,8 @@
         <div class="min-h-screen">
             <main class="flex py-20 justify-center">
                 {{ $slot }}
+                <x:chat.modal-show/>
             </main>
-            <x:chat.modal-show/>
         </div>
         @include('layouts.footer')
         @livewireScripts     
