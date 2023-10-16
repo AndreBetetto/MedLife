@@ -17,15 +17,25 @@
             <button  class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" wire:click.prevent="getSpecialization" type="submit">Submit</button>
         </form> 
         <br>
-        <label class="font-semibold">Resultado:</label>
+        <p class="font-semibold mb-3 mt-2 ">Resultado:</p>
         @forelse ($saida as $out)
-            {{ $out['ID']}} - {{ __('translations.'.$out['Name']) }} - {{ $out['Accuracy']}}%
-            <br>
+        <li class="font-semibold">
+            {{ __('translations.'.$out['Name']) }} - {{ $out['Accuracy']}}%
+            <button wire:click.prevent='filtrarEsp("{{$out['Name']}}")'>
+                Filtrar
+            </button>
+        </li>
         @empty
-            Clínico geral
+            <li class=" font-semibold text-sm">Clínico geral</li>
         @endforelse
-        <br><br><br>
-        <div class="flex flex-col gap-8">
+        <div class=" mt-6">
+            @if (count($filtroEspecialidade) > 0)
+                @foreach ($filtroEspecialidade as $item)
+                    {{ $item }}
+                @endforeach
+            @endif
+        </div>
+        <div class="flex flex-col gap-8 mt-2">
             <input type="text" wire:model="searchMedic" placeholder="Pesquisar médico" class="rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
             placeholder="Pesquise o nome do medico">
             <table class="">
@@ -80,5 +90,6 @@
                 @endforelse
             </table>   
         </div>
+        {{ $medicos->links() }}
     </div>
 </div>
