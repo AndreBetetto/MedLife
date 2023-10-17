@@ -46,7 +46,7 @@
                                         disabled
                                     @endif>
                                     @if (in_array($numProcesso, $selectedMedicamentos))
-                                        Ja adicionado
+                                        Já adicionado
                                     @else
                                         Adicionar
                                     @endif
@@ -75,10 +75,10 @@
                                     $name = $selectedMedicamentosName[$count];
                                     $count++;
                                 @endphp
-                                <span>
-                                    {{ $name }}
-                                    <button wire:click.prevent="removeMedicamento('{{ $selected }}')" class="hover:font-bold">- Remover</button>
-                                </span>
+                                <div>
+                                    <span>{{ Str::title($name) }} -</span>
+                                    <button wire:click.prevent="removeMedicamento('{{ $selected }}')" class="hover:font-bold">Remover</button>
+                                </div>
                             @endforeach
                         </div>
                         @php

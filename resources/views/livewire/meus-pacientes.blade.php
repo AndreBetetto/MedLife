@@ -1,12 +1,10 @@
 <div>
     {{-- Parte da pesquisa --}}
     <input type="text" class="w-full h-10 pl-3 pr-8 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" placeholder="Pesquisar" wire:model="search">
-    <br>
     <label for="showOnlyNewUsers" style="color: #8a2be2; cursor: pointer;">
         <input type="checkbox" id="showOnlyNewUsers" wire:click="toggleShowOnlyNewUsers" class="mr-2" {{ $showOnlyNewUsers ? 'checked' : '' }}>
-        {{ $showOnlyNewUsers ? 'Show All Users' : 'Show Only New Users' }}
+        {{ $showOnlyNewUsers ? 'Mostrar todos usuários' : 'Mostrar somente novos usuários' }}
     </label>
-    <br><br><br>
     @php
         use Illuminate\Support\Facades\File;
         use Illuminate\Support\Facades\Storage;
@@ -59,11 +57,11 @@
                         <a href="{{ route('areamedico.acessoProcessos', ['idPac' => $pacienteId]) }}" class="hover:font-semibold">Ver respostas</a>
                         <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $pacienteId]) }}" method="GET">
                             @csrf
-                            <button type="submit" class="font-bold">Criar formulario</button>
+                            <button type="submit" class="font-bold">Criar formulário</button>
                         </form>
                         
                         @if(in_array($pacienteId, $arrayVerifica))
-                            <p style="color: red">NEW!</p>
+                            <p style="color: red">Novo!</p>
                         @endif
                         
                     </div>
