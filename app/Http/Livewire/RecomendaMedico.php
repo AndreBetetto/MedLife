@@ -36,17 +36,20 @@ class RecomendaMedico extends Component
     public function listDoctors()
     {
         $query = Medico::where(DB::raw('lower(nome)'), 'like', '%' . strtolower($this->searchMedic) . '%');
-
-        if (count($this->filtroEspecialidade) > 0) {
-            foreach ($this->filtroEspecialidade as $especialidade) {
-                //dd($especialidade);
-                $query->orWhere('especialidade', $especialidade);
-                dd($query);
-            }
+        if (count($this->filtroEspecialidade) > 0)
+        {
+            $query->whereIn('especialidade', $this->filtroEspecialidade);
         }
 
         $medicos = $query->paginate(10);
+        //dd($medicos);
         return $medicos;
+    }
+
+    public function removeEsp($input)
+    {
+        $this->filtroEspecialidade = array_diff($this->filtroEspecialidade, [$input]);
+        $this->listDoctors();
     }
 
     public function recomenda()
@@ -159,8 +162,12 @@ class RecomendaMedico extends Component
 
     public function filtrarEsp($esp)
     {
+        //remove ' ' and add '_'
+        $esp = str_replace(' ', '_', $esp);
         //add especialidade to array
         $this->filtroEspecialidade[] = array_push($this->filtroEspecialidade, $esp);
+        //remove numbers
+        $this->filtroEspecialidade = array_filter($this->filtroEspecialidade, 'is_string');
         $this->listDoctors();
         //dd($this->filtroEspecialidade);
     }

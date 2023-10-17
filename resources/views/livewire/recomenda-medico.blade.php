@@ -30,9 +30,19 @@
         @endforelse
         <div class=" mt-6">
             @if (count($filtroEspecialidade) > 0)
-                @foreach ($filtroEspecialidade as $item)
-                    {{ $item }}
-                @endforeach
+                <p class="">
+                    @foreach ($filtroEspecialidade as $item)
+                        @php
+                            $item = str_replace('_', ' ', $item);
+                            $item = __('translations.'.$item);
+                        @endphp
+                        {{ $item }} 
+                            <button class="border border-slate-700 text-red-500" wire:click.prevent='removeEsp("{{$item}}")'>
+                                Remove
+                            </button>
+                        
+                    @endforeach
+                </p>
             @endif
         </div>
         <div class="flex flex-col gap-8 mt-2">
@@ -89,7 +99,8 @@
                     </tr>
                 @endforelse
             </table>   
+            {{ $medicos->links() }}
+
         </div>
-        {{ $medicos->links() }}
     </div>
 </div>
