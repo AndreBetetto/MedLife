@@ -106,16 +106,26 @@
         <div class="flex">
             <div class="w-19/20">
                 <input wire:model="prompt" 
-                    type="text" 
-                    id="prompt" 
-                    placeholder="Enter your message..."
-                    class="w-19/20 mr-8  border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"/>
+                  type="text" 
+                  id="prompt" 
+                  placeholder="Enter your message..."
+                  autocomplete="off"
+                  autocorrect="off"
+                  class="w-19/20 mr-8  border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
+                  @if ($temp == true)
+                    disabled
+                  @endif
+                />
             </div>
             <div class=" w-1/20 mr-20 ">
                 <button wire:click="getGPT" 
                     data-toggle="modal" 
                     data-target="#chatModal"
-                    class="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-2 flex-shrink-0">
+                    class="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-2 flex-shrink-0
+                    @if ($temp == true)
+                    cursor-not-allowed
+                    @endif
+                    ">
                     Send
                     <span class="ml-2">
                         <svg

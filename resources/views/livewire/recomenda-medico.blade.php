@@ -30,17 +30,16 @@
         @endforelse
         <div class=" mt-6">
             @if (count($filtroEspecialidade) > 0)
-                <p class="">
+                <p class=" font-semibold ">
                     @foreach ($filtroEspecialidade as $item)
                         @php
                             $item = str_replace('_', ' ', $item);
                             $item = __('translations.'.$item);
                         @endphp
                         {{ $item }} 
-                            <button class="border border-slate-700 text-red-500" wire:click.prevent='removeEsp("{{$item}}")'>
+                            <button class="border rounded-md border-slate-700 text-red-500" wire:click.prevent='removeEsp("{{$item}}")'>
                                 Remove
                             </button>
-                        
                     @endforeach
                 </p>
             @endif
