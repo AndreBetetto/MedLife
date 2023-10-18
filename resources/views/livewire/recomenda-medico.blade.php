@@ -24,7 +24,12 @@
         @forelse ($saida as $out)
         <li class="font-semibold">
             {{ __('translations.'.$out['Name']) }} - {{ $out['Accuracy']}}%
-            <button wire:click.prevent='filtrarEsp("{{$out['Name']}}")'>
+            <button wire:click.prevent='filtrarEsp("{{$out['Name']}}")'
+                class=""
+                @if (in_array($out['Name'], $filtroEspecialidade))
+                    disabled               
+                @endif
+            >
                 Filtrar
             </button>
         </li>
@@ -40,10 +45,10 @@
                             $item = str_replace('_', ' ', $item);
                             $item = __('translations.'.$item);
                         @endphp
-                        <div class=" h-8 font-semibold border border-slate-800 bg-emerald-600 rounded-lg p-3 basis-1/4 ">
+                        <div class=" h-10 font-semibold border border-slate-800 bg-emerald-400 rounded-2xl  p-3 basis-1/5  text-center  border-spacing-1 inline-block align-middle   ">
                             {{ $item }} 
-                            <button class="" wire:click.prevent='removeEsp("{{$item}}")'>
-                                <img src="{{asset('icons/delete.svg')}}" class="h-3">
+                            <button class=" ml-3 inline-block align-middle" wire:click.prevent='removeEsp("{{$item}}")'>
+                                <img src="{{asset('icons/delete.svg')}}" class="h-4 ">
                             </button>
                         </div>
                     @endforeach
@@ -72,7 +77,13 @@
                             
                             <div class="min-w-0 flex-auto">
                                 <p class="text-base font-semibold leading-6 px-5"> {{ $medico->nome }} </p>
-                                <p class="mt-1 truncate text-sm leading-5 text-gray-500 px-5">  {{ $medico->especialidade }} </p>
+                                <p class="mt-1 truncate text-sm leading-5 text-gray-500 px-5">
+                                    @php
+                                        $medico->especialidade = __('translations.'.$medico->especialidade);
+                                        $esp = $medico->especialidade;
+                                    @endphp
+                                    {{ $esp }} 
+                                </p>
                             </div>
 
                             <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">

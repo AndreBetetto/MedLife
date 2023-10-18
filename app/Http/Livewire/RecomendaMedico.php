@@ -48,7 +48,9 @@ class RecomendaMedico extends Component
 
     public function removeEsp($input)
     {
+        //dd($input);
         $this->filtroEspecialidade = array_diff($this->filtroEspecialidade, [$input]);
+        //dd($this->filtroEspecialidade);
         $this->listDoctors();
     }
 
@@ -87,7 +89,7 @@ class RecomendaMedico extends Component
         } else {
             // Handle the API request failure
             $this->saida = [];
-            dd($this->saida);
+            //dd($this->saida);
             // You can log an error message or set a default value for $this->symptoms
         }
         //dd($this->saida);
@@ -162,9 +164,8 @@ class RecomendaMedico extends Component
 
     public function filtrarEsp($esp)
     {
-        //remove ' ' and add '_'
-        $esp = str_replace(' ', '_', $esp);
         //add especialidade to array
+        //dd($esp);
         $this->filtroEspecialidade[] = array_push($this->filtroEspecialidade, $esp);
         //remove numbers
         $this->filtroEspecialidade = array_filter($this->filtroEspecialidade, 'is_string');
