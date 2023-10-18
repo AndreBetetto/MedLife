@@ -1,29 +1,29 @@
 <div>
-    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 text-gray-900 dark:text-gray-200 font-bold">
-            {{--<div wire:poll.visible>--}}
-                <div class="flex justify-between space-x-5 py-5">
-                    <div class="">
-                        <a href="{{ route('crudUser.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700">Usuários</a>
-                        <a href="{{ route('crudPaciente.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700">Pacientes</a>
-                        
-                    </div>
+    <div class="text-gray-900 dark:text-gray-200 font-bold">
+        {{--<div wire:poll.visible>--}}
+            <div class="flex justify-between space-x-5 py-5">
+                <div class="">
+                    <a href="{{ route('crudUser.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700">Usuários</a>
+                    <a href="{{ route('crudPaciente.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700">Pacientes</a>
+                    
                 </div>
-                <div class="">                    
-                    <x-input-label :value="__('Pesquisar')" />
-                    <x-text-input name="search" type="text" class="mt-1 block w-80" wire:model.prevent="search" />
-                    <x-input-error class="mt-2" :messages="$errors->get('search')" />
-                </div>
+            </div>
 
-                @if (session()->has('message'))
-                <div>
-                    {{ session('message') }}
-                </div>
-                @endif
+            <div class="">                    
+                <x-input-label :value="__('Pesquisar')" />
+                <x-text-input name="search" type="text" class="mt-1 block w-80" wire:model.prevent="search" />
+                <x-input-error class="mt-2" :messages="$errors->get('search')" />
+            </div>
+
+            @if (session()->has('message'))
+            <div>
+                {{ session('message') }}
+            </div>
+            @endif
 
 
-                <div class="-mt-2 mb-3">
-                <span><br>Usuários</span>
+            <div class="-mt-2 mb-3">
+            <span><br>Usuários</span>
                 <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
                     <div class="relative py-3">
                         <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">
