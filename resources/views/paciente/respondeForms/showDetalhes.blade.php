@@ -63,7 +63,7 @@
 
                             @empty
                                 <tr>
-                                    <td colspan="4">Sem pacientes adicionados</td>
+                                    <td colspan="4">Sem formulários adicionados</td>
                                 </tr>
                             @endforelse
                     </div>
