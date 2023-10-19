@@ -168,7 +168,7 @@ class AcompanhamentoDiaMedico extends Component
         $formId = $this->id_form;
         $checklist = Checklist::where('forms_id',$formId)->where('numDia',$selectedDay)->first();
         //dd($checklist, $formId);
-        if($checklist->sintomas)
+        if(isset($checklist->sintomas))
         {
             $this->sintomasCheck = $checklist->sintomas;
         }

@@ -83,36 +83,6 @@
                     </div>
                 </div>
 
-                <div class="grid gap-2 pt-8">
-                    <h1 class="text-xl font-semibold">Medicamentos Selecionados</h1>
-                    
-                    @if (empty($selectedMedicamentos))
-                        <span>Nenhum medicamento selecionado</span>
-                    @else
-                        @php
-                            $count = 0;
-                        @endphp
-                        <div class="grid gap-2">
-                            @foreach ($selectedMedicamentos as $selected)
-                                @php
-                                    $stringInput = $selected . ',' . $stringInput;
-                                    //nome
-                                    $name = $selectedMedicamentosName[$count];
-                                    $count++;
-                                @endphp
-                                <div>
-                                    <span>{{ Str::title($name) }} -</span>
-                                    <button wire:click.prevent="removeMedicamento('{{ $selected }}')" class="hover:font-bold">Remover</button>
-                                </div>
-                            @endforeach
-                        </div>
-                        @php
-                        // Remove the trailing comma
-                            $stringInput = rtrim($stringInput, ',');
-                            //echo $stringInput;
-                        @endphp
-                    @endif
-                </div>
                 <input type="hidden" name="medicamentos" value="{{ $stringInput }}">
                 <input type="submit" value="Enviar" name="enviar" class="font-bold text-gray-600 hover:text-gray-900 dark:hover:text-gray-400">
             </div>
