@@ -80,7 +80,7 @@ class AdminController extends Controller
         $language = session('language', 'en');
         app()->setLocale($language);
         
-        redirect()->route('crudUser.index');
+        return redirect()->route('crudUser.index');
     }
 
     public function crudUserEdit($id)
