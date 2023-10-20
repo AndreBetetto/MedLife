@@ -8,17 +8,20 @@ if(password)
   const ConfirmPasswordButton = document.getElementById('ConfirmPasswordButton');
   const passwordConfirm = document.getElementById('password_confirmation');
 
-  PasswordButton.addEventListener('click', () => {
-    if(password.type === 'password') {
-      password.type = 'text';
-      eye.setAttribute('src', currentUrl+'/closedeye.svg');
-    } 
-    else
-    {
-      password.type = 'password';
-      eye.setAttribute('src', currentUrl+'/eye.svg');
-    }
-  });
+  if(PasswordButton)
+  {
+    PasswordButton.addEventListener('click', () => {
+      if(password.type === 'password') {
+        password.type = 'text';
+        eye.setAttribute('src', currentUrl+'/closedeye.svg');
+      } 
+      else
+      {
+        password.type = 'password';
+        eye.setAttribute('src', currentUrl+'/eye.svg');
+      }
+    });
+  }
 
   if(ConfirmPasswordButton == true)
   {

@@ -43,7 +43,7 @@
 </footer>
 
 
-<!-- <footer class="px-20 bg-purple-300 py-12 dark:bg-footerDark-0 dark:text-white">
+<!-- <footer class="px-20 bg-purple-300 py-12 w-full dark:bg-footerDark-0 dark:text-white">
   <div class="grid lg:grid-cols-3 md:grid-cols-1 gap-12">
     <a href="{{ URL::asset('/') }}">
         <img class="w-4/5" src="{{URL::asset('/icone.svg')}}" alt="">
