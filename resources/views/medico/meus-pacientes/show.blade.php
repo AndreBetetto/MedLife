@@ -1,8 +1,8 @@
 
-<div>
-    <div class="mx-auto max-w-2xl px-4 py-20 sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">
+<div class="p-2">
+    <div class="max-w-2xl px-4 py-4 sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">
         <div class="flex justify-center items-center">
-            <h2 class="text-xl font-bold leading-tight text-gray-800 dark:text-white mt-4 my-5 mb-8">Pacientes</h2>
+            <h2 class="text-3xl font-bold leading-tight text-gray-800 dark:text-white mt-4 my-5 mb-8">Pacientes</h2>
         </div>
         @php
             use Illuminate\Support\Facades\File;

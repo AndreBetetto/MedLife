@@ -1,10 +1,8 @@
-<div class="">
+<div class="p-5">
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
-
     <div class="px-4 sm:px-0">
-        <h3 class="text-lg font-semibold leading-7 text-gray-900 dark:text-white">Relatório</h3>
+        <h3 class="text-4xl font-semibold leading-7 text-gray-900 dark:text-white">Relatório</h3>
     </div>
-
     <div class="grid grid-cols-2 gap-4 py-10">
         <div class="grid grid-cols-1">
             <span for="selectedDay" class="font-bold text-gray-700 dark:text-zinc-300">Selecione o dia</span>
@@ -71,7 +69,7 @@
             <input type="text" id="observacoes" value="{{ $formDia->observacoes }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800 capitalize">
         </div>
 
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-2 col-end-1 gap-2 mt-10">
             <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar diagnóstico</button>
             <button wire:click="generateGraph" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar gráfico</button>
         </div>

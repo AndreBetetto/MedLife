@@ -1,10 +1,12 @@
-<div>
+<div class="grid gap-7">
     {{-- Parte da pesquisa --}}
-    <input type="text" class="w-full h-10 pl-3 pr-8 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" placeholder="Pesquisar" wire:model="search">
-    <label for="showOnlyNewUsers" style="color: #8a2be2; cursor: pointer;">
-        <input type="checkbox" id="showOnlyNewUsers" wire:click="toggleShowOnlyNewUsers" class="mr-2" {{ $showOnlyNewUsers ? 'checked' : '' }}>
-        {{ $showOnlyNewUsers ? 'Mostrar todos usuários' : 'Mostrar somente novos usuários' }}
-    </label>
+    <div class="grid gap-2">
+        <input type="text" class="w-full h-10 pl-3 pr-8 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" placeholder="Pesquisar" wire:model="search">
+        <label for="showOnlyNewUsers" style="color: #8a2be2; cursor: pointer;">
+            <input type="checkbox" id="showOnlyNewUsers" wire:click="toggleShowOnlyNewUsers" class="mr-2" {{ $showOnlyNewUsers ? 'checked' : '' }}>
+            {{ $showOnlyNewUsers ? 'Mostrar todos usuários' : 'Mostrar somente novos usuários' }}
+        </label>
+    </div>
     @php
         use Illuminate\Support\Facades\File;
         use Illuminate\Support\Facades\Storage;
@@ -42,7 +44,7 @@
                 $imgIndex = $imgIndex == 0 ? $fileCount : $imgIndex;
                 $imgPath = 'profilePics/'.$imgIndex.'.svg';
             @endphp
-            <div>
+            <div class="shadow-2xl p-6 gap-2">
                 @if (!$isSelected) 
                     <div>  
                         <img src="{{asset($imgPath)}}" alt="Paciente" class="h-full w-full object-cover object-center group-hover:opacity-75 rounded-full">
@@ -52,8 +54,6 @@
                         {{ Str::title($arrayInfo[$index]->nome) }} 
                         {{ Str::title($arrayInfo[$index]->sobrenome) }} 
                         {{ $paciente->sobrenome }} 
-                        
-                        <br>
                         <a href="{{ route('areamedico.acessoProcessos', ['idPac' => $pacienteId]) }}" class="hover:font-semibold">Ver respostas</a>
                         <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $pacienteId]) }}" method="GET">
                             @csrf
