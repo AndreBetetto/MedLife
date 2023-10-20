@@ -1,21 +1,46 @@
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
+    <div wire:ignore>
+        <textarea wire:model='obsTextArea' name="observacoes" id="observacoes"></textarea>
+    </div>
     <div>
-       {{--  <x-forms.tinymce-editor/> --}}
-       <div class="form-group dark:bg-slate-800 grid gap-4">
-
+        <div class="form-group dark:bg-slate-800 grid gap-4">
                 <div class="grid gap-2">
                     <input type="hidden" name='paciente_id' value="{{ $row->id }}">
                     <input type="hidden" name="medico_id" value="{{$medico->id}}">
-                    <div class="grid gap-1">
-                        <span class="font-semibold">Número de dias</span>
-                        <input type="number" name="numDias" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6" value="7">
-                        <x-input-error class="mt-2" :messages="$errors->get('numDias')" />
-                    </div>
-                    <div class="grid gap-1">
-                        <span class="font-semibold">Observação</span>
-                        <input type="text" name="observacao" class="dark:bg-slate-800 relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 sm:text-sm sm:leading-6 dark:placeholder:text-gray-400" placeholder="Prescrição">
-                        <x-input-error class="mt-2" :messages="$errors->get('observacao')" />
+                </div>
+                <h1 class="text-xl font-semibold mt-7">Medicamentos Selecionados</h1>
+                <div class="rounded-md border border-slate-800 grid gap-4">
+                    <div class=" bg-white rounded-md h-40   overflow-y-auto">
+                        <div class="grid gap-2 p-3">
+                            @if (empty($selectedMedicamentos))
+                                <span class="font-semibold text-center mt-1">Nenhum medicamento selecionado</span>
+                            @else
+                                @php
+                                    $count = 0;
+                                @endphp
+                                <div class="grid gap-2">
+                                    @foreach ($selectedMedicamentos as $selected)
+                                        @php
+                                            $stringInput = $selected . ',' . $stringInput;
+                                            //nome
+                                            $name = $selectedMedicamentosName[$count];
+                                            $count++;
+                                        @endphp
+                                        <p>
+                                            <span class=" font-semibold"> {{ $name }} -</span>
+                                            <button wire:click.prevent="removeMedicamento('{{ $selected }}')" class=" pb-1 pt-1 font-semibold flex-shrink-0 bg-red-400 text-slate-900 pl-2 pr-2 border-slate-700 text-sm border-2 px-1 rounded ml-auto ease-in-out"> Remover</button>
+                                        </p>
+                                        
+                                    @endforeach
+                                </div>
+                                @php
+                                // Remove the trailing comma
+                                    $stringInput = rtrim($stringInput, ',');
+                                    //echo $stringInput;
+                                @endphp
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div class="grid gap-2">
@@ -46,7 +71,7 @@
                                         disabled
                                     @endif>
                                     @if (in_array($numProcesso, $selectedMedicamentos))
-                                        Ja adicionado
+                                        Já adicionado
                                     @else
                                         Adicionar
                                     @endif
