@@ -55,6 +55,7 @@
                         {{ Str::title($arrayInfo[$index]->sobrenome) }} 
                         {{ $paciente->sobrenome }} 
                         <a href="{{ route('areamedico.acessoProcessos', ['idPac' => $pacienteId]) }}" class="hover:font-semibold">Ver respostas</a>
+                        <x:modals.medico.exam/>
                         <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $pacienteId]) }}" method="GET">
                             @csrf
                             <button type="submit" class="font-bold">Criar formulário</button>
