@@ -15,12 +15,6 @@
                     <x-input-label :value="__('Pesquisar')" />
                     <x-text-input name="search" type="text" class="mt-1 block w-80 text-gray-500" wire:model="search" />
                     <x-input-error class="mt-2" :messages="$errors->get('search')" />
-
-                    <ul>
-                        @foreach($results as $result)
-                            <li>{{ $result->name }}</li>
-                        @endforeach
-                    </ul>
                 </div>
                 
                 <x-form-modal>
