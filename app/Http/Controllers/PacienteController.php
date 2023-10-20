@@ -126,7 +126,11 @@ class PacienteController extends Controller
         $symS = $data['symSkin'] ?? [];//if not set, will set as empty array
         $combinedArray = array_merge($symH, $symT, $symA, $symL, $symAb, $symS);
         $uniqueArray = array_unique($combinedArray);
-        $resultString = '[' . implode(',', $uniqueArray) . ']';
+        $resultString = null;
+        if($uniqueArray != null)
+        {
+            $resultString = '[' . implode(',', $uniqueArray) . ']';
+        }
         //dd($resultString);
         $data['sintomas'] = $resultString;
         //dd($data); //para testes

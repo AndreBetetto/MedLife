@@ -3,7 +3,7 @@
 
     <div class="border-solid border-2 border-width: 2px;">
         <div class="mx-auto grid grid-cols-2 lg:flex-auto lg:py-20 lg:text-left">
-            <img alt="equipe" class="w-full pl-28"  src="imagemacharr.png">
+            <img alt="equipe" class="w-full pl-28"  src="{{asset('imagemacharr.png')}}">
             <div class="flex flex-col justify-center pl-20">
                 <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Suas informações<br></h2>
                 <span class="mt-3 text-lg leading-8 text-black-300">Médico: {{ Str::ucfirst($medico->nome) }}</span>

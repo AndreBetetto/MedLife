@@ -25,15 +25,6 @@
                             <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                                 {{ __('Home') }}
                             </x-nav-link>
-                            <x-nav-link :href="route('benefit')" :active="request()->routeIs('benefit')">
-                                {{ __('Benefícios') }}
-                            </x-nav-link>
-                            <x-nav-link :href="route('values')" :active="request()->routeIs('values')">
-                                {{ __('Valores') }}
-                            </x-nav-link>
-                            <x-nav-link :href="route('doctors')" :active="request()->routeIs('doctors')">
-                                {{ __('Médicos') }}
-                            </x-nav-link>
                             <x-nav-link :href="route('contactUs')" :active="request()->routeIs('contactUs')">
                                 {{ __('Contatos') }}
                             </x-nav-link>
@@ -121,15 +112,6 @@
             @if(Auth::check() == false)
                 <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                     {{ __('Home') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('benefit')" :active="request()->routeIs('benefit')">
-                    {{ __('Benefícios') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('values')" :active="request()->routeIs('values')">
-                    {{ __('Valores') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('doctors')" :active="request()->routeIs('doctors')">
-                    {{ __('Médicos') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('contactUs')" :active="request()->routeIs('contactUs')">
                     {{ __('Contatos') }}

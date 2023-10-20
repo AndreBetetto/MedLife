@@ -16,7 +16,7 @@
                 </div>
                 
                 <x:modals.medico.create :specializations='$specializations' :userList='$userList'/>
-       
+                
                 <span class="text-gray-500"> Médicos </span>  
                 <div class="-mt-2 mb-3">                    
                     <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">

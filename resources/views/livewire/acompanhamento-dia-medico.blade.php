@@ -51,7 +51,7 @@
                 <div class="text-red-500">
                     Erro ao carregar API. Verifique a API Key.
                     @php
-                        dd($erro);
+                        //dd($erro);
                     @endphp
                 </div>
             @endif
