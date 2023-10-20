@@ -44,12 +44,12 @@
                 $imgIndex = $imgIndex == 0 ? $fileCount : $imgIndex;
                 $imgPath = 'profilePics/'.$imgIndex.'.svg';
             @endphp
-            <div class="shadow-2xl p-6 gap-2">
+            <div class="shadow-2xl p-6 grid gap-2">
                 @if (!$isSelected) 
                     <div>  
                         <img src="{{asset($imgPath)}}" alt="Paciente" class="h-full w-full object-cover object-center group-hover:opacity-75 rounded-full">
                     </div>
-                    <div class="text-center text-lg">
+                    <div class="text-center text-lg grid row-span-2">
                         {{ $paciente->nome }}
                         {{ Str::title($arrayInfo[$index]->nome) }} 
                         {{ Str::title($arrayInfo[$index]->sobrenome) }} 
