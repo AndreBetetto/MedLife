@@ -14,7 +14,7 @@
         </div>
 
         <!-- Password -->
-        <div class="w-4/6 flex flex-col">
+        <div class="w-4/6 flex flex-col mt-2">
             <x-input-label for="password" :value="__('Senha')" />
 
             <div class="flex gap-2 items-center">

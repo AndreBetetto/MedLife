@@ -28,7 +28,7 @@ class MeusPacientes extends Component
         $arrayInfo = [];
         $pacientes = Paciente::where(DB::raw('lower(nome)'), 'like', '%'.strtolower($this->search).'%')->get();
         foreach($pacientes as $paciente){
-            $pacientes = PacienteMedico::where('paciente_id', $paciente->id)->join('users', $paciente->user_id)->where('medico_id', $medico_id)->first();
+            $pacientes = PacienteMedico::where('paciente_id', $paciente->id)->where('medico_id', $medico_id)->first();
             //dd($pacientes);
             if($pacientes != null)
             {
