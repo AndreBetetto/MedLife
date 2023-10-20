@@ -60,7 +60,6 @@
                             @csrf
                             <button type="submit" class="font-bold">Criar formulário</button>
                         </form>
-                        
                         @if(in_array($pacienteId, $arrayVerifica))
                             <p style="color: red">Novo!</p>
                         @endif
