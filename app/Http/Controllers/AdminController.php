@@ -13,8 +13,6 @@ use Illuminate\Validation\Rules;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 
-
-
 class AdminController extends Controller
 {
     //
@@ -42,16 +40,6 @@ class AdminController extends Controller
         app()->setLocale($language);
         $pacientes = Paciente::all();
         return view('admin.paciente.index', compact('pacientes'));
-    }
-
-    public function crudPacienteAdd(PacienteStoreRequest $request)
-    {
-        $data = $request->validated();
-        //dd($data);
-        Paciente::create($data);
-        $language = session('language', 'en');
-        app()->setLocale($language);
-        redirect()->route('crudPaciente.index');
     }
 
     public function crudUser ()

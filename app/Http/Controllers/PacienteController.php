@@ -13,6 +13,8 @@ use App\Models\PacienteMedico;
 use App\Models\formDiario as formDiario;
 use App\Models\checklist as Checklist;
 use App\Http\Requests\FormSave;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewFormDoctorToPatient;
 
 class PacienteController extends Controller
 {
@@ -143,6 +145,12 @@ class PacienteController extends Controller
             $formDiario->update(['status' => 'Em andamento']);
             $checklist->update(['status' => 'em andamento']);
         }
+        //Medico
+        $medico = Medico::where('id', $formDiario->medico_id)->first();
+        $emailMedico = User::where('id', $medico->user_id)->first();
+        //dd($emailMedico->email);
+        Mail::to($emailMedico->email)->send(new NewFormDoctorToPatient($checklist));
+        //
         $formDiario->update(['new' => TRUE]);
         $user  = $this->getUser();
         $paciente = $this->getPaciente();

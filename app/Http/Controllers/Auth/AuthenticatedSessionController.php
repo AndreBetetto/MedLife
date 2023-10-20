@@ -67,7 +67,7 @@ class AuthenticatedSessionController extends Controller
                 
                 Auth::login($finduser);
      
-                return redirect('/profile');
+                return redirect('/dashboard');
       
             }else{
                 //dd($user->id);
@@ -81,7 +81,7 @@ class AuthenticatedSessionController extends Controller
      
                 Auth::login($newUser);
       
-                return redirect('/profile');
+                return redirect('/dashboard');
             }
      
         } catch (Exception $e) {

@@ -12,7 +12,7 @@
                 </div>
                 @else
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}"> <!--aqui-->
+                    <a href="{{ route('dashboard') }}">
                         <img class="h-16" src="{{ URL::asset('/icone.svg') }}" alt="">
                     </a>
                 </div>
@@ -33,6 +33,9 @@
                             </x-nav-link>
                         @endif
                         @if(Auth::check())
+                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                                {{ __('Dashboard') }}
+                            </x-nav-link>
                             @if( Auth::user()->role == 'admin')
                                 <x-nav-link :href="route('areaadmin.index')" :active="request()->routeIs('areaadmin.index')">
                                     {{ __('Admin') }}
@@ -118,6 +121,9 @@
                 </x-responsive-nav-link>
             @endif
             @if(Auth::check())
+                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>
                 @if( Auth::user()->role == 'admin')
                     <x-responsive-nav-link :href="route('areaadmin.index')" :active="request()->routeIs('areaadmin.index')">
                         {{ __('Admin') }}

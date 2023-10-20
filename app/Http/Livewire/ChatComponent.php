@@ -27,21 +27,9 @@ class ChatComponent extends Component
         // Add your logic here to open the chat with OpenAI API
         // You can use JavaScript to open a modal or perform any other UI action
     }
-
     public function tempPrompt($input)
     {
         $this->txtTempPrompt = $input;
-    }
-
-    public function gptModels()
-    {
-        $models = [
-            'Mini Orca (Small)',
-            'Llama-2-7B',
-            'Llama-2-7B MedLife'
-        ];
-        $chosen = $models[2];
-        return $chosen;
     }
 
     public function getGPT()
@@ -50,11 +38,9 @@ class ChatComponent extends Component
         //dd(Auth::user()->id);
         $prompt = $this->prompt;
         $this->tempPrompt($prompt);
-        $model = $this->gptModels();
-        //dd($model);
+        $model = 'Mini Orca (Small)';
         //dd($prompt, $model);
         //$response = Http::get('http://localhost:4891/v1/models');
-        //dd($response->json());
         
         $response = Http::timeout(240)->post('http://localhost:4891/v1/completions', [
             "prompt" => $prompt,

@@ -5,11 +5,11 @@
         @csrf
     </form>
 
-    <form wire:submit.prevent='submit' action="{{ route('profile.update') }}" method="POST" class="mt-6 grid grid-cols-2 gap-6 sm:flex sm:flex-col">
+    <form wire:submit.prevent='submit' action="{{ route('profile.update') }}" method="POST" class="mt-6 grid grid-cols-2 gap-6">
         @csrf
         @method('patch')
 
-            <h2 class="col-span-2 text-xl text-center font-medium m-0 gap-0">Informações pessoais</h2>
+            <h2 class="col-span-2 text-lg text-center font-medium m-0 gap-0">Informações pessoais</h2>
         
             <!-- inicio form input-->
             <div class="bg-purple-100 p-4 rounded-md">
@@ -102,8 +102,8 @@
                         
             <!-- fim form input-->
 
-            <x-primary-button class="w-fit place-self-end sm:place-self-center" type="submit">{{ __('Salvar') }}</x-primary-button>
-            <x-primary-button class="w-fit sm:place-self-center" wire:click='resetInputFields'>{{ __('Cancelar') }}</x-primary-button>
+            <x-primary-button class="w-fit self-center" type="submit">{{ __('Salvar') }}</x-primary-button>
+            <x-primary-button class="w-fit" wire:click='resetInputFields'>{{ __('Cancelar') }}</x-primary-button>
         
     </form>
 </section>

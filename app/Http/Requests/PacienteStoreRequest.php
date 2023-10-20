@@ -34,8 +34,7 @@ class PacienteStoreRequest extends FormRequest
             'rg' => 'required',
             'fone' => 'required',
             'estadoCivil' => 'required',
-            'profissao' => 'required',
-            'user_id' => 'required'
+            'profissao' => 'required'
         ];
     }
 

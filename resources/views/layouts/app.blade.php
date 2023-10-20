@@ -3,10 +3,12 @@
     @include('layouts.head')
     <body x-cloak x-data="{darkMode: $persist(false)}" :class="{'dark': darkMode === true }" class="font-sans antialiased">
         @include('layouts.header')
-            <main class="flex py-20 justify-center min-h-screen">
+        <div class="min-h-screen">
+            <main class="flex py-20 justify-center">
                 {{ $slot }}
-                <x:chat.modal-show/>
             </main>
+            <x:chat.modal-show/>
+        </div>
         @include('layouts.footer')
         @livewireScripts     
     </body>

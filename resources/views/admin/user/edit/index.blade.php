@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     
-    <div class="py-12 w-full">
+    <div class="py-12">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-white">
             Editar usuario - {{$user->name}}
         </h2>

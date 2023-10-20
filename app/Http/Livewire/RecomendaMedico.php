@@ -19,39 +19,18 @@ class RecomendaMedico extends Component
     public $sym = [];
     public $dataFetched = false;
     public $saida = [];
+    public $medicos;
     public $paciente;
     public $jaSelecionados;
     public $fileCount;
     public $searchMedic = '';
-    public $filtroEspecialidade = [];
 
     public function render()
     {
-        $medicos = $this->listDoctors();
+        $this->medicos = Medico::where(DB::raw('lower(nome)'), 'like', '%' . strtolower($this->searchMedic) . '%')->get();
         return view('livewire.recomenda-medico', [
-            'medicos' => $medicos,
+            'medicos' => $this->medicos,
         ]);
-    }
-
-    public function listDoctors()
-    {
-        $query = Medico::where(DB::raw('lower(nome)'), 'like', '%' . strtolower($this->searchMedic) . '%');
-        if (count($this->filtroEspecialidade) > 0)
-        {
-            $query->whereIn('especialidade', $this->filtroEspecialidade);
-        }
-
-        $medicos = $query->paginate(10);
-        //dd($medicos);
-        return $medicos;
-    }
-
-    public function removeEsp($input)
-    {
-        //dd($input);
-        $this->filtroEspecialidade = array_diff($this->filtroEspecialidade, [$input]);
-        //dd($this->filtroEspecialidade);
-        $this->listDoctors();
     }
 
     public function recomenda()
@@ -75,7 +54,6 @@ class RecomendaMedico extends Component
         $sexo = $this->getSexo();
         $idade = $this->getIdade();
         $token = $this->getToken();
-        //dd($symptoms, $sexo, $idade, $token);
         $response = Http::get('https://sandbox-healthservice.priaid.ch/diagnosis/specialisations', [
             'symptoms' => $symptoms,
             'gender' => $sexo,
@@ -85,14 +63,11 @@ class RecomendaMedico extends Component
         ]);
         if ($response->successful()) {
             $this->saida = $response->json();
-            //dd($this->saida);
         } else {
             // Handle the API request failure
             $this->saida = [];
-            //dd($this->saida);
             // You can log an error message or set a default value for $this->symptoms
         }
-        //dd($this->saida);
         //dd($response);
     }
 
@@ -133,19 +108,16 @@ class RecomendaMedico extends Component
     public function getToken()
     {
         $token = env('APIMEDIC_SAND_KEY');
-        //dd($token);
         return $token;
     }
 
     public function getSymptoms()
     {
         $token =$this->getToken();
-        //dd($token);
         $response = Http::get('https://sandbox-healthservice.priaid.ch/symptoms', [
             'token' => $token,
             'language' => 'en-gb',
         ]);
-        //dd($response);
         if ($response->successful()) {
             $this->symptoms = $response->json();
         } else {
@@ -157,20 +129,11 @@ class RecomendaMedico extends Component
 
     public function fetchAPIdata()
     {
+        // Set isLoading to true to show the loading spinner 
+        // Perform your API requests here
         $this->getSymptoms();
         // Set isLoading to false when the API request is completed
         $this->dataFetched = true;
-    }
-
-    public function filtrarEsp($esp)
-    {
-        //add especialidade to array
-        //dd($esp);
-        $this->filtroEspecialidade[] = array_push($this->filtroEspecialidade, $esp);
-        //remove numbers
-        $this->filtroEspecialidade = array_filter($this->filtroEspecialidade, 'is_string');
-        $this->listDoctors();
-        //dd($this->filtroEspecialidade);
     }
 
 

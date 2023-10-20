@@ -6,7 +6,7 @@
             <div
               class="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white"
             >
-              <span>Welcome to group everyone !</span>
+              Welcome to group everyone !
             </div>
             
           </div>
@@ -14,10 +14,10 @@
             <div
               class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white"
             >
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
               at praesentium, aut ullam delectus odio error sit rem. Architecto
               nulla doloribus laborum illo rem enim dolor odio saepe,
-              consequatur quas?</p>
+              consequatur quas?
             </div>
           </div>
           <div class="flex justify-end mb-4">
@@ -25,15 +25,15 @@
               <div
                 class="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white"
               >
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Magnam, repudiandae.</p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Magnam, repudiandae.
               </div>
     
               <div
                 class="mt-4 mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white"
               >
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Debitis, reiciendis!</p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Debitis, reiciendis!
               </div>
             </div>
             
@@ -43,7 +43,7 @@
             <div
               class="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white"
             >
-              <p>happy holiday guys!</p>
+              happy holiday guys!
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@
       
       <div>
         <div class="text-red-600 font-semibold mb-4">
-          <span>Aviso de Segurança:</span>
+          Aviso de Segurança:
         </div>
         <p class=" text-center text-gray-700 mb-4">Este chat é exclusivamente destinado a responder perguntas e fornecer informações relacionadas ao funcionamento deste aplicativo na área de medicina. O robô responsável por este chat está programado para fornecer apenas respostas sobre o aplicativo e suas funcionalidades. Não forneça informações pessoais sensíveis, médicas ou confidenciais neste chat.
         Lembre-se de que, em nenhum momento, o robô solicitará informações como dados de saúde, números de identificação pessoal ou detalhes médicos específicos. Caso receba alguma solicitação suspeita, por favor, encerre imediatamente a interação.</p>
@@ -98,34 +98,24 @@
             </div>
         @endif
         <div wire:loading='getGPT'>
-          <span>Processing prompt...</span>
+            Processing prompt...
         </div>
     </div>
-    <hr class="mt-3 mb-5">
+    <hr class="mt-3 mb-5 ">
     <div class="ml-8 ">
         <div class="flex">
             <div class="w-19/20">
                 <input wire:model="prompt" 
-                  type="text" 
-                  id="prompt" 
-                  placeholder="Enter your message..."
-                  autocomplete="off"
-                  autocorrect="off"
-                  class="w-19/20 mr-8  border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
-                  @if ($temp == true)
-                    disabled
-                  @endif
-                />
+                    type="text" 
+                    id="prompt" 
+                    placeholder="Enter your message..."
+                    class="w-19/20 mr-8  border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"/>
             </div>
             <div class=" w-1/20 mr-20 ">
                 <button wire:click="getGPT" 
                     data-toggle="modal" 
                     data-target="#chatModal"
-                    class="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-2 flex-shrink-0
-                    @if ($temp == true)
-                    cursor-not-allowed
-                    @endif
-                    ">
+                    class="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-2 flex-shrink-0">
                     Send
                     <span class="ml-2">
                         <svg
