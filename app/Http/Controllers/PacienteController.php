@@ -100,7 +100,8 @@ class PacienteController extends Controller
         $formsDiarios = formDiario::where('id', $id)->first();
         $medico = Medico::where('id', $formsDiarios->medico_id)->first();
         $paciente = Paciente::where('id', $formsDiarios->paciente_id)->first();
-        $checklist = Checklist::where('forms_id', $formsDiarios->id)->get();
+        $checklist = Checklist::where('forms_id', $formsDiarios->id)->OrderBy('id') ->get();
+        //dd($checklist);
         return view('paciente.respondeForms.index', compact('medico', 'paciente', 'formsDiarios', 'checklist'));
     }
 
@@ -110,6 +111,7 @@ class PacienteController extends Controller
         $medico = Medico::where('id', $formsDiarios->medico_id)->first();
         $paciente = Paciente::where('id', $formsDiarios->paciente_id)->first();
         $checklist = Checklist::where('forms_id', $formsDiarios->id)->get();
+        
         return view('paciente.acompanhamentoForms.index', compact('medico', 'paciente', 'formsDiarios', 'checklist'));
     }
 

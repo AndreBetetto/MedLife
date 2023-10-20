@@ -283,6 +283,9 @@
                 <div class="w-full px-3 text-center">
                     <h2 class="text-xl font-semibold leading-tight dark:text-white items-center">
                         Medicamentos
+                        <span class=" text-red-500">
+                            Apenas para controle do paciente. Siga a orientação que o médico receitou. Em caso de dúvidas, entre em contato com o médico.
+                        </span>
                         <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
                     </h2><br>
                 </div>

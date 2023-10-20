@@ -116,6 +116,7 @@ class AcompanhamentoDiaMedico extends Component
                 $symptoms = [];
                 // You can log an error message or set a default value for $this->symptoms
             }
+            $this->erro = false;
         }
         else {
             $symptoms = [];
