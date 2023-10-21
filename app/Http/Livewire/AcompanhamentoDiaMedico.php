@@ -173,12 +173,12 @@ class AcompanhamentoDiaMedico extends Component
         {
             $this->sintomasCheck = $checklist->sintomas;
         }
-        
         $dia = $this->selectedDay;
-        $dorForms = Checklist::where('forms_id', $this->id_form)->select('numDia', 'nivelDor', 'nivelFebre')->get();
+        $dorForms = Checklist::where('forms_id', $this->id_form)->select('numDia', 'nivelDor', 'nivelFebre')->OrderBy('id')->get();
         //dd($dorForms);
+        $obs = formDiario::where('id', $this->id_form)->select('observacoes')->first();
         $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
-        return view('livewire.acompanhamento-dia-medico', compact('checklist', 'dia', 'formDia', 'dorForms'));
+        return view('livewire.acompanhamento-dia-medico', compact('checklist', 'dia', 'formDia', 'dorForms', 'obs'));
     }
 
     public function mount()

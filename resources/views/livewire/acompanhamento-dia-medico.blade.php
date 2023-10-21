@@ -66,7 +66,7 @@
 
         <div class="grid grid-cols-1">
             <span class="font-bold text-gray-700 dark:text-zinc-300">Observações</span>
-            <input type="text" id="observacoes" value="{{ $formDia->observacoes }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800 capitalize">
+            <textarea id="observacoesPaciente" readonly> {{$obs}} </textarea>
         </div>
 
         <div class="grid grid-cols-2 col-end-1 gap-2 mt-10">
@@ -157,12 +157,12 @@
                 }
             @endphp
 
-        <div class="mt-10 grid grid-cols-1 place-items-center gap-10">
+        <div class="mt-10 grid grid-cols-1 place-items-center gap-10" wire:ignore>
             <div class="w-3/4">
-                <canvas class="dark:bg-zinc-400" id="painChart" ></canvas>
+                <canvas class="dark:bg-zinc-400" id="painChart" wire:ignore></canvas>
             </div>
             <div class="w-3/4">
-                <canvas class="dark:bg-zinc-400" id="feverChart" ></canvas>
+                <canvas class="dark:bg-zinc-400" id="feverChart" wire:ignore></canvas>
             </div>
         </div>
     </div>
