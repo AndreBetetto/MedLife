@@ -8,6 +8,8 @@ class BuscaNomeRemedio extends Component
 {
     public function render()
     {
+        $teste = view('livewire.busca-nome-remedio');
+        dd($teste);
         $remedios = $this->search;
         return view('livewire.busca-nome-remedio', compact('remedios'));
     }
