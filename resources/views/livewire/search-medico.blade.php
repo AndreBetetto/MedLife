@@ -73,6 +73,9 @@
                             @endforelse
                         </div>
                     </div>
+                    <div class=" mt-6 mb-2">
+                        {{ $medicos->links() }}
+                    </div>
                 </div>
             </div>
         </div>
