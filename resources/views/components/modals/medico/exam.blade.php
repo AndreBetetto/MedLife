@@ -2,16 +2,12 @@
 
     <div class=" items-center">
         <div class="mt-3 mb-2">
-            <label for="emailContent" class=" font-semibold">Exames:</label>
+            <span for="emailContent" class=" font-semibold">Exames:</span>
             <p>
                 <input type="text" class=" mt-2 w-1/2 h-12" name="emailContent" id="emailContent">
             </p>
         </div>
     </div>
-    
-    
-    
-    
     <script>
         $(document).ready(function() {
             $('#emailButton').click(function() {
@@ -27,7 +23,7 @@
     <div class="">
         <a href="#" id="emailButton">
             <x-primary-button>
-                Send Email
+                Enviar email
             </x-primary-button>
         </a>
         <x-primary-button type="reset">{{ __('Limpar') }}</x-primary-button>
