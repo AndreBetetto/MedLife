@@ -117,13 +117,16 @@ Route::middleware(['IsMedico'])->group(function () {
 Route::middleware(['IsAdmin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('areaadmin.index');
     //
-    Route::get('/adminmedico', [AdminController::class, 'crudMedico'])->name('adminmedico.index');
-    Route::post('/adminmedico', [AdminController::class, 'crudMedicoAdd'])->name('adminmedico.store');
+    Route::get('/adminmedico', [AdminController::class, 'crudMedico'])->name('crudMedico.index');
+    Route::post('/adminmedico', [AdminController::class, 'crudMedicoAdd'])->name('crudMedico.store');
 
     Route::get('/adminpaciente', [AdminController::class, 'crudPaciente'])->name('crudPaciente.index');
-    Route::get('/adminuser', [AdminController::class, 'crudUser'])->name('crudUser.index');
+    Route::post('/adminpaciente', [AdminController::class, 'crudPacienteAdd'])->name('crudPaciente.store');
 
-    Route::get('/addfuncionario', [AdminController::class, 'crudFuncionarioAdd'])->name('admin.add.addfuncionario');
+    Route::get('/adminuser', [AdminController::class, 'crudUser'])->name('crudUser.index');
+    Route::post('/adminuser', [AdminController::class, 'crudUserAdd'])->name('crudUser.store');
+    Route::get('/adminuser/{id}', [AdminController::class, 'crudUserEdit'])->name('crudUser.edit');
+    Route::put('/adminuser/{id}', [AdminController::class, 'crudUserUpdate'])->name('crudUser.update');
 });
 
 

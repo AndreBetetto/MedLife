@@ -48,23 +48,23 @@
                                     $fileCount = 1;
                                 }
                             @endphp
-                            @forelse ($medicos as $medicos)
+                            @forelse ($medicos as $medico)
                                 @php
-                                    $imgIndex = $medicos->id % $fileCount;
+                                    $imgIndex = $medico->id % $fileCount;
                                     $imgIndex = $imgIndex == 0 ? $fileCount : $imgIndex;
                                     $imgPath = 'profilePics/'.$imgIndex.'.svg';
                                 @endphp 
                                 <div class="grid grid-cols-8 bg-white dark:bg-slate-800">
-                                    <span class="text-sm border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $medicos->id }}</span>
+                                    <span class="text-sm border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $medico->id }}</span>
                                     <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 text-slate-500 dark:text-slate-400 items-center flex justify-center">
                                         <img class="rounded-full" src="{{ asset($imgPath) }}" />
                                     </span>                                
-                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ Str::ucfirst($medicos->nome); }}</span>
-                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ Str::ucfirst($medicos->sobrenome); }}</span>
-                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $medicos->fone }}</span>
-                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $medicos->crm }}</span>
-                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $medicos->sexo }}</span>
-                                    <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $medicos->especialidade }}</span>
+                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ Str::ucfirst($medico->nome); }}</span>
+                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ Str::ucfirst($medico->sobrenome); }}</span>
+                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $medico->fone }}</span>
+                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $medico->crm }}</span>
+                                    <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $medico->sexo }}</span>
+                                    <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $medico->especialidade }}</span>
                                 </div>
                                 @empty
                                     <div>
@@ -73,6 +73,9 @@
                                 @endforelse
                             </div>
                         </div>
+                    </div>
+                    <div class=" mt-6 mb-2">
+                        {{ $medicos->links() }}
                     </div>
                 </div>
             </div>
