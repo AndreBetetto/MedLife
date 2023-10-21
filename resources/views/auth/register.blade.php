@@ -17,25 +17,31 @@
         </div>
 
         <!-- Password -->
-        <div class="mt-4 w-4/6">
+        <div class="mt-4 w-4/6 flex flex-col">
             <x-input-label for="password" :value="__('Senha')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <div class="flex items-center bg-white border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-md shadow-lg border">
+                <input class="w-full border-transparent focus:border-transparent focus:ring-0 rounded-md" 
+                                id="password"
+                                type="password"
+                                name="password"
+                                required autocomplete="current-password">
+                <button type="button" id="PasswordButton" class="p-2"><img id="eye" src="eye.svg" alt="olhinho"></button>
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            </div>
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4 w-4/6">
+        <div class="mt-4 w-4/6 flex flex-col">
             <x-input-label for="password_confirmation" :value="__('Confirmar Senha')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
+            
+            <div class="flex items-center bg-white border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-md shadow-lg border">
+                <input class="w-full border-transparent focus:border-transparent focus:ring-0 rounded-md"
+                id="password_confirmation"
+                type="password"
+                name="password_confirmation" required autocomplete="new-password">
+                <button type="button" id="ConfirmPasswordButton" class="p-2"><img id="eyeConfirm" src="eye.svg" alt="olhinho"></button>
+            </div>
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
         

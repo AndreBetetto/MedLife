@@ -26,13 +26,13 @@
 
             <div class="bg-purple-100 p-4 rounded-md">
                 <x-input-label for="cpf" :value="__('CPF')" />
-                <x-text-input id="cpf" name="cpf" type="text" class=" block w-full" wire:model.lazy='cpf' required autofocus autocomplete="cpf" />
+                <x-text-input id="cpf" name="cpf" x-mask="999.999.999-99" type="text" class=" block w-full" wire:model.lazy='cpf' required autofocus autocomplete="cpf" />
                 <x-input-error class="mt-2" :messages="$errors->get('cpf')" />
             </div>
 
             <div class="bg-purple-100 p-4 rounded-md">
                 <x-input-label for="rg" :value="__('RG')" />
-                <x-text-input id="rg" name="rg" type="text" class=" block w-full" wire:model.lazy='rg' required autofocus autocomplete="rg" />
+                <x-text-input id="rg" name="rg" x-mask="99.999.999-9" type="text" class=" block w-full" wire:model.lazy='rg' required autofocus autocomplete="rg" />
                 <x-input-error class="mt-2" :messages="$errors->get('rg')" />
             </div>
             
@@ -44,27 +44,28 @@
 
             <div class="bg-purple-100 p-4 rounded-md">
                 <x-input-label for="telefone" :value="__('Telefone')" />
-                <x-text-input id="telefone" name="telefone" type="text" class=" block w-full" wire:model.lazy='telefone' required autofocus autocomplete="telefone" />
+                <x-text-input id="telefone" name="telefone" x-mask="(99) 99999-9999" type="text" class=" block w-full" wire:model.lazy='telefone' required autofocus autocomplete="telefone" />
                 <x-input-error class="mt-2" :messages="$errors->get('telefone')" />
             </div>
 
             <!-- Inicio endereco -->           
             <div class="bg-purple-100 p-4 rounded-md">
                 <x-input-label for="cep" :value="__('CEP')" />
-                <x-text-input id="cep" name="cep" type="text" class=" block w-full" wire:model.lazy='cep' required autofocus autocomplete="cep" />
+                <x-text-input id="cep" name="cep" type="text" x-mask="99999-999" class=" block w-full" wire:model.lazy='cep' required autofocus autocomplete="cep" />
                 <x-input-error class="mt-2" :messages="$errors->get('cep')" />
             </div>
 
-            <div class="bg-purple-100 p-4 rounded-md">
-                <x-input-label for="logradouro" :value="__('Logradouro')" />
-                <x-text-input id="logradouro" name="logradouro" type="text" class=" block w-full" wire:model.lazy='logradouro' required autofocus autocomplete="logradouro" />
-                <x-input-error class="mt-2" :messages="$errors->get('logradouro')" />
-            </div>
-
-            <div class="bg-purple-100 p-4 rounded-md">
-                <x-input-label for="numero" :value="__('Número')" />
-                <x-text-input id="numero" name="numero" type="text" class=" block w-full" wire:model.lazy='numero' required autofocus autocomplete="numero" />
-                <x-input-error class="mt-2" :messages="$errors->get('numero')" />
+            <div class="bg-purple-100 p-4 rounded-md flex gap-2">
+                <div class="w-full">
+                    <x-input-label for="logradouro" :value="__('Logradouro')" />
+                    <x-text-input id="logradouro" name="logradouro" type="text" class=" block w-full" wire:model.lazy='logradouro' required autofocus autocomplete="logradouro" />
+                    <x-input-error class="mt-2" :messages="$errors->get('logradouro')" />
+                </div>
+                <div>
+                    <x-input-label for="numero" :value="__('Número')" />
+                    <x-text-input id="numero" name="numero" type="text" x-mask="999" class=" block w-[52px]" wire:model.lazy='numero' required autofocus autocomplete="numero" />
+                    <x-input-error class="mt-2" :messages="$errors->get('numero')" />
+                </div>
             </div>
 
             <div class="bg-purple-100 p-4 rounded-md">

@@ -17,49 +17,45 @@
         <div class="w-4/6 flex flex-col">
             <x-input-label for="password" :value="__('Senha')" />
 
-            <div class="flex gap-2 items-center">
-                <x-text-input class="block mt-1 w-full" id="password"
+            <div class="flex items-center bg-white border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-md shadow-lg border">
+                <input class="w-full border-transparent focus:border-transparent focus:ring-0 rounded-md" 
+                                id="password"
                                 type="password"
                                 name="password"
-                                required autocomplete="current-password" />
-                                <button type="button" id="PasswordButton"><img id="eye" src="eye.svg" alt="olhinho"></button>
-                
+                                required autocomplete="current-password">
+                <button type="button" id="PasswordButton" class="p-2"><img id="eye" src="eye.svg" alt="olhinho"></button>
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
         </div>
-
-        <!-- Remember Me -->
-        <div class="flex items-center justify-end mt-4">
-        <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
-                {{ __('Não está registrado?') }}
-            </a>
+        <div class="w-4/6 flex justify-end mt-4">
             @if (Route::has('password.request'))
                 <a class="ml-3 underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
                     {{ __('Esqueceu sua senha?') }}
                 </a>
             @endif
         </div>
-        @php
-            $caminhoGoogleLight = '/google_web/1x/btn_google_signin_light_normal_web.png';
-            $caminhoGoogleDark = '/google_web/1x/btn_google_signin_dark_normal_web.png';
-        @endphp
-    
-            <br>
-        <a href="{{ url('auth/google') }}">
-            <img src="{{ asset($caminhoGoogleLight)}}">
-        </a><br>
-        <div class="flex items-center justify-end mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Manter conectado') }}</span>
-            </label>
-            
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex items-center justify-end pt-10">
             <x-primary-button class="ml-3">
                 {{ __('Entrar') }}
             </x-primary-button>
+        </div>
+
+        @php
+            $caminhoGoogleLight = '/google_web/1x/btn_google_signin_light_normal_web.png';
+        @endphp
+    
+        <div class="grid p-10 gap-4">
+            <div class="border border-zinc-500"></div>
+            <a href="{{ url('auth/google') }}">
+                <img src="{{ asset($caminhoGoogleLight)}}">
+            </a>
+        </div>
+
+        <div class="border rounded-md border-zinc-200 p-5">
+            <span>Novo por aqui?</span>
+            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
+                {{ __('Crie uma conta') }}
+            </a>
         </div>
     </form>
 </x-guest-layout>

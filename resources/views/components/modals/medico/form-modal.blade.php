@@ -1,5 +1,4 @@
 <div class="space-x-5 pl-2">
-<<<<<<< HEAD
     <button
       type="button"
       class="inline-block rounded"
@@ -12,22 +11,6 @@
       </div>
     </button>
   </div>
-=======
-  <button
-    type="button"
-    class="inline-block rounded"
-    data-te-toggle="modal"
-    data-te-target="#exampleModalCenter"
-    data-te-ripple-init
-    data-te-ripple-color="light">
-    <div class="flex items-center text-lg font-semibold">
-      Solicitar exame
-    </div>
-  </button>
-</div>
-  
-  
->>>>>>> dc0ce1d844d6b0e4a30d3b61776c94d2232b07fb
   <div
     data-te-modal-init
     class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none backdrop-blur-[2px] shadow-md"

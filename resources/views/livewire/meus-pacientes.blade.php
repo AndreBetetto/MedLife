@@ -68,7 +68,7 @@
                 @endif
             </div>
         @empty
-            <p>Sem pacientes adicionados</p>
+            <p class="w-full">Sem pacientes adicionados recentemente</p>
         @endforelse
     </div>
 </div>

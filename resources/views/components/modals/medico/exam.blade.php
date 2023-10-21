@@ -1,5 +1,4 @@
 <x:modals.medico.form-modal>
-
     <div class=" items-center">
         <div class="mt-3 mb-2">
             <span for="emailContent" class=" font-semibold">Exames:</span>
