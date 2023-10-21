@@ -37,7 +37,7 @@
         <div class=" mt-6">
             @if (count($filtroEspecialidade) > 0)
                 <p class="font-semibold mb-3 mt-2 ">Filtros aplicados:</p>
-                <div class=" h-16 border border-slate-800 flex flex-row overscroll-x-contain">
+                <div class=" h-16 flex flex-row overscroll-x-contain">
                     @foreach ($filtroEspecialidade as $item)
                         @php
                             $item = str_replace('_', ' ', $item);
