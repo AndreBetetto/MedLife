@@ -30,7 +30,7 @@
                                     <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Nome</span>
                                     <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Email</span>
                                     <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Tipo</span>
-                                    <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Opcoes</span>
+                                    <span class="font-medium text-slate-700 dark:text-slate-700 text-center">Opcões</span>
                                 </div>
                                 @php
                                     use Illuminate\Support\Facades\File;

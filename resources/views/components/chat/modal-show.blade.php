@@ -45,7 +45,7 @@
     </div>
 
       <!--Modal body-->
-      <div class="relative p-4">
+      <div class="relative p-4 w-10/12 m-auto">
           @livewire('chat-component')
       </div>
     </div>

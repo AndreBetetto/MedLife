@@ -46,7 +46,7 @@
                     <label class="font-bold text-gray-700 dark:text-zinc-300">Sintomas</label>
                     <div wire:init="getSymptomsProperty">
                         @foreach ($this->symptoms as $symptom)
-                            <li wire:key={{ $loop->index }}>{{ __('translations.'. $symptom['Name']) }}</li>
+                            <li wire:key="{{ $loop->index }}">{{ __('translations.'. $symptom['Name']) }}</li>
                         @endforeach
                         @php
                             $loadData = false;
@@ -84,14 +84,14 @@
 
     <div class="">        
         {{-- Diagnostico API --}}
-        <div wire:loading wire:target='getDiagnostico'> 
-            <span>Gerando diagnóstico...</span>
+        <div wire:loading wire:target='getDiagnostico' class="w-full flex justify-center"> 
+            <span>Gerando possível diagnóstico...</span>
         </div>
         @foreach ($diagnosticos as $diagnostico)
-       <div class="mt-5">
-            <div class="grid gap-4">
+       <div class="mt-5 border-gray-600 border">
+            <div class="grid gap-4 p-10">
                 <div>
-                    <span class="font-bold text-gray-700 ">Diagnóstico:</span> {{ $diagnostico['Issue']['Name'] }}</li>
+                    <span class="font-bold text-gray-700 ">Diagnóstico possível:</span> {{ $diagnostico['Issue']['Name'] }}
                     @php
                         $issueId = $diagnostico['Issue']['ID'];
                         $descricao = $issueInfo[$issueId]['Description'];
