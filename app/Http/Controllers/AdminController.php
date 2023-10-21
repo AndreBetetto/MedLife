@@ -25,7 +25,7 @@ class AdminController extends Controller
         $pacientes = Paciente::all();
         $language = session('language', 'en');
         app()->setLocale($language);
-        return view('admin.index', compact('users', 'medicos', 'pacientes'));
+        return view('admin.user.index', compact('users', 'medicos', 'pacientes'));
     }
 
     public function crudMedico ()

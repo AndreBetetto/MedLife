@@ -70,7 +70,6 @@
             <button wire:click="generateGraph" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar gráfico</button>
         </div>
     </div>
-
     <div>    
         @if($graphicActive)
             @php
