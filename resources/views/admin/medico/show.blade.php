@@ -1,2 +1,3 @@
-
-<livewire:search-medico />
+<div>
+  <livewire:search-medico />
+</div>

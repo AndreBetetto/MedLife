@@ -30,9 +30,10 @@
                 $imgPath = 'profilePics/'.$imgIndex.'.svg';
             @endphp
             @if ($isSelected)
-            <div class="w-full h-px bg-gray-300"></div>
+                <div class="w-full h-px bg-gray-300"></div>
                 <div class="flex justify-between items-center h-fit py-10 px-5">
-                <img class="h-20 w-20 flex-none rounded-full bg-gray-50" src="{{asset($imgPath)}}" alt="imagem carrega">
+                    <img class="h-20 w-20 flex-none rounded-full bg-gray-50" src="{{asset($imgPath)}}" alt="imagem carrega">
+                </div>
                 
                 <div class="min-w-0 flex-auto px-8">
                     <p class="text-base font-semibold leading-6 text-gray-900"> {{ $medico->nome}} {{ Str::ucfirst($medico->sobrenome); }}</p>
@@ -43,12 +44,10 @@
                     <a href="{{ route('areapaciente.medicoDetalhes', ['id' => $medicoId]) }}" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0">Ver detalhes</a>
                 </div>
 
-                <td>  
-                </td>
             @endif
         @empty
             <tr>
-                <td colspan="4">No doctors available</td>
+                <td colspan="4">Sem médicos disponíveis</td>
             </tr>
         @endforelse
     </table>
