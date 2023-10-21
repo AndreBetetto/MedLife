@@ -1,15 +1,14 @@
 <div>
-    {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-    <br>
+{{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
     <button class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" wire:click.prevent="fetchAPIdata">
         Carregar lista de sintomas
-    </button> <br>
+    </button>
     <div>   
         <form wire:submit.prevent="recomenda">
             @if ($dataFetched == true)
                 <select id="symptomsSelected[]" wire:model="symptomsSelected" multiple class=" mt-2" >
                     @foreach ($symptoms as $symptom)
-                        <option value={{ $symptom['ID'] }}> {{ __('translations.'.$symptom['Name']) }} </option>
+                        <option value="{{ $symptom['ID'] }}"> {{ __('translations.'.$symptom['Name']) }} </option>
                     @endforeach
                 </select>
             @endif
@@ -17,7 +16,6 @@
                 <button  class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" wire:click.prevent="getSpecialization" type="submit">Submit</button>
             </div>
         </form> 
-        <br>
         @if ($dataFetched == true)
             <p class="font-semibold mb-3 mt-2 ">Resultado:</p>
         @endif
@@ -61,7 +59,6 @@
             <table class="">
                 <p class="text-xl font-semibold leading-6 text-gray-800 ">Médicos cadastrados</p>
                 
-                
                 @forelse ($medicos as $medico)
                     @php
                         $medicoId = $medico->id;
@@ -70,53 +67,46 @@
                         $imgIndex = $imgIndex == 0 ? $fileCount : $imgIndex;
                         $imgPath = 'profilePics/'.$imgIndex.'.svg';
                     @endphp
-                
-                    <div class="w-full h-px bg-gray-300"></div>
-                        <div class="flex justify-between items-center h-fit">
-                            <img class="h-14 w-14 flex-none rounded-full bg-gray-50" src="{{ asset($imgPath) }}" alt="">
-                            
-                            <div class="min-w-0 flex-auto">
-                                <p class="text-base font-semibold leading-6 px-5"> {{ $medico->nome }} </p>
-                                <p class="mt-1 truncate text-sm leading-5 text-gray-500 px-5">
-                                    @php
-                                        $medico->especialidade = __('translations.'.$medico->especialidade);
-                                        $esp = $medico->especialidade;
-                                    @endphp
-                                    {{ $esp }} 
-                                </p>
-                            </div>
-
-                            <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                                <p class="text-sm leading-6 text-gray-900"> {{ $medico->crm }} </p>
-                                
-
-                                @if (!$isSelected)
-                                    <p class="mt-1 text-xs leading-5 text-gray-500">
-                                    <form action="{{ route('areapaciente.store') }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <input type="hidden" name="medico_id" value="{{ $medicoId }}">
-                                        <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
-                                        <br>
-                                        <button type="submit" class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue">
-                                            Adicionar
-                                        </button>
-                                    </form> 
-                                    </p>
-                            </div>          
-                                @elseif ($isSelected)
-                                    Já selecionado
-                                @endif
+                    <div class="flex justify-between items-center h-fit">
+                        <img class="h-14 w-14 flex-none rounded-full bg-gray-50" src="{{ asset($imgPath) }}" alt="">
+                        
+                        <div class="min-w-0 flex-auto">
+                            <p class="text-base font-semibold leading-6 px-5"> {{ $medico->nome }} </p>
+                            <p class="mt-1 truncate text-sm leading-5 text-gray-500 px-5">
+                                @php
+                                    $medico->especialidade = __('translations.'.$medico->especialidade);
+                                    $esp = $medico->especialidade;
+                                @endphp
+                                {{ $esp }} 
+                            </p>
                         </div>
-                        </div>
-                    </tr>
+
+                        <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                            <p class="text-sm leading-6 text-gray-900"> {{ $medico->crm }} </p>
+
+                            @if (!$isSelected)
+                            <p class="mt-1 text-xs leading-5 text-gray-500">
+                                <form action="{{ route('areapaciente.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="medico_id" value="{{ $medicoId }}">
+                                    <input type="hidden" name="paciente_id" value="{{ $paciente->id }}">
+                                    <button type="submit" class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue">
+                                        Adicionar
+                                    </button>
+                                </form> 
+                            </p>
+                        </div>          
+                        @elseif ($isSelected)
+                            Já selecionado
+                        @endif
+                    </div>
                 @empty
                     <tr>
                         <td colspan="6">No doctors available</td>
                     </tr>
                 @endforelse
-            </table>   
+            </table>
             {{ $medicos->links() }}
-
         </div>
-    </div>
+    </div> 
 </div>

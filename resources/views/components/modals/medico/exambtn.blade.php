@@ -1,9 +1,6 @@
 <div class=" py-2 pl-8">
-    
   Solicitar exame
 </div>
-
-
 <div
 data-te-modal-init
 class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none backdrop-blur-[2px] shadow-md"
