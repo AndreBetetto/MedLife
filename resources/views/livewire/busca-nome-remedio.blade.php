@@ -1,7 +1,9 @@
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
     <div wire:ignore>
-        <textarea wire:model='obsTextArea' name="observacoes" id="observacoes"></textarea>
+        <textarea wire:model='obsTextArea' name="observacoes" id="observacoes">
+            {{nl2br($obsTextArea) }}
+        </textarea>
     </div>
     <div>
         <div class="form-group dark:bg-slate-800 grid gap-4">
