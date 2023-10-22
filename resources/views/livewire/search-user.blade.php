@@ -13,7 +13,6 @@
                 </div>
                 @endif
 
-                
                 {{-- to not break modal --}}
                 <div wire:ignore>
                     <x:modals.user.create />
@@ -62,15 +61,14 @@
                                         <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $user->name }}</span>
                                         <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $user->email }}</span>
                                         <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ Str::ucfirst($user->role); }}</span>
-                                        <span class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center"> 
+                                        <div class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center"> 
                                             <a href="{{ route('crudUser.edit', ['id' => $user->id]) }}">Editar</a>
-                                            <br>
                                             <button type="button" wire:click="deleteUser('{{ $user->id }}')" 
                                                 class="btn btn-danger" >
                                                 Delete
                                             </button>
                                             {{-- delete form --}}
-                                        </span>
+                                        </div>
                                     </div>
                                 @empty
                                     <div>
