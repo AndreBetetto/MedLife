@@ -1,5 +1,6 @@
 <div>
 {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
+    <input type="text" wire:model="searchMedic" placeholder="Pesquisar médico" class="rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50">
     <button class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" wire:click.prevent="fetchAPIdata">
         Carregar lista de sintomas
     </button>
@@ -13,7 +14,7 @@
                 </select>
             @endif
             <div class="mt-7">
-                <button  class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" wire:click.prevent="getSpecialization" type="submit">Submit</button>
+                <button  class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" wire:click.prevent="getSpecialization" type="submit">Enviar</button>
             </div>
         </form> 
         @if ($dataFetched == true)
@@ -34,7 +35,7 @@
         @empty
 
         @endforelse
-        <div class=" mt-6">
+        <div class="mt-6">
             @if (count($filtroEspecialidade) > 0)
                 <p class="font-semibold mb-3 mt-2 ">Filtros aplicados:</p>
                 <div class=" h-16 flex flex-row overscroll-x-contain">
@@ -54,8 +55,6 @@
             @endif
         </div>
         <div class="flex flex-col gap-8 mt-2">
-            <input type="text" wire:model="searchMedic" placeholder="Pesquisar médico" class="rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
-            placeholder="Pesquise o nome do medico">
             <table class="">
                 <p class="text-xl font-semibold leading-6 text-gray-800 ">Médicos cadastrados</p>
                 
@@ -67,7 +66,7 @@
                         $imgIndex = $imgIndex == 0 ? $fileCount : $imgIndex;
                         $imgPath = 'profilePics/'.$imgIndex.'.svg';
                     @endphp
-                    <div class="flex justify-between items-center h-fit">
+                    <div class="flex justify-between items-center h-full">
                         <img class="h-14 w-14 flex-none rounded-full bg-gray-50" src="{{ asset($imgPath) }}" alt="">
                         
                         <div class="min-w-0 flex-auto">
@@ -98,15 +97,16 @@
                         </div>          
                         @elseif ($isSelected)
                             Já selecionado
+                        </div>
                         @endif
                     </div>
                 @empty
                     <tr>
-                        <td colspan="6">No doctors available</td>
+                        <td colspan="6">Sem médicos disponíveis</td>
                     </tr>
                 @endforelse
             </table>
-            {{ $medicos->links() }}
+            {{ $medicos->links('pagination::tailwind') }}
         </div>
     </div> 
 </div>

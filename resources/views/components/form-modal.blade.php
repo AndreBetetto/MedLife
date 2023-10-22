@@ -5,9 +5,9 @@
     <a href="{{ route('crudMedico.index') }}" class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0">Médicos</a>
   </div>
   @if(Route::currentRouteName() == "crudMedico.index")
-    <x-button-modal class="align-middle">Adicionar médico</x-button-modal>
+    <x-button-modal class="align-middle">Adicionar Médico</x-button-modal>
   @elseif(Route::currentRouteName() == "crudUser.index")
-    <x-button-modal class="align-middle">Adicionar Usuario</x-button-modal>
+    <x-button-modal class="align-middle">Adicionar Usuário</x-button-modal>
   @elseif (Route::currentRouteName() == "crudPaciente.index")
     <x-button-modal class="align-middle">Adicionar Paciente</x-button-modal>
   @endif
@@ -34,9 +34,9 @@ role="dialog">
         class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
         id="exampleModalScrollableLabel">
         @if(Route::currentRouteName() == "crudMedico.index")
-          Adicionar médico
+          Adicionar Médico
         @elseif(Route::currentRouteName() == "crudUser.index")
-          Adicionar Usuario
+          Adicionar Usuário
         @elseif (Route::currentRouteName() == "crudPaciente.index")
           Adicionar Paciente
         @endif
@@ -65,18 +65,6 @@ role="dialog">
     <!--Modal body-->
     <div class="relative p-4">
       {{ $slot }}
-    </div>
-
-    <!--Modal footer-->
-    <div class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
-      <button
-        type="button"
-        class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
-        data-te-modal-dismiss
-        data-te-ripple-init
-        data-te-ripple-color="light">
-        Fechar
-      </button>
     </div>
   </div>
 </div>

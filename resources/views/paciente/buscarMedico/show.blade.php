@@ -2,8 +2,8 @@
     {{-- The whole world belongs to you. --}}
     <div class="flex flex-col gap-8">
         <div class="text-center font-semibold pt-5">
-            Não sabe qual especialidade de médico escolher para sua consulta? <br>
-            Clique no botão abaixo, espere carregar a lista, e selecione os sintomas que voce está sentindo. <br>
+            <p>Não sabe qual especialidade de médico escolher para sua consulta?</p>
+            <p>Clique no botão abaixo, espere carregar a lista, e selecione os sintomas que você está sentindo.</p>
         </div>
         
         @php

@@ -1,4 +1,4 @@
-<div class=" py-2 pl-8">
+<div class="py-2 pl-8">
   Solicitar exame
 </div>
 <div

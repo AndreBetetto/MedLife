@@ -1,7 +1,7 @@
 <div class="grid gap-7">
     {{-- Parte da pesquisa --}}
     <div class="grid gap-2">
-        <input type="text" class="w-full h-10 pl-3 pr-8 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" placeholder="Pesquisar" wire:model="search">
+        <input type="text" class="w-full h-10 pl-3 pr-8 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline dark:bg-slate-800" placeholder="Pesquisar" wire:model="search">
         <label for="showOnlyNewUsers" style="color: #8a2be2; cursor: pointer;">
             <input type="checkbox" id="showOnlyNewUsers" wire:click="toggleShowOnlyNewUsers" class="mr-2" {{ $showOnlyNewUsers ? 'checked' : '' }}>
             {{ $showOnlyNewUsers ? 'Mostrar todos usuários' : 'Mostrar somente novos usuários' }}
@@ -44,22 +44,23 @@
                 $imgIndex = $imgIndex == 0 ? $fileCount : $imgIndex;
                 $imgPath = 'profilePics/'.$imgIndex.'.svg';
             @endphp
-            <div class="shadow-2xl p-6 grid gap-2">
+            <div class="shadow-2xl p-4 grid gap-2 bg-zinc-50 dark:bg-slate-900">
                 @if (!$isSelected) 
-                    <div>  
+                    <div class="grid grid-cols-2 items-center gap-4">  
                         <img src="{{asset($imgPath)}}" alt="Paciente" class="h-full w-full object-cover object-center group-hover:opacity-75 rounded-full">
-                    </div>
-                    <div class="text-center text-lg grid row-span-2">
                         {{ $paciente->nome }}
-                        {{ Str::title($arrayInfo[$index]->nome) }} 
-                        {{ Str::title($arrayInfo[$index]->sobrenome) }} 
+                        <span>{{ Str::title($arrayInfo[$index]->nome) }} {{ Str::title($arrayInfo[$index]->sobrenome) }}</span>
                         {{ $paciente->sobrenome }} 
-                        <a href="{{ route('areamedico.acessoProcessos', ['idPac' => $pacienteId]) }}" class="hover:font-semibold">Ver respostas</a>
-                        <x:modals.medico.exam/>
-                        <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $pacienteId]) }}" method="GET">
-                            @csrf
-                            <button type="submit" class="font-bold">Criar formulário</button>
-                        </form>
+                    </div>
+                    <div class="text-center text-sm grid gap-2">
+                        <div class="grid grid-cols-2 w-full gap-2">
+                            <x:modals.medico.exam/>
+                            <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $pacienteId]) }}" class="w-full method="GET">
+                                @csrf
+                                <button type="submit" class="rounded-xl px-4 py-2 w-full bg-violet-500 content-center gap-2 hover:bg-violet-600 duration-200">Criar formulário</button>
+                            </form>
+                        </div>
+                        <a href="{{ route('areamedico.acessoProcessos', ['idPac' => $pacienteId]) }}" class="w-full text-xl text-neutral-50 rounded-2xl px-8 py-2 bg-violet-500 content-center gap-2 hover:bg-violet-600 duration-200">Ver respostas</a>
                         @if(in_array($pacienteId, $arrayVerifica))
                             <p style="color: red">Novo!</p>
                         @endif

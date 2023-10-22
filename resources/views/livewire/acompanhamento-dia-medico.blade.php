@@ -13,7 +13,7 @@
                         id="selectedDay"
                         wire:model="selectedDay"
                         wire:change="getFormDia"
-                        class="border rounded border-gray-400 w-3/4 dark:bg-slate-800">
+                        class="mt-1 border rounded border-gray-400 w-3/4 dark:bg-slate-800">
                         @for ($i = 1; $i <= $totalDays; $i++)
                             @if ($i <= $diaMaxRespondido)
                                 <option value="{{ $i }} " selected>{{ $i }}</option>
@@ -28,17 +28,17 @@
 
                 <div class="grid grid-cols-1 mt-4">
                     <span class="font-bold text-gray-700 dark:text-zinc-300">Nível da dor</span>
-                    <input type="text" id="nivelDor" value="{{ $formDia->nivelDor }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800">
+                    <input type="text" id="nivelDor" value="{{ $formDia->nivelDor }}" disabled class="mt-1 border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800">
                 </div>
 
                 <div class="grid grid-cols-1 mt-4">
                     <span class="font-bold text-gray-700 dark:text-zinc-300">Nível da febre</span>
-                    <input type="text" id="nivelFebre" value="{{ $formDia->nivelFebre }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800">
+                    <input type="text" id="nivelFebre" value="{{ $formDia->nivelFebre }}" disabled class="mt-1 border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800">
                 </div>
 
                 <div class="grid grid-cols-1 mt-4">
                     <span class="font-bold text-gray-700 dark:text-zinc-300">Sangramento</span>
-                    <input type="text" id="sangramento" value="{{ $formDia->sangramento }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800 capitalize">
+                    <input type="text" id="sangramento" value="{{ $formDia->sangramento }}" disabled class="mt-1 border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800 capitalize">
                 </div>
             </div>
             <div>
@@ -90,46 +90,47 @@
         @foreach ($diagnosticos as $diagnostico)
        <div class="mt-5 border-gray-600 border">
             <div class="grid gap-4 p-10">
+                <h2 class="text-2xl mb-2">{{ $diagnostico['Issue']['Name'] }}</h2>
                 <div>
-                    <span class="font-bold text-gray-700 ">Diagnóstico possível:</span> {{ $diagnostico['Issue']['Name'] }}
+                    <span class="font-bold text-gray-700 dark:text-white">Possível diagnóstico:</span> {{ $diagnostico['Issue']['Name'] }}
                     @php
                         $issueId = $diagnostico['Issue']['ID'];
                         $descricao = $issueInfo[$issueId]['Description'];
                     @endphp
                 </div>
                 <div>
-                    <span class="font-bold text-gray-700">Descrição:</span> 
+                    <span class="font-bold text-gray-700 dark:text-white">Descrição:</span> 
                     <p>{{ $issueInfo[$issueId]['Description']}}</p>
                 </div>
                 <div>
-                    <span class="font-bold text-gray-700">Possíveis sintomas:</span>  
-                    <p>{{ $issueInfo[$issueId]['PossibleSymptoms']}}</p>
+                    <span class="font-bold text-gray-700 dark:text-white">Possíveis sintomas:</span>  
+                    <p>{{ $issueInfo[$issueId]['PossibleSymptoms']}}.</p>
                 </div>
                 <div>
-                    <span class="font-bold text-gray-700">Tratamento:</span> 
+                    <span class="font-bold text-gray-700 dark:text-white">Tratamento:</span> 
                     <p>{{ $issueInfo[$issueId]['TreatmentDescription']}}</p>
                 </div>
                 <div>
-                    <span class="font-bold text-gray-700">Condição médica:</span> 
+                    <span class="font-bold text-gray-700 dark:text-white">Condição médica:</span> 
                     <p>{{ $issueInfo[$issueId]['MedicalCondition']}}</p>
                 </div>
                 <div>
-                    <span class="font-bold text-gray-700">Probabilidade:</span> 
+                    <span class="font-bold text-gray-700 dark:text-white">Probabilidade:</span> 
                     <p>{{ $issueInfo[$issueId]['MedicalCondition']}}</p>
                 </div>
                 <div>
-                    <span class="font-bold text-gray-700">CID:</span> 
-                    <p>{{$diagnostico['Issue']['IcdName']}} {{$diagnostico['Issue']['Icd']}}.</p>
+                    <span class="font-bold text-gray-700 dark:text-white">CID:</span> 
+                    <p>{{$diagnostico['Issue']['IcdName']}} {{$diagnostico['Issue']['Icd']}}</p>
                     <a href="https://icd.who.int/browse10/2019/en#/{{$diagnostico['Issue']['Icd']}}"  target="_blank" class="font-semibold hover:font-bold hover:text-purple-600">Acessar site</a>
                 </div>
                 <div>
-                    <span class="font-bold text-gray-700">Nome científico:</span> 
-                    <p>{{$diagnostico['Issue']['ProfName'] }}</p>
+                    <span class="font-bold text-gray-700 dark:text-white">Nome científico:</span> 
+                    <p>{{$diagnostico['Issue']['ProfName'] }}.</p>
                 </div>
                 <div>
-                    <span class="font-bold text-gray-700">Especialização:</span>
+                    <span class="font-bold text-gray-700 dark:text-white">Especialização:</span>
                     @foreach ($diagnostico['Specialisation'] as $especializacao)
-                        <p>- {{ $especializacao['Name'] }}</p>
+                        <p>- {{ $especializacao['Name'] }};</p>
                     @endforeach 
                     <button wire:click.prevent="traduzEnPt('{{$descricao}}')" class="font-bold hover:text-purple-600">Ver sintomas</button>
                 </div>

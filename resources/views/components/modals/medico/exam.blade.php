@@ -2,9 +2,9 @@
     <div class=" items-center">
         <div class="mt-3 mb-2">
             <span for="emailContent" class=" font-semibold">Exames:</span>
-            <p>
-                <input type="text" class=" mt-2 w-1/2 h-12" name="emailContent" id="emailContent">
-            </p>
+            <div>
+                <input type="text" class="dark:bg-slate-800 mt-2 w-1/2 h-12" name="emailContent" id="emailContent">
+            </div>
         </div>
     </div>
     <script>

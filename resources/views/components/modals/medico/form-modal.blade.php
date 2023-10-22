@@ -1,4 +1,4 @@
-<div class="space-x-5 pl-2">
+<div>
     <button
       type="button"
       class="inline-block rounded"
@@ -6,7 +6,7 @@
       data-te-target="#exampleModalCenter"
       data-te-ripple-init
       data-te-ripple-color="light">
-      <div class="flex items-center text-lg font-semibold">
+      <div class="rounded-xl px-4 py-2 w-full bg-violet-500 content-center gap-2 hover:bg-violet-600 duration-200">
         Solicitar exame
       </div>
     </button>

@@ -14,7 +14,7 @@
         </div>
 
         <!-- Password -->
-        <div class="w-4/6 flex flex-col">
+        <div class="w-4/6 flex flex-col mt-2">
             <x-input-label for="password" :value="__('Senha')" />
 
             <div class="flex items-center bg-white border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-md shadow-lg border">
@@ -35,7 +35,7 @@
             @endif
         </div>
         <div class="flex items-center justify-end pt-10">
-            <x-primary-button class="ml-3">
+            <x-primary-button>
                 {{ __('Entrar') }}
             </x-primary-button>
         </div>
@@ -44,9 +44,9 @@
             $caminhoGoogleLight = '/google_web/1x/btn_google_signin_light_normal_web.png';
         @endphp
     
-        <div class="grid p-10 gap-4">
+        <div class="w-full grid p-10 gap-8">
             <div class="border border-zinc-500"></div>
-            <a href="{{ url('auth/google') }}">
+            <a class="m-auto" href="{{ url('auth/google') }}">
                 <img src="{{ asset($caminhoGoogleLight)}}">
             </a>
         </div>
