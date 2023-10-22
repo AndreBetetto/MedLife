@@ -2,7 +2,7 @@
 <script>
   tinymce.init({
     selector: 'textarea#observacoes', // Replace this CSS selector to match the placeholder element for TinyMCE
-    plugins: 'code table lists save',
+    plugins: 'code table lists save insertdatetime help wordcount anchor searchreplace visualblocks fullscreen media',
     toolbar: 'undo redo | blocks | blocks fontsizeinput | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | table',
     save_enablewhendirty: false
   });

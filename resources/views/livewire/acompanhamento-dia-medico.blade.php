@@ -53,7 +53,7 @@
                             $trocaDia = true;
                         @endphp
                     </div>
-                    @if($erro)
+                    @if($erro || $this->symptoms == null)
                         <div class="text-red-500">
                             <span>Erro ao carregar API. Verifique a API Key.</span>
                             @php
@@ -71,7 +71,7 @@
 
         <div class="grid grid-cols-1 w-full mt-5">
             <span class="font-bold text-gray-700 dark:text-zinc-300 mb-3">Observações</span>
-            <textarea id="observacoesPaciente" class="w-full" readonly> {{$obs}} </textarea>
+            <textarea id="observacoesPaciente" class="w-full" readonly> {{ $obs->observacoes }} </textarea>
         </div>
 
         <div class="grid grid-cols-1 gap-2 mt-10 w-3/5">
@@ -132,12 +132,12 @@
                     @foreach ($diagnostico['Specialisation'] as $especializacao)
                         <p>- {{ $especializacao['Name'] }};</p>
                     @endforeach 
-                    <button wire:click.prevent="traduzEnPt('{{$descricao}}')" class="font-bold hover:text-purple-600">Ver sintomas</button>
+                    
                 </div>
             </div>
         </div>
        <!-- Traduzido: <br> -->
-        {{ $traduzDesc }}
+        
         @endforeach
 
         @if($graphicActive)

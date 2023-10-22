@@ -70,7 +70,7 @@ class PacienteController extends Controller
     public function getPacMed()
     {
         $paciente = $this->getPaciente();
-        $pacMeds = PacienteMedico::where('paciente_id', $paciente->id)->get();
+        $pacMeds = PacienteMedico::where('paciente_id', $paciente->id)->OrderBy('id')->get();
         return $pacMeds;
     }
 
@@ -90,8 +90,8 @@ class PacienteController extends Controller
         $user = User::where('id', $medico->user_id)->first();
         $paciente = $this->getPaciente();
         $todosPacs = Paciente::all();
-        $pacMeds = PacienteMedico::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
-        $formDiarios = formDiario::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->get();
+        $pacMeds = PacienteMedico::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->OrderBy('id')->get();
+        $formDiarios = formDiario::where('medico_id', $medico->id)->where('paciente_id', $paciente->id)->OrderBy('id')->get();
         return view('paciente.respondeForms.indexDetalhes', compact('medico', 'user', 'paciente', 'formDiarios', 'todosPacs', 'pacMeds'));
     }
 

@@ -12,7 +12,6 @@ use GuzzleHttp\Client;
 class AcompanhamentoDia extends Component
 {
 
-    //public $symptoms = [];
     public $sintomasCheck = null;
     public $selectedDay = 1;
     public $id_form = 1;
@@ -123,22 +122,20 @@ class AcompanhamentoDia extends Component
         //dd($formId);
         $checklist = Checklist::where('forms_id',$formId)->where('numDia',$selectedDay)->first();
         //dd($checklist, $formId);
-        if($checklist->sintomas)
+        if(isset($checklist->sintomas))
         {
-            $this->sintomasCheck = $checklist->sintomas;
+            if($checklist->sintomas != null || $checklist->sintomas != '[]')
+            {
+                $this->sintomasCheck = $checklist->sintomas;
+            }
         }
+        
         $dia = $this->selectedDay;
         $dorForms = Checklist::where('forms_id', $this->id_form)->select('numDia', 'nivelDor', 'nivelFebre')->OrderBy('id')->get();
         //dd($dorForms);
         $obs = formDiario::where('id', $this->id_form)->select('observacoes')->first();
         $formDia = Checklist::where('forms_id', $this->id_form)->where('numDia', $this->selectedDay)->first();
         return view('livewire.acompanhamento-dia', compact('checklist', 'dia', 'formDia', 'dorForms', 'obs'));
-    }
-
-    public function mount()
-    {
-        //$this->getSymptoms();
-        
     }
     
     public function init()

@@ -6,6 +6,12 @@
                 @if (isset($medNomes[$i]))
                 {{ $medNomes[$i] }}
                 &nbsp; &nbsp;
+
+                <label>
+                    <input type="checkbox" class=""/>
+                    <span>06h</span>&nbsp; &nbsp;
+                </label>
+
                 <label>
                     <input type="checkbox" class=""/>
                     <span>08h</span> &nbsp; &nbsp;
@@ -16,10 +22,6 @@
                     <span>10h</span>&nbsp; &nbsp;
                 </label>
 
-                <label>
-                    <input type="checkbox" class=""/>
-                    <span>12h</span>&nbsp; &nbsp;
-                </label>
                 <br><br>
                 @endif
             @endfor

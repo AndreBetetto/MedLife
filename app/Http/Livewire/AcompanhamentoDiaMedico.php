@@ -181,11 +181,6 @@ class AcompanhamentoDiaMedico extends Component
         return view('livewire.acompanhamento-dia-medico', compact('checklist', 'dia', 'formDia', 'dorForms', 'obs'));
     }
 
-    public function mount()
-    {
-        //$this->getSymptoms();
-    }
-    
     public function init()
     {
         $this->getSymptomsProperty();

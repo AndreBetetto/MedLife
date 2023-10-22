@@ -63,7 +63,7 @@
 
         <div class="grid grid-cols-1" wire:ignore>
             <span class="font-bold text-gray-700 dark:text-zinc-300">Observações</span>
-            <textarea id="observacoesPaciente" readonly> {{$obs}} </textarea>
+            <textarea id="observacoesPaciente" readonly> {{$obs->observacoes}} </textarea>
         </div>
 
         <div class="grid grid-cols-2 col-end-1 gap-2 mt-10">
