@@ -8,12 +8,27 @@ class BuscaNomeRemedio extends Component
 {
     public function render()
     {
-        $teste = view('livewire.busca-nome-remedio');
-        dd($teste);
+        $this->obsTextArea = $this->createFicha();
+        //dd($teste);
         $remedios = $this->search;
         return view('livewire.busca-nome-remedio', compact('remedios'));
     }
 
+    public function createFicha()
+    {
+        $text = "<ul>
+            <li><strong>Queixa:<br></strong></li>" . PHP_EOL . "
+            <li><strong>Antecedentes familiares:</strong><br></li>" . PHP_EOL . "
+            <li><strong>Hipotese diagnostica:</strong><br></li>" . PHP_EOL . "
+            <li><strong>Exames complementares:</strong><br></li>" . PHP_EOL . "
+            <li><strong>Conduta médica:</strong><br></li>" . PHP_EOL . "
+            <li><strong>Encaminhamento para outro especialista:</strong><br></li>" . PHP_EOL . "
+            <li><strong>Orientações:</strong><br></li>" . PHP_EOL . "
+            </ul>";
+        return $text;
+    }
+
+    public $obsTextArea = '';
     public $retorno;
     public $row;
     public $medico;

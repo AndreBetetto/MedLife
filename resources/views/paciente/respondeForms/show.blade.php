@@ -6,8 +6,7 @@
             Informações Pós-Operatório
         </h2>
         <div class="place-self-start">
-            <p class="w-fit">Nome: </p>
-            <p class="w-fit">Médico: </p>
+            
         </div>
     </div>
     <div class="w-full h-px bg-black"></div>
@@ -283,7 +282,7 @@
                 <div class="w-full px-3 text-center">
                     <h2 class="text-xl font-semibold leading-tight dark:text-white items-center">
                         Medicamentos
-                        <span class=" text-red-500">
+                        <p></p><span class=" text-red-500 text-sm">
                             Apenas para controle do paciente. Siga a orientação que o médico receitou. Em caso de dúvidas, entre em contato com o médico.
                         </span>
                         <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
