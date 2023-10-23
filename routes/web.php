@@ -13,6 +13,7 @@ use App\Http\Controllers\PagesController as PagesController;
 use Laravel\Socialite\Facades\Socialite as Socialite;
 use App\Models\User as User;
 use App\Http\Controllers\Auth\AuthenticatedSessionController as AuthenticatedSessionController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,6 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController as AuthenticatedSes
 |
 */
 
-
 Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('/benefit', [PagesController::class, 'benefit'])->name('benefit');
 Route::get('/values', [PagesController::class, 'values'])->name('values');
@@ -34,10 +34,9 @@ Route::get('/contactUs', [PagesController::class, 'contactUs'])->name('contactUs
 Route::get('/aboutUs', [PagesController::class, 'aboutUs'])->name('aboutUs');
 Route::get('/sobreNos', [PagesController::class, 'sobreNos'])->name('sobreNos');
 
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

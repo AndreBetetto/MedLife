@@ -11,6 +11,11 @@ class PagesController extends Controller
         return view('home');
     }
 
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
+
     public function benefit()
     {
         return view('default-pages.benefit');

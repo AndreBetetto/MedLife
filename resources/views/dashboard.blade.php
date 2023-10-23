@@ -9,9 +9,6 @@
     <div class="py-12 w-full">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden">
-                <div class="p-6 dark:text-gray-200 font-bold">
-                    {{ __("Você está logado!") }}
-                </div>
                 <div class="p-6 dark:text-gray-200 lm-0">
                     {{ __("Bem-vindo!") }}
                 </div>
