@@ -7,7 +7,7 @@
 
     <div class="py-12 w-full">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden ">
+            <div class="overflow-hidden">
                 <div class="p-6">
                     @include('admin.medico.show')
                 </div>

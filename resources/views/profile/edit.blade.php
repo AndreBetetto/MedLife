@@ -10,7 +10,7 @@
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="flex flex-col gap-6 w-full">
                     @include('paciente.registro.form')
-                    <div class="mt-4 bg-purple-100 p-4 rounded-md">
+                    <div class="mt-4 bg-purple-100 p-4 rounded-md dark:bg-purple-950">
                         <div class="grid grid-cols-1 place-items-center gap-2">
                             <h1 class="text-lg font-medium">Linguagem API</h1>
                             <form action="{{ route('language') }}" method="POST">

@@ -18,7 +18,7 @@
             <x-input-label for="password" :value="__('Senha')" />
 
             <div class="flex items-center bg-white border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-md shadow-lg border">
-                <input class="w-full border-transparent focus:border-transparent focus:ring-0 rounded-md" 
+                <input class="w-full dark:bg-gray-900 border-transparent focus:border-transparent focus:ring-0 rounded-md" 
                                 id="password"
                                 type="password"
                                 name="password"
@@ -44,15 +44,14 @@
             $caminhoGoogleLight = '/google_web/1x/btn_google_signin_light_normal_web.png';
         @endphp
     
-        <div class="w-full grid p-10 gap-8">
-            <div class="border border-zinc-500"></div>
+        <div class="w-full grid p-16">
             <a class="m-auto" href="{{ url('auth/google') }}">
                 <img src="{{ asset($caminhoGoogleLight)}}">
             </a>
         </div>
 
         <div class="border rounded-md border-zinc-200 p-5">
-            <span>Novo por aqui?</span>
+            <span class="dark:text-white">Novo por aqui?</span>
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
                 {{ __('Crie uma conta') }}
             </a>

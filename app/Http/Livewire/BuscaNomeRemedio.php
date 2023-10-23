@@ -16,15 +16,17 @@ class BuscaNomeRemedio extends Component
 
     public function createFicha()
     {
-        $text = "<ul>
-            <li><strong>Queixa:<br></strong></li>" . PHP_EOL . "
-            <li><strong>Antecedentes familiares:</strong><br></li>" . PHP_EOL . "
-            <li><strong>Hipotese diagnostica:</strong><br></li>" . PHP_EOL . "
-            <li><strong>Exames complementares:</strong><br></li>" . PHP_EOL . "
-            <li><strong>Conduta médica:</strong><br></li>" . PHP_EOL . "
-            <li><strong>Encaminhamento para outro especialista:</strong><br></li>" . PHP_EOL . "
-            <li><strong>Orientações:</strong><br></li>" . PHP_EOL . "
-            </ul>";
+        $text = "
+        <ul>
+            <li><strong>Queixa:</strong></li><p>" . PHP_EOL . "</p>
+            <li><strong>Antecedentes familiares:</strong></li><p>" . PHP_EOL . "</p>
+            <li><strong>Hipótese diagnóstica:</strong></li><p>" . PHP_EOL . "</p>
+            <li><strong>Exames complementares:</strong></li><p>" . PHP_EOL . "</p>
+            <li><strong>Conduta médica:</strong></li><p>" . PHP_EOL . "</p>
+            <li><strong>Encaminhamento para outro especialista:</strong></li><p>" . PHP_EOL . "</p>
+            <li><strong>Orientações:</strong></li><p>" . PHP_EOL . "</p>
+        </ul>
+            ";
         return $text;
     }
 
