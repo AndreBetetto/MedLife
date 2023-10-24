@@ -1,11 +1,12 @@
 <div>
 {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-    <input type="text" wire:model="searchMedic" placeholder="Pesquisar médico" class="rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50">
+    
+    <div class="flex flex-col items-center">
     <button class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" wire:click.prevent="fetchAPIdata">
         Carregar lista de sintomas
     </button>
     <div>   
-        <form wire:submit.prevent="recomenda">
+        <form wire:submit.prevent="recomenda" class="flex flex-col items-center">
             @if ($dataFetched == true)
                 <select id="symptomsSelected[]" wire:model="symptomsSelected" multiple class=" mt-2" >
                     @foreach ($symptoms as $symptom)
@@ -35,6 +36,8 @@
         @empty
 
         @endforelse
+    </div>
+        <input type="text" wire:model="searchMedic" placeholder="Pesquisar médico" class="mt-5 rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50">
         <div class="mt-6">
             @if (count($filtroEspecialidade) > 0)
                 <p class="font-semibold mb-3 mt-2 ">Filtros aplicados:</p>
@@ -54,7 +57,7 @@
                 </div>
             @endif
         </div>
-        <div class="flex flex-col gap-8 mt-2">
+        <div class="flex flex-col gap-8 mt-2 w-full">
             <table class="">
                 <p class="text-xl font-semibold leading-6 text-gray-800 ">Médicos cadastrados</p>
                 
