@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 w-full mt-5">
+        <div class="grid grid-cols-1 w-full mt-5" wire:ignore>
             <span class="font-bold text-gray-700 dark:text-zinc-300 mb-3">Observações</span>
             <textarea id="observacoesPaciente" class="w-full" readonly> {{ $obs->observacoes }} </textarea>
         </div>

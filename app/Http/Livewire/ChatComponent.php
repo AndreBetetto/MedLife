@@ -38,9 +38,10 @@ class ChatComponent extends Component
         $models = [
             'Mini Orca (Small)',
             'Llama-2-7B',
-            'Llama-2-7B MedLife'
+            'Llama-2-7B MedLife',
+            'mistral-7b-instruct-v0.1.Q4_K_M.gguf'
         ];
-        $chosen = $models[2];
+        $chosen = $models[3];
         return $chosen;
     }
 
