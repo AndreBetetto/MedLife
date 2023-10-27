@@ -5,7 +5,11 @@
     <button class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" wire:click.prevent="fetchAPIdata">
         Carregar lista de sintomas
     </button>
+<<<<<<< HEAD
     <div class="w-full">   
+=======
+    <div>   
+>>>>>>> d62d189499441d16683dcabe55f599cfd7d75535
         <form wire:submit.prevent="recomenda" class="flex flex-col items-center">
             @if ($dataFetched == true)
                 <select id="symptomsSelected[]" wire:model="symptomsSelected" multiple class="w-full mt-2" >
