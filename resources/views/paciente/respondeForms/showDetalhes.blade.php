@@ -1,12 +1,12 @@
 <div>
 
     <div class="px-4 sm:px-0">
-        <h3 class="text-xl font-semibold leading-7 text-gray-900 py-3">Processos</h3>
+        <h3 class="text-3xl font-semibold leading-7 text-gray-900 py-3">Processos</h3>
     </div>
 
 
-    <p class="mt-1 truncate text-base leading-5 text-gray-700"> Médico: {{ $medico->nome}} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
-    <p class="mt-1 truncate text-base leading-5 text-gray-700 pb-5"> Paciente: {{ $paciente->nome}} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
+    <p class="mt-1 truncate text-base leading-5 text-gray-700"> Médico: {{ Str::title( $medico->nome) }} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
+    <p class="mt-1 truncate text-base leading-5 text-gray-700 pb-5"> Paciente: {{ Str::title($paciente->nome) }} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
 
     <table>
         @php
@@ -59,12 +59,10 @@
                                 </span>
                             @endif
 
-                            <tr></tr>
-
                             @empty
-                                <tr>
-                                    <td colspan="4">Sem formulários adicionados</td>
-                                </tr>
+                                <div>
+                                    <span>Sem formulários adicionados</span>
+                                </div>
                             @endforelse
                     </div>
                 </div>

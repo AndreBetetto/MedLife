@@ -6,8 +6,8 @@
     <div class="w-full text-center justify-center items-center">
         <h2 class="text-xl font-semibold leading-tight dark:text-white">
             Informações Pós-Operatório
-        </h2><br>
-    </div>
+        </h2>
+    </div> 
 
     <form class="w-full">
         <div class="grid grid-cols-2 items-center  w-full -mx-3 mb-6">
@@ -101,7 +101,7 @@
                             10
                         </button>
                     </div>
-            </div><br>
+            </div>
     
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2" for="grid-last-name">
@@ -111,31 +111,31 @@
                 <label>
                     <input class="with-gap" name="group1" type="radio" />
                     <span>Nenhum</span>
-                </label><br>
+                </label>
 
                 <label>
                     <input class="with-gap" name="group1" type="radio"  />
                     <span>Pouco</span>
-                </label><br>
+                </label>
 
                 <label>
                     <input class="with-gap" name="group1" type="radio"  />
                     <span>Médio</span>
-                </label><br>
+                </label>
 
                 <label>
                     <input class="with-gap" name="group1" type="radio"  />
                     <span>Intenso</span>
-                </label><br>
+                </label>
             </div>
 
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide dark:text-white text-xs font-bold mb-2" for="grid-last-name">
-                    <br><br>Febre
+                    Febre
                     <div id="test-slider">
                         <input type="range" min="0" max="100" />
                     </div>
-                </label><br>
+                </label>
             </div>
 
             <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
@@ -152,8 +152,8 @@
         <div class="flex flex-wrap -mx-3 mb-6 items-center">
             <div class="w-full px-3 text-center">
                 <h2 class="text-xl font-semibold leading-tight dark:text-white items-center -mt-12">
-                    <br>Medicamentos
-                </h2><br>
+                    Medicamentos
+                </h2>
             </div>
             
             <div class="w-full text-center justify-center items-center">
@@ -180,8 +180,8 @@
         <div class="flex flex-wrap -mx-3 mb-6 ">
             <div class="w-full px-3 text-center justify-center items-center">
                 <h2 class="text-xl font-semibold leading-tight dark:text-white items-center mt-4">
-                    <br>Curativos
-                </h2><br>
+                    Curativos
+                </h2>
             </div>
 
             <div class="w-full text-center justify-center items-center">

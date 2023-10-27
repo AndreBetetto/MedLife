@@ -9,10 +9,10 @@
     </button>
 
     <x-modal name="create-new-user" focusable>
-        <form action="{{ route('crudUser.store') }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-2 gap-8 p-10">
+        <form action="{{ route('crudUser.store') }}" method="POST" enctype="multipart/form-data" class="flex justify-center gap-8 p-2">
             @csrf
 
-            <div class="gap-8">
+            <div class="grid gap-1 w-5/6">
                 <div class="">
                     <label for="name">Nome</label>
                     <x-text-input id="name" class="block mt-1 w-full" name="name" type="text" required autofocus />

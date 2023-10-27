@@ -1,11 +1,7 @@
 <div>
     {{-- The whole world belongs to you. --}}
-    <table>
-
-        <div class="px-4 sm:px-0">
-            <h3 class="text-xl font-semibold leading-7 text-gray-900 p-5">Meus médicos</h3>
-        </div>
-        @php
+    <div>
+    @php
             use Illuminate\Support\Facades\File;
             use Illuminate\Support\Facades\Storage;
             //$files = Storage::files('profile');
@@ -19,9 +15,13 @@
                 //echo "The specified folder does not exist or is not a directory.";
                 $fileCount = 1;
             }
-        @endphp 
+        @endphp
 
-        @forelse ($medicos as $medico)
+        <div class="flex flex-col gap-8 mt-2 w-full">
+            <table class="">
+                <p class="text-xl font-semibold leading-6 text-gray-800 ">Meus médicos</p>
+
+            @forelse ($medicos as $medico)
             @php
                 $medicoId = $medico->id;
                 $isSelected = $pacMeds->contains('medico_id', $medicoId);
@@ -30,25 +30,31 @@
                 $imgPath = 'profilePics/'.$imgIndex.'.svg';
             @endphp
             @if ($isSelected)
-                <div class="w-full h-px bg-gray-300"></div>
-                <div class="flex justify-between items-center h-fit py-10 px-5">
-                    <img class="h-20 w-20 flex-none rounded-full bg-gray-50" src="{{asset($imgPath)}}" alt="imagem carrega">
-                </div>
+                <div class="flex justify-between items-center h-full">
+                    <img class="h-14 w-14 flex-none rounded-full bg-gray-50" src="{{ asset($imgPath) }}" alt="">
                 
-                <div class="min-w-0 flex-auto px-8">
-                    <p class="text-base font-semibold leading-6 text-gray-900"> {{ $medico->nome}} {{ Str::ucfirst($medico->sobrenome); }}</p>
-                    <p class="mt-1 truncate text-sm leading-5 text-gray-500">  {{ $medico->especialidade }} </p>
-                </div>
+                    <div class="min-w-0 flex-auto">
+                        <p class="text-base font-semibold leading-6 px-5"> {{ Str::title($medico->nome) }} {{ Str::ucfirst($medico->sobrenome); }}</p>
+                        <p class="mt-1 truncate text-sm leading-5 text-gray-500 px-5">
+                            @php
+                                $medico->especialidade = __('translations.'.$medico->especialidade);
+                                $esp = $medico->especialidade;
+                            @endphp
+                            {{ $esp }} 
+                        </p>
+                    </div>
                 
-                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                    <a href="{{ route('areapaciente.medicoDetalhes', ['id' => $medicoId]) }}" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0">Ver detalhes</a>
+                    <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                        <a href="{{ route('areapaciente.medicoDetalhes', ['id' => $medicoId]) }}" class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue">Ver detalhes</a>
+                    </div>
                 </div>
-
             @endif
         @empty
-            <tr>
-                <td colspan="4">Sem médicos disponíveis</td>
-            </tr>
+            <div>
+                <span>Sem médicos disponíveis</span>
+            </div>
         @endforelse
-    </table>
+            </table>
+        </div>
+    </div>
 </div>

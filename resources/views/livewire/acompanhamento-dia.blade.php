@@ -3,70 +3,75 @@
     <div class="px-4 sm:px-0">
         <h3 class="text-4xl font-semibold leading-7 text-gray-900 dark:text-white">Relatório</h3>
     </div>
-    <div class="grid grid-cols-2 gap-4 py-10">
-        <div class="grid grid-cols-1">
-            <span for="selectedDay" class="font-bold text-gray-700 dark:text-zinc-300">Selecione o dia</span>
-            <select
-                placeholder="Selecione o dia"
-                id="selectedDay"
-                wire:model="selectedDay"
-                wire:change="getFormDia"
-                class="border rounded border-gray-400 w-3/4 dark:bg-slate-800">
-                @for ($i = 1; $i <= $totalDays; $i++)
-                    @if ($i <= $diaMaxRespondido)
-                        <option value="{{ $i }} " selected>{{ $i }}</option>
-                    @else
-                        <option value="{{ $i }} " disabled>{{ $i }}</option>
-                    @endif
-                @endfor
-            </select>
-        </div>
-
-        {{--<textarea id="mytextarea">Hello, World!</textarea>--}}
-
-        <div class="grid grid-cols-1">
-            <span class="font-bold text-gray-700 dark:text-zinc-300">Nível da dor</span>
-            <input type="text" id="nivelDor" value="{{ $formDia->nivelDor }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800">
-        </div>
-
-        <div class="grid grid-cols-1">
-            <span class="font-bold text-gray-700 dark:text-zinc-300">Nível da febre</span>
-            <input type="text" id="nivelFebre" value="{{ $formDia->nivelFebre }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800">
-        </div>
-
-        <div>
-            <label class="font-bold text-gray-700 dark:text-zinc-300">Sintomas</label>
-            <div wire:init="getSymptomsProperty">
-                @foreach ($this->symptoms as $symptom)
-                    <li wire:key={{ $loop->index }}>{{ __('translations.'. $symptom['Name']) }}</li>
-                @endforeach
-                @php
-                    $loadData = false;
-                    $trocaDia = true;
-                @endphp
-            </div>
-            @if($erro || $this->symptoms == null)
-                <div class="text-red-500">
-                    <span>Erro ao carregar API. Verifique a API Key.</span>
+    <div class="grid grid-cols-1 gap-4 py-10">
+        <div class="grid grid-cols-2">
+            <div>
+                <div class="grid grid-cols-1  mt-4">
+                    <span for="selectedDay" class="font-bold text-gray-700 dark:text-zinc-300">Selecione o dia</span>
+                    <select
+                        placeholder="Selecione o dia"
+                        id="selectedDay"
+                        wire:model="selectedDay"
+                        wire:change="getFormDia"
+                        class="border rounded border-gray-400 w-3/4 dark:bg-slate-800">
+                        @for ($i = 1; $i <= $totalDays; $i++)
+                            @if ($i <= $diaMaxRespondido)
+                                <option value="{{ $i }} " selected>{{ $i }}</option>
+                            @else
+                                <option value="{{ $i }} " class="text-red-500" disabled>{{ $i }}</option>
+                            @endif
+                        @endfor
+                    </select>
                 </div>
-            @endif
-            
-            <div wire:loading wire:target='selectedDay'> 
-                <span>Carregando dados...</span>
+
+                {{--<textarea id="mytextarea">Hello, World!</textarea>--}}
+
+                <div class="grid grid-cols-1 mt-4">
+                    <span class="font-bold text-gray-700 dark:text-zinc-300">Nível da dor</span>
+                    <input type="text" id="nivelDor" value="{{ $formDia->nivelDor }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800">
+                </div>
+
+                <div class="grid grid-cols-1 mt-4">
+                    <span class="font-bold text-gray-700 dark:text-zinc-300">Nível da febre</span>
+                    <input type="text" id="nivelFebre" value="{{ $formDia->nivelFebre }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800">
+                </div>
+                
+                <div class="grid grid-cols-1 mt-4">
+                    <span class="font-bold text-gray-700 dark:text-zinc-300">Sangramento</span>
+                    <input type="text" id="sangramento" value="{{ $formDia->sangramento }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800 capitalize">
+                </div>
+            </div>
+            <div>
+                <div class="mt-4">
+                    <label class="font-bold text-gray-700 dark:text-zinc-300">Sintomas</label>
+                    <div wire:init="getSymptomsProperty">
+                        @foreach ($this->symptoms as $symptom)
+                            <li wire:key={{ $loop->index }}>{{ __('translations.'. $symptom['Name']) }}</li>
+                        @endforeach
+                        @php
+                            $loadData = false;
+                            $trocaDia = true;
+                        @endphp
+                    </div>
+                    @if($this->symptoms == null)
+                        <div class="text-zinc-500">
+                            <span>Sem sintomas disponíveis.</span>
+                        </div>
+                    @endif
+                    
+                    <div wire:loading wire:target='selectedDay'> 
+                        <span>Carregando dados...</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1">
-            <span class="font-bold text-gray-700 dark:text-zinc-300">Sangramento</span>
-            <input type="text" id="sangramento" value="{{ $formDia->sangramento }}" disabled class="border rounded w-3/4 p-2 border-gray-400 dark:bg-slate-800 capitalize">
-        </div>
-
-        <div class="grid grid-cols-1" wire:ignore>
+        <div class="grid grid-cols-1 w-full mt-5" wire:ignore>
             <span class="font-bold text-gray-700 dark:text-zinc-300">Observações</span>
-            <textarea id="observacoesPaciente" readonly> {{$obs->observacoes}} </textarea>
+            <textarea id="observacoesPaciente"class="hidden" readonly> {{$obs->observacoes}} </textarea>
         </div>
 
-        <div class="grid grid-cols-2 col-end-1 gap-2 mt-10">
+        <div class="">
             <button wire:click="generateGraph" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar gráfico</button>
         </div>
     </div>

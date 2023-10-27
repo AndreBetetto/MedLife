@@ -1,6 +1,6 @@
 <div>
     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 text-gray-900 dark:text-gray-200 font-bold">
+        <div class="p-6 text-gray-900 dark:text-gray-200">
             <div>
                 <x-input-label :value="__('Pesquisar')" />
                 <div class="flex space-x-5">                        
@@ -69,17 +69,17 @@
                                         <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $paciente->dataNasc }}</span>
                                         <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $paciente->fone }}</span>
                                         <span class="text-sm border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center">{{ $paciente->sexo }}</span>
-                                        <div class="text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center"> 
-                                            <a href="{{ route('crudUser.edit', ['id' => $paciente->id]) }}">Editar</a>
+                                        <div class="grid grid-cols-2 gap-2 text-sm border-b border-r border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 text-center"> 
+                                            <a class="inline-block rounded bg-purple-300 p-2 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0" href="{{ route('crudUser.edit', ['id' => $paciente->id]) }}">Editar</a>
                                             <button type="button" wire:click="deleteUser('{{ $paciente->id }}')" 
-                                                class="btn btn-danger" >
-                                                Delete
+                                                class="inline-block rounded bg-purple-300 p-2 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-500 hover:shadow-purple-600 focus:bg-primary-600 focus:outline-none focus:ring-0">
+                                                Excluir
                                             </button>
                                             {{-- delete form --}}
                                         </div>
                                     </div>
                                 @empty
-                                    <div>
+                                    <div class="border">
                                         <img src="semresultado.png">
                                     </div>
                                 @endforelse

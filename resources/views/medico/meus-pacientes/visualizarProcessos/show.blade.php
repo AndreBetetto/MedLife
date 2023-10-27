@@ -1,11 +1,11 @@
 <div>
     <div class="px-4 sm:px-0">
-        <h3 class="text-xl font-semibold leading-7 text-gray-900 dark:text-white py-3">Processos</h3>
+        <h3 class="text-3xl font-semibold leading-7 text-gray-900 dark:text-white py-3">Processos</h3>
     </div>
 
     {{-- 
-    <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300"> Médico: {{ $medico->nome}} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
-    <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300 pb-5"> Paciente: {{ $paciente->nome}} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
+    <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300"> Médico: {{ Str:title($medico->nome) }} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
+    <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300 pb-5"> Paciente: {{ Str::title($paciente->nome) }} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
     --}}
 
     <table>
@@ -54,13 +54,11 @@
                         </span> @endif
                     </div>
 
-                    <tr>
-                        @empty
-                            <tr>
-                                <td colspan="4">Sem processos</td>
-                            </tr>
-                        @endforelse
-                    </tr>
+                    @empty
+                        <div class="grid grid-cols-1 bg-white dark:bg-slate-800">
+                            <span class="text-base border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">Sem processos</span>
+                        </div>
+                    @endforelse
                 </div>
         </div>
     </table>

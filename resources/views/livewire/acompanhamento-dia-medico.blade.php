@@ -18,7 +18,7 @@
                             @if ($i <= $diaMaxRespondido)
                                 <option value="{{ $i }} " selected>{{ $i }}</option>
                             @else
-                                <option value="{{ $i }} " disabled>{{ $i }}</option>
+                                <option value="{{ $i }} " class="text-red-500" disabled>{{ $i }}</option>
                             @endif
                         @endfor
                     </select>
@@ -53,9 +53,9 @@
                             $trocaDia = true;
                         @endphp
                     </div>
-                    @if($erro || $this->symptoms == null)
-                        <div class="text-red-500">
-                            <span>Erro ao carregar API. Verifique a API Key.</span>
+                    @if($this->symptoms == null)
+                        <div class="text-gray-500">
+                            <span>Sem sintomas disponíveis.</span>
                             @php
                                 //dd($erro);
                             @endphp
@@ -69,14 +69,18 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 w-full mt-5">
+        <div class="grid grid-cols-1 w-full mt-5" wire:ignore>
             <span class="font-bold text-gray-700 dark:text-zinc-300 mb-3">Observações</span>
-            <textarea id="observacoesPaciente" class="w-full" readonly> {{ $obs->observacoes }} </textarea>
+            <textarea id="observacoesPaciente" class="w-full hidden" readonly> {{ $obs->observacoes }} </textarea>
         </div>
 
-        <div class="grid grid-cols-1 gap-2 mt-10 w-3/5">
-            <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar diagnóstico</button>
-            <button wire:click="generateGraph" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0">Analisar gráfico</button>
+        <div class="flex gap-3 mt-10 w-3/5">
+            @foreach ($this->symptoms as $symptom)
+                @if($this->symptoms != null)
+                    <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0 w-fit">Analisar diagnóstico</button>
+                @endif
+            @endforeach
+            <button wire:click="generateGraph" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0 w-fit">Analisar gráfico</button>
         </div>
     </div>
 
@@ -84,7 +88,7 @@
 
     <div class="">        
         {{-- Diagnostico API --}}
-        <div wire:loading wire:target='getDiagnostico' class="w-full flex justify-center"> 
+        <div wire:loading="getDiagnostico" class="w-full flex justify-center"> 
             <span>Gerando possível diagnóstico...</span>
         </div>
         @foreach ($diagnosticos as $diagnostico)

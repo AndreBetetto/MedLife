@@ -19,7 +19,7 @@
     @endphp
     
     <!-- Add a button to trigger the API request -->
-    <button wire:click.prevent="fetchAPIdata">Fetch Data</button>
+    <button wire:click.prevent="fetchAPIdata">Carregar Dados</button>
     @php
         if($isLoading === true){
             echo '<div class="loading-spinner"></div>';

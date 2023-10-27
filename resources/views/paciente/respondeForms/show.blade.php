@@ -157,10 +157,6 @@
                             });
                         </script>
                 </div>
-
-                {{-- Parte das observacoes --}}
-                <textarea id="observacoesPaciente" readonly>{{$formsDiarios->observacoes}}</textarea>
-                {{-- Parte das observacoes --}}
                 
                 <!-- <svg viewBox="0 0 36 36" fill="none" role="img" xmlns="http://www.w3.org/2000/svg" width="80" height="80"><mask id=":rdg:" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" fill="#FFFFFF"></rect></mask><g mask="url(#:rdg:)"><rect width="36" height="36" fill="#e83535"></rect><rect x="0" y="0" width="36" height="36" transform="translate(7 1) rotate(133 18 18) scale(1.1)" fill="#e2d9c2" rx="6"></rect><g transform="translate(3.5 -4) rotate(-3 18 18)"><path d="M15 20c2 1 4 1 6 0" stroke="#000000" fill="none" stroke-linecap="round"></path><rect x="11" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect><rect x="23" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect></g></g></svg> -->
         
@@ -204,15 +200,15 @@
                         
                                 // Update the displayed value when the range input value changes
                                 rangeInput.on('input', function() {
-                                    selectedValueElement.text('Selected Value: ' + rangeInput.val());
+                                    selectedValueElement.text('Valor Selecionado: ' + rangeInput.val());
                                 });
                             });
                         </script>
                         <div id="test-slider">
                             <input type="range" min="30" value="36.5" max="43" id="nivelFebre" step="0.1" name="nivelFebre" style="width: 200px"/>
-                            <p id="selectedValue">Selected Value: 36.5</p>
+                            <p id="selectedValue">Valor Selecionado: 36.5</p>
                         </div>
-                    </label><br>
+                    </label>
                 </div>
 
                 <!-- <div class="frame">
@@ -230,7 +226,8 @@
                 </div> -->
 
                 @livewire('symptoms-form', ['paciente' => $paciente])
-            
+                
+                
             
                 {{-- 
                 <div class="mr-auto w-full md:w-max px-20 mb-6 md:mb-0">
@@ -246,8 +243,8 @@
             <div class="col-span-2 flex flex-wrap">
                 <div class="w-full px-3 text-center justify-center items-center">
                     <h2 class="text-xl font-semibold leading-tight text-gray-800 items-center">
-                        <br>Curativos
-                    </h2><br>
+                        Curativos
+                    </h2>
                 </div>
 
                 <div class="w-full text-center justify-center items-center">
@@ -286,7 +283,7 @@
                             Apenas para controle do paciente. Siga a orientação que o médico receitou. Em caso de dúvidas, entre em contato com o médico.
                         </span>
                         <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
-                    </h2><br>
+                    </h2>
                 </div>
                     @php
                         $medicamentos = $formsDiarios->medicamentos;
@@ -300,6 +297,11 @@
                     </div> 
             </div> 
         </div>
-        
+        <div>
+            <h2 class="text-xl">Observações</h2>
+            {{-- Parte das observacoes --}}
+            <textarea id="observacoesPaciente" readonly>{{$formsDiarios->observacoes}}</textarea>
+            {{-- Parte das observacoes --}}
+        </div>
     </form>
 </div>
