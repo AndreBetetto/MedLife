@@ -34,6 +34,11 @@
                         <p class="dark:text-slate-100">Conecte-se com Seus Pacientes de Forma Poderosa! Descubra como a MedLife melhora a comunicação médico-paciente, permitindo cuidados de saúde excepcionais.</p>
                     </div>
                 </section>
+                <section class="flex flex-col justify-center items-center gap-12  py-48 md:grid-cols-1">
+                    <h2 class="text-5xl dark:text-white">Dúvidas sobre a plataforma?</h2>
+                    <h3 class="text-3xl dark:text-white">Acesse o <a class="text-indigo-500" href="{{URL::asset('/HelpMedLife.pdf')}}">Help do sistema</a> e faça download <a class="text-indigo-500" href="{{URL::asset('/HelpMedLife.pdf')}}" download="Help do Sistema - MedLife.pdf">aqui</a> </h3>
+                                        
+                </section>
                 <section class="grid gap-12 lg:grid-cols-2 items-center py-48 md:grid-cols-1">
                     <div>
                         <h2 class="mb-12 text-5xl dark:text-white">Mas afinal,

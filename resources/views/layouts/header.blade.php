@@ -25,9 +25,6 @@
                             <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                                 {{ __('Home') }}
                             </x-nav-link>
-                            <x-nav-link :href="route('contactUs')" :active="request()->routeIs('contactUs')">
-                                {{ __('Contatos') }}
-                            </x-nav-link>
                             <x-nav-link :href="route('aboutUs')" :active="request()->routeIs('aboutUs')">
                                 {{ __('Sobre nós') }}
                             </x-nav-link>
@@ -112,9 +109,6 @@
             @if(Auth::check() == false)
                 <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                     {{ __('Home') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('contactUs')" :active="request()->routeIs('contactUs')">
-                    {{ __('Contatos') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('aboutUs')" :active="request()->routeIs('aboutUs')">
                     {{ __('Sobre nós') }}
