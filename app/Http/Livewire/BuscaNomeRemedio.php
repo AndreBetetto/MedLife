@@ -128,14 +128,18 @@ class BuscaNomeRemedio extends Component
         // Add the selected medicine to the $selectedMedicamentos array
         array_push($this->selectedMedicamentos, $str);
         //dd($this->selectedMedicamentos);
+        //dd($this->selectedMedicamentos);
         array_push($this->selectedMedicamentosName, $name);
         //dd($this->selectedMedicamentos);
     }
 
-    public function removeMedicamento($medicamentoName)
+    public function removeMedicamento($index)
     {
         // Remove the selected medicine from the $selectedMedicamentos array
-        $this->selectedMedicamentos = array_diff($this->selectedMedicamentos, [$medicamentoName]);
+        unset($this->selectedMedicamentos[$index]);
+        unset($this->selectedMedicamentosName[$index]);
+        $this->selectedMedicamentos = array_values($this->selectedMedicamentos);
+        $this->selectedMedicamentosName = array_values($this->selectedMedicamentosName);
     }
 
     public function formatSelectedMedicamentos()

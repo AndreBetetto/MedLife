@@ -75,11 +75,9 @@
         </div>
 
         <div class="flex gap-3 mt-10 w-3/5">
-            @foreach ($this->symptoms as $symptom)
-                @if($this->symptoms != null)
-                    <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0 w-fit">Analisar diagnóstico</button>
-                @endif
-            @endforeach
+            @if($this->symptoms != null)
+                <button wire:click="getDiagnostico" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0 w-fit">Analisar diagnóstico</button>
+            @endif
             <button wire:click="generateGraph" class="inline-block rounded bg-purple-400 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-400 transition duration-150 ease-in-out hover:bg-purple-300 hover:shadow-purple-300 focus:outline-none focus:ring-0 w-fit">Analisar gráfico</button>
         </div>
     </div>
@@ -89,7 +87,7 @@
     <div class="">        
         {{-- Diagnostico API --}}
         <div wire:loading="getDiagnostico" class="w-full flex justify-center"> 
-            <span>Gerando possível diagnóstico...</span>
+            {{--<span>Gerando possível diagnóstico...</span>--}}
         </div>
         @foreach ($diagnosticos as $diagnostico)
        <div class="mt-5 border-gray-600 border">
