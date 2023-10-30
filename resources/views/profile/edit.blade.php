@@ -9,7 +9,15 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="flex flex-col gap-6 w-full">
-                    @include('paciente.registro.form')
+                    @if (!Auth::check())
+                        @include('paciente.registro.form')
+                    @elseif (Auth::user()->role == 'paciente')
+                        @include('paciente.registro.updateForm')
+                    @elseif (Auth::user()->role == 'medico')
+                        @include('medico.registro.updateForm')
+                    @elseif (Auth::user()->role == 'admin')
+                        <p>Conta do admin</p>
+                    @endif
                     <div class="mt-4 bg-purple-100 p-4 rounded-md dark:bg-purple-500">
                         <div class="grid grid-cols-1 place-items-center gap-2">
                             <h1 class="text-lg font-medium">Linguagem API</h1>

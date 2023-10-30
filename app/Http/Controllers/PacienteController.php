@@ -188,16 +188,6 @@ class PacienteController extends Controller
     {
         return view('test');
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(PacienteEditRequest $paciente)
-    {
-        //
-
-    }
-
     /**
      * Update the specified resource in storage.
      */
