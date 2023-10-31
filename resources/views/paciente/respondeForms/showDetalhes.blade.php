@@ -33,23 +33,23 @@
                             $status = $formDiarios->status;
                         @endphp
                         
-                    <div class="grid grid-cols-5 bg-white dark:bg-slate-800">
-                        <span class="text-base border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $formDiarios->created_at }}</span>
-                        <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center"> {{ $qntDias }}</span>
+                        <div class="grid grid-cols-5 bg-white dark:bg-slate-800">
+                            <span class="text-base border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $formDiarios->created_at }}</span>
+                            <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center"> {{ $qntDias }}</span>
 
-                
-                        @if ( $status == 'Em andamento' || $status == 'Aguardando' )
-                            <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">
-                                <a href="{{ route('areapaciente.medicoDetalhesForms', ['id' => $formDiarios->id]) }}" class="hover:text-gray-500 hover:font-bold">Responder</a> </td>
-                            </span>
-                        @else
-                            <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">
-                                Não disponível
-                            </span>
-                        
-                        @endif
+                    
+                            @if ( $status == 'Em andamento' || $status == 'Aguardando' )
+                                <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">
+                                    <a href="{{ route('areapaciente.medicoDetalhesForms', ['id' => $formDiarios->id]) }}" class="hover:text-gray-500 hover:font-bold">Responder</a> </td>
+                                </span>
+                            @else
+                                <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">
+                                    Não disponível
+                                </span>
                             
-                        <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $status}}</span>
+                            @endif
+                        
+                            <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $status}}</span>
                             {{-- verify if there is at least one awnser --}}
                             @if ($formDiarios->status == 'Aguardando')
                                 <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">Sem respostas</span>   
@@ -58,13 +58,12 @@
                                     <a href="{{ route('areapaciente.acessoForms', ['id' => $formDiarios->id]) }} " class="inline-block rounded bg-purple-300 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-purple-300 transition duration-150 ease-in-out hover:bg-purple-400 hover:shadow-purple-400 focus:outline-none focus:ring-0">Ver respostas</a>
                                 </span>
                             @endif
-
-                            @empty
-                                <div>
-                                    <span>Sem formulários adicionados</span>
-                                </div>
-                            @endforelse
-                    </div>
+                        </div>
+                        @empty
+                            <div>
+                                <span>Sem formulários adicionados</span>
+                            </div>
+                        @endforelse
                 </div>
             </div>
         </div>        
