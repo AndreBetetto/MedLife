@@ -61,15 +61,9 @@
                             $item = str_replace('_', ' ', $item);
                             $itemt = __('translations.'.$item);
                         @endphp
-<<<<<<< HEAD
                         <div class="mb-2 font-semibold border border-slate-800 bg-emerald-400 rounded-2xl p-3 text-center inline-block align-middle">
                             {{ $item }} 
                             <button class="ml-3 inline-block align-middle" wire:click.prevent='removeEsp("{{$item}}")'>
-=======
-                        <div class=" h-10 font-semibold border border-slate-800 bg-emerald-400 rounded-2xl w-auto  p-3 basis-1/5  text-center  border-spacing-1 inline-block align-middle ">
-                            {{ $itemt }}
-                            <button class=" ml-3 inline-block align-middle" wire:click.prevent='removeEsp("{{$item}}")'>
->>>>>>> a970346483d4bc89d3e2f4e562053896ef757948
                                 <img src="{{asset('icons/delete.svg')}}" class="h-4 ">
                             </button>
                         </div>
