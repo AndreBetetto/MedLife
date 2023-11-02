@@ -4,7 +4,7 @@
     <div>
         Médico: {{ $medico->nome }} <br>
         CRM: {{ $medico->crm }} <br>
-        Especialidade: {{ $medico->especialidade }} <br><br>
+        Especialidade: {{ __('translations.'.$medico->especialidade) }} <br><br>
         <hr>
     </div>
 

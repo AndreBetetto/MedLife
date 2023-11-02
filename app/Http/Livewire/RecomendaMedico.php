@@ -35,7 +35,7 @@ class RecomendaMedico extends Component
 
     public function listDoctors()
     {
-        $query = Medico::where(DB::raw('lower(nome)'), 'like', '%' . strtolower($this->searchMedic) . '%');
+        $query = Medico::where(DB::raw('lower(nome)'), 'like', '%' . strtolower($this->searchMedic) . '%')->OrderBy('id');
         if (count($this->filtroEspecialidade) > 0)
         {
             $query->whereIn('especialidade', $this->filtroEspecialidade);
