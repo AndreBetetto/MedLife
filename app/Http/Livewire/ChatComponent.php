@@ -39,9 +39,11 @@ class ChatComponent extends Component
             'Mini Orca (Small)',
             'Llama-2-7B',
             'Llama-2-7B MedLife',
-            'mistral-7b-instruct-v0.1.Q4_K_M.gguf'
+            'mistral-7b-instruct-v0.1.Q4_K_M.gguf',
+            'Mistral OpenOrca',
+            'Mistral Instruct'
         ];
-        $chosen = $models[3];
+        $chosen = $models[5];
         return $chosen;
     }
 
