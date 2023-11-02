@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Exception;
 use Livewire\Component;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
@@ -9,9 +10,12 @@ use App\Models\Medico;
 use App\Models\Paciente;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Livewire\WithPagination;
 
 class RecomendaMedico extends Component
 {
+    use WithPagination;
+
     public $input;
     public $output;
     public $symptoms = [];
@@ -24,6 +28,7 @@ class RecomendaMedico extends Component
     public $fileCount;
     public $searchMedic = '';
     public $filtroEspecialidade = [];
+    private $pagination = 10;
 
     public function render()
     {
@@ -41,9 +46,14 @@ class RecomendaMedico extends Component
             $query->whereIn('especialidade', $this->filtroEspecialidade);
         }
 
-        $medicos = $query->paginate(10);
+        $medicos = $query->paginate($this->pagination);
         //dd($medicos);
         return $medicos;
+    }
+
+    public function updatingSearchMedic(): void
+    {
+        $this->gotoPage(1);
     }
 
     public function removeEsp($input)

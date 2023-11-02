@@ -111,7 +111,9 @@
                     </div>
                 @endforelse
             </table>
-            {{ $medicos->links('pagination::tailwind') }}
+            <div>
+                {{ $medicos->links() }}
+            </div>
         </div>
     </div> 
 </div>
