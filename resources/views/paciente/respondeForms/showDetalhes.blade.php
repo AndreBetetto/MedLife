@@ -59,11 +59,11 @@
                                 </span>
                             @endif
                         </div>
-                        @empty
-                            <div>
-                                <span>Sem formulários adicionados</span>
-                            </div>
-                        @endforelse
+                    @empty
+                        <div>
+                            <span>Sem formulários adicionados</span>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>        

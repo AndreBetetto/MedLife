@@ -15,7 +15,7 @@
                 <div class="grid gap-4">
                     <div class="bg-purple-100 p-4 rounded-md dark:bg-purple-500">
                         <x-input-label class="" for="name" :value="__('Nome')" />
-                        <x-text-input class="" id="name" name="name" type="text" class="block w-full" :value="old('name', $user->name)" wire:model.lazy='nome' required autofocus autocomplete="name" />
+                        <x-text-input class="" id="name" name="name" type="text" class="block w-full" :value="{{ $paciente->nome }}" wire:model.lazy='nome' required autofocus autocomplete="name" />
                         <x-input-error class="" :messages="$errors->get('name')" />
                     </div>
                     <div class="bg-purple-100 p-4 rounded-md dark:bg-purple-500">

@@ -101,9 +101,7 @@ Route::middleware(['IsMedico'])->group(function () {
     Route::post('/areamendico/adicionarMedicamento', [MedicoController::class, 'passarParaPaciente'])->name('areamedico.passarParaPaciente');
     Route::get('/areamedico/meusPacientes/{idPac}/detalhes', [MedicoController::class, 'pacienteProcessos'])->name('areamedico.acessoProcessos');
     Route::get('/areamedico/meusPacientes/{idPac}/detalhes/{idForm}', [MedicoController::class, 'pacienteProcessosForms'])->name('areamedico.acessoProcessosForms');
-
     Route::post('/areamedico/meusPacientes/{id}', [MedicoController::class, 'addFormsStore'])->name('areamedico.meusPacientescriarFormStore');
-
     Route::get('/areamedico/consulta/create', [MedicoController::class, 'areamedicoconsultaCreate'])->name('areamedico.consulta.create');
     Route::post('/areamedico/consulta/create', [MedicoController::class, 'areamedicoconsultaStore']);
     Route::get('/areamedico/consulta/{id}/edit', [MedicoController::class, 'areamedicoconsultaEdit'])->name('areamedico.consulta.edit');
@@ -128,23 +126,9 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::put('/adminuser/{id}', [AdminController::class, 'crudUserUpdate'])->name('crudUser.update');
 });
 
-
-Route::middleware('auth')->group(function() {
-    Route::get('/chat', 'HomeController@chat')->name('chat');
-    Route::post('getFriends', 'HomeController@getFriends')->name('getFriends');
-    Route::post('/session/create', 'SessionController@create')->name('session.create');
-    Route::post('/session/{session}/chats', 'ChatController@chats')->name('session.chats');
-    Route::post('/session/{session}/read', 'ChatController@read')->name('session.read');
-    Route::post('/session/{session}/clear', 'ChatController@clear')->name('session.clear');
-    Route::post('/session/{session}/block', 'BlockController@block')->name('session.block');
-    Route::post('/session/{session}/unblock', 'BlockController@unblock')->name('session.unblock');
-    Route::post('/send/{session}', 'ChatController@send')->name('send');
-});
-
 Route::get('auth/google', [AuthenticatedSessionController::class, 'signInwithGoogle']);
 
 Route::get('auth/google/callback', [AuthenticatedSessionController::class, 'callbackToGoogle']);
-
 
 require __DIR__.'/auth.php';
 

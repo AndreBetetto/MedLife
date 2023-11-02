@@ -9,14 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="flex flex-col gap-6 w-full">
-                    @if (!Auth::check())
-                        @include('paciente.registro.form')
+                    @if (Auth::user()->role == 'user')
+                        @include('paciente.registro.form', ['user' => $user] )
                     @elseif (Auth::user()->role == 'paciente')
-                        @include('paciente.registro.updateForm')
+                        @include('paciente.registro.updateForm', ['user' => $user, 'paciente' => $paciente])
                     @elseif (Auth::user()->role == 'medico')
-                        @include('medico.registro.updateForm')
+                        @include('medico.registro.updateForm', ['user' => $user, 'medico' => $medico])
                     @elseif (Auth::user()->role == 'admin')
-                        <p>Conta do admin</p>
+                        <span>Conta do admin</span>
                     @endif
                     <div class="mt-4 bg-purple-100 p-4 rounded-md dark:bg-purple-500">
                         <div class="grid grid-cols-1 place-items-center gap-2">
@@ -33,7 +33,12 @@
                         </div>
                     </div>
                     @include('profile.partials.update-password-form')
-                    @include('profile.partials.delete-user-form')
+                    <div class="mt-4 bg-purple-100 p-4 rounded-md dark:bg-purple-500">
+                        <div class="grid grid-cols-1 place-items-center gap-2">
+                            <h1 class="text-lg font-medium">Excluir USUÁRIO</h1>
+                            @include('profile.partials.delete-user-form')
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

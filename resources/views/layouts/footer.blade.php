@@ -18,11 +18,13 @@
               {{ __('Login') }}
           </x-nav-link>
         </li>
-        <li class=  "text-xl">
-          <x-nav-link :href="route('sobreNos')" :active="request()->routeIs('sobreNos')">
-              {{ __('Sobre nós') }}
-          </x-nav-link>
-        </li>
+        @if(!Auth::check())
+          <li class=  "text-xl">
+            <x-nav-link :href="route('aboutUs')" :active="request()->routeIs('aboutUs')">
+                {{ __('Sobre nós') }}
+            </x-nav-link>
+          </li>
+        @endif
       </ul>
     </div>
     <div class="items-center flex flex-col gap-6">

@@ -18,15 +18,40 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        if(auth()->user()->role == 'medico')
+        {
+            $medico = User::where('id', auth()->user()->id)->first();
+            return view('profile.edit', [
+                'user' => $request->user(),
+                'medico' => $medico
+            ]);
+        } elseif(auth()->user()->role == 'paciente')
+        {
+            $paciente = Paciente::where('user_id', auth()->user()->id)->first();
+            return view('profile.edit', [
+                'user' => $request->user(),
+                'paciente' => $paciente
+            ]);
+        }elseif(auth()->user()->role == 'admin')
+        {
+            $admin = User::where('id', auth()->user()->id)->first();
+            return view('profile.edit', [
+                'user' => $request->user(),
+                'admin' => $admin
+            ]);
+        } else {
+            return view('profile.edit', [
+                'user' => $request->user()
+            ]);
+        }
+        /*
         $paciente = Paciente::where('user_id', auth()->user()->id)->first();
         return view('profile.edit', [
             'user' => $request->user(),
             'paciente' => $paciente
-        ]);
+        ]);*/
     }
 
-    
-    
     /**
      * Update the user's profile information.
      */
