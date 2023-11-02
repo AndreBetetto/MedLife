@@ -63,8 +63,6 @@ return [
     "weakness" => "Fraqueza",
     "Weight gain" => "Ganho de peso",
     "Wheezing" => "Chiado",
-    "General practice" => "Clínica Geral",
-    "Neurology" => "Neurologia",
     //Parte dos especialistas
     "Cardiology" => "Cardiologia",
     "Acupuncture" => "Acupuntura",

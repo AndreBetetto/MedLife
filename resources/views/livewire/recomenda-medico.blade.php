@@ -5,7 +5,11 @@
     <button class="rounded-md bg-purple-300 px-3.5 py-2.5 my-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" wire:click.prevent="fetchAPIdata">
         Carregar lista de sintomas
     </button>
+<<<<<<< HEAD
     <div class="w-full">
+=======
+    <div class="w-full">   
+>>>>>>> a970346483d4bc89d3e2f4e562053896ef757948
         <form wire:submit.prevent="recomenda" class="flex flex-col items-center">
             @if ($dataFetched == true)
                 <select id="symptomsSelected[]" wire:model="symptomsSelected" multiple class="w-full border rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50 my-2">
@@ -42,7 +46,9 @@
             @endif
         </li>
         @empty
-        </div>
+            <div>
+                <p>Sem resultados</p>
+            </div>
         @endforelse
     </div>
         <input type="text" wire:model="searchMedic" placeholder="Pesquisar médico" class="w-full mt-5 rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50">
@@ -53,11 +59,17 @@
                     @foreach ($filtroEspecialidade as $item)
                         @php
                             $item = str_replace('_', ' ', $item);
-                            $item = __('translations.'.$item);
+                            $itemt = __('translations.'.$item);
                         @endphp
+<<<<<<< HEAD
                         <div class="mb-2 font-semibold border border-slate-800 bg-emerald-400 rounded-2xl p-3 text-center inline-block align-middle">
                             {{ $item }} 
                             <button class="ml-3 inline-block align-middle" wire:click.prevent='removeEsp("{{$item}}")'>
+=======
+                        <div class=" h-10 font-semibold border border-slate-800 bg-emerald-400 rounded-2xl w-auto  p-3 basis-1/5  text-center  border-spacing-1 inline-block align-middle ">
+                            {{ $itemt }}
+                            <button class=" ml-3 inline-block align-middle" wire:click.prevent='removeEsp("{{$item}}")'>
+>>>>>>> a970346483d4bc89d3e2f4e562053896ef757948
                                 <img src="{{asset('icons/delete.svg')}}" class="h-4 ">
                             </button>
                         </div>
@@ -112,12 +124,14 @@
                         @endif
                     </div>
                 @empty
-                    <div>
+                    <div class=" w-full">
                         <p>Sem médicos disponíveis</p>
                     </div>
                 @endforelse
             </table>
-            {{ $medicos->links('pagination::tailwind') }}
+            <div>
+                {{ $medicos->links() }}
+            </div>
         </div>
     </div> 
 </div>
