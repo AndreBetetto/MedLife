@@ -46,8 +46,8 @@
             @endphp
             <div class="shadow-2xl p-4 grid gap-2 bg-zinc-50 dark:bg-slate-900">
                 @if (!$isSelected) 
-                    <div class="grid grid-cols-2 items-center gap-4">  
-                        <img src="{{asset($imgPath)}}" alt="Paciente" class="h-full w-full object-cover object-center group-hover:opacity-75 rounded-full">
+                    <div class="grid grid-cols-2 items-center gap-4 mb-4">  
+                        <img src="{{asset($imgPath)}}" alt="Paciente" class="h-[100px] w-[100px] object-cover object-center group-hover:opacity-75 rounded-full">
                         {{ $paciente->nome }}
                         <span>{{ Str::title($arrayInfo[$index]->nome) }} {{ Str::title($arrayInfo[$index]->sobrenome) }}</span>
                         {{ $paciente->sobrenome }} 
@@ -57,7 +57,7 @@
                             <x:modals.medico.exam/>
                             <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $pacienteId]) }}" class="w-full method="GET">
                                 @csrf
-                                <button type="submit" class="rounded-xl px-4 py-2 w-full bg-red-500 content-center gap-2 hover:bg-red-600 duration-200">Criar formulário</button>
+                                <button type="submit" class="rounded-xl px-4 py-2 w-full bg-teal-600 content-center gap-2 hover:bg-teal-500 duration-200">Criar formulário</button>
                             </form>
                         </div>
                         <a href="{{ route('areamedico.acessoProcessos', ['idPac' => $pacienteId]) }}" class="w-full text-xl text-neutral-50 rounded-2xl px-8 py-2 bg-violet-500 content-center gap-2 hover:bg-violet-600 duration-200">Ver respostas</a>

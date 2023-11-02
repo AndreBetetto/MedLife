@@ -5,8 +5,10 @@
     </div>
 
 
-    <p class="mt-1 truncate text-base leading-5 text-gray-700"> Médico: {{ Str::title( $medico->nome) }} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
-    <p class="mt-1 truncate text-base leading-5 text-gray-700 pb-5"> Paciente: {{ Str::title($paciente->nome) }} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
+   <div class="my-4 ml-8">
+        <p class="truncate text-base leading-5 text-gray-700"> Médico: {{ Str::title( $medico->nome) }} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
+        <p class="truncate text-base leading-5 text-gray-700"> Paciente: {{ Str::title($paciente->nome) }} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
+   </div>
 
     <table>
         @php
@@ -16,7 +18,7 @@
                                     ->count();
             @endphp
 
-        <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
+        <div class="not-prose relative rounded-xl overflow-hidden dark:bg-slate-800/25">
             <div class="relative py-3">
                 <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">
                     <div class="grid grid-cols-5 items-center justify-center border-collapse w-full">
@@ -60,8 +62,8 @@
                             @endif
                         </div>
                     @empty
-                        <div>
-                            <span>Sem formulários adicionados</span>
+                        <div class="grid grid-cols-1 bg-white dark:bg-slate-800">
+                            <p class="text-base border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">Sem formulários adicionados</p>
                         </div>
                     @endforelse
                 </div>
