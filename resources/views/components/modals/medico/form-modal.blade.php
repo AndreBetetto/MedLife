@@ -6,7 +6,7 @@
       data-te-target="#exampleModalCenter"
       data-te-ripple-init
       data-te-ripple-color="light">
-      <div class="rounded-xl px-4 py-2 w-full bg-violet-500 content-center gap-2 hover:bg-violet-600 duration-200">
+      <div class="rounded-xl px-4 py-2 w-full bg-emerald-400 content-center gap-2 hover:bg-emerald-300 duration-200">
         Solicitar exame
       </div>
     </button>

@@ -4,12 +4,14 @@
     </div>
 
     {{-- 
-    <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300"> Médico: {{ Str:title($medico->nome) }} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
-    <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300 pb-5"> Paciente: {{ Str::title($paciente->nome) }} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
+    <div>
+        <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300"> Médico: {{ Str:title($medico->nome) }} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
+        <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300"> Paciente: {{ Str::title($paciente->nome) }} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
+    </div>
     --}}
 
     <table>
-        <div class="not-prose relative mt-5 rounded-xl overflow-hidden dark:bg-slate-800/25">
+        <div class="not-prose relative rounded-xl overflow-hidden dark:bg-slate-800/25">
             
                 <div class="shadow-sm rounded-t-xl bg-purple-300  overflow-hidden my-1">
                     <div class="grid grid-cols-4 items-center justify-center border-collapse w-full">
