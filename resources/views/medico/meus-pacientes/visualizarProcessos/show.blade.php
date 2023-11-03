@@ -5,7 +5,7 @@
 
     {{-- 
     <div>
-        <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300"> Médico: {{ Str:title($medico->nome) }} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
+        <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300">  Médico: {{ Str:title($medico->nome) }} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
         <p class="mt-1 truncate text-base leading-5 text-gray-700 dark:text-zinc-300"> Paciente: {{ Str::title($paciente->nome) }} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
     </div>
     --}}
