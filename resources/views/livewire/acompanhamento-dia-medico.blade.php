@@ -127,7 +127,7 @@
                         $uri1 = 'https://icd.who.int/browse10/2019/en#/';
                         $uri2 = 'https://icd.who.int/browse11/l-m/en';
                     @endphp
-                    <a href="https://icd.who.int/browse11/l-m/en#/{{$diagnostico['Issue']['Icd']}}"  target="_blank" class="font-semibold hover:font-bold hover:text-purple-600">Acessar site</a>
+                    <a href="https://icd.who.int/browse10/2019/en#/{{$diagnostico['Issue']['Icd']}}"  target="_blank" class="font-semibold hover:font-bold hover:text-purple-600">Acessar site</a>
                 </div>
                 <div>
                     <span class="font-bold text-gray-700 dark:text-white">Nome científico:</span> 
