@@ -16,6 +16,7 @@ Alpine.start();
 
 initTE({ Modal, Ripple });
 
+
 // jQuery v3.3.1 is supported
 $("#febre").roundSlider({
   radius: 72,

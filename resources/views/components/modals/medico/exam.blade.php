@@ -11,7 +11,7 @@
         $(document).ready(function() {
             $('#emailButton').click(function() {
                 var recipient = 'recipient@example.com';
-                var subject = 'Your Subject Here';
+                var subject = 'Solicitação de exames';
                 var emailContent = $('#emailContent').val(); // Get content from the input field
                 var mailtoLink = 'mailto:' + recipient + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(emailContent);
                 window.open(mailtoLink, '_blank');

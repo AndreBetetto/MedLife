@@ -90,11 +90,11 @@
             {{--<span>Gerando possível diagnóstico...</span>--}}
         </div>
         @foreach ($diagnosticos as $diagnostico)
-       <div class="mt-5 border-gray-600 border">
+        <div class="mt-5 border-gray-600 border">
             <div class="grid gap-4 p-10">
-                <h2 class="text-2xl mb-2">{{ $diagnostico['Issue']['Name'] }}</h2>
+                <h2 class="text-2xl mb-2">{{ __('translations.'.$diagnostico['Issue']['Name']) }}</h2>
                 <div>
-                    <span class="font-bold text-gray-700 dark:text-white">Possível diagnóstico:</span> {{ $diagnostico['Issue']['Name'] }}
+                    <span class="font-bold text-gray-700 dark:text-white">Possível diagnóstico:</span> {{ __('translations.'.$diagnostico['Issue']['Name']) }}
                     @php
                         $issueId = $diagnostico['Issue']['ID'];
                         $descricao = $issueInfo[$issueId]['Description'];
@@ -118,12 +118,16 @@
                 </div>
                 <div>
                     <span class="font-bold text-gray-700 dark:text-white">Probabilidade:</span> 
-                    <p>{{ $issueInfo[$issueId]['MedicalCondition']}}</p>
+                    <p>{{ $diagnostico['Issue']['Accuracy']}} %</p>
                 </div>
                 <div>
                     <span class="font-bold text-gray-700 dark:text-white">CID:</span> 
                     <p>{{$diagnostico['Issue']['IcdName']}} {{$diagnostico['Issue']['Icd']}}</p>
-                    <a href="https://icd.who.int/browse10/2019/en#/{{$diagnostico['Issue']['Icd']}}"  target="_blank" class="font-semibold hover:font-bold hover:text-purple-600">Acessar site</a>
+                    @php
+                        $uri1 = 'https://icd.who.int/browse10/2019/en#/';
+                        $uri2 = 'https://icd.who.int/browse11/l-m/en';
+                    @endphp
+                    <a href="https://icd.who.int/browse11/l-m/en#/{{$diagnostico['Issue']['Icd']}}"  target="_blank" class="font-semibold hover:font-bold hover:text-purple-600">Acessar site</a>
                 </div>
                 <div>
                     <span class="font-bold text-gray-700 dark:text-white">Nome científico:</span> 
@@ -132,7 +136,7 @@
                 <div>
                     <span class="font-bold text-gray-700 dark:text-white">Especialização:</span>
                     @foreach ($diagnostico['Specialisation'] as $especializacao)
-                        <p>- {{ $especializacao['Name'] }};</p>
+                        <p>- {{ __('translations.'.$especializacao['Name']) }};</p>
                     @endforeach 
                     
                 </div>
