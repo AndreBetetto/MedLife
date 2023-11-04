@@ -5,6 +5,8 @@
                 Médico
             @elseif(Auth::user()->role == 'paciente')
                 Paciente
+            @elseif(Auth::user()->role == 'admin')
+                Admin    
             @else
                 User
             @endif
