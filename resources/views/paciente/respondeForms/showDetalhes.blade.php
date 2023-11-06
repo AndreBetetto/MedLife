@@ -6,8 +6,8 @@
 
 
    <div class="my-4 ml-8">
-        <p class="truncate text-base leading-5 text-gray-700"> Médico: {{ Str::title( $medico->nome) }} {{ Str::ucfirst($medico->sobrenome); }} - {{ $medico->id }}</p>
-        <p class="truncate text-base leading-5 text-gray-700"> Paciente: {{ Str::title($paciente->nome) }} {{ Str::ucfirst($paciente->sobrenome); }} - {{ $paciente->id }}</p>
+        <p class="truncate text-base leading-5 text-gray-700"> Médico: {{ Str::title( $medico->nome) }} {{ Str::ucfirst($medico->sobrenome); }}</p>
+        <p class="truncate text-base leading-5 text-gray-700"> Paciente: {{ Str::title($paciente->nome) }} {{ Str::ucfirst($paciente->sobrenome); }} </p>
    </div>
 
     <table>
@@ -31,13 +31,23 @@
 
                     @forelse ($formDiarios as $formDiarios)
                         @php
+                            if($checklist->where('forms_id', $formDiarios->id)->last() != null)
+                            {
+                                $ultimo = $checklist->where('forms_id', $formDiarios->id)->last();
+                                $ultimo = $ultimo->numDia;
+                            } else {
+                                $ultimo = 0;
+                            }
+                            
+                            $qntDias2 = $formDiarios->numDias - $ultimo;
+                            //$status = $formDiarios->status;
                             $qntDias = $formDiarios->numDias;
                             $status = $formDiarios->status;
                         @endphp
                         
                         <div class="grid grid-cols-5 bg-white dark:bg-slate-800">
                             <span class="text-base border-b border-l border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $formDiarios->created_at }}</span>
-                            <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center"> {{ $qntDias }}</span>
+                            <span class="text-base border-b border-slate-100 dark:border-slate-700 p-4 pl-3 py-10 text-slate-500 dark:text-slate-400 my-1/2 text-center">{{ $qntDias2 }} / {{ $qntDias }}</span>
 
                     
                             @if ( $status == 'Em andamento' || $status == 'Aguardando' )
