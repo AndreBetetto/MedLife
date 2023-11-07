@@ -37,6 +37,7 @@
                 <section class="flex flex-col justify-center items-center gap-12  py-48 md:grid-cols-1">
                     <h2 class="text-5xl dark:text-white">Dúvidas sobre a plataforma?</h2>
                     <h3 class="text-3xl dark:text-white">Acesse o <a class="text-indigo-500" href="{{URL::asset('/HelpMedLife.pdf')}}">Help do sistema</a> e faça download <a class="text-indigo-500" href="{{URL::asset('/HelpMedLife.pdf')}}" download="Help do Sistema - MedLife.pdf">aqui</a> </h3>
+                    <h3 class="text-3xl dark:text-white">Para acessar o Instalador do Sistema, <a class="text-indigo-500" href="{{URL::asset('/InstallMedLife.pdf')}}">clique aqui</a> ou <a class="text-indigo-500" href="{{URL::asset('/InstallMedLife.pdf')}}" download="Instalador do Sistema - MedLife.pdf">faça download</a> </h3>
                                         
                 </section>
                 <section class="grid gap-12 lg:grid-cols-2 items-center py-48 md:grid-cols-1">
