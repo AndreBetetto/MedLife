@@ -31,6 +31,7 @@
         @endif
 
     </div>
+    <div class="my-5 col-span-2 h-px w-full bg-black"></div>
     <div class="mt-5 col-span-2 flex justify-center">
         <button class=" bg-purple-300 border-purple-500 text-sm border-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 py-1 px-2 rounded " type="button"
         @if (!$isLoading)

@@ -22,34 +22,34 @@
                 @if(Route::currentRouteName() != "register" && Route::currentRouteName() != "login")
                     <div class="font-20 hidden space-x-8 md:-my-px md:ml-10 md:flex">
                         @if(Auth::check() == false)
-                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                            <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                                 {{ __('Home') }}
                             </x-nav-link>
-                            <x-nav-link :href="route('aboutUs')" :active="request()->routeIs('aboutUs')">
+                            <x-nav-link href="{{ route('aboutUs') }}" :active="request()->routeIs('aboutUs')">
                                 {{ __('Sobre nós') }}
                             </x-nav-link>
                         @endif
                         @if(Auth::check())
-                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                                 {{ __('Dashboard') }}
                             </x-nav-link>
                             @if( Auth::user()->role == 'admin')
-                                <x-nav-link :href="route('areaadmin.index')" :active="request()->routeIs('areaadmin.index')">
+                                <x-nav-link href="{{ route('areaadmin.index') }}" :active="request()->routeIs('areaadmin.index')">
                                     {{ __('Admin') }}
                                 </x-nav-link>
                             @endif
                             @if( Auth::user()->role == 'medico')
-                                <x-nav-link :href="route('areamedico.index')" :active="request()->routeIs('areamedico.index')">
+                                <x-nav-link href="{{ route('areamedico.index') }}" :active="request()->routeIs('areamedico.index')">
                                     {{ __('Área médico') }}
                                 </x-nav-link>
                             @endif
                             @if( Auth::user()->role == 'paciente')
-                                <x-nav-link :href="route('areapaciente.index')" :active="request()->routeIs('areapaciente.index')">
+                                <x-nav-link href="{{ route('areapaciente.index') }}" :active="request()->routeIs('areapaciente.index')">
                                     {{ __('Área do paciente') }}
                                 </x-nav-link>
                             @endif
                             {{-- 
-                            <x-nav-link :href="route('medico.visual')" :active="request()->routeIs('medico.visual')">
+                            <x-nav-link href="{{ route('medico.visual') }}" :active="request()->routeIs('medico.visual')">
                                 {{ __('Ver médicos!') }}
                             </x-nav-link> --}}
                         @endif
@@ -64,6 +64,8 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400  hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <div class="capitalize">{{ Auth::user()->name }}</div>
+                                
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -72,7 +74,7 @@
                             </button>
                         </x-slot>
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
+                            <x-dropdown-link href="{{ route('profile.edit') }}">
                                 {{ __('Perfil') }}
                             </x-dropdown-link>
 
@@ -107,26 +109,26 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden md:hidden">
         <div class="pt-2 pb-3 space-y-1">
             @if(Auth::check() == false)
-                <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                <x-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                     {{ __('Home') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('aboutUs')" :active="request()->routeIs('aboutUs')">
+                <x-responsive-nav-link href="{{ route('aboutUs') }}" :active="request()->routeIs('aboutUs')">
                     {{ __('Sobre nós') }}
                 </x-responsive-nav-link>
             @endif
             @if(Auth::check())
                 @if( Auth::user()->role == 'admin')
-                    <x-responsive-nav-link :href="route('areaadmin.index')" :active="request()->routeIs('areaadmin.index')">
+                    <x-responsive-nav-link href="{{ route('areaadmin.index')  }}" :active="request()->routeIs('areaadmin.index')">
                         {{ __('Admin') }}
                     </x-responsive-nav-link>
                 @endif
                 @if( Auth::user()->role == 'medico')
-                    <x-responsive-nav-link :href="route('areamedico.index')" :active="request()->routeIs('areamedico.index')">
+                    <x-responsive-nav-link href="{{ route('areamedico.index') }}" :active="request()->routeIs('areamedico.index')">
                         {{ __('Área médico') }}
                     </x-responsive-nav-link>
                 @endif
                 @if( Auth::user()->role == 'paciente')
-                    <x-responsive-nav-link :href="route('areapaciente.index')" :active="request()->routeIs('areapaciente.index')">
+                    <x-responsive-nav-link href="{{ route('areapaciente.index') }}" :active="request()->routeIs('areapaciente.index')">
                         {{ __('Área do paciente') }}
                     </x-responsive-nav-link>
                 @endif
@@ -140,7 +142,7 @@
 
             <div class="mt-3 space-y-1">
                 @if(Auth::check() == true)
-                    <x-responsive-nav-link :href="route('profile.edit')">
+                    <x-responsive-nav-link href="{{ route('profile.edit') }}">
                         {{ __('Perfil') }}
                     </x-responsive-nav-link>
 

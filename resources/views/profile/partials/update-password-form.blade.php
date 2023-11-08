@@ -2,6 +2,7 @@
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
+        <h2 class="col-span-2 text-xl text-center font-medium m-0 gap-0">Alterar senha</h2>
 
         <div class="bg-purple-100 p-4 rounded-md dark:bg-purple-500">
             <x-input-label for="current_password" :value="__('Senha atual')" />

@@ -9,12 +9,17 @@
     <div class="py-12 w-full">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden">
-                <div class="p-6 dark:text-gray-200 lm-0">
+                <div class="p-6 text-3xl dark:text-gray-200">
                     {{ __("Bem-vindo!") }}
                 </div>
+                @if(Auth::user()->role == 'user')
+                    <div class="p-6 text-2xl text-red-600 dark:text-red-200 lm-0 my-28">
+                        <p>Para continuar usando nossos serviços termine seu cadastro.</p>
+                        <a href="{{ route('profile.edit') }}">clique aqui</a>
+                    </div>
+                @endif
                 <div class="p-6 dark:text-gray-200">
                     <div class="lm-0 mb-5">
-                        <p>Veja alguns dos nossos especialistas.</p>
                         <p>Caso esteja interessado poderá contatá-los pelo telefone de contato ou pelo nosso endereço</p>
                         
                         <div class="flex items-center">

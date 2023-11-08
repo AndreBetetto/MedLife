@@ -13,20 +13,21 @@
                         <option value="{{ $symptom['ID'] }}"> {{ __('translations.'.$symptom['Name']) }} </option>
                     @endforeach
                 </select>
+                <div class="my-2">
+                    <button  class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" wire:click.prevent="getSpecialization" type="submit">Enviar</button>
+                </div>
             @endif
-            <div class="my-2">
-                <button  class="rounded-md bg-purple-300 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue" wire:click.prevent="getSpecialization" type="submit">Enviar</button>
-            </div>
         </form> 
         @if ($dataFetched == true)
-            <p class="font-semibold mt-4">Resultado:</p>
+            <p class="font-semibold text-2xl mt-4">Resultado:</p>
         @endif
+        <ul class="mt-2">
         @forelse ($saida as $out)
-        <li class="font-semibold">
+        <li class="font-semibold mt-2 ml-2">
             {{ __('translations.'.$out['Name']) }} - {{ $out['Accuracy']}}%
             @if(in_array($out['Name'], $filtroEspecialidade))
                 <button wire:click.prevent='filtrarEsp("{{$out['Name']}}")'
-                    class=""
+                    class="rounded-md bg-purple-300 px-2 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                     @if (in_array($out['Name'], $filtroEspecialidade))
                         disabled               
                     @endif
@@ -35,22 +36,25 @@
                 </button>
             @else
                 <button wire:click.prevent='filtrarEsp("{{$out['Name']}}")'
-                    class=""
+                    class="rounded-md bg-purple-300 px-2 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
                 >
                     Filtrar
                 </button>
             @endif
         </li>
         @empty
-            <div>
-                <p>Sem resultados</p>
-            </div>
+            @if ($dataFetched == true)
+                <div>
+                    <p>Sem resultados</p>
+                </div>
+            @endif
         @endforelse
+        </ul>
     </div>
         <input type="text" wire:model="searchMedic" placeholder="Pesquisar médico" class="w-full mt-5 rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50">
-        <div class="mt-6">
+        <div class="mt-6 w-full">
             @if (count($filtroEspecialidade) > 0)
-                <p class="font-semibold mb-3 mt-2">Filtros aplicados:</p>
+            <p class="font-semibold mb-3 mt-2">Filtros aplicados:</p>
                 <div>
                     @foreach ($filtroEspecialidade as $item)
                         @php

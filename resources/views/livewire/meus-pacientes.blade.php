@@ -57,12 +57,12 @@
                             <x:modals.medico.exam/>
                             <form action="{{ route('areamedico.meusPacientescriarForm', ['id' => $pacienteId]) }}" class="w-full method="GET">
                                 @csrf
-                                <button type="submit" class="rounded-xl px-4 py-2 w-full bg-teal-600 content-center gap-2 hover:bg-teal-500 duration-200">Criar formulário</button>
+                                <button type="submit" class="rounded-xl px-4 py-2 w-full bg-transparent content-center border-4 gap-2 hover:bg-gray-300/25 duration-200">Criar formulário</button>
                             </form>
                         </div>
                         <a href="{{ route('areamedico.acessoProcessos', ['idPac' => $pacienteId]) }}" class="w-full text-xl text-neutral-50 rounded-2xl px-8 py-2 bg-violet-500 content-center gap-2 hover:bg-violet-600 duration-200">Ver respostas</a>
                         @if(in_array($pacienteId, $arrayVerifica))
-                            <p style="color: red">Novo!</p>
+                            <p style="color: red">Nova resposta!</p>
                         @endif
                         
                     </div>

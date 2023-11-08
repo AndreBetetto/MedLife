@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     @include('layouts.head')
-    <x-user-type-badge />
+    <!-- <x-user-type-badge /> -->
     <body x-cloak x-data="{darkMode: $persist(false)}" :class="{'dark': darkMode === true }" class="bg-purple-50 dark:bg-slate-800 antialiased">
         @include('layouts.header')
             <main class="px-20 py-12 w-full">

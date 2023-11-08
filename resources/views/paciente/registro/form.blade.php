@@ -43,7 +43,7 @@
                         <x-text-input id="sexo" name="sexo" type="text" class=" block w-full" :value="old('sexo', $user->sexo)" wire:model.lazy='sexo' required autofocus autocomplete="sexo" />
                         --}}
                         
-                        <select id="sexo" name="sexo" class=" block w-full rounded-sm border-spacing-0">
+                        <select id="sexo" name="sexo" class="block w-full border-spacing-0 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                             <option value="Masc">Masculino</option>
                             <option value="Fem">Feminino</option>
                         </select>
@@ -61,7 +61,7 @@
                         {{-- 
                         <x-text-input id="estadoCivil" name="estadoCivil"  type="text" class=" block w-full" :value="old('estadoCivil', $user->estadoCivil)" wire:model.lazy='estadoCivil' required autofocus autocomplete="estadoCivil" />
                         --}}
-                        <select id="estadoCivil" name="estadoCivil" class=" block w-full rounded-sm border-spacing-0">
+                        <select id="estadoCivil" name="estadoCivil" class="block w-full border-spacing-0 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                             <option value="Solteiro">Solteiro</option>
                             <option value="Casado">Casado</option>
                             <option value="Separado">Separado</option>

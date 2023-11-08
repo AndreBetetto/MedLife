@@ -248,7 +248,7 @@
                 </div>
 
                 <div class="w-full text-center justify-center items-center">
-                    <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10 justify-center items-center" for="grid-last-name">
+                    <div class="block my-4 uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10 justify-center items-center" for="grid-last-name">
                         Higienizar&nbsp; &nbsp;
                         <label>
                             <input type="checkbox" class=""/>
@@ -274,34 +274,37 @@
                 <input type="hidden" name="alergias" id="alergias" value="AlergiasAAmendoim">
                 <input type="hidden" name="diagnostico" id="diagnostico" value="not">
             </div>
-            <div class="my-5 col-span-2 h-px w-full bg-black"></div> 
+            <div class="my-5 col-span-2 h-px w-full bg-black"></div>
             <div class="col-span-2 flex flex-wrap items-center py-4">
+                <div class="w-full px-3 text-center">
+                    <h2 class="mb-4 text-xl font-semibold leading-tight text-gray-800 items-center">Observações</h2>
+                    {{-- Parte das observacoes --}}
+                    <textarea class="mt-4" id="observacoesPaciente" readonly>{{$formsDiarios->observacoes}}</textarea>
+                    {{-- Parte das observacoes --}}
+                </div>
+            </div>
+            <div class="my-5 col-span-2 h-px w-full bg-black"></div>
+            <div class="col-span-2 flex flex-wrap items-center pb-4">
                 <div class="w-full px-3 text-center">
                     <h2 class="text-xl font-semibold leading-tight dark:text-white items-center">
                         Medicamentos
-                        <p></p><span class=" text-red-500 text-sm">
-                            Apenas para controle do paciente. Siga a orientação que o médico receitou. Em caso de dúvidas, entre em contato com o médico.
-                        </span>
-                        <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
                     </h2>
+                    <input type="hidden" name="medicamentos" id="medicamentos" value="medicamentos">
+                    <p class=" text-red-500 text-sm my-4">
+                        Apenas para o controle do paciente. Siga a orientação que o médico receitou. Em caso de dúvidas, entre em contato com o médico.
+                    </p>
                 </div>
-                    @php
-                        $medicamentos = $formsDiarios->medicamentos;
-                        $ids = explode(',', str_replace(['[', ']'], '', $medicamentos));
-                        //dd($ids);
-                    @endphp
-                    <div class="w-full text-center justify-center items-center">
-                        <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
-                            @livewire('apresenta-remedio', ['ids' => $ids])
-                        </div>
-                    </div> 
+                @php
+                    $medicamentos = $formsDiarios->medicamentos;
+                    $ids = explode(',', str_replace(['[', ']'], '', $medicamentos));
+                    //dd($ids);
+                @endphp
+                <div class="w-full text-center justify-center items-center">
+                    <div class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 px-10" for="grid-last-name">
+                        @livewire('apresenta-remedio', ['ids' => $ids])
+                    </div>
+                </div> 
             </div> 
-        </div>
-        <div>
-            <h2 class="text-xl">Observações</h2>
-            {{-- Parte das observacoes --}}
-            <textarea id="observacoesPaciente" readonly>{{$formsDiarios->observacoes}}</textarea>
-            {{-- Parte das observacoes --}}
         </div>
     </form>
 </div>

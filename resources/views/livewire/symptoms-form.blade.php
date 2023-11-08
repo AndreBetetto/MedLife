@@ -19,24 +19,23 @@
     @endphp
     
     <!-- Add a button to trigger the API request -->
-    <button wire:click.prevent="fetchAPIdata">Carregar Dados</button>
     @php
         if($isLoading === true){
             echo '<div class="loading-spinner"></div>';
         }
     @endphp
     <!-- Display a loading spinner while the API request is in progress -->
-    <div class="text-center justify-center items-center">
-        <p class="text-base font-semibold leading-tight text-gray-800 p-3">
+    <div class="text-center justify-center items-center grid gap-2">
+        <span class="text-center font-semibold text-gray-800 p-3">
             Sintomas
-        </p>
+        </span>
+        <select class="p-3 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" name="symHead[]" id="symHead[]" wire:model="symAll" multiple='' >
+            @foreach ($symptoms as $symptomHead)
+                <option value="{{ $symptomHead['ID'] }}">{{ __('translations.'.$symptomHead['Name']) }}</option>
+            @endforeach
+        </select>
+        <button class="p-3 bg-purple-300 rounded-lg" wire:click.prevent="fetchAPIdata">Carregar Dados</button>
     </div>
-    <select name="symHead[]" id="symHead[]" wire:model="symAll" multiple='' >
-        @foreach ($symptoms as $symptomHead)
-            <option value="{{ $symptomHead['ID'] }}">{{ __('translations.'.$symptomHead['Name']) }}</option>
-        @endforeach
-        
-    </select>
     <script>
         new MultiSelectTag('symHead[]')  // id
     </script>

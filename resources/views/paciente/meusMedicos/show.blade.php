@@ -35,7 +35,7 @@
                 
                     <div class="min-w-0 flex-auto">
                         <p class="text-base font-semibold leading-6 px-5"> {{ Str::title($medico->nome) }} {{ Str::ucfirst($medico->sobrenome); }}</p>
-                        <p class="mt-1 truncate text-sm leading-5 text-gray-500 px-5">
+                        <p class="mt-1 capitalize truncate text-sm leading-5 text-gray-500 px-5">
                             @php
                                 $medico->especialidade = __('translations.'.$medico->especialidade);
                                 $esp = $medico->especialidade;

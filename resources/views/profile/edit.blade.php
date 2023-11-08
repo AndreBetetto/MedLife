@@ -18,12 +18,14 @@
                     @elseif (Auth::user()->role == 'admin')
                         <span>Conta do admin</span>
                     @endif
+                    @include('profile.partials.update-password-form')
+                    @if (!(Auth::user()->role == 'user'))
                     <div class="mt-4 bg-purple-100 p-4 rounded-md dark:bg-purple-500">
                         <div class="grid grid-cols-1 place-items-center gap-2">
                             <h1 class="text-lg font-medium">Linguagem API</h1>
                             <form action="{{ route('language') }}" method="POST">
                                 @csrf
-                                <select name="language" onchange="this.form.submit()" class="border rounded border-gray-400 dark:bg-slate-800">
+                                <select name="language" onchange="this.form.submit()" class=" border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                                     <option value="en" {{ session('language') == 'en' ? 'selected' : '' }}>English</option>
                                     <option value="pt-br" {{ session('language') == 'pt-br' ? 'selected' : '' }}>Português</option>
                                     <option value="es" {{ session('language') == 'es' ? 'selected' : '' }}>Español</option>
@@ -32,10 +34,10 @@
                             </form>
                         </div>
                     </div>
-                    @include('profile.partials.update-password-form')
+                    @endif
                     <div class="mt-4 bg-purple-100 p-4 rounded-md dark:bg-purple-500">
                         <div class="grid grid-cols-1 place-items-center gap-2">
-                            <h1 class="text-lg font-medium">Excluir USUÁRIO</h1>
+                            <h1 class="text-lg font-medium">Excluir conta</h1>
                             @include('profile.partials.delete-user-form')
                         </div>
                     </div>

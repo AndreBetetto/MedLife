@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
     @include('layouts.head')
-    <x-user-type-badge />
+    <!-- <x-user-type-badge /> -->
     <body class=" bg-purple-50 dark:bg-slate-800">
         @include('layouts.header')
         <main class="px-20 pt-24 pb-12">
